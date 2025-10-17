@@ -1,0 +1,47 @@
+import loadBasicBlocks from "./basicBlocks";
+import loadGridBlocks from "./gridBlocks";
+import loadColumnBlocks from "./columnBlocks";
+import loadPDFBlocks from "./pdfBlocks";
+import loadMapBlocks from "./mapBlocks";
+import loadTextBlocks from "./textBlocks";
+import loadImageColumnsBlocks from "./loadImageColumnsBlocks";
+import loadSectionBlocks from "./sectionBlocks";
+import loadMainBannerBlock from "./mainBannerBlock";
+import loadBannerBlocks from "./bannerBlocks";
+import loadInsuranceSelectorBlock from "./loadInsuranceBlocks";
+import loadIconBlocks from "./iconBlocks";
+import loadButtonBlocks from "./buttonBlocks";
+import loadBreadcrumbBlock from "./breadcrumbBlock";
+import loadCustomBlocks from "./custom_blocks";
+import loadQuickAccessBlocks from "./quickAccessBlocks";
+import loadAccountSelectorBlock from './accountSelectorBlock';
+import loadAccountTypesBlock from './accountTypesBlock';
+import loadCreditTypesBlock from './creditTypesBlock';
+import loadFormBlocks from './loadFormBlocks';
+import loadStepsFormBlock from './stepsFormBlock';
+import loadPromotionBlocks from './promotionBlocks';
+
+export default function loadAllBlocks(editor) {
+    loadBasicBlocks(editor);
+    loadTextBlocks(editor);
+    loadColumnBlocks(editor);
+    loadSectionBlocks(editor);
+    loadMainBannerBlock(editor);
+    loadBannerBlocks(editor);
+    loadInsuranceSelectorBlock(editor);
+    loadGridBlocks(editor);
+    loadPDFBlocks(editor);
+    loadMapBlocks(editor);
+    loadImageColumnsBlocks(editor);
+    loadQuickAccessBlocks(editor);
+    loadAccountSelectorBlock(editor);
+    loadAccountTypesBlock(editor);
+    loadCreditTypesBlock(editor);
+    loadFormBlocks(editor);
+    loadStepsFormBlock(editor);
+    loadPromotionBlocks(editor);
+    loadIconBlocks(editor);
+    loadButtonBlocks(editor);
+    loadBreadcrumbBlock(editor);
+    loadCustomBlocks(editor);
+}

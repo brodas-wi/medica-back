@@ -1,0 +1,220 @@
+/* ===================================
+   BASE EDITOR STYLES
+   =================================== */
+#gjs {
+    height: calc(100vh - 55px) !important;
+    margin-top: 0;
+}
+
+.gjs-pn-panel {
+    position: relative;
+}
+
+.gjs-pn-views-container {
+    height: calc(100% - 40px);
+    overflow-y: auto;
+}
+
+/* ===================================
+   COLOR SCHEME
+   =================================== */
+.gjs-one-bg {
+    background-color: #ffffff;
+}
+
+.gjs-two-color {
+    color: #23366a;
+}
+
+.gjs-four-color {
+    color: #002855;
+}
+
+.gjs-four-color-h:hover {
+    color: #23366a;
+}
+
+/* ===================================
+   BLOCKS STYLES
+   =================================== */
+.gjs-block {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transition: box-shadow 0.3s;
+}
+
+.gjs-block:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gjs-blocks-c {
+    padding: 5px;
+}
+
+/* ===================================
+   PANELS & BUTTONS
+   =================================== */
+.gjs-pn-btn [class^="ri-"] {
+    font-size: 16px;
+}
+
+.gjs-pn-active {
+    color: #23366a;
+}
+
+/* ===================================
+   CATEGORIES
+   =================================== */
+.gjs-category-open {
+    border-bottom: 2px solid #23366a;
+}
+
+/* ===================================
+   SELECTION & HOVER STATES
+   =================================== */
+.gjs-selected {
+    outline: 2px solid #23366a !important;
+}
+
+.gjs-hovered {
+    outline: 1px solid rgba(18, 60, 105, 0.5) !important;
+}
+
+/* ===================================
+   TOOLTIPS
+   =================================== */
+.gjs-tooltip-inner {
+    background-color: #002855;
+    color: white;
+}
+
+/* ===================================
+   RICH TEXT EDITOR
+   =================================== */
+.gjs-rte-toolbar {
+    background-color: #f3f4f6;
+    border-radius: 4px;
+}
+
+/* ===================================
+   CODE MIRROR
+   =================================== */
+.CodeMirror {
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    height: auto;
+}
+
+/* ===================================
+   TOOLBAR - IMAGE SELECTOR BUTTON
+   =================================== */
+.gjs-toolbar .gjs-toolbar-item {
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+.gjs-toolbar-item:has(.fa-picture-o) {
+    display: inline-block !important;
+    height: auto !important;
+    line-height: 1 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.gjs-toolbar .fa-picture-o {
+    font-size: 12px !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+}
+
+.gjs-toolbar [class*="fa-"]:first-child {
+    margin-left: 4px !important;
+    margin-right: -4px !important;
+    margin-top: -16px !important;
+}
+
+/* ===================================
+   MEDIA SELECTOR MODAL
+   =================================== */
+
+/* Modal container */
+.custom-media-modal {
+    padding: 0 !important;
+}
+
+.custom-media-modal .swal2-html-container {
+    margin: 0 !important;
+    padding: 20px !important;
+}
+
+/* Close button - remove focus outline */
+.swal2-close-custom:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Container styles */
+.media-selector-container {
+    text-align: left;
+}
+
+.media-grid .media-item {
+    background: white;
+    transition: all 0.2s;
+}
+
+.media-grid .media-item:hover {
+    transform: translateY(-2px);
+    border-color: #23366a;
+}
+
+/* Grid container scrollbar */
+#media-grid-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#media-grid-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#media-grid-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+#media-grid-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ===================================
+   RESPONSIVE STYLES
+   =================================== */
+@media (max-width: 768px) {
+    .mobile-save-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #23366a;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 576px) {
+    .gjs-pn-buttons {
+        padding: 0 5px;
+        flex-wrap: wrap;
+    }
+
+    .gjs-pn-btn {
+        margin: 2px;
+    }
+}

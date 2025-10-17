@@ -1,0 +1,36 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "serve": "php artisan serve",
+        "start": "concurrently \"npm run serve\" \"npm run dev\""
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "@prettier/plugin-php": "^0.24.0",
+        "@tailwindcss/vite": "^4.1.6",
+        "axios": "^1.8.2",
+        "bootstrap": "^5.2.3",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^1.2.0",
+        "prettier": "^3.6.2",
+        "sass": "^1.56.1",
+        "tailwindcss": "^4.1.6",
+        "vite": "^6.2.4"
+    },
+    "dependencies": {
+        "@heroicons/vue": "^2.2.0",
+        "autoprefixer": "^10.4.21",
+        "grapesjs": "^0.22.7",
+        "grapesjs-blocks-basic": "^1.0.2",
+        "grapesjs-preset-webpage": "^1.0.3",
+        "js-beautify": "^1.15.4",
+        "leaflet": "^1.9.4",
+        "postcss": "^8.5.3",
+        "remixicon": "^4.6.0",
+        "sweetalert2": "^11.21.0",
+        "toastify-js": "^1.12.0"
+    }
+}

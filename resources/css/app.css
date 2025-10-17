@@ -1,0 +1,151 @@
+@import "tailwindcss";
+@source "../views";
+@config "../../tailwind.config.js";
+@import 'remixicon/fonts/remixicon.css';
+
+/* Custom select styling */
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333733' viewBox='0 0 16 16'%3E%3Cpath d='M8 12a.5.5 0 0 1-.354-.146l-5-5a.5.5 0 0 1 .708-.708L8 10.793l4.646-4.647a.5.5 0 0 1 .708.708l-5 5A.5.5 0 0 1 8 12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    padding-right: 2.5rem;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .custom-select {
+        padding-right: 2.5rem;
+    }
+}
+
+.custom-select option {
+    background-color: white;
+    color: #333;
+    padding: 8px 12px;
+}
+
+.custom-select option:hover,
+.custom-select option:focus {
+    background-color: #f1f5f9;
+}
+
+.custom-select option:checked {
+    background-color: #23366A;
+    color: white;
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: #23366A;
+    box-shadow: 0 0 0 3px rgba(18, 60, 105, 0.1);
+}
+
+/* Toggle switch styling */
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.toggle-switch-checkbox {
+    display: none;
+}
+
+.toggle-switch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 0;
+    border-radius: 20px;
+    margin: 0;
+}
+
+.toggle-switch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.2s ease-in-out;
+}
+
+.toggle-switch-inner:before,
+.toggle-switch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 22px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.toggle-switch-inner:before {
+    content: "";
+    background-color: var(--color-primary, #23366A);
+}
+
+.toggle-switch-inner:after {
+    content: "";
+    background-color: #e5e7eb;
+}
+
+.toggle-switch-switch {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 2px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 28px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+}
+
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-inner {
+    margin-left: 0;
+}
+
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-switch {
+    right: 0px;
+}
+
+/* Loading overlay */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #23366A;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
