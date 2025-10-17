@@ -10,7 +10,6 @@
 /storage/framework/testing/*
 /storage/framework/views/*
 /storage/logs/*
-/vendor
 .env
 .env.backup
 .env.production
@@ -29,7 +28,6 @@ yarn-error.log
 
 # Node.js
 /node_modules
-/public/build
 /public/hot
 npm-debug.log
 yarn-debug.log
