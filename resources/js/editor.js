@@ -826,6 +826,9 @@ function addCanvasStyles(editor) {
     if (frame && frame.contentDocument) {
         const frameStyleEl = frame.contentDocument.createElement("style");
         frameStyleEl.innerHTML = `
+            body {
+                margin-bottom: 1rem !important;
+            }
             .bg-primary {
                 background-color: #23366A !important;
             }

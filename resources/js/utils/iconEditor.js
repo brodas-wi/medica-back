@@ -477,38 +477,33 @@ export function openIconEditor(editor) {
         if (result.isConfirmed) {
             try {
                 const { iconClass, size, color } = result.value;
+                const classes = [...selected.getClasses()];
 
-                // Remove old icon classes
-                Array.from(el.classList)
-                    .filter((cls) => cls.startsWith("ri-"))
-                    .forEach((cls) => el.classList.remove(cls));
+                const filteredClasses = classes.filter(
+                    (cls) => !cls.startsWith("ri-"),
+                );
 
-                el.classList.add(iconClass);
+                filteredClasses.push(iconClass);
+                selected.setClass(filteredClasses);
 
-                // Remove old text color classes
-                Array.from(el.classList)
-                    .filter((cls) => cls.startsWith("text-"))
-                    .forEach((cls) => el.classList.remove(cls));
+                selected.addStyle({
+                    "font-size": `${size}px`,
+                });
 
-                el.style.fontSize = `${size}px`;
-
-                // Check if parent has hover color transitions
                 const parent = el.closest('button, a, [class*="hover:text"]');
 
                 if (parent) {
-                    // Use currentColor to inherit parent's color (including hover)
-                    el.style.color = "currentColor";
-
+                    selected.addStyle({ color: "currentColor" });
                     showAlert(
                         "Icono actualizado correctamente. Color heredado del elemento padre.",
                         "success",
                     );
                 } else {
-                    // Apply selected color only if not inside interactive element
-                    el.style.color = color;
+                    selected.addStyle({ color: color });
                     showAlert("Icono actualizado correctamente", "success");
                 }
 
+                editor.select(selected);
                 selected.em.trigger("component:update", selected);
             } catch (error) {
                 console.error("Error al actualizar icono:", error);

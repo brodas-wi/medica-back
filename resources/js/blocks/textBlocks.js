@@ -32,7 +32,7 @@ export default function loadTextBlocks(editor) {
             <div class="max-w-4xl mx-auto px-4 text-center">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
               <h3 class="text-secondary text-xl md:text-2xl font-semibold mb-4">Subtítulo</h3>
-              <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
+              <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
             </div>
           </div>
           `,
@@ -54,7 +54,7 @@ export default function loadTextBlocks(editor) {
           <div class="py-4">
             <div class="max-w-4xl mx-auto px-4 text-center">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>
-              <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
+              <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
             </div>
           </div>
           `,
@@ -83,7 +83,7 @@ export default function loadTextBlocks(editor) {
                   <h3 class="text-secondary text-xl md:text-2xl font-semibold">Subtítulo</h3>
                 </div>
                 <div class="w-full md:w-7/12">
-                  <p class="text-gray-500 text-base md:text-lg leading-relaxed text-left md:text-right">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
+                  <p class="text-gray-600 text-base md:text-lg leading-relaxed text-left md:text-right">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
                 </div>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function loadTextBlocks(editor) {
                   <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">Título Principal</h2>
                 </div>
                 <div class="w-full md:w-7/12">
-                  <p class="text-gray-500 text-base md:text-lg leading-relaxed text-left md:text-right">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
+                  <p class="text-gray-600 text-base md:text-lg leading-relaxed text-left md:text-right">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
                 </div>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function loadTextBlocks(editor) {
                   <h3 class="text-secondary text-xl md:text-2xl font-semibold">Subtítulo</h3>
                 </div>
                 <div class="w-full md:w-7/12">
-                  <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
+                  <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ export default function loadTextBlocks(editor) {
                   <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">Título Principal</h2>
                 </div>
                 <div class="w-full md:w-7/12">
-                  <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
+                  <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
                 </div>
               </div>
             </div>

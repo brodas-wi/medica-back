@@ -1,0 +1,100 @@
+{
+  "_buttonBlocks-D_-ZTp9G.css": {
+    "file": "assets/buttonBlocks-D_-ZTp9G.css",
+    "src": "_buttonBlocks-D_-ZTp9G.css"
+  },
+  "_buttonBlocks-DdDJieYB.js": {
+    "file": "assets/buttonBlocks-DdDJieYB.js",
+    "name": "buttonBlocks",
+    "imports": [
+      "_sweetalert2.esm.all-x82VjDyW.js"
+    ],
+    "css": [
+      "assets/buttonBlocks-D_-ZTp9G.css"
+    ]
+  },
+  "_index-BasNPDJC.js": {
+    "file": "assets/index-BasNPDJC.js",
+    "name": "index",
+    "imports": [
+      "_sweetalert2.esm.all-x82VjDyW.js"
+    ]
+  },
+  "_sweetalert2.esm-U_b-ZeMd.css": {
+    "file": "assets/sweetalert2.esm-U_b-ZeMd.css",
+    "src": "_sweetalert2.esm-U_b-ZeMd.css"
+  },
+  "_sweetalert2.esm.all-x82VjDyW.js": {
+    "file": "assets/sweetalert2.esm.all-x82VjDyW.js",
+    "name": "sweetalert2.esm.all",
+    "css": [
+      "assets/sweetalert2.esm-U_b-ZeMd.css"
+    ]
+  },
+  "node_modules/remixicon/fonts/remixicon.eot": {
+    "file": "assets/remixicon-BVJ9S1ev.eot",
+    "src": "node_modules/remixicon/fonts/remixicon.eot"
+  },
+  "node_modules/remixicon/fonts/remixicon.svg": {
+    "file": "assets/remixicon-C2wQ2gtc.svg",
+    "src": "node_modules/remixicon/fonts/remixicon.svg"
+  },
+  "node_modules/remixicon/fonts/remixicon.ttf": {
+    "file": "assets/remixicon-CfJD46dY.ttf",
+    "src": "node_modules/remixicon/fonts/remixicon.ttf"
+  },
+  "node_modules/remixicon/fonts/remixicon.woff": {
+    "file": "assets/remixicon-BBpe-Xu7.woff",
+    "src": "node_modules/remixicon/fonts/remixicon.woff"
+  },
+  "node_modules/remixicon/fonts/remixicon.woff2": {
+    "file": "assets/remixicon-BVvFtaex.woff2",
+    "src": "node_modules/remixicon/fonts/remixicon.woff2"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-DEQxDSR_.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CMN17ETI.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_sweetalert2.esm.all-x82VjDyW.js"
+    ]
+  },
+  "resources/js/editor.js": {
+    "file": "assets/editor-CM6gBWV8.js",
+    "name": "editor",
+    "src": "resources/js/editor.js",
+    "isEntry": true,
+    "imports": [
+      "_buttonBlocks-DdDJieYB.js",
+      "_sweetalert2.esm.all-x82VjDyW.js"
+    ]
+  },
+  "resources/js/footer-editor.js": {
+    "file": "assets/footer-editor-C4Vfe5Dq.js",
+    "name": "footer-editor",
+    "src": "resources/js/footer-editor.js",
+    "isEntry": true,
+    "imports": [
+      "_buttonBlocks-DdDJieYB.js",
+      "_index-BasNPDJC.js",
+      "_sweetalert2.esm.all-x82VjDyW.js"
+    ]
+  },
+  "resources/js/navbar-editor.js": {
+    "file": "assets/navbar-editor-CzsBbTiy.js",
+    "name": "navbar-editor",
+    "src": "resources/js/navbar-editor.js",
+    "isEntry": true,
+    "imports": [
+      "_buttonBlocks-DdDJieYB.js",
+      "_index-BasNPDJC.js",
+      "_sweetalert2.esm.all-x82VjDyW.js"
+    ]
+  }
+}

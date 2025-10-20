@@ -916,54 +916,23 @@ function initEditor() {
 
                     // Cerrar menús al hacer clic fuera
                     doc.addEventListener("click", function (e) {
-                        if (!e.target.closest(".navbar-dropdown")) {
+                        if (
+                            !e.target.closest('.w-full[style*="fixed"]') &&
+                            !e.target.closest(".account-selector-container")
+                        ) {
                             doc.querySelectorAll(
-                                ".navbar-dropdown-menu",
+                                ".navbar-nested-menu, .custom-submenu",
                             ).forEach((m) => {
-                                m.classList.remove("show");
+                                m.style.display = "none";
                             });
-
-                            doc.querySelectorAll(".navbar-dropdown").forEach(
-                                (d) => {
-                                    d.classList.remove("active");
-                                },
-                            );
-
-                            doc.querySelectorAll(".dropdown-toggle").forEach(
-                                (t) => {
-                                    t.classList.remove("active");
-                                    t.style.backgroundColor = "";
-                                    t.style.color = "";
-                                    const icon = t.querySelector("i");
-                                    if (icon) icon.style.color = "";
-                                },
-                            );
-
-                            const allNavContainers =
-                                doc.querySelectorAll(".rounded-full");
-                            allNavContainers.forEach(function (container) {
-                                container.style.borderBottomLeftRadius =
-                                    "9999px";
-                                container.style.borderBottomRightRadius =
-                                    "9999px";
-                                container.style.borderTopLeftRadius = "9999px";
-                                container.style.borderTopRightRadius = "9999px";
-                                container.style.borderBottom = "";
-                            });
-
-                            doc.querySelectorAll(".navbar-nested-menu").forEach(
-                                (m) => {
-                                    m.style.display = "none";
-                                },
-                            );
                         } else if (
                             !e.target.closest(".navbar-nested-dropdown")
                         ) {
-                            doc.querySelectorAll(".navbar-nested-menu").forEach(
-                                (m) => {
-                                    m.style.display = "none";
-                                },
-                            );
+                            doc.querySelectorAll(
+                                ".navbar-nested-menu, .custom-submenu",
+                            ).forEach((m) => {
+                                m.style.display = "none";
+                            });
                         }
                     });
 
@@ -1898,43 +1867,12 @@ function savePageData(editor) {
                 });
                 
                 document.addEventListener('click', function(e) {
-                    if (!e.target.closest('.navbar-dropdown')) {
-                        document.querySelectorAll('.navbar-dropdown-menu').forEach(function(m) {
-                            m.classList.remove('show');
-                        });
-                        document.querySelectorAll('.navbar-dropdown').forEach(function(d) {
-                            d.classList.remove('active');
-                        });
-                        document.querySelectorAll('.dropdown-toggle').forEach(function(t) {
-                            t.classList.remove('active');
-                            t.style.backgroundColor = '';
-                            t.style.color = '';
-                            var icon = t.querySelector('i');
-                            if (icon) icon.style.color = '';
-                        });
-                        
-                        var allNavContainers = document.querySelectorAll('.rounded-full');
-                        allNavContainers.forEach(function(container) {
-                            container.style.borderBottomLeftRadius = '9999px';
-                            container.style.borderBottomRightRadius = '9999px';
-                            container.style.borderTopLeftRadius = '9999px';
-                            container.style.borderTopRightRadius = '9999px';
-                            container.style.borderBottom = '';
-                            
-                            var allButtons = container.querySelectorAll('button.dropdown-toggle, a.block');
-                            allButtons.forEach(function(btn) {
-                                btn.style.borderTopLeftRadius = '';
-                                btn.style.borderTopRightRadius = '';
-                                btn.style.borderBottomLeftRadius = '';
-                                btn.style.borderBottomRightRadius = '';
-                            });
-                        });
-
-                        document.querySelectorAll('.navbar-nested-menu').forEach(function(m) {
+                    if (!e.target.closest('.w-full[style*="fixed"]') && !e.target.closest('.account-selector-container')) {
+                        document.querySelectorAll('.navbar-nested-menu, .custom-submenu').forEach(function(m) {
                             m.style.display = 'none';
                         });
                     } else if (!e.target.closest('.navbar-nested-dropdown')) {
-                        document.querySelectorAll('.navbar-nested-menu').forEach(function(m) {
+                        document.querySelectorAll('.navbar-nested-menu, .custom-submenu').forEach(function(m) {
                             m.style.display = 'none';
                         });
                     }

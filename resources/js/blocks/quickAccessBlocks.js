@@ -24,7 +24,7 @@ export default function loadQuickAccessBlocks(editor) {
         <section class="py-12 px-4 md:px-8 lg:px-16">
             <div class="bg-white shadow-lg rounded-3xl p-6 sm:p-8 md:p-10 max-w-7xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-3 md:mb-4">Accesos rápidos</h2>
-                <p class="text-gray-500 text-center mb-2 max-w-3xl mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
+                <p class="text-gray-600 text-center mb-2 mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
                 
                 <div class="relative max-w-6xl mx-auto px-6">
                     <div class="flex flex-nowrap gap-4 overflow-x-hidden whitespace-nowrap py-4 scroll-smooth justify-center" id="quick-access-carousel">

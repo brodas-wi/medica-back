@@ -60,7 +60,7 @@ export default function loadBasicBlocks(editor) {
         content: `
         <div class="py-4">
             <div class="max-w-7xl mx-auto px-4">
-                <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
+                <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
             </div>
         </div>
         `,
@@ -296,7 +296,7 @@ export default function loadBasicBlocks(editor) {
         content: `
             <div class="py-4">
                 <div class="max-w-7xl mx-auto px-4">
-                    <ol class="list-decimal pl-6 space-y-2 text-gray-500 text-base md:text-lg leading-relaxed">
+                    <ol class="list-decimal pl-6 space-y-2 text-gray-600 text-base md:text-lg leading-relaxed">
                         <li>Primer elemento de la lista numerada</li>
                         <li>Segundo elemento de la lista numerada</li>
                         <li>Tercer elemento de la lista numerada</li>
@@ -315,7 +315,7 @@ export default function loadBasicBlocks(editor) {
         content: `
             <div class="py-4">
                 <div class="max-w-7xl mx-auto px-4">
-                    <ul class="list-disc pl-6 space-y-2 text-gray-500 text-base md:text-lg leading-relaxed">
+                    <ul class="list-disc pl-6 space-y-2 text-gray-600 text-base md:text-lg leading-relaxed">
                         <li>Primer elemento de la lista con viñetas</li>
                         <li>Segundo elemento de la lista con viñetas</li>
                         <li>Tercer elemento de la lista con viñetas</li>

@@ -14,6 +14,13 @@ export default function loadStepsFormBlock(editor) {
 
     // Add custom component for multi-step form
     editor.DomComponents.addType("precalificador-form", {
+        isComponent: function (el) {
+            return (
+                el.tagName === "SECTION" &&
+                (el.getAttribute("data-gjs-type") === "precalificador-form" ||
+                    el.querySelector(".precalificador-form"))
+            );
+        },
         model: {
             defaults: {
                 name: "Formulario Precalificador",
@@ -21,6 +28,7 @@ export default function loadStepsFormBlock(editor) {
                 droppable: false,
                 attributes: {
                     class: "py-8 md:py-14 bg-white",
+                    "data-gjs-type": "precalificador-form",
                 },
                 traits: [
                     {
@@ -61,7 +69,7 @@ export default function loadStepsFormBlock(editor) {
 
                 // Create the multi-step form HTML
                 const formHTML = `
-                    <div class="max-w-7xl mx-auto px-4">
+                    <div class="max-w-7xl mx-auto px-4" data-precalificador-container="${this.cid}">
                         <div class="text-center mb-8">
                             <h2 class="text-3xl font-bold text-primary mb-2">${title}</h2>
                             <p class="text-gray-600">${subtitle}</p>
@@ -293,12 +301,15 @@ export default function loadStepsFormBlock(editor) {
                     </div>
                     
                     <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            if (window.precalificador_form_initialized) {
+                        (function() {
+                            const containerId = this.id || 'precalificador-' + Math.random().toString(36).substr(2, 9);
+                            this.id = containerId;
+                            
+                            if (window['precalificador_initialized_' + containerId]) {
                                 return;
                             }
                             
-                            window.precalificador_form_initialized = true;
+                            window['precalificador_initialized_' + containerId] = true;
                             
                             const form = document.getElementById('precalificador_form');
                             const alertBanner = document.getElementById('form-alert-banner');
@@ -687,7 +698,7 @@ export default function loadStepsFormBlock(editor) {
                                 // Initialize first step
                                 showStep(1);
                             }
-                        });
+                        })();
                     </script>
                     `;
 
@@ -723,6 +734,30 @@ export default function loadStepsFormBlock(editor) {
                     8000,
                 );
             }, 1000);
+        }
+    });
+
+    editor.on("component:selected", function (component) {
+        if (component.get("type") === "precalificador-form") {
+            setTimeout(() => {
+                const script = component.get("script");
+                const el = component.view.el;
+                if (script && el) {
+                    script.call(el);
+                }
+            }, 300);
+        }
+    });
+
+    editor.on("component:mount", function (component) {
+        if (component.get("type") === "precalificador-form") {
+            setTimeout(() => {
+                const script = component.get("script");
+                const el = component.view.el;
+                if (script && el) {
+                    script.call(el);
+                }
+            }, 300);
         }
     });
 }

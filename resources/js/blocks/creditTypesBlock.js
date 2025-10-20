@@ -1,87 +1,5 @@
-// blocks/creditTypesBlock.js - Custom block for displaying credit types with tabbed navigation
+// Custom block for displaying credit types with tabbed navigation
 export default function loadCreditTypesBlock(editor) {
-    // Register the credit card component
-    editor.DomComponents.addType("credit-card", {
-        isComponent: function (el) {
-            return el.classList && el.classList.contains("credit-panel");
-        },
-        model: {
-            defaults: {
-                tagName: "div",
-                draggable: true,
-                droppable: true,
-                attributes: {
-                    class: "credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300",
-                },
-                name: "Tarjeta de Crédito",
-                traits: [
-                    {
-                        type: "text",
-                        name: "credit-title",
-                        label: "Título del Crédito",
-                    },
-                ],
-            },
-            init() {
-                this.on("change:attributes:credit-title", this.updateTitle);
-                this.on("change:attributes:credit-icon", this.updateIcon);
-            },
-            updateTitle() {
-                const title = this.get("attributes")["credit-title"];
-                if (!title) return;
-
-                const titleEl = this.view.el.querySelector("h3");
-                if (titleEl) {
-                    titleEl.textContent = title;
-                }
-            },
-            updateIcon(iconClass) {
-                const newIconClass =
-                    iconClass || this.get("attributes")["credit-icon"];
-                if (!newIconClass) return;
-
-                const iconEl = this.view.el.querySelector("i");
-                if (iconEl) {
-                    // Remove all ri- classes
-                    const classList = [...iconEl.classList];
-                    classList.forEach((className) => {
-                        if (
-                            className.startsWith("ri-") &&
-                            className !== "text-primary"
-                        ) {
-                            iconEl.classList.remove(className);
-                        }
-                    });
-                    // Add the new icon class
-                    iconEl.classList.add(newIconClass);
-                }
-            },
-        },
-    });
-
-    // Create the credit card block
-    editor.BlockManager.add("credit-card-block", {
-        label: "Tarjeta de Crédito",
-        category: "Componentes",
-        content: {
-            type: "credit-card",
-            content: `
-                <div class="flex items-center mb-3">
-                    <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
-                    <h3 class="text-xl font-bold text-primary">Crédito Personal</h3>
-                </div>
-                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                    <li>
-                        <span class="font-medium">Monto hasta $50,000.00</span>
-                    </li>
-                    <li>
-                        <span>Plazo hasta 10 años</span>
-                    </li>
-                </ul>
-            `,
-        },
-    });
-
     // Create the main credit types block
     const creditTypesSvg = `<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="2" width="20" height="20" rx="2" fill="#23366A" />
@@ -94,8 +12,6 @@ export default function loadCreditTypesBlock(editor) {
       <rect x="4" y="18" width="12" height="1" fill="white" />
     </svg>`;
 
-    // This is our complete solution - we pre-generate all 10 tabs at once
-    // All tab panels are created from the start, we just toggle visibility
     editor.BlockManager.add("credit-types-block", {
         label: "Tipos de Crédito",
         category: "Componentes",
@@ -120,188 +36,208 @@ export default function loadCreditTypesBlock(editor) {
                     </div>
                     
                     <div class="credit-panels">
-                        <div class="credit-panel-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-1">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 1</h3>
+                        <div class="credit-panel-group" data-type="tab-1">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 1</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $10,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 8 años.</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $10,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 8 años.</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-user-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Personal</h3>
+                                
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-user-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Personal</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $50,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 12 años</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $50,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 12 años</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="credit-panel-group hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-2">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-car-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 2</h3>
-                                </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $70,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 8 años</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         
-                        <div class="credit-panel-group hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-3">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-home-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 3</h3>
+                        <div class="credit-panel-group hidden" data-type="tab-2">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-car-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 2</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $70,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 8 años</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto desde $50,000.00 hasta $700,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 30 años</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         
-                        <div class="credit-panel-group hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-4">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 4</h3>
+                        <div class="credit-panel-group hidden" data-type="tab-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-home-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 3</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto desde $50,000.00 hasta $700,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 30 años</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $50,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 10 años</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         
-                        <div class="credit-panel-group hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-5">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 5</h3>
+                        <div class="credit-panel-group hidden" data-type="tab-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 4</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $50,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 10 años</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $50,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 10 años</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         
-                        <div class="credit-panel-group hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-6">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 6</h3>
+                        <div class="credit-panel-group hidden" data-type="tab-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 5</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $50,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 10 años</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $50,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 10 años</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         
-                        <div class="credit-panel-group hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-7">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 7</h3>
+                        <div class="credit-panel-group hidden" data-type="tab-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 6</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $50,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 10 años</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $50,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 10 años</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         
-                        <div class="credit-panel-group hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-8">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 8</h3>
+                        <div class="credit-panel-group hidden" data-type="tab-7">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 7</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $50,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 10 años</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $50,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 10 años</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         
-                        <div class="credit-panel-group hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-9">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 9</h3>
+                        <div class="credit-panel-group hidden" data-type="tab-8">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 8</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $50,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 10 años</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $50,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 10 años</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         
-                        <div class="credit-panel-group hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-type="tab-10">
-                            <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300" data-gjs-type="credit-card">
-                                <div class="flex items-center mb-3">
-                                    <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
-                                    <h3 class="text-xl font-bold text-primary">Crédito Tab 10</h3>
+                        <div class="credit-panel-group hidden" data-type="tab-9">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 9</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $50,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 10 años</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
-                                    <li>
-                                        <span class="font-medium">Monto hasta $50,000.00</span>
-                                    </li>
-                                    <li>
-                                        <span>Plazo hasta 10 años</span>
-                                    </li>
-                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="credit-panel-group hidden" data-type="tab-10">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div class="credit-panel bg-white shadow-lg rounded-xl p-4 border border-gray-200 transition-all duration-300">
+                                    <div class="flex items-center mb-3">
+                                        <i class="ri-money-dollar-box-fill text-primary text-2xl mr-3"></i>
+                                        <h3 class="text-xl font-bold text-primary">Crédito Tab 10</h3>
+                                    </div>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm">
+                                        <li>
+                                            <span class="font-medium">Monto hasta $50,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span>Plazo hasta 10 años</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -492,30 +428,23 @@ export default function loadCreditTypesBlock(editor) {
                     ) {
                         tabButtons[0].click();
                     }
+
+                    // Store original icon classes for persistence
+                    const icons = container.querySelectorAll('i[class*="ri-"]');
+                    icons.forEach((icon) => {
+                        const iconClass = Array.from(icon.classList).find(
+                            (cls) => cls.startsWith("ri-"),
+                        );
+
+                        if (iconClass) {
+                            icon.setAttribute("data-original-icon", iconClass);
+                        }
+                    });
                 },
             },
             init() {
-                this.on("change:attributes:credit-title", this.updateTitle);
-
-                this.listenTo(editor, "component:update", (component) => {
-                    if (
-                        component &&
-                        component.get("tagName") === "I" &&
-                        this.view &&
-                        this.view.el
-                    ) {
-                        const iconEl = this.view.el.querySelector("i");
-                        if (iconEl && component.getEl() === iconEl) {
-                            const newIconClass = Array.from(
-                                component.getEl().classList,
-                            ).find((cls) => cls.startsWith("ri-"));
-
-                            if (newIconClass) {
-                                this.updateIcon(newIconClass);
-                            }
-                        }
-                    }
-                });
+                this.on("change:attributes:tab-count", this.updateTabs);
+                this.on("change:attributes:data-active", this.updateActiveTab);
 
                 // Tab name changes
                 for (let i = 1; i <= 10; i++) {

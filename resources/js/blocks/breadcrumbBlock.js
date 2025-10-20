@@ -19,9 +19,9 @@ export default function loadBreadcrumbBlock(editor) {
         <text x="4" y="17" font-family="Arial" font-size="2" fill="#666" text-anchor="middle">Breadcrumb Navigation</text>
         </svg>`;
 
-    // Register the component type
+    // Register the breadcrumb component type
     editor.DomComponents.addType("breadcrumb", {
-        // Component identification function
+        // Component identification
         isComponent: function (el) {
             return (
                 el.getAttribute &&
@@ -30,7 +30,8 @@ export default function loadBreadcrumbBlock(editor) {
         },
         extend: "div",
         priority: 10,
-        // Component model definition
+
+        // Component model
         model: {
             defaults: {
                 tagName: "nav",
@@ -38,28 +39,25 @@ export default function loadBreadcrumbBlock(editor) {
                 attributes: {
                     "data-gjs-type": "breadcrumb",
                     class: "py-4 bg-white",
+                    "data-item-count": "3",
+                    "data-item-1-text": "Inicio",
+                    "data-item-1-link": "/",
+                    "data-item-1-active": "",
+                    "data-item-2-text": "Pagina 1",
+                    "data-item-2-link": "#",
+                    "data-item-2-active": "",
+                    "data-item-3-text": "Pagina 2",
+                    "data-item-3-link": "#",
+                    "data-item-3-active": "true",
                 },
                 name: "Breadcrumb",
-                // Initial traits
-                traits: [
-                    {
-                        type: "number",
-                        name: "item-count",
-                        label: "Number of items",
-                        min: 1,
-                        max: 10,
-                        default: 3,
-                        changeProp: 1, // Important for real-time updates
-                    },
-                ],
-                "item-count": 3, // Store as a property for real-time updates
+                traits: [],
+
                 // Client-side script
                 script: function () {
-                    // The script runs only on the actual page, not in the editor
                     if (window.grapesjs || document.querySelector(".gjs-frame"))
                         return;
 
-                    // Ensure links work properly
                     const container = this;
                     const items =
                         container.querySelectorAll(".breadcrumb-item");
@@ -68,7 +66,7 @@ export default function loadBreadcrumbBlock(editor) {
                             const link = item.querySelector("a");
                             if (link) {
                                 link.addEventListener("click", (e) => {
-                                    e.preventDefault(); // Prevent clicking on the current page link
+                                    e.preventDefault();
                                 });
                             }
                         }
@@ -78,168 +76,173 @@ export default function loadBreadcrumbBlock(editor) {
 
             // Initialize component
             init() {
-                this.listenTo(this, "change:item-count", this.updateItemCount);
-                this.listenTo(
-                    this,
-                    "change:attributes",
-                    this.handleAttributesChange,
-                );
+                this._updating = false;
 
-                // Generate initial breadcrumb items
-                this.updateTraitsFromCount();
-                this.on("component:update", this.updateView);
+                // Ensure all attributes have initial values
+                this.normalizeAttributes();
 
-                // Initial render of breadcrumb items
+                // Build traits from attributes
+                this.buildTraits();
+
+                // Generate initial HTML
                 this.updateItems();
+
+                // Setup listeners
+                this.on("change:attributes", this.onAttributesChange);
             },
 
-            // Update item count when changed
-            updateItemCount() {
-                const count = this.get("item-count");
-                this.updateTraitsFromCount(count);
-                this.updateItems();
-            },
+            // Normalize attributes to ensure consistent values
+            normalizeAttributes() {
+                const attrs = this.getAttributes();
+                const count = parseInt(attrs["data-item-count"]) || 3;
+                const updates = {};
 
-            // Handle attribute changes
-            handleAttributesChange(model, attrs) {
-                const changed = Object.keys(attrs.changed || {});
-
-                if (
-                    changed.some(
-                        (key) =>
-                            key.startsWith("item-") && key !== "item-count",
-                    )
-                ) {
-                    this.updateItems();
+                // Ensure count is set
+                if (!attrs["data-item-count"]) {
+                    updates["data-item-count"] = "3";
                 }
 
-                // Handle item-count changes through attributes
-                if (attrs.changed && "item-count" in attrs.changed) {
-                    const count = parseInt(attrs.changed["item-count"]);
-                    if (!isNaN(count)) {
-                        this.set("item-count", count);
+                // Ensure all items have attributes
+                for (let i = 1; i <= count; i++) {
+                    if (!attrs[`data-item-${i}-text`]) {
+                        updates[`data-item-${i}-text`] =
+                            i === 1
+                                ? "Inicio"
+                                : i === count
+                                  ? "Pagina actual"
+                                  : `Pagina ${i}`;
+                    }
+                    if (!attrs[`data-item-${i}-link`]) {
+                        updates[`data-item-${i}-link`] =
+                            i === 1 ? "/" : i === count ? "#" : `/page-${i}`;
+                    }
+                    if (attrs[`data-item-${i}-active`] === undefined) {
+                        updates[`data-item-${i}-active`] =
+                            i === count ? "true" : "";
                     }
                 }
+
+                // Apply updates if any
+                if (Object.keys(updates).length > 0) {
+                    this.addAttributes(updates);
+                }
             },
 
-            // Update view when component is updated
-            updateView() {
-                this.trigger("breadcrumb-update");
+            // Handle attributes change
+            onAttributesChange() {
+                if (this._updating) return;
+
+                const attrs = this.getAttributes();
+                const changed = this.changed?.attributes || {};
+
+                // Get the keys that actually changed
+                const changedKeys = Object.keys(changed).filter((key) =>
+                    key.startsWith("data-item-"),
+                );
+
+                if (changedKeys.length === 0) return;
+
+                // Check if count changed
+                const countChanged = changed.hasOwnProperty("data-item-count");
+
+                if (countChanged) {
+                    const newCount = parseInt(attrs["data-item-count"]) || 3;
+                    const oldCount = this._lastCount || 3;
+
+                    if (newCount !== oldCount) {
+                        this._lastCount = newCount;
+
+                        // Add attributes for new items
+                        if (newCount > oldCount) {
+                            const updates = {};
+                            for (let i = oldCount + 1; i <= newCount; i++) {
+                                const isLast = i === newCount;
+                                updates[`data-item-${i}-text`] = isLast
+                                    ? "Pagina actual"
+                                    : `Pagina ${i}`;
+                                updates[`data-item-${i}-link`] = isLast
+                                    ? "#"
+                                    : `/page-${i}`;
+                                updates[`data-item-${i}-active`] = isLast
+                                    ? "true"
+                                    : "";
+                            }
+                            this._updating = true;
+                            this.addAttributes(updates);
+                            this._updating = false;
+                        }
+
+                        // Rebuild traits
+                        this.buildTraits();
+                    }
+                }
+
+                // Update HTML
+                this.updateItems();
             },
 
-            // Update traits based on item count
-            updateTraitsFromCount(count) {
-                if (!count) count = this.get("item-count") || 3;
+            // Build traits from current attributes
+            buildTraits() {
+                const attrs = this.getAttributes();
+                const count = parseInt(attrs["data-item-count"]) || 3;
+                this._lastCount = count;
 
-                // Start with the count trait
                 const traits = [
                     {
                         type: "number",
-                        name: "item-count",
+                        name: "data-item-count",
                         label: "Number of items",
                         min: 1,
                         max: 10,
-                        default: count,
-                        changeProp: 1,
                     },
                 ];
 
-                // Add traits for each breadcrumb item
+                // Generate traits for each breadcrumb item
                 for (let i = 1; i <= count; i++) {
-                    traits.push({
-                        type: "text",
-                        name: `item-${i}-text`,
-                        label: `Item ${i} Text`,
-                        changeProp: 1,
-                        default:
-                            i === 1
-                                ? "Home"
-                                : i === count
-                                  ? "Current Page"
-                                  : `Page ${i}`,
-                    });
-
-                    traits.push({
-                        type: "text",
-                        name: `item-${i}-link`,
-                        label: `Item ${i} Link`,
-                        changeProp: 1,
-                        default:
-                            i === count ? "#" : i === 1 ? "/" : `/page-${i}`,
-                    });
-
-                    traits.push({
-                        type: "checkbox",
-                        name: `item-${i}-active`,
-                        label: `Item ${i} Is Current`,
-                        changeProp: 1,
-                        default: i === count,
-                    });
-
-                    // Add properties to model for each trait
-                    this.defaults[`item-${i}-text`] =
-                        i === 1
-                            ? "Home"
-                            : i === count
-                              ? "Current Page"
-                              : `Page ${i}`;
-                    this.defaults[`item-${i}-link`] =
-                        i === count ? "#" : i === 1 ? "/" : `/page-${i}`;
-                    this.defaults[`item-${i}-active`] = i === count;
+                    traits.push(
+                        {
+                            type: "text",
+                            name: `data-item-${i}-text`,
+                            label: `Item ${i} Text`,
+                        },
+                        {
+                            type: "text",
+                            name: `data-item-${i}-link`,
+                            label: `Item ${i} Link`,
+                        },
+                        {
+                            type: "checkbox",
+                            name: `data-item-${i}-active`,
+                            label: `Item ${i} Is Current`,
+                            valueTrue: "true",
+                            valueFalse: "",
+                        },
+                    );
                 }
 
-                // Update the traits
                 this.set("traits", traits);
-
-                // Add property change listeners for real-time updates
-                for (let i = 1; i <= count; i++) {
-                    this.listenTo(
-                        this,
-                        `change:item-${i}-text`,
-                        this.updateItems,
-                    );
-                    this.listenTo(
-                        this,
-                        `change:item-${i}-link`,
-                        this.updateItems,
-                    );
-                    this.listenTo(
-                        this,
-                        `change:item-${i}-active`,
-                        this.updateItems,
-                    );
-                }
             },
 
-            // Update the breadcrumb items HTML
+            // Update breadcrumb HTML
             updateItems() {
-                const count = this.get("item-count") || 3;
+                const attrs = this.getAttributes();
+                const count = parseInt(attrs["data-item-count"]) || 3;
 
-                // Estructura con contenedor responsivo
                 let html = `<div class="max-w-7xl mx-auto px-4">
                     <nav aria-label="breadcrumb" class="breadcrumb-container">
                         <ol class="breadcrumb flex items-center flex-wrap text-sm">`;
 
                 for (let i = 1; i <= count; i++) {
-                    const text =
-                        this.get(`item-${i}-text`) ||
-                        (i === 1
-                            ? "Home"
-                            : i === count
-                              ? "Current Page"
-                              : `Page ${i}`);
-
-                    const link =
-                        this.get(`item-${i}-link`) ||
-                        (i === count ? "#" : i === 1 ? "/" : `/page-${i}`);
-
-                    const isActive = this.get(`item-${i}-active`);
+                    const text = attrs[`data-item-${i}-text`] || `Item ${i}`;
+                    const link = attrs[`data-item-${i}-link`] || "#";
+                    const activeAttr = attrs[`data-item-${i}-active`];
+                    const isActive =
+                        activeAttr === "true" || activeAttr === true;
 
                     html += `<li class="breadcrumb-item${isActive ? " active" : ""}"${isActive ? ' aria-current="page"' : ""}>
                                 <a href="${link}" class="${isActive ? "text-primary font-semibold" : "text-gray-500 hover:text-primary hover:underline"}">${text}</a>
                             </li>`;
 
-                    // Add separator if not the last item
                     if (i < count) {
                         html += `<li class="breadcrumb-separator">
                                 <i class="ri-arrow-right-s-line text-gray-500"></i>
@@ -251,39 +254,23 @@ export default function loadBreadcrumbBlock(editor) {
                         </nav>
                     </div>`;
 
-                this.set("content", html);
-                this.trigger("breadcrumb-updated");
+                // Update components to render changes immediately
+                this.components(html);
+
+                // Trigger a view update to ensure visual refresh
+                this.view?.render();
             },
         },
 
-        // Component view definition
+        // Component view
         view: {
-            // Initialize view
             init() {
-                this.listenTo(this.model, "breadcrumb-update", this.render);
-                this.listenTo(this.model, "breadcrumb-updated", this.rerender);
-                this.listenTo(this.model, "change:content", this.rerender);
-            },
-
-            // Re-render the component
-            rerender() {
-                // Force re-rendering to update the component
-                if (this.el) {
-                    this.el.innerHTML = this.model.get("content");
-                }
-            },
-
-            // Render when component is added
-            onRender() {
-                const html = this.model.get("content");
-                if (html && this.el && !this.el.querySelector(".breadcrumb")) {
-                    this.el.innerHTML = html;
-                }
+                this.listenTo(this.model, "change:components", this.render);
             },
         },
     });
 
-    // Add the block to the block manager
+    // Add block to block manager
     editor.BlockManager.add("breadcrumb-block", {
         label: "Breadcrumb",
         category: "Botones",
@@ -291,71 +278,10 @@ export default function loadBreadcrumbBlock(editor) {
         media: breadcrumbSvg,
         content: {
             type: "breadcrumb",
-            // Set initial HTML content
-            content: `<div class="max-w-7xl mx-auto px-4">
-                        <nav aria-label="breadcrumb" class="breadcrumb-container">
-                            <ol class="breadcrumb flex items-center flex-wrap text-sm">
-                                <li class="breadcrumb-item">
-                                    <a href="/" class="text-gray-500 hover:text-primary hover:underline">Home</a>
-                                </li>
-                                <li class="breadcrumb-separator">
-                                    <i class="ri-arrow-right-s-line text-gray-500"></i>
-                                </li>
-                                <li class="breadcrumb-item">
-                                    <a href="/page-2" class="text-gray-500 hover:text-primary hover:underline">Page 2</a>
-                                </li>
-                                <li class="breadcrumb-separator">
-                                    <i class="ri-arrow-right-s-line text-gray-500"></i>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    <a href="#" class="text-primary font-semibold">Current Page</a>
-                                </li>
-                            </ol>
-                        </nav>
-                    </div>`,
-            // Component styles
-            style: {
-                ".breadcrumb-container": {
-                    width: "100%",
-                },
-                ".breadcrumb": {
-                    "list-style": "none",
-                    padding: "0",
-                    margin: "0",
-                    display: "flex",
-                    "align-items": "center",
-                    "flex-wrap": "wrap",
-                },
-                ".breadcrumb-item": {
-                    display: "inline-flex",
-                    "align-items": "center",
-                },
-                ".breadcrumb-item a": {
-                    color: "#6B7280",
-                    "text-decoration": "none",
-                    transition: "all 0.2s ease",
-                    "font-weight": "normal",
-                },
-                ".breadcrumb-item a:hover": {
-                    color: "#23366A",
-                    "text-decoration": "underline",
-                },
-                ".breadcrumb-item.active a": {
-                    color: "#23366A",
-                    "font-weight": "600",
-                    cursor: "default",
-                    "pointer-events": "none",
-                },
-                ".breadcrumb-separator": {
-                    display: "inline-flex",
-                    margin: "0 0.5rem",
-                    color: "#9CA3AF",
-                },
-            },
         },
     });
 
-    // Add stylesheet for the breadcrumb component to the canvas
+    // Add stylesheet to canvas
     editor.on("load", () => {
         const frame = editor.Canvas.getFrameEl();
         if (frame && frame.contentDocument) {

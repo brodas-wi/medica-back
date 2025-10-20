@@ -17,6 +17,7 @@ import loadQuickAccessBlocks from "./quickAccessBlocks";
 import loadAccountSelectorBlock from './accountSelectorBlock';
 import loadAccountTypesBlock from './accountTypesBlock';
 import loadCreditTypesBlock from './creditTypesBlock';
+import loadTableBlocks from './tableBlocks';
 import loadFormBlocks from './loadFormBlocks';
 import loadStepsFormBlock from './stepsFormBlock';
 import loadPromotionBlocks from './promotionBlocks';
@@ -37,6 +38,7 @@ export default function loadAllBlocks(editor) {
     loadAccountSelectorBlock(editor);
     loadAccountTypesBlock(editor);
     loadCreditTypesBlock(editor);
+    loadTableBlocks(editor);
     loadFormBlocks(editor);
     loadStepsFormBlock(editor);
     loadPromotionBlocks(editor);

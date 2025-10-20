@@ -1,3 +1,6 @@
+import { showMediaSelector } from "../utils/mediaSelector";
+import { showAlert } from "../toast";
+
 export default function loadGridBlock(editor) {
     const blockManager = editor.BlockManager;
 
@@ -59,7 +62,7 @@ export default function loadGridBlock(editor) {
             <div class="max-w-7xl mx-auto px-4">
                 <h2 class="text-3xl font-bold text-primary mb-8">Lorem ipsum</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-md overflow-hidden">
                         <img src="https://via.placeholder.com/400x300/cccccc/666666?text=Persona" alt="Contacto" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-primary mb-3">Soluciones</h3>
@@ -75,7 +78,7 @@ export default function loadGridBlock(editor) {
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-md overflow-hidden">
                         <img src="https://via.placeholder.com/400x300/cccccc/666666?text=Persona" alt="Contacto" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-primary mb-3">Canales</h3>
@@ -91,7 +94,7 @@ export default function loadGridBlock(editor) {
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-md overflow-hidden">
                         <img src="https://via.placeholder.com/400x300/cccccc/666666?text=Persona" alt="Contacto" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-primary mb-3">Educación</h3>
@@ -215,5 +218,178 @@ export default function loadGridBlock(editor) {
                 </div>
             </div>
             `,
+    });
+
+    // Grid of link buttons with icons that can link to pages or PDF files
+    blockManager.add("link-buttons-grid", {
+        label: "Botones de Enlace",
+        category: "Botones",
+        attributes: { class: "gjs-block-section" },
+        media: `<svg viewBox="0 0 24 24" width="32" height="32">
+      <rect x="2" y="2" width="9" height="9" rx="1" fill="#23366A" />
+      <rect x="13" y="2" width="9" height="9" rx="1" fill="#23366A" />
+      <rect x="2" y="13" width="9" height="9" rx="1" fill="#23366A" />
+      <rect x="13" y="13" width="9" height="9" rx="1" fill="#23366A" />
+      <circle cx="6.5" cy="5.5" r="1.5" fill="white" />
+      <circle cx="17.5" cy="5.5" r="1.5" fill="white" />
+      <circle cx="6.5" cy="16.5" r="1.5" fill="white" />
+      <circle cx="17.5" cy="16.5" r="1.5" fill="white" />
+    </svg>`,
+        content: `
+    <section class="py-8 md:py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="#" class="link-button justify-center bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:bg-primary hover:text-white shadow-md">
+            <i class="ri-file-list-3-fill text-primary text-4xl mb-3 transition-all duration-300"></i>
+            <span class="text-xl font-bold">Documentos</span>
+          </a>
+          
+          <a href="#" class="link-button justify-center bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:bg-primary hover:text-white shadow-md">
+            <i class="ri-calendar-2-fill text-primary text-4xl mb-3 transition-all duration-300"></i>
+            <span class="text-xl font-bold">Calendario</span>
+          </a>
+          
+          <a href="#" class="link-button justify-center bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:bg-primary hover:text-white shadow-md">
+            <i class="ri-download-2-fill text-primary text-4xl mb-3 transition-all duration-300"></i>
+            <span class="text-xl font-bold">Descargas</span>
+          </a>
+          
+          <a href="#" class="link-button justify-center bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:bg-primary hover:text-white shadow-md">
+            <i class="ri-user-fill text-primary text-4xl mb-3 transition-all duration-300"></i>
+            <span class="text-xl font-bold">Mi Cuenta</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    `,
+    });
+
+    // Define custom component type for link buttons
+    editor.DomComponents.addType("link-button", {
+        isComponent: function (el) {
+            return el.classList && el.classList.contains("link-button");
+        },
+        model: {
+            defaults: {
+                tagName: "a",
+                droppable: false,
+                attributes: { class: "link-button" },
+                traits: [
+                    {
+                        type: "text",
+                        name: "title",
+                        label: "Título",
+                        changeProp: true,
+                    },
+                    {
+                        type: "text",
+                        name: "href",
+                        label: "URL Enlace",
+                    },
+                    {
+                        type: "select",
+                        name: "target",
+                        label: "Comportamiento",
+                        options: [
+                            { id: "", name: "Misma ventana" },
+                            { id: "_blank", name: "Nueva ventana" },
+                        ],
+                    },
+                    {
+                        type: "button",
+                        text: "Seleccionar PDF",
+                        full: true,
+                        command: function (editor) {
+                            const component = editor.getSelected();
+
+                            try {
+                                showMediaSelector("pdf", (mediaData) => {
+                                    const fileName =
+                                        mediaData.alt ||
+                                        mediaData.name ||
+                                        "Documento PDF";
+
+                                    component.set("attributes", {
+                                        ...component.get("attributes"),
+                                        href: mediaData.src,
+                                        target: "_blank",
+                                        "data-pdf-name": fileName,
+                                    });
+
+                                    if (!component.get("title")) {
+                                        component.set("title", fileName);
+                                    }
+
+                                    if (!component.get("title")) {
+                                        component.set("title", fileName);
+                                    }
+                                });
+                            } catch (error) {
+                                console.error(
+                                    "Error al seleccionar PDF:",
+                                    error,
+                                );
+                                showAlert(
+                                    `Error al seleccionar PDF: ${error.message}`,
+                                    "error",
+                                );
+                            }
+                        },
+                    },
+                ],
+                script: function () {
+                    const el = this;
+                    const icon = el.querySelector("i");
+
+                    el.addEventListener("mouseenter", () => {
+                        if (icon) {
+                            icon.classList.remove("text-primary");
+                            icon.classList.add("text-white");
+                        }
+                    });
+
+                    el.addEventListener("mouseleave", () => {
+                        if (!el.classList.contains("hover:bg-primary")) return;
+                        if (icon) {
+                            icon.classList.add("text-primary");
+                            icon.classList.remove("text-white");
+                        }
+                    });
+                },
+            },
+            init() {
+                this.on("change:title", this.updateTitle);
+            },
+            updateTitle() {
+                const title = this.get("title");
+                const titleEl = this.view.el.querySelector("span");
+
+                if (titleEl && title) {
+                    titleEl.textContent = title;
+                }
+            },
+        },
+        view: {
+            init() {
+                const script = this.model.get("script");
+                const el = this.el;
+
+                if (script && el) {
+                    script.call(el);
+                }
+            },
+        },
+    });
+
+    // Processor to automatically convert link-button elements to the custom component
+    editor.DomComponents.addType("link", {
+        model: {
+            init() {
+                const classes = this.getClasses();
+                if (classes.includes("link-button")) {
+                    this.set("type", "link-button");
+                }
+            },
+        },
     });
 }

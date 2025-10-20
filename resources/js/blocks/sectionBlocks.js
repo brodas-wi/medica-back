@@ -39,7 +39,7 @@ export default function loadHeroBlocks(editor) {
             <div class="flex flex-col md:flex-row gap-8 md:gap-12">
               <div class="w-full md:w-2/5 flex flex-col justify-center">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">Asistencias</h2>
-                <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.</p>
+                <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.</p>
               </div>
               
               <div class="w-full md:w-3/5">
@@ -87,7 +87,7 @@ export default function loadHeroBlocks(editor) {
             <div class="w-full md:w-1/2">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
               <h3 class="text-secondary text-xl md:text-2xl font-semibold mb-4">Subtítulo</h3>
-              <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+              <p class="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
               <a href="#" class="inline-flex items-center border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300">
                 Ver más
                 <i class="ri-arrow-right-line ml-2"></i>
@@ -122,7 +122,7 @@ export default function loadHeroBlocks(editor) {
             <div class="w-full md:w-1/2">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
               <h3 class="text-secondary text-xl md:text-2xl font-semibold mb-4">Subtítulo</h3>
-              <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+              <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function loadHeroBlocks(editor) {
             </div>
             <div class="w-full md:w-1/2">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>
-              <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+              <p class="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
               <a href="#" class="inline-flex items-center border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300">
                 Ver más
                 <i class="ri-arrow-right-line ml-2"></i>
@@ -185,7 +185,7 @@ export default function loadHeroBlocks(editor) {
             </div>
             <div class="w-full md:w-1/2">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>
-              <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+              <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
             </div>
           </div>
         </div>
@@ -217,7 +217,7 @@ export default function loadHeroBlocks(editor) {
             <div class="w-full md:w-1/2">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
               <h3 class="text-secondary text-xl md:text-2xl font-semibold mb-4">Subtítulo</h3>
-              <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+              <p class="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
               <a href="#" class="inline-flex items-center border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300">
                 Ver más
                 <i class="ri-arrow-right-line ml-2"></i>
@@ -252,7 +252,7 @@ export default function loadHeroBlocks(editor) {
             <div class="w-full md:w-1/2">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
               <h3 class="text-secondary text-xl md:text-2xl font-semibold mb-4">Subtítulo</h3>
-              <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+              <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
             </div>
           </div>
         </div>
@@ -282,7 +282,7 @@ export default function loadHeroBlocks(editor) {
             </div>
             <div class="w-full md:w-1/2">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>
-              <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+              <p class="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
               <a href="#" class="inline-flex items-center border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300">
                 Ver más
                 <i class="ri-arrow-right-line ml-2"></i>
@@ -315,7 +315,7 @@ export default function loadHeroBlocks(editor) {
             </div>
             <div class="w-full md:w-1/2">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>
-              <p class="text-gray-500 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+              <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
             </div>
           </div>
         </div>
@@ -338,12 +338,12 @@ export default function loadHeroBlocks(editor) {
         attributes: { class: "gjs-block-section" },
         media: heroVerticalFullSvg,
         content: `
-        <section class="py-8 md:py-14 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
+        <section class="py-8 md:py-14 bg-white flex">
+        <div class="max-w-7xl mx-auto px-4">
           <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
             <h3 class="text-secondary text-xl md:text-2xl font-semibold mb-4">Subtítulo</h3>
-            <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed max-w-3xl mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+            <p class="text-gray-600 text-base md:text-lg mb-6 leading-relaxed mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
           </div>
           <div class="relative">
             <img src="https://via.placeholder.com/800x400/123c69/ffffff?text=Imagen" alt="Imagen" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
@@ -373,12 +373,12 @@ export default function loadHeroBlocks(editor) {
         attributes: { class: "gjs-block-section" },
         media: heroVerticalNoButtonSvg,
         content: `
-        <section class="py-8 md:py-14 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
+        <section class="py-8 md:py-14 bg-white flex">
+        <div class="max-w-7xl mx-auto px-4">
           <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
             <h3 class="text-secondary text-xl md:text-2xl font-semibold mb-4">Subtítulo</h3>
-            <p class="text-gray-500 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
           </div>
           <div>
             <img src="https://via.placeholder.com/800x400/123c69/ffffff?text=Imagen" alt="Imagen" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
@@ -402,11 +402,11 @@ export default function loadHeroBlocks(editor) {
         attributes: { class: "gjs-block-section" },
         media: heroVerticalNoSubtitleSvg,
         content: `
-        <section class="py-8 md:py-14 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
+        <section class="py-8 md:py-14 bg-white flex">
+        <div class="max-w-7xl mx-auto px-4">
           <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>
-            <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed max-w-3xl mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+            <p class="text-gray-600 text-base md:text-lg mb-6 leading-relaxed mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
           </div>
           <div class="relative">
             <img src="https://via.placeholder.com/800x400/123c69/ffffff?text=Imagen" alt="Imagen" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
@@ -435,11 +435,11 @@ export default function loadHeroBlocks(editor) {
         attributes: { class: "gjs-block-section" },
         media: heroVerticalMinimalSvg,
         content: `
-        <section class="py-8 md:py-14 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
+        <section class="py-8 md:py-14 bg-white flex">
+        <div class="max-w-7xl mx-auto px-4">
           <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>
-            <p class="text-gray-500 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed mx-auto">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
           </div>
           <div>
             <img src="https://via.placeholder.com/800x400/123c69/ffffff?text=Imagen" alt="Imagen" class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl">
@@ -449,121 +449,118 @@ export default function loadHeroBlocks(editor) {
         `,
     });
 
-    // Two columns with title, paragraph, image and button
-    const heroTwoColumnsFullSvg = `<svg viewBox="0 0 24 24" width="32" height="32">
-<rect x="1" y="3" width="10" height="1.5" fill="#333"/>
-<rect x="1" y="5" width="9" height="0.8" fill="#999"/>
-<rect x="1" y="7" width="10" height="8" rx="1" fill="#23366A"/>
-<rect x="13" y="3" width="10" height="1.5" fill="#333"/>
-<rect x="13" y="5" width="9" height="0.8" fill="#999"/>
-<rect x="13" y="7" width="10" height="8" rx="1" fill="#23366A"/>
-</svg>`;
-
+    // Two columns with title, paragraph, image and button - aligned to start
     blockManager.add("hero-two-columns-full", {
         label: "Dos Columnas Completas",
         category: "Columnas",
         attributes: { class: "gjs-block-section" },
-        media: heroTwoColumnsFullSvg,
+        media: `<svg viewBox="0 0 24 24" width="32" height="32">
+        <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="1" y="5" width="9" height="0.8" fill="#999"/>
+        <rect x="1" y="7" width="10" height="8" rx="1" fill="#23366A"/>
+        <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="13" y="5" width="9" height="0.8" fill="#999"/>
+        <rect x="13" y="7" width="10" height="8" rx="1" fill="#23366A"/>
+        </svg>`,
         content: `
-<section class="py-8 md:py-14 bg-white">
-<div class="max-w-7xl mx-auto px-4">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
-  <!-- Columna 1 -->
-  <div class="flex flex-col">
-    <h3 class="text-2xl md:text-3xl font-bold text-primary mb-3">Título Columna 1</h3>
-    <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
-    <div class="relative mt-auto">
-      <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+1" alt="Imagen 1" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
-      <div class="absolute bottom-6 left-6">
-        <a href="#" class="inline-flex items-center bg-white text-primary hover:opacity-90 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
-          Ver más
-          <i class="ri-arrow-right-line ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-  <!-- Columna 2 -->
-  <div class="flex flex-col">
-    <h3 class="text-2xl md:text-3xl font-bold text-primary mb-3">Título Columna 2</h3>
-    <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
-    <div class="relative mt-auto">
-      <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+2" alt="Imagen 2" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
-      <div class="absolute bottom-6 left-6">
-        <a href="#" class="inline-flex items-center bg-white text-primary hover:opacity-90 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
-          Ver más
-          <i class="ri-arrow-right-line ml-2"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-`,
+        <section class="py-8 md:py-14 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+          <div class="absolute hidden md:block h-full w-1 bg-primary left-1/2 transform -translate-x-1/2" style="top: 0;"></div>
+          <!-- Columna 1 -->
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 1</h3>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+            <div class="relative w-full">
+              <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+1" alt="Imagen 1" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
+              <div class="absolute bottom-6 left-6">
+                <a href="#" class="inline-flex items-center bg-white text-primary hover:opacity-90 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
+                  Ver más
+                  <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Columna 2 -->
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 2</h3>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+            <div class="relative w-full">
+              <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+2" alt="Imagen 2" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
+              <div class="absolute bottom-6 left-6">
+                <a href="#" class="inline-flex items-center bg-white text-primary hover:opacity-90 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
+                  Ver más
+                  <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </section>
+    `,
     });
 
-    // Two columns with title, paragraph and image (no button)
-    const heroTwoColumnsNoButtonSvg = `<svg viewBox="0 0 24 24" width="32" height="32">
-<rect x="1" y="3" width="10" height="1.5" fill="#333"/>
-<rect x="1" y="5" width="9" height="0.8" fill="#999"/>
-<rect x="1" y="7" width="10" height="10" rx="1" fill="#23366A"/>
-<rect x="13" y="3" width="10" height="1.5" fill="#333"/>
-<rect x="13" y="5" width="9" height="0.8" fill="#999"/>
-<rect x="13" y="7" width="10" height="10" rx="1" fill="#23366A"/>
-</svg>`;
-
+    // Two columns with title, paragraph and image (no button) - aligned to start
     blockManager.add("hero-two-columns-no-button", {
         label: "Dos Columnas Sin Botón",
         category: "Columnas",
         attributes: { class: "gjs-block-section" },
-        media: heroTwoColumnsNoButtonSvg,
+        media: `<svg viewBox="0 0 24 24" width="32" height="32">
+        <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="1" y="5" width="9" height="0.8" fill="#999"/>
+        <rect x="1" y="7" width="10" height="10" rx="1" fill="#23366A"/>
+        <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="13" y="5" width="9" height="0.8" fill="#999"/>
+        <rect x="13" y="7" width="10" height="10" rx="1" fill="#23366A"/>
+        </svg>`,
         content: `
         <section class="py-8 md:py-14 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+          <div class="absolute hidden md:block h-full w-1 bg-primary left-1/2 transform -translate-x-1/2" style="top: 0;"></div>
           <!-- Columna 1 -->
-          <div class="flex flex-col">
-            <h3 class="text-2xl md:text-3xl font-bold text-primary mb-3">Título Columna 1</h3>
-            <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
-            <div class="mt-auto">
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 1</h3>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+            <div class="w-full">
               <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+1" alt="Imagen 1" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
             </div>
           </div>
           <!-- Columna 2 -->
-          <div class="flex flex-col">
-            <h3 class="text-2xl md:text-3xl font-bold text-primary mb-3">Título Columna 2</h3>
-            <p class="text-gray-500 text-base md:text-lg mb-6 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
-            <div class="mt-auto">
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 2</h3>
+            <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
+            <div class="w-full">
               <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+2" alt="Imagen 2" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
             </div>
           </div>
         </div>
         </div>
         </section>
-        `,
+    `,
     });
 
-    // Two columns with title, image and button (no paragraph)
-    const heroTwoColumnsNoParagraphSvg = `<svg viewBox="0 0 24 24" width="32" height="32">
-    <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
-    <rect x="1" y="5.5" width="10" height="10" rx="1" fill="#23366A"/>
-    <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
-    <rect x="13" y="5.5" width="10" height="10" rx="1" fill="#23366A"/>
-    </svg>`;
-
+    // Two columns with title, image and button (no paragraph) - aligned to start
     blockManager.add("hero-two-columns-no-paragraph", {
         label: "Dos Columnas Sin Párrafo",
         category: "Columnas",
         attributes: { class: "gjs-block-section" },
-        media: heroTwoColumnsNoParagraphSvg,
+        media: `<svg viewBox="0 0 24 24" width="32" height="32">
+        <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="1" y="5.5" width="10" height="10" rx="1" fill="#23366A"/>
+        <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="13" y="5.5" width="10" height="10" rx="1" fill="#23366A"/>
+        </svg>`,
         content: `
         <section class="py-8 md:py-14 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+          <div class="absolute hidden md:block h-full w-1 bg-primary left-1/2 transform -translate-x-1/2" style="top: 0;"></div>
           <!-- Columna 1 -->
-          <div class="flex flex-col">
-            <h3 class="text-2xl md:text-3xl font-bold text-primary mb-6">Título Columna 1</h3>
-            <div class="relative mt-auto">
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 1</h3>
+            <div class="relative w-full">
               <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+1" alt="Imagen 1" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
               <div class="absolute bottom-6 left-6">
                 <a href="#" class="inline-flex items-center bg-white text-primary hover:opacity-90 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
@@ -574,9 +571,9 @@ export default function loadHeroBlocks(editor) {
             </div>
           </div>
           <!-- Columna 2 -->
-          <div class="flex flex-col">
-            <h3 class="text-2xl md:text-3xl font-bold text-primary mb-6">Título Columna 2</h3>
-            <div class="relative mt-auto">
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 2</h3>
+            <div class="relative w-full">
               <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+2" alt="Imagen 2" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
               <div class="absolute bottom-6 left-6">
                 <a href="#" class="inline-flex items-center bg-white text-primary hover:opacity-90 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
@@ -589,7 +586,165 @@ export default function loadHeroBlocks(editor) {
         </div>
         </div>
         </section>
-        `,
+    `,
+    });
+
+    // Two columns with title and image only (no paragraph, no button) - aligned to start
+    blockManager.add("hero-two-columns-minimal", {
+        label: "Dos Columnas Mínimo",
+        category: "Columnas",
+        attributes: { class: "gjs-block-section" },
+        media: `<svg viewBox="0 0 24 24" width="32" height="32">
+        <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="1" y="5.5" width="10" height="12" rx="1" fill="#23366A"/>
+        <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="13" y="5.5" width="10" height="12" rx="1" fill="#23366A"/>
+        </svg>`,
+        content: `
+        <section class="py-8 md:py-14 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+          <div class="absolute hidden md:block h-full w-1 bg-primary left-1/2 transform -translate-x-1/2" style="top: 0;"></div>
+          <!-- Columna 1 -->
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 1</h3>
+            <div class="w-full">
+              <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+1" alt="Imagen 1" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
+            </div>
+          </div>
+          <!-- Columna 2 -->
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 2</h3>
+            <div class="w-full">
+              <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+2" alt="Imagen 2" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
+            </div>
+          </div>
+        </div>
+        </div>
+        </section>
+    `,
+    });
+
+    // Two columns with title, image and list
+    blockManager.add("hero-two-columns-with-list", {
+        label: "Dos Columnas con Lista",
+        category: "Columnas",
+        attributes: { class: "gjs-block-section" },
+        media: `<svg viewBox="0 0 24 24" width="32" height="32">
+        <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="1" y="5.5" width="10" height="8" rx="1" fill="#23366A"/>
+        <rect x="1" y="14.5" width="1" height="1" rx="0.5" fill="#666"/>
+        <rect x="3" y="14.5" width="7" height="1" fill="#666"/>
+        <rect x="1" y="16.5" width="1" height="1" rx="0.5" fill="#666"/>
+        <rect x="3" y="16.5" width="7" height="1" fill="#666"/>
+        <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="13" y="5.5" width="10" height="8" rx="1" fill="#23366A"/>
+        <rect x="13" y="14.5" width="1" height="1" rx="0.5" fill="#666"/>
+        <rect x="15" y="14.5" width="7" height="1" fill="#666"/>
+        <rect x="13" y="16.5" width="1" height="1" rx="0.5" fill="#666"/>
+        <rect x="15" y="16.5" width="7" height="1" fill="#666"/>
+        </svg>`,
+        content: `
+        <section class="py-8 md:py-14 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+          <div class="absolute hidden md:block h-full w-1 bg-primary left-1/2 transform -translate-x-1/2" style="top: 0;"></div>
+          <!-- Columna 1 -->
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 1</h3>
+            <div class="w-full">
+              <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+1" alt="Imagen 1" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
+            </div>
+            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+              <li>Característica 1: Descripción breve de la característica.</li>
+              <li>Característica 2: Descripción breve de la característica.</li>
+              <li>Característica 3: Descripción breve de la característica.</li>
+              <li>Característica 4: Descripción breve de la característica.</li>
+            </ul>
+          </div>
+          <!-- Columna 2 -->
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 2</h3>
+            <div class="w-full">
+              <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+2" alt="Imagen 2" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
+            </div>
+            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+              <li>Característica 1: Descripción breve de la característica.</li>
+              <li>Característica 2: Descripción breve de la característica.</li>
+              <li>Característica 3: Descripción breve de la característica.</li>
+              <li>Característica 4: Descripción breve de la característica.</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+        </section>
+    `,
+    });
+
+    // Two columns with title, image with overlay buttons, and list
+    blockManager.add("hero-two-columns-overlay-buttons", {
+        label: "Dos Columnas con Botón sobre Imagen",
+        category: "Columnas",
+        attributes: { class: "gjs-block-section" },
+        media: `<svg viewBox="0 0 24 24" width="32" height="32">
+        <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="1" y="5.5" width="10" height="8" rx="1" fill="#23366A"/>
+        <circle cx="6" cy="11" r="1.5" fill="white"/>
+        <rect x="1" y="14.5" width="1" height="1" rx="0.5" fill="#666"/>
+        <rect x="3" y="14.5" width="7" height="1" fill="#666"/>
+        <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
+        <rect x="13" y="5.5" width="10" height="8" rx="1" fill="#23366A"/>
+        <circle cx="18" cy="11" r="1.5" fill="white"/>
+        <rect x="13" y="14.5" width="1" height="1" rx="0.5" fill="#666"/>
+        <rect x="15" y="14.5" width="7" height="1" fill="#666"/>
+        </svg>`,
+        content: `
+        <section class="py-8 md:py-14 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+          <div class="absolute hidden md:block h-full w-1 bg-primary left-1/2 transform -translate-x-1/2" style="top: 0;"></div>
+          <!-- Columna 1 -->
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 1</h3>
+            <div class="w-full relative">
+              <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+1" alt="Imagen 1" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
+              <div class="absolute bottom-6 left-6">
+                <a href="#" class="inline-flex items-center bg-white text-primary hover:opacity-90 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
+                  Ver más
+                  <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+              </div>
+            </div>
+            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+              <li>Característica 1: Descripción breve de la característica.</li>
+              <li>Característica 2: Descripción breve de la característica.</li>
+              <li>Característica 3: Descripción breve de la característica.</li>
+              <li>Característica 4: Descripción breve de la característica.</li>
+            </ul>
+          </div>
+          <!-- Columna 2 -->
+          <div class="flex flex-col items-start gap-4">
+            <h3 class="text-2xl md:text-3xl font-bold text-primary">Título Columna 2</h3>
+            <div class="w-full relative">
+              <img src="https://via.placeholder.com/600x400/123c69/ffffff?text=Imagen+2" alt="Imagen 2" class="w-full h-64 md:h-72 lg:h-80 object-cover rounded-2xl">
+              <div class="absolute bottom-6 left-6">
+                <a href="#" class="inline-flex items-center bg-white text-primary hover:opacity-90 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
+                  Ver más
+                  <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+              </div>
+            </div>
+            <ul class="list-disc pl-5 text-gray-600 space-y-2">
+              <li>Característica 1: Descripción breve de la característica.</li>
+              <li>Característica 2: Descripción breve de la característica.</li>
+              <li>Característica 3: Descripción breve de la característica.</li>
+              <li>Característica 4: Descripción breve de la característica.</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+        </section>
+    `,
     });
 
     // Two columns with title and image only (no paragraph, no button)
@@ -608,7 +763,8 @@ export default function loadHeroBlocks(editor) {
         content: `
         <section class="py-8 md:py-14 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+        <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
+          <div class="absolute hidden md:block h-full w-1 bg-primary left-1/2 transform -translate-x-1/2" style="top: 0;"></div>
           <!-- Columna 1 -->
           <div class="flex flex-col">
             <h3 class="text-2xl md:text-3xl font-bold text-primary mb-6">Título Columna 1</h3>
