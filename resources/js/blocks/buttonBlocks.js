@@ -172,16 +172,28 @@ export default function loadButtonBlocks(editor) {
       </a>`,
     });
 
+    const buttonSectionSVG = `<svg viewBox="0 0 24 24" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="3" width="22" height="18" rx="2" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="0.5"/>
+      
+      <rect x="2.5" y="5" width="5.5" height="3" rx="1.5" fill="#23366A"/>
+      <rect x="9" y="5" width="5.5" height="3" rx="1.5" fill="white" stroke="#23366A" stroke-width="1"/>
+      <rect x="15.5" y="5" width="5.5" height="3" rx="1.5" fill="white" stroke="#23366A" stroke-width="1"/>
+      
+      <rect x="2.5" y="10" width="8" height="3" rx="1.5" fill="white" stroke="#23366A" stroke-width="1"/>
+      <rect x="11.5" y="10" width="9.5" height="3" rx="1.5" fill="white" stroke="#23366A" stroke-width="1"/>
+      
+      <rect x="2.5" y="15" width="18.5" height="3" rx="1.5" fill="white" stroke="#23366A" stroke-width="1"/>
+      
+      <line x1="2" y1="8.5" x2="22" y2="8.5" stroke="#e0e0e0" stroke-width="0.3" stroke-dasharray="1,1"/>
+      <line x1="2" y1="13.5" x2="22" y2="13.5" stroke="#e0e0e0" stroke-width="0.3" stroke-dasharray="1,1"/>
+    </svg>`;
+
     // Button group - grid section
     blockManager.add("btn-group-section", {
         label: "Sección de Botones",
-        category: "Secciones",
+        category: "Botones",
         attributes: { class: "gjs-block-button" },
-        media: `<svg viewBox="0 0 24 24" width="32" height="32">
-          <rect x="1" y="8" width="7" height="8" rx="4" fill="#23366A"/>
-          <rect x="9" y="8" width="7" height="8" rx="4" fill="white" stroke="#23366A" stroke-width="1.5"/>
-          <rect x="17" y="8" width="6" height="8" rx="4" fill="white" stroke="#23366A" stroke-width="1.5"/>
-        </svg>`,
+        media: buttonSectionSVG,
         content: `
         <div class="py-8 md:py-12 bg-white">
           <div class="max-w-7xl mx-auto px-4">
@@ -195,16 +207,24 @@ export default function loadButtonBlocks(editor) {
         </div>`,
     });
 
+    const buttonGroupSVG = `<svg viewBox="0 0 24 24" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="9" width="22" height="6" rx="3" fill="#f8f9fa" fill-opacity="0.5"/>
+      
+      <rect x="2" y="9.5" width="6" height="5" rx="2.5" fill="#23366A"/>
+      <rect x="9" y="9.5" width="6" height="5" rx="2.5" fill="white" stroke="#23366A" stroke-width="1"/>
+      <rect x="16" y="9.5" width="6" height="5" rx="2.5" fill="white" stroke="#23366A" stroke-width="1"/>
+      
+      <rect x="3.5" y="11.5" width="3" height="1" rx="0.5" fill="white"/>
+      <rect x="10.5" y="11.5" width="3" height="1" rx="0.5" fill="#23366A"/>
+      <rect x="17.5" y="11.5" width="3" height="1" rx="0.5" fill="#23366A"/>
+    </svg>`;
+
     // Button group - simple line grid
     blockManager.add("btn-group", {
         label: "Grupo de Botones",
         category: "Botones",
         attributes: { class: "gjs-block-button" },
-        media: `<svg viewBox="0 0 24 24" width="32" height="32">
-          <rect x="1" y="8" width="7" height="8" rx="4" fill="#23366A"/>
-          <rect x="9" y="8" width="7" height="8" rx="4" fill="white" stroke="#23366A" stroke-width="1.5"/>
-          <rect x="17" y="8" width="6" height="8" rx="4" fill="white" stroke="#23366A" stroke-width="1.5"/>
-        </svg>`,
+        media: buttonGroupSVG,
         content: `<div class="px-4">
           <div class="flex flex-wrap justify-center gap-3">
             <a href="#" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:opacity-90">Botón Primario</a>

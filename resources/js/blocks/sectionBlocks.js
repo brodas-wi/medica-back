@@ -338,7 +338,7 @@ export default function loadHeroBlocks(editor) {
         attributes: { class: "gjs-block-section" },
         media: heroVerticalFullSvg,
         content: `
-        <section class="py-8 md:py-14 bg-white flex">
+        <section class="py-8 md:py-14 bg-white">
         <div class="max-w-7xl mx-auto px-4">
           <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
@@ -373,7 +373,7 @@ export default function loadHeroBlocks(editor) {
         attributes: { class: "gjs-block-section" },
         media: heroVerticalNoButtonSvg,
         content: `
-        <section class="py-8 md:py-14 bg-white flex">
+        <section class="py-8 md:py-14 bg-white">
         <div class="max-w-7xl mx-auto px-4">
           <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
@@ -402,7 +402,7 @@ export default function loadHeroBlocks(editor) {
         attributes: { class: "gjs-block-section" },
         media: heroVerticalNoSubtitleSvg,
         content: `
-        <section class="py-8 md:py-14 bg-white flex">
+        <section class="py-8 md:py-14 bg-white">
         <div class="max-w-7xl mx-auto px-4">
           <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>
@@ -435,7 +435,7 @@ export default function loadHeroBlocks(editor) {
         attributes: { class: "gjs-block-section" },
         media: heroVerticalMinimalSvg,
         content: `
-        <section class="py-8 md:py-14 bg-white flex">
+        <section class="py-8 md:py-14 bg-white">
         <div class="max-w-7xl mx-auto px-4">
           <div class="text-center mb-8">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>

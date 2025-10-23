@@ -1,22 +1,15 @@
 export default function loadBreadcrumbBlock(editor) {
     // SVG icon for visual representation of breadcrumb
-    const breadcrumbSvg = `<svg viewBox="0 0 24 24" width="32" height="32">
-        <rect x="1" y="1" width="22" height="22" rx="2" fill="white" stroke="#cccccc" />
-        <g transform="translate(3, 9)">
-            <rect x="0" y="0" width="3" height="3" rx="0.5" fill="#23366A" />
-            <text x="0.5" y="2.3" font-family="Arial" font-size="2" fill="white">H</text>
-            <path d="M3.5 1.5h2" stroke="#666" stroke-width="0.8" />
-            <polygon points="5.5,1 6.5,1.5 5.5,2" fill="#666" />
-            
-            <rect x="7" y="0" width="3" height="3" rx="0.5" fill="#23366A" />
-            <text x="7.5" y="2.3" font-family="Arial" font-size="2" fill="white">P</text>
-            <path d="M10.5 1.5h2" stroke="#666" stroke-width="0.8" />
-            <polygon points="12.5,1 13.5,1.5 12.5,2" fill="#666" />
-            
-            <rect x="14" y="0" width="5" height="3" rx="0.5" fill="#23366A" />
-            <text x="14.5" y="2.3" font-family="Arial" font-size="2" fill="white">CUR</text>
-        </g>
-        <text x="4" y="17" font-family="Arial" font-size="2" fill="#666" text-anchor="middle">Breadcrumb Navigation</text>
+    const breadcrumbSvg = `<svg viewBox="0 0 24 24" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="10" width="4" height="4" rx="0.5" fill="#23366A" />
+        
+        <path d="M7,11 L8,12 L7,13" stroke="#666" stroke-width="1" fill="none" />
+        
+        <rect x="9" y="10" width="4" height="4" rx="0.5" fill="#23366A" />
+
+        <path d="M14,11 L15,12 L14,13" stroke="#666" stroke-width="1" fill="none" />
+        
+        <rect x="16" y="10" width="6" height="4" rx="0.5" fill="#23366A" />
         </svg>`;
 
     // Register the breadcrumb component type
@@ -272,7 +265,7 @@ export default function loadBreadcrumbBlock(editor) {
 
     // Add block to block manager
     editor.BlockManager.add("breadcrumb-block", {
-        label: "Breadcrumb",
+        label: "Ruta de Navegación",
         category: "Botones",
         attributes: { class: "gjs-block-section" },
         media: breadcrumbSvg,

@@ -185,6 +185,25 @@
             background-color: #7e22ce;
         }
 
+        .leaflet-control-zoom,
+        .leaflet-control-attribution,
+        .leaflet-control-container .leaflet-control {
+            z-index: 999 !important;
+        }
+
+        .leaflet-popup-pane {
+            z-index: 999 !important;
+        }
+
+        .leaflet-tooltip-pane {
+            z-index: 999 !important;
+        }
+
+        .leaflet-top,
+        .leaflet-bottom {
+            z-index: 999 !important;
+        }
+
         @media (max-width: 768px) {
             .preview-info-content {
                 flex-direction: column;

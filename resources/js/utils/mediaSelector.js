@@ -28,12 +28,6 @@ async function fetchMediaFiles(type = "image", searchTerm = "") {
     }
 }
 
-// ! QUITAR ESTO
-
-// # HAY QUE ARREGLAR EL DISENO DE LOS MODALES CONFIGURABLES, PARA QUE SEA MAS VISUAL Y FUNCIONAL, UAR MODAL DE GRAPES COMO EN BANNER
-
-// ! PUEDES VER LO QUE HAY EN EL TXT PROMT_ACTIVIDADES PARA EL CONTEXTO DEL PROYECTO
-
 // Generate HTML for media grid
 function generateMediaGrid(mediaFiles, selectedCallback, type = "image") {
     if (mediaFiles.length === 0) {

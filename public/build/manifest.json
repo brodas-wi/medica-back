@@ -3,8 +3,8 @@
     "file": "assets/buttonBlocks-D_-ZTp9G.css",
     "src": "_buttonBlocks-D_-ZTp9G.css"
   },
-  "_buttonBlocks-DdDJieYB.js": {
-    "file": "assets/buttonBlocks-DdDJieYB.js",
+  "_buttonBlocks-Nuf9loky.js": {
+    "file": "assets/buttonBlocks-Nuf9loky.js",
     "name": "buttonBlocks",
     "imports": [
       "_sweetalert2.esm.all-x82VjDyW.js"
@@ -52,7 +52,7 @@
     "src": "node_modules/remixicon/fonts/remixicon.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DGqf1aBF.css",
+    "file": "assets/app-OGAVBCVa.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -66,33 +66,33 @@
     ]
   },
   "resources/js/editor.js": {
-    "file": "assets/editor-CM6gBWV8.js",
+    "file": "assets/editor-Bblkytvr.js",
     "name": "editor",
     "src": "resources/js/editor.js",
     "isEntry": true,
     "imports": [
-      "_buttonBlocks-DdDJieYB.js",
+      "_buttonBlocks-Nuf9loky.js",
       "_sweetalert2.esm.all-x82VjDyW.js"
     ]
   },
   "resources/js/footer-editor.js": {
-    "file": "assets/footer-editor-C4Vfe5Dq.js",
+    "file": "assets/footer-editor-DUYUT2Y7.js",
     "name": "footer-editor",
     "src": "resources/js/footer-editor.js",
     "isEntry": true,
     "imports": [
-      "_buttonBlocks-DdDJieYB.js",
+      "_buttonBlocks-Nuf9loky.js",
       "_index-BasNPDJC.js",
       "_sweetalert2.esm.all-x82VjDyW.js"
     ]
   },
   "resources/js/navbar-editor.js": {
-    "file": "assets/navbar-editor-CzsBbTiy.js",
+    "file": "assets/navbar-editor-QqM9LvY_.js",
     "name": "navbar-editor",
     "src": "resources/js/navbar-editor.js",
     "isEntry": true,
     "imports": [
-      "_buttonBlocks-DdDJieYB.js",
+      "_buttonBlocks-Nuf9loky.js",
       "_index-BasNPDJC.js",
       "_sweetalert2.esm.all-x82VjDyW.js"
     ]

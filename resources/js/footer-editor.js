@@ -20,6 +20,8 @@ function getElementValue(id, defaultValue = "") {
 
 document.addEventListener("DOMContentLoaded", function () {
     const editor = initEditor();
+
+    setupComponentHandlers(editor);
     setupSaveButton(editor);
     setupDeviceButtons(editor);
     loadPageData(editor);
@@ -1202,6 +1204,38 @@ function setupExitConfirmation(editor) {
     homeButtons.forEach((btn) => {
         if (!btn.hasAttribute("href") && !btn.hasAttribute("data-nav")) {
             btn.setAttribute("data-nav", "home");
+        }
+    });
+}
+
+function setupComponentHandlers(editor) {
+    editor.on("load", function () {
+        const styleEl = document.createElement("style");
+        styleEl.innerHTML = `
+            .gjs-btn, .gjs-btn-prim, .gjs-btn--full, .gjs-btn-alt, 
+            .gjs-layer-title, .gjs-block-category .gjs-title, .gjs-title,
+            .gjs-sm-title, .gjs-pn-buttons, .gjs-field-units, 
+            .gjs-trt-trait .gjs-label, .gjs-traits-label, .gjs-mdl-dialog .gjs-mdl-btn,
+            .gjs-mdl-title, .gjs-label, .gjs-field input, .gjs-field select {
+                font-weight: 600 !important;
+            }
+            .gjs-block-label, .gjs-sm-header, .gjs-trt-header {
+                font-weight: 500 !important;
+            }
+            .gjs-pn-panel, .gjs-pn-views-container, .gjs-block-categories {
+                font-weight: 500 !important;
+            }
+            .gjs-mdl-content, .gjs-mdl-dialog, .gjs-blocks-c {
+                font-weight: 600 !important;
+            }
+            .gjs-sm-sector-title, .gjs-sm-property {
+                font-weight: 500 !important;
+            }
+        `;
+        document.head.appendChild(styleEl);
+        const iframe = editor.Canvas.getFrameEl();
+        if (iframe) {
+            iframe.contentDocument.head.appendChild(styleEl.cloneNode(true));
         }
     });
 }

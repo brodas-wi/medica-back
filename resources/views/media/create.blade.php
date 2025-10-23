@@ -40,7 +40,7 @@
                         <div class="mt-4 text-sm text-gray-600">
                             <p><strong>Archivos permitidos:</strong> Imágenes, videos, audio, PDF, documentos de Office y
                                 archivos de texto</p>
-                            <p><strong>Tamaño máximo:</strong> 20MB por archivo</p>
+                            <p><strong>Tamaño máximo:</strong> 20MB por archivo o 20MB en total por cada carga</p>
                             <p><strong>Máximo:</strong> 10 archivos por vez</p>
                             @if (!auth()->user()->hasPermissionTo('auto_approve_media'))
                                 <div class="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded">

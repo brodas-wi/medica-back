@@ -29,7 +29,7 @@ export default function loadTextBlocks(editor) {
         media: textCenteredFullSvg,
         content: `
           <div class="py-4">
-            <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-1">Título Principal</h2>
               <h3 class="text-secondary text-xl md:text-2xl font-semibold mb-4">Subtítulo</h3>
               <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
@@ -52,7 +52,7 @@ export default function loadTextBlocks(editor) {
         media: textCenteredNoSubtitleSvg,
         content: `
           <div class="py-4">
-            <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
               <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Título Principal</h2>
               <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
             </div>
