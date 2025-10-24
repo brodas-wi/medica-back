@@ -143,7 +143,7 @@ import{s as C,_ as B,g as j,l as q,a as $,b as I,c as M,d as P}from"./buttonBloc
             <circle cx="19" cy="20" r="1" fill="#fff" opacity="0.7"></circle>
             <circle cx="16" cy="20" r="1" fill="#fff" opacity="0.7"></circle>
             <circle cx="22" cy="20" r="1" fill="#fff" opacity="0.7"></circle>
-        </svg>`});function e(n,o){window.editor=n;const t=o.get("footer-config");Swal.fire({title:"Configurar Footer",html:u(t),width:"95%",maxWidth:"1200px",padding:0,showCancelButton:!0,confirmButtonText:"Guardar",cancelButtonText:"Cancelar",confirmButtonColor:"#23366A",cancelButtonColor:"#e74c3c",customClass:{container:"footer-config-modal",popup:"footer-config-popup",header:"footer-config-header",title:"footer-config-title",content:"footer-config-content",actions:"footer-config-actions"},allowOutsideClick:!1,allowEscapeKey:!0,didOpen:()=>{document.querySelector(".swal2-popup").style.padding="0",g()},preConfirm:()=>E()}).then(l=>{l.isConfirmed&&(o.set("footer-config",l.value),o.trigger("change:footer-config"))})}function a(){document.querySelectorAll(".page-search-input").forEach(o=>{let t=o.nextElementSibling;(!t||!t.classList.contains("page-search-results"))&&(t=document.createElement("div"),t.className="page-search-results",t.style.cssText=`
+        </svg>`});function e(n,o){window.editor=n;const t=o.get("footer-config");Swal.fire({title:"Configurar Footer",html:u(t),width:"95%",padding:0,showCancelButton:!0,confirmButtonText:"Guardar",cancelButtonText:"Cancelar",confirmButtonColor:"#23366A",cancelButtonColor:"#7e7e7e",customClass:{container:"footer-config-modal",popup:"footer-config-popup",header:"footer-config-header",title:"footer-config-title",content:"footer-config-content",actions:"footer-config-actions"},allowOutsideClick:!1,allowEscapeKey:!0,didOpen:()=>{document.querySelector(".swal2-popup").style.padding="0",g()},preConfirm:()=>E()}).then(l=>{l.isConfirmed&&(o.set("footer-config",l.value),o.trigger("change:footer-config"))})}function a(){document.querySelectorAll(".page-search-input").forEach(o=>{let t=o.nextElementSibling;(!t||!t.classList.contains("page-search-results"))&&(t=document.createElement("div"),t.className="page-search-results",t.style.cssText=`
                 display: none;
                 position: absolute;
                 top: 100%;
@@ -186,6 +186,7 @@ import{s as C,_ as B,g as j,l as q,a as $,b as I,c as M,d as P}from"./buttonBloc
                 display: flex;
                 flex-direction: column;
                 max-height: 90vh;
+                max-width: 90vw;
                 padding: 0 !important;
                 margin: 0 !important;
                 border-radius: 8px;
@@ -229,6 +230,7 @@ import{s as C,_ as B,g as j,l as q,a as $,b as I,c as M,d as P}from"./buttonBloc
             .footer-config-tabs {
                 display: flex;
                 overflow-x: auto;
+                overflow-y: hidden;
                 background-color: #fff;
                 border-bottom: 1px solid #dee2e6;
                 position: sticky;
@@ -314,11 +316,11 @@ import{s as C,_ as B,g as j,l as q,a as $,b as I,c as M,d as P}from"./buttonBloc
                 display: inline-flex;
                 align-items: center;
                 gap: 0.5rem;
+                font-weight: 600;
                 background: #23366A;
                 color: white;
                 border: none;
-                padding: 0.5rem 1rem;
-                border-radius: 9999px !important;
+                padding: 0.65rem 1rem;
                 cursor: pointer;
                 font-size: 0.875rem;
                 white-space: nowrap;
@@ -337,6 +339,9 @@ import{s as C,_ as B,g as j,l as q,a as $,b as I,c as M,d as P}from"./buttonBloc
             }
             .btn-icon:hover {
                 color: #23366A;
+            }
+            .remove-column:hover, .remove-link:hover, .remove-badge:hover, .remove-social:hover {
+                color: #cf010b !important;
             }
             .btn-add {
                 background: #23366A;
@@ -372,6 +377,7 @@ import{s as C,_ as B,g as j,l as q,a as $,b as I,c as M,d as P}from"./buttonBloc
                 background-color: #f8f9fa;
                 border: 1px solid #dee2e6;
                 border-radius: 4px;
+                cursor: pointer;
             }
             .badge-inputs {
                 display: flex;

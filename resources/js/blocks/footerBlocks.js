@@ -615,13 +615,12 @@ export default function loadFooterBlocks(editor) {
             title: "Configurar Footer",
             html: createConfigModalHTML(config),
             width: "95%",
-            maxWidth: "1200px",
             padding: 0,
             showCancelButton: true,
             confirmButtonText: "Guardar",
             cancelButtonText: "Cancelar",
             confirmButtonColor: "#23366A",
-            cancelButtonColor: "#e74c3c",
+            cancelButtonColor: "#7e7e7e",
             customClass: {
                 container: "footer-config-modal",
                 popup: "footer-config-popup",
@@ -874,6 +873,7 @@ export default function loadFooterBlocks(editor) {
                 display: flex;
                 flex-direction: column;
                 max-height: 90vh;
+                max-width: 90vw;
                 padding: 0 !important;
                 margin: 0 !important;
                 border-radius: 8px;
@@ -917,6 +917,7 @@ export default function loadFooterBlocks(editor) {
             .footer-config-tabs {
                 display: flex;
                 overflow-x: auto;
+                overflow-y: hidden;
                 background-color: #fff;
                 border-bottom: 1px solid #dee2e6;
                 position: sticky;
@@ -1002,11 +1003,11 @@ export default function loadFooterBlocks(editor) {
                 display: inline-flex;
                 align-items: center;
                 gap: 0.5rem;
+                font-weight: 600;
                 background: #23366A;
                 color: white;
                 border: none;
-                padding: 0.5rem 1rem;
-                border-radius: 9999px !important;
+                padding: 0.65rem 1rem;
                 cursor: pointer;
                 font-size: 0.875rem;
                 white-space: nowrap;
@@ -1025,6 +1026,9 @@ export default function loadFooterBlocks(editor) {
             }
             .btn-icon:hover {
                 color: #23366A;
+            }
+            .remove-column:hover, .remove-link:hover, .remove-badge:hover, .remove-social:hover {
+                color: #cf010b !important;
             }
             .btn-add {
                 background: #23366A;
@@ -1060,6 +1064,7 @@ export default function loadFooterBlocks(editor) {
                 background-color: #f8f9fa;
                 border: 1px solid #dee2e6;
                 border-radius: 4px;
+                cursor: pointer;
             }
             .badge-inputs {
                 display: flex;

@@ -1,8 +1,8 @@
 /**
- * Tailwind spacing and text alignment editor with white color scheme
+ * Tailwind spacing editor with white color scheme
  */
 export function setupTailwindSpacingEditor(editor) {
-    // Add button to editor panel
+    // Add button to editor panel for spacing
     editor.Panels.addButton("options", {
         id: "tailwind-spacing",
         className: "fa fa-th-large",
@@ -12,7 +12,21 @@ export function setupTailwindSpacingEditor(editor) {
             },
         },
         attributes: {
-            title: "Espaciado y alineación",
+            title: "Espaciado",
+        },
+    });
+
+    // Add button to editor panel for text styling
+    editor.Panels.addButton("options", {
+        id: "tailwind-text",
+        className: "fa fa-font",
+        command: {
+            run: function (editor) {
+                openTextStyleDialog(editor);
+            },
+        },
+        attributes: {
+            title: "Estilo de texto",
         },
     });
 
@@ -33,13 +47,10 @@ function openSpacingDialog(editor) {
     // Extract current spacing classes
     const spacingValues = extractSpacingClasses(currentClasses);
 
-    // Extract current text alignment
-    const textAlignValue = extractTextAlignClass(currentClasses);
-
     // Create and open modal
     editor.Modal.open({
-        title: "Espaciado y Alineación Tailwind",
-        content: createDialogHTML(spacingValues, textAlignValue),
+        title: "Espaciado Tailwind",
+        content: createSpacingDialogHTML(spacingValues),
     }).onceClose(() => {
         // When modal closes, make sure component is properly updated
         editor.refresh();
@@ -47,8 +58,97 @@ function openSpacingDialog(editor) {
 
     // After modal is opened, setup event handlers
     setTimeout(() => {
-        setupDialogEvents(editor, component, currentClasses);
+        setupSpacingDialogEvents(editor, component, currentClasses);
+        setupModalScrolling();
     }, 100);
+}
+
+/**
+ * Open text styling dialog
+ */
+function openTextStyleDialog(editor) {
+    const component = editor.getSelected();
+    if (!component) return;
+
+    // Check if component is a text component
+    if (!isTextComponent(component)) {
+        editor.Modal.open({
+            title: "Error",
+            content:
+                '<div style="padding: 20px;">El componente seleccionado no es un elemento de texto</div>',
+        });
+        return;
+    }
+
+    // Get current classes
+    const currentClasses = component.getClasses() || [];
+
+    // Extract current text styling classes
+    const textAlignValue = extractTextAlignClass(currentClasses);
+    const textSizeValue = extractTextSizeClass(currentClasses);
+    const textColorValue = extractTextColorClass(currentClasses);
+
+    // Find and remove responsive text size classes
+    const responsiveSizes = findResponsiveTextSizes(currentClasses);
+
+    // Create and open modal
+    editor.Modal.open({
+        title: "Estilo de Texto Tailwind",
+        content: createTextStyleDialogHTML(
+            textAlignValue,
+            textSizeValue,
+            textColorValue,
+            responsiveSizes,
+        ),
+    }).onceClose(() => {
+        // When modal closes, make sure component is properly updated
+        editor.refresh();
+    });
+
+    // After modal is opened, setup event handlers
+    setTimeout(() => {
+        setupTextStyleDialogEvents(editor, component, currentClasses);
+        setupModalScrolling();
+    }, 100);
+}
+
+/**
+ * Setup fixed header/footer with scrollable content
+ */
+function setupModalScrolling() {
+    const modalDialog = document.querySelector(".gjs-mdl-dialog");
+    const modalHeader = document.querySelector(".gjs-mdl-header");
+    const modalContent = document.querySelector(".gjs-mdl-content");
+
+    if (!modalDialog || !modalHeader || !modalContent) return;
+
+    // Make the modal have a max height
+    modalDialog.classList.add("tw-modal-fixed-layout");
+
+    // Find action buttons container
+    const actionsContainer =
+        document.querySelector(".tw-spacing-actions") ||
+        document.querySelector(".tw-text-actions");
+    if (actionsContainer) {
+        // Move actions outside of scrollable area
+        actionsContainer.classList.add("tw-modal-footer");
+        modalContent.parentNode.insertBefore(
+            actionsContainer,
+            modalContent.nextSibling,
+        );
+    }
+
+    // Make content scrollable
+    modalContent.classList.add("tw-modal-scrollable");
+
+    // Calculate max height for content area
+    const windowHeight = window.innerHeight;
+    const headerHeight = modalHeader.offsetHeight;
+    const footerHeight = actionsContainer ? actionsContainer.offsetHeight : 0;
+    const padding = 40; // Additional padding
+
+    // Set max height for content area
+    modalContent.style.maxHeight = `${windowHeight - headerHeight - footerHeight - padding}px`;
 }
 
 /**
@@ -100,9 +200,74 @@ function extractTextAlignClass(classes) {
 }
 
 /**
- * Create dialog HTML
+ * Extract text size class
  */
-function createDialogHTML(spacingValues, textAlignValue) {
+function extractTextSizeClass(classes) {
+    const sizeClasses = [
+        "text-xs",
+        "text-sm",
+        "text-base",
+        "text-lg",
+        "text-xl",
+        "text-2xl",
+        "text-3xl",
+        "text-4xl",
+        "text-5xl",
+        "text-6xl",
+    ];
+    return (
+        classes.find(
+            (cls) => sizeClasses.includes(cls) && !cls.includes(":"),
+        ) || ""
+    );
+}
+
+/**
+ * Find responsive text size classes
+ */
+function findResponsiveTextSizes(classes) {
+    const breakpoints = ["sm", "md", "lg", "xl", "2xl"];
+    const sizes = [
+        "xs",
+        "sm",
+        "base",
+        "lg",
+        "xl",
+        "2xl",
+        "3xl",
+        "4xl",
+        "5xl",
+        "6xl",
+    ];
+
+    const responsiveSizes = {};
+
+    breakpoints.forEach((bp) => {
+        const bpRegex = new RegExp(`^${bp}:text-(${sizes.join("|")})$`);
+        const foundClass = classes.find((cls) => bpRegex.test(cls));
+
+        if (foundClass) {
+            responsiveSizes[bp] = foundClass;
+        }
+    });
+
+    return responsiveSizes;
+}
+
+/**
+ * Extract text color class
+ */
+function extractTextColorClass(classes) {
+    // Common Tailwind color patterns
+    const colorRegex =
+        /^text-(primary|gray|black|white|blue|green|red|yellow|orange|purple|indigo|pink|teal|cyan|gray|slate|zinc|neutral|stone|red|rose|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink)(?:-(\d+))?$/;
+    return classes.find((cls) => colorRegex.test(cls)) || "";
+}
+
+/**
+ * Create spacing dialog HTML
+ */
+function createSpacingDialogHTML(spacingValues) {
     // Create spacing options
     const spacingOptions = [
         { value: "", label: "Ninguno" },
@@ -179,8 +344,102 @@ function createDialogHTML(spacingValues, textAlignValue) {
         </div>
       </div>
       
+      <div class="tw-spacing-actions">
+        <button id="tw-spacing-cancel" class="tw-spacing-btn tw-spacing-btn-cancel">Cancelar</button>
+        <button id="tw-spacing-apply" class="tw-spacing-btn tw-spacing-btn-apply">Aplicar</button>
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Create text styling dialog HTML
+ */
+function createTextStyleDialogHTML(
+    textAlignValue,
+    textSizeValue,
+    textColorValue,
+    responsiveSizes,
+) {
+    // Define text size options
+    const textSizes = [
+        { value: "", label: "Predeterminado" },
+        { value: "text-xs", label: "Extra pequeño" },
+        { value: "text-sm", label: "Pequeño" },
+        { value: "text-base", label: "Base" },
+        { value: "text-lg", label: "Grande" },
+        { value: "text-xl", label: "Extra grande" },
+        { value: "text-2xl", label: "2XL" },
+        { value: "text-3xl", label: "3XL" },
+        { value: "text-4xl", label: "4XL" },
+        { value: "text-5xl", label: "5XL" },
+        { value: "text-6xl", label: "6XL" },
+    ];
+
+    // Define color options - focusing on primary and grays
+    const textColors = [
+        { value: "", label: "Predeterminado", hex: "#333333" },
+        { value: "text-primary", label: "Primario", hex: "#23366A" },
+        { value: "text-gray-600", label: "Gris 600", hex: "#4B5563" },
+        { value: "text-gray-700", label: "Gris 700", hex: "#374151" },
+        { value: "text-gray-800", label: "Gris 800", hex: "#1F2937" },
+        { value: "text-gray-900", label: "Gris 900", hex: "#111827" },
+        { value: "text-black", label: "Negro", hex: "#000000" },
+        { value: "text-white", label: "Blanco", hex: "#FFFFFF" },
+        { value: "text-blue-500", label: "Azul", hex: "#3B82F6" },
+        { value: "text-red-500", label: "Rojo", hex: "#EF4444" },
+        { value: "text-green-500", label: "Verde", hex: "#10B981" },
+        { value: "text-yellow-500", label: "Amarillo", hex: "#F59E0B" },
+    ];
+
+    // Create text size options HTML
+    const textSizeOptions = textSizes
+        .map(
+            (size) =>
+                `<option value="${size.value}" ${textSizeValue === size.value ? "selected" : ""}>${size.label}</option>`,
+        )
+        .join("");
+
+    // Create text color options HTML
+    const textColorOptionsHTML = textColors
+        .map(
+            (color) => `
+            <div class="tw-color-option ${textColorValue === color.value ? "active" : ""}" 
+                 data-value="${color.value}" 
+                 title="${color.label}">
+                <span class="color-swatch" style="background-color: ${color.hex}"></span>
+                <span class="color-label">${color.label}</span>
+            </div>
+        `,
+        )
+        .join("");
+
+    // Create responsive sizes info if any
+    const responsiveSizesInfo =
+        Object.keys(responsiveSizes).length > 0
+            ? `<div class="tw-responsive-notice">
+            <div class="tw-notice-title">
+                <i class="fa fa-exclamation-triangle"></i>
+                <span>Tamaños responsivos detectados</span>
+            </div>
+            <div class="tw-responsive-sizes">
+                ${Object.entries(responsiveSizes)
+                    .map(
+                        ([bp, cls]) =>
+                            `<span class="tw-responsive-tag">${bp}:${cls.split(":")[1]}</span>`,
+                    )
+                    .join("")}
+            </div>
+            <div class="tw-notice-text">
+                Se eliminarán estos tamaños responsivos al aplicar un tamaño único
+            </div>
+           </div>`
+            : "";
+
+    return `
+    <div class="tw-text-style-editor">
       <!-- Text Alignment Section -->
-      <div class="tw-spacing-section" id="tw-text-section">
+      <div class="tw-spacing-section">
         <h3><i class="fa fa-align-left"></i> Alineación de Texto</h3>
         
         <div class="tw-text-align-controls">
@@ -207,53 +466,50 @@ function createDialogHTML(spacingValues, textAlignValue) {
         <input type="hidden" id="tw-text-align" value="${textAlignValue}">
       </div>
       
+      <!-- Text Size Section -->
+      <div class="tw-spacing-section">
+        <h3><i class="fa fa-text-height"></i> Tamaño de Texto</h3>
+        
+        ${responsiveSizesInfo}
+        
+        <div class="tw-spacing-field">
+          <select id="tw-text-size">
+            ${textSizeOptions}
+          </select>
+        </div>
+      </div>
+      
+      <!-- Text Color Section -->
+      <div class="tw-spacing-section">
+        <h3><i class="fa fa-palette"></i> Color de Texto</h3>
+        
+        <div class="tw-color-options">
+            ${textColorOptionsHTML}
+        </div>
+        
+        <input type="hidden" id="tw-text-color" value="${textColorValue}">
+      </div>
+      
       <div class="tw-spacing-actions">
-        <button id="tw-spacing-cancel" class="tw-spacing-btn tw-spacing-btn-cancel">Cancelar</button>
-        <button id="tw-spacing-apply" class="tw-spacing-btn tw-spacing-btn-apply">Aplicar</button>
+        <button id="tw-text-cancel" class="tw-spacing-btn tw-spacing-btn-cancel">Cancelar</button>
+        <button id="tw-text-apply" class="tw-spacing-btn tw-spacing-btn-apply">Aplicar</button>
       </div>
     </div>
   `;
 }
 
 /**
- * Setup dialog events
+ * Setup spacing dialog events
  */
-function setupDialogEvents(editor, component, originalClasses) {
+function setupSpacingDialogEvents(editor, component, originalClasses) {
     // Store original classes
     const originalClassesStr = originalClasses.join(" ");
-
-    // Setup text alignment options
-    const textSection = document.getElementById("tw-text-section");
-    const textAlignOptions = document.querySelectorAll(".tw-text-align-option");
-    const textAlignInput = document.getElementById("tw-text-align");
-
-    // Check if component is a text component and hide text alignment if not
-    if (!isTextComponent(component)) {
-        textSection.style.display = "none";
-    }
-
-    // Setup text alignment click handlers
-    textAlignOptions.forEach((option) => {
-        option.addEventListener("click", () => {
-            // Remove active class from all options
-            textAlignOptions.forEach((opt) => opt.classList.remove("active"));
-
-            // Add active class to clicked option
-            option.classList.add("active");
-
-            // Update hidden input
-            textAlignInput.value = option.getAttribute("data-value");
-
-            // Preview change
-            previewChanges(editor, component);
-        });
-    });
 
     // Setup spacing select change handlers
     const spacingSelects = document.querySelectorAll("select[data-spacing]");
     spacingSelects.forEach((select) => {
         select.addEventListener("change", () => {
-            previewChanges(editor, component);
+            previewChanges(editor, component, "spacing");
         });
     });
 
@@ -277,167 +533,268 @@ function setupDialogEvents(editor, component, originalClasses) {
     if (applyBtn) {
         applyBtn.addEventListener("click", () => {
             // Apply changes
-            applyChanges(editor, component);
+            applySpacingChanges(editor, component);
 
             // Force update
             editor.select(component);
 
             // Close modal
             editor.Modal.close();
-
-            // Log action for debugging
-            console.log(
-                "Applied spacing changes. Original:",
-                originalClassesStr,
-                "New:",
-                component.getClasses().join(" "),
-            );
         });
     }
 }
 
 /**
- * Preview changes without closing modal
+ * Setup text styling dialog events
  */
-function previewChanges(editor, component) {
-    // Get updated classes
-    const updatedClasses = getUpdatedClasses(component);
+function setupTextStyleDialogEvents(editor, component, originalClasses) {
+    // Store original classes
+    const originalClassesStr = originalClasses.join(" ");
 
-    // Apply to component
-    component.setClass(updatedClasses);
+    // Setup text alignment options
+    const textAlignOptions = document.querySelectorAll(".tw-text-align-option");
+    const textAlignInput = document.getElementById("tw-text-align");
 
-    // Force update
+    // Setup text alignment click handlers
+    textAlignOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+            // Remove active class from all options
+            textAlignOptions.forEach((opt) => opt.classList.remove("active"));
+
+            // Add active class to clicked option
+            option.classList.add("active");
+
+            // Update hidden input
+            textAlignInput.value = option.getAttribute("data-value");
+
+            // Preview change
+            previewChanges(editor, component, "text");
+        });
+    });
+
+    // Setup text size change handler
+    const textSizeSelect = document.getElementById("tw-text-size");
+    if (textSizeSelect) {
+        textSizeSelect.addEventListener("change", () => {
+            previewChanges(editor, component, "text");
+        });
+    }
+
+    // Setup text color options
+    const textColorOptions = document.querySelectorAll(".tw-color-option");
+    const textColorInput = document.getElementById("tw-text-color");
+
+    // Setup text color click handlers
+    textColorOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+            // Remove active class from all options
+            textColorOptions.forEach((opt) => opt.classList.remove("active"));
+
+            // Add active class to clicked option
+            option.classList.add("active");
+
+            // Update hidden input
+            textColorInput.value = option.getAttribute("data-value");
+
+            // Preview change
+            previewChanges(editor, component, "text");
+        });
+    });
+
+    // Setup cancel button
+    const cancelBtn = document.getElementById("tw-text-cancel");
+    if (cancelBtn) {
+        cancelBtn.addEventListener("click", () => {
+            // Restore original classes
+            component.setClass(originalClasses);
+
+            // Force update
+            editor.select(component);
+
+            // Close modal
+            editor.Modal.close();
+        });
+    }
+
+    // Setup apply button
+    const applyBtn = document.getElementById("tw-text-apply");
+    if (applyBtn) {
+        applyBtn.addEventListener("click", () => {
+            // Apply changes
+            applyTextChanges(editor, component);
+
+            // Force update
+            editor.select(component);
+
+            // Close modal
+            editor.Modal.close();
+        });
+    }
+}
+
+/**
+ * Preview changes to component
+ */
+function previewChanges(editor, component, type = "spacing") {
+    // Get current classes
+    let classes = [...component.getClasses()];
+
+    if (type === "spacing") {
+        // Update spacing classes
+        classes = updateSpacingClasses(classes);
+    } else if (type === "text") {
+        // Update text styling classes
+        classes = updateTextClasses(classes);
+    }
+
+    // Apply classes to component
+    component.setClass(classes);
+
+    // Force update in editor
     editor.select(component);
 }
 
 /**
- * Apply changes and close modal
+ * Update spacing classes
  */
-function applyChanges(editor, component) {
-    // Get updated classes
-    const updatedClasses = getUpdatedClasses(component);
-
-    try {
-        // Apply classes directly using DOM approach
-        const el = component.view.el;
-        if (el && el.classList) {
-            // Clear all classes
-            el.className = "";
-
-            // Add updated classes
-            updatedClasses.forEach((cls) => {
-                el.classList.add(cls);
-            });
-
-            // Force update component with new classes from DOM
-            component.setClass(Array.from(el.classList));
-        } else {
-            // Fallback if direct DOM manipulation fails
-            component.setClass(updatedClasses);
-        }
-
-        // Force component update
-        component.trigger("change:classes");
-        editor.select(component);
-    } catch (error) {
-        console.error("Error updating classes:", error);
-
-        // Fallback if there's an error
-        component.setClass(updatedClasses);
-        editor.select(component);
-    }
-}
-
-/**
- * Get updated classes based on form values
- */
-function getUpdatedClasses(component) {
-    // Get current classes and filter out spacing and alignment
-    const currentClasses = component.getClasses() || [];
-    const filteredClasses = filterOutSpacingAndAlignment(currentClasses);
-
-    // Get spacing classes from form
-    const spacingClasses = collectSpacingClasses();
-
-    // Get text alignment from form
-    const textAlignInput = document.getElementById("tw-text-align");
-    const textAlignClass =
-        textAlignInput && textAlignInput.value ? textAlignInput.value : "";
-
-    // Combine classes
-    const updatedClasses = [...filteredClasses, ...spacingClasses];
-
-    // Add text alignment if present
-    if (textAlignClass) {
-        updatedClasses.push(textAlignClass);
-    }
-
-    return updatedClasses;
-}
-
-/**
- * Filter out spacing and alignment classes
- */
-function filterOutSpacingAndAlignment(classes) {
-    const spacingPrefixes = [
-        "p",
-        "pt",
-        "pr",
-        "pb",
-        "pl",
-        "px",
-        "py",
-        "m",
-        "mt",
-        "mr",
-        "mb",
-        "ml",
-        "mx",
-        "my",
-    ];
-    const alignmentClasses = [
-        "text-left",
-        "text-center",
-        "text-right",
-        "text-justify",
-    ];
-
-    return classes.filter((cls) => {
-        // Check if it's a spacing class
-        const isSpacingClass = spacingPrefixes.some((prefix) => {
-            const regex = new RegExp(`^${prefix}-(\\d+|auto)$`);
-            return regex.test(cls);
-        });
-
-        // Check if it's an alignment class
-        const isAlignmentClass = alignmentClasses.includes(cls);
-
-        // Keep class only if it's not spacing or alignment
-        return !isSpacingClass && !isAlignmentClass;
-    });
-}
-
-/**
- * Collect spacing classes from form
- */
-function collectSpacingClasses() {
-    const spacingClasses = [];
+function updateSpacingClasses(classes) {
+    // Get all spacing selects
     const spacingSelects = document.querySelectorAll("select[data-spacing]");
 
+    // Process each spacing select
     spacingSelects.forEach((select) => {
-        const spacing = select.getAttribute("data-spacing");
+        const prefix = select.getAttribute("data-spacing");
         const value = select.value;
 
+        // Remove existing class with this prefix
+        classes = classes.filter(
+            (cls) => !cls.match(new RegExp(`^${prefix}-([0-9]+|auto)$`)),
+        );
+
+        // Add new class if value is set
         if (value) {
-            spacingClasses.push(`${spacing}-${value}`);
+            classes.push(`${prefix}-${value}`);
         }
     });
 
-    return spacingClasses;
+    return classes;
 }
 
 /**
- * Check if component is text-based
+ * Update text styling classes
+ */
+function updateTextClasses(classes) {
+    // Text alignment
+    const textAlignInput = document.getElementById("tw-text-align");
+    if (textAlignInput) {
+        const textAlignValue = textAlignInput.value;
+
+        // Remove existing text alignment classes
+        const alignmentClasses = [
+            "text-left",
+            "text-center",
+            "text-right",
+            "text-justify",
+        ];
+        classes = classes.filter((cls) => !alignmentClasses.includes(cls));
+
+        // Add new text alignment class if set
+        if (textAlignValue) {
+            classes.push(textAlignValue);
+        }
+    }
+
+    // Text size
+    const textSizeSelect = document.getElementById("tw-text-size");
+    if (textSizeSelect) {
+        const textSizeValue = textSizeSelect.value;
+
+        // Remove existing text size classes (including responsive ones)
+        const breakpoints = ["sm", "md", "lg", "xl", "2xl"];
+        const sizeClasses = [
+            "text-xs",
+            "text-sm",
+            "text-base",
+            "text-lg",
+            "text-xl",
+            "text-2xl",
+            "text-3xl",
+            "text-4xl",
+            "text-5xl",
+            "text-6xl",
+        ];
+
+        // Remove non-responsive size classes
+        classes = classes.filter((cls) => !sizeClasses.includes(cls));
+
+        // Remove responsive size classes
+        classes = classes.filter((cls) => {
+            for (const bp of breakpoints) {
+                if (cls.startsWith(`${bp}:text-`)) {
+                    return false;
+                }
+            }
+            return true;
+        });
+
+        // Add new text size class if set
+        if (textSizeValue) {
+            classes.push(textSizeValue);
+        }
+    }
+
+    // Text color
+    const textColorInput = document.getElementById("tw-text-color");
+    if (textColorInput) {
+        const textColorValue = textColorInput.value;
+
+        // Remove existing text color classes
+        classes = classes.filter(
+            (cls) =>
+                !cls.match(
+                    /^text-(primary|gray|black|white|blue|green|red|yellow|orange|purple|indigo|pink|teal|cyan|gray|slate|zinc|neutral|stone|red|rose|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink)(?:-\d+)?$/,
+                ),
+        );
+
+        // Add new text color class if set
+        if (textColorValue) {
+            classes.push(textColorValue);
+        }
+    }
+
+    return classes;
+}
+
+/**
+ * Apply spacing changes
+ */
+function applySpacingChanges(editor, component) {
+    // Get current classes
+    let classes = [...component.getClasses()];
+
+    // Update spacing classes
+    classes = updateSpacingClasses(classes);
+
+    // Apply classes to component
+    component.setClass(classes);
+}
+
+/**
+ * Apply text styling changes
+ */
+function applyTextChanges(editor, component) {
+    // Get current classes
+    let classes = [...component.getClasses()];
+
+    // Update text classes
+    classes = updateTextClasses(classes);
+
+    // Apply classes to component
+    component.setClass(classes);
+}
+
+/**
+ * Check if component is a text component
  */
 function isTextComponent(component) {
     const textTags = [
@@ -507,8 +864,33 @@ function addEditorStyles() {
       border-radius: 0 0 8px 8px !important;
     }
     
+    /* Modal fixed layout styles */
+    .tw-modal-fixed-layout {
+      display: flex !important;
+      flex-direction: column !important;
+      max-height: 85vh !important;
+      height: auto !important;
+    }
+    
+    .tw-modal-scrollable {
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      padding: 0 !important;
+    }
+    
+    .tw-modal-footer {
+      padding: 15px 20px !important;
+      border-top: 1px solid #f0f0f0 !important;
+      background-color: #ffffff !important;
+      border-radius: 0 0 8px 8px !important;
+      position: sticky !important;
+      bottom: 0 !important;
+      z-index: 1 !important;
+      margin-top: auto !important;
+    }
+    
     /* Tailwind spacing editor styles */
-    .tw-spacing-editor {
+    .tw-spacing-editor, .tw-text-style-editor {
       padding: 20px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
@@ -654,6 +1036,104 @@ function addEditorStyles() {
       font-weight: 500;
     }
     
+    /* Color options */
+    .tw-color-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .tw-color-option {
+      width: calc(16.666% - 10px);
+      aspect-ratio: 1;
+      position: relative;
+      cursor: pointer;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .tw-color-option:hover {
+      transform: scale(1.05);
+    }
+    
+    .tw-color-option.active {
+      border-color: #23366A;
+      box-shadow: 0 0 0 2px rgba(35, 54, 106, 0.3);
+    }
+    
+    .tw-color-option .color-swatch {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    
+    .tw-color-option .color-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 10px;
+      padding: 3px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    /* Responsive sizes notice */
+    .tw-responsive-notice {
+      margin-bottom: 15px;
+      padding: 12px;
+      background-color: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    
+    .tw-notice-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #92400e;
+    }
+    
+    .tw-notice-title i {
+      color: #d97706;
+    }
+    
+    .tw-responsive-sizes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+    
+    .tw-responsive-tag {
+      display: inline-block;
+      padding: 3px 8px;
+      background-color: #f59e0b20;
+      border: 1px solid #f59e0b40;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: monospace;
+      color: #92400e;
+    }
+    
+    .tw-notice-text {
+      color: #78350f;
+      font-size: 12px;
+    }
+    
     /* Action buttons */
     .tw-spacing-actions {
       display: flex;
@@ -720,6 +1200,10 @@ function addEditorStyles() {
       .tw-text-align-option span {
         font-size: 11px;
       }
+      
+      .tw-color-option {
+        width: calc(33.333% - 10px);
+      }
     }
   `;
 
@@ -729,7 +1213,7 @@ function addEditorStyles() {
 /**
  * Cleanup function
  */
-export function cleanupTailwindSpacingEditor() {
+export function cleanupTailwindEditors() {
     const styles = document.getElementById("tw-spacing-styles");
     if (styles) {
         styles.parentNode.removeChild(styles);

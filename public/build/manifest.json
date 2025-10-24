@@ -52,7 +52,7 @@
     "src": "node_modules/remixicon/fonts/remixicon.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-OGAVBCVa.css",
+    "file": "assets/app-BN0QhTi5.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -66,7 +66,7 @@
     ]
   },
   "resources/js/editor.js": {
-    "file": "assets/editor-Bblkytvr.js",
+    "file": "assets/editor-mJjzM0-4.js",
     "name": "editor",
     "src": "resources/js/editor.js",
     "isEntry": true,
@@ -76,7 +76,7 @@
     ]
   },
   "resources/js/footer-editor.js": {
-    "file": "assets/footer-editor-DUYUT2Y7.js",
+    "file": "assets/footer-editor-BfRiGAag.js",
     "name": "footer-editor",
     "src": "resources/js/footer-editor.js",
     "isEntry": true,

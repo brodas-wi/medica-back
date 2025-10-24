@@ -1,8 +1,8 @@
-import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonBlocks-Nuf9loky.js";import{s as q,S as N}from"./sweetalert2.esm.all-x82VjDyW.js";function at(i){i.Panels.addButton("options",{id:"tailwind-spacing",className:"fa fa-th-large",command:{run:function(l){st(l)}},attributes:{title:"Espaciado y alineación"}}),ut()}function st(i){const l=i.getSelected();if(!l)return;const s=l.getClasses()||[],t=lt(s),e=ot(s);i.Modal.open({title:"Espaciado y Alineación Tailwind",content:rt(t,e)}).onceClose(()=>{i.refresh()}),setTimeout(()=>{nt(i,l,s)},100)}function lt(i){const l={};return["p","pt","pr","pb","pl","px","py","m","mt","mr","mb","ml","mx","my"].forEach(t=>{const e=new RegExp(`^${t}-([0-9]+|auto)$`),a=i.find(d=>e.test(d));if(a){const d=a.replace(`${t}-`,"");l[t]=d}}),l}function ot(i){const l=["text-left","text-center","text-right","text-justify"];return i.find(s=>l.includes(s))||""}function rt(i,l){const s=[{value:"",label:"Ninguno"},{value:"0",label:"0"},{value:"1",label:"0.25rem (1)"},{value:"2",label:"0.5rem (2)"},{value:"3",label:"0.75rem (3)"},{value:"4",label:"1rem (4)"},{value:"5",label:"1.25rem (5)"},{value:"6",label:"1.5rem (6)"},{value:"8",label:"2rem (8)"},{value:"10",label:"2.5rem (10)"},{value:"12",label:"3rem (12)"},{value:"16",label:"4rem (16)"},{value:"20",label:"5rem (20)"},{value:"24",label:"6rem (24)"},{value:"32",label:"8rem (32)"},{value:"auto",label:"Auto"}],t=(e,a)=>{const d=s.map(c=>`<option value="${c.value}" ${i[e]===c.value?"selected":""}>${c.label}</option>`).join("");return`
+import{s as J,l as Z,a as Y,_ as tt,g as et,b as it,c as at,d as lt}from"./buttonBlocks-Nuf9loky.js";import{s as q,S as z}from"./sweetalert2.esm.all-x82VjDyW.js";function ot(i){i.Panels.addButton("options",{id:"tailwind-spacing",className:"fa fa-th-large",command:{run:function(o){st(o)}},attributes:{title:"Espaciado"}}),i.Panels.addButton("options",{id:"tailwind-text",className:"fa fa-font",command:{run:function(o){rt(o)}},attributes:{title:"Estilo de texto"}}),vt()}function st(i){const o=i.getSelected();if(!o)return;const a=o.getClasses()||[],t=nt(a);i.Modal.open({title:"Espaciado Tailwind",content:ut(t)}).onceClose(()=>{i.refresh()}),setTimeout(()=>{ft(i,o,a),X()},100)}function rt(i){const o=i.getSelected();if(!o)return;if(!yt(o)){i.Modal.open({title:"Error",content:'<div style="padding: 20px;">El componente seleccionado no es un elemento de texto</div>'});return}const a=o.getClasses()||[],t=ct(a),e=dt(a),l=mt(a),d=pt(a);i.Modal.open({title:"Estilo de Texto Tailwind",content:gt(t,e,l,d)}).onceClose(()=>{i.refresh()}),setTimeout(()=>{ht(i,o,a),X()},100)}function X(){const i=document.querySelector(".gjs-mdl-dialog"),o=document.querySelector(".gjs-mdl-header"),a=document.querySelector(".gjs-mdl-content");if(!i||!o||!a)return;i.classList.add("tw-modal-fixed-layout");const t=document.querySelector(".tw-spacing-actions")||document.querySelector(".tw-text-actions");t&&(t.classList.add("tw-modal-footer"),a.parentNode.insertBefore(t,a.nextSibling)),a.classList.add("tw-modal-scrollable");const e=window.innerHeight,l=o.offsetHeight,d=t?t.offsetHeight:0,n=40;a.style.maxHeight=`${e-l-d-n}px`}function nt(i){const o={};return["p","pt","pr","pb","pl","px","py","m","mt","mr","mb","ml","mx","my"].forEach(t=>{const e=new RegExp(`^${t}-([0-9]+|auto)$`),l=i.find(d=>e.test(d));if(l){const d=l.replace(`${t}-`,"");o[t]=d}}),o}function ct(i){const o=["text-left","text-center","text-right","text-justify"];return i.find(a=>o.includes(a))||""}function dt(i){const o=["text-xs","text-sm","text-base","text-lg","text-xl","text-2xl","text-3xl","text-4xl","text-5xl","text-6xl"];return i.find(a=>o.includes(a)&&!a.includes(":"))||""}function pt(i){const o=["sm","md","lg","xl","2xl"],a=["xs","sm","base","lg","xl","2xl","3xl","4xl","5xl","6xl"],t={};return o.forEach(e=>{const l=new RegExp(`^${e}:text-(${a.join("|")})$`),d=i.find(n=>l.test(n));d&&(t[e]=d)}),t}function mt(i){const o=/^text-(primary|gray|black|white|blue|green|red|yellow|orange|purple|indigo|pink|teal|cyan|gray|slate|zinc|neutral|stone|red|rose|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink)(?:-(\d+))?$/;return i.find(a=>o.test(a))||""}function ut(i){const o=[{value:"",label:"Ninguno"},{value:"0",label:"0"},{value:"1",label:"0.25rem (1)"},{value:"2",label:"0.5rem (2)"},{value:"3",label:"0.75rem (3)"},{value:"4",label:"1rem (4)"},{value:"5",label:"1.25rem (5)"},{value:"6",label:"1.5rem (6)"},{value:"8",label:"2rem (8)"},{value:"10",label:"2.5rem (10)"},{value:"12",label:"3rem (12)"},{value:"16",label:"4rem (16)"},{value:"20",label:"5rem (20)"},{value:"24",label:"6rem (24)"},{value:"32",label:"8rem (32)"},{value:"auto",label:"Auto"}],a=(t,e)=>{const l=o.map(d=>`<option value="${d.value}" ${i[t]===d.value?"selected":""}>${d.label}</option>`).join("");return`
       <div class="tw-spacing-field">
-        <label for="tw-${e}">${a}</label>
-        <select id="tw-${e}" data-spacing="${e}">
-          ${d}
+        <label for="tw-${t}">${e}</label>
+        <select id="tw-${t}" data-spacing="${t}">
+          ${l}
         </select>
       </div>
     `};return`
@@ -12,16 +12,16 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         <h3><i class="fa fa-expand"></i> Padding (relleno)</h3>
         
         <div class="tw-spacing-row tw-spacing-cols-3">
-          ${t("p","Todos")}
-          ${t("px","Horizontal")}
-          ${t("py","Vertical")}
+          ${a("p","Todos")}
+          ${a("px","Horizontal")}
+          ${a("py","Vertical")}
         </div>
         
         <div class="tw-spacing-row tw-spacing-cols-4">
-          ${t("pt","Superior")}
-          ${t("pr","Derecho")}
-          ${t("pb","Inferior")}
-          ${t("pl","Izquierdo")}
+          ${a("pt","Superior")}
+          ${a("pr","Derecho")}
+          ${a("pb","Inferior")}
+          ${a("pl","Izquierdo")}
         </div>
       </div>
       
@@ -30,45 +30,17 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         <h3><i class="fa fa-arrows-alt"></i> Margin (margen)</h3>
         
         <div class="tw-spacing-row tw-spacing-cols-3">
-          ${t("m","Todos")}
-          ${t("mx","Horizontal")}
-          ${t("my","Vertical")}
+          ${a("m","Todos")}
+          ${a("mx","Horizontal")}
+          ${a("my","Vertical")}
         </div>
         
         <div class="tw-spacing-row tw-spacing-cols-4">
-          ${t("mt","Superior")}
-          ${t("mr","Derecho")}
-          ${t("mb","Inferior")}
-          ${t("ml","Izquierdo")}
+          ${a("mt","Superior")}
+          ${a("mr","Derecho")}
+          ${a("mb","Inferior")}
+          ${a("ml","Izquierdo")}
         </div>
-      </div>
-      
-      <!-- Text Alignment Section -->
-      <div class="tw-spacing-section" id="tw-text-section">
-        <h3><i class="fa fa-align-left"></i> Alineación de Texto</h3>
-        
-        <div class="tw-text-align-controls">
-          <div class="tw-text-align-options">
-            <div class="tw-text-align-option ${l==="text-left"?"active":""}" data-value="text-left">
-              <i class="fa fa-align-left"></i>
-              <span>Izquierda</span>
-            </div>
-            <div class="tw-text-align-option ${l==="text-center"?"active":""}" data-value="text-center">
-              <i class="fa fa-align-center"></i>
-              <span>Centro</span>
-            </div>
-            <div class="tw-text-align-option ${l==="text-right"?"active":""}" data-value="text-right">
-              <i class="fa fa-align-right"></i>
-              <span>Derecha</span>
-            </div>
-            <div class="tw-text-align-option ${l==="text-justify"?"active":""}" data-value="text-justify">
-              <i class="fa fa-align-justify"></i>
-              <span>Justificado</span>
-            </div>
-          </div>
-        </div>
-        
-        <input type="hidden" id="tw-text-align" value="${l}">
       </div>
       
       <div class="tw-spacing-actions">
@@ -76,7 +48,84 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         <button id="tw-spacing-apply" class="tw-spacing-btn tw-spacing-btn-apply">Aplicar</button>
       </div>
     </div>
-  `}function nt(i,l,s){const t=s.join(" "),e=document.getElementById("tw-text-section"),a=document.querySelectorAll(".tw-text-align-option"),d=document.getElementById("tw-text-align");pt(l)||(e.style.display="none"),a.forEach(m=>{m.addEventListener("click",()=>{a.forEach(o=>o.classList.remove("active")),m.classList.add("active"),d.value=m.getAttribute("data-value"),U(i,l)})}),document.querySelectorAll("select[data-spacing]").forEach(m=>{m.addEventListener("change",()=>{U(i,l)})});const r=document.getElementById("tw-spacing-cancel");r&&r.addEventListener("click",()=>{l.setClass(s),i.select(l),i.Modal.close()});const n=document.getElementById("tw-spacing-apply");n&&n.addEventListener("click",()=>{ct(i,l),i.select(l),i.Modal.close(),console.log("Applied spacing changes. Original:",t,"New:",l.getClasses().join(" "))})}function U(i,l){const s=X(l);l.setClass(s),i.select(l)}function ct(i,l){const s=X(l);try{const t=l.view.el;t&&t.classList?(t.className="",s.forEach(e=>{t.classList.add(e)}),l.setClass(Array.from(t.classList))):l.setClass(s),l.trigger("change:classes"),i.select(l)}catch(t){console.error("Error updating classes:",t),l.setClass(s),i.select(l)}}function X(i){const l=i.getClasses()||[],s=dt(l),t=mt(),e=document.getElementById("tw-text-align"),a=e&&e.value?e.value:"",d=[...s,...t];return a&&d.push(a),d}function dt(i){const l=["p","pt","pr","pb","pl","px","py","m","mt","mr","mb","ml","mx","my"],s=["text-left","text-center","text-right","text-justify"];return i.filter(t=>{const e=l.some(d=>new RegExp(`^${d}-(\\d+|auto)$`).test(t)),a=s.includes(t);return!e&&!a})}function mt(){const i=[];return document.querySelectorAll("select[data-spacing]").forEach(s=>{const t=s.getAttribute("data-spacing"),e=s.value;e&&i.push(`${t}-${e}`)}),i}function pt(i){const l=["p","h1","h2","h3","h4","h5","h6","span","div","a","button","label","li","td","th"],s=i.get("tagName");return s&&l.includes(s.toLowerCase())}function ut(){if(document.getElementById("tw-spacing-styles"))return;const i=document.createElement("style");i.id="tw-spacing-styles",i.textContent=`
+  `}function gt(i,o,a,t){const e=[{value:"",label:"Predeterminado"},{value:"text-xs",label:"Extra pequeño"},{value:"text-sm",label:"Pequeño"},{value:"text-base",label:"Base"},{value:"text-lg",label:"Grande"},{value:"text-xl",label:"Extra grande"},{value:"text-2xl",label:"2XL"},{value:"text-3xl",label:"3XL"},{value:"text-4xl",label:"4XL"},{value:"text-5xl",label:"5XL"},{value:"text-6xl",label:"6XL"}],l=[{value:"",label:"Predeterminado",hex:"#333333"},{value:"text-primary",label:"Primario",hex:"#23366A"},{value:"text-gray-600",label:"Gris 600",hex:"#4B5563"},{value:"text-gray-700",label:"Gris 700",hex:"#374151"},{value:"text-gray-800",label:"Gris 800",hex:"#1F2937"},{value:"text-gray-900",label:"Gris 900",hex:"#111827"},{value:"text-black",label:"Negro",hex:"#000000"},{value:"text-white",label:"Blanco",hex:"#FFFFFF"},{value:"text-blue-500",label:"Azul",hex:"#3B82F6"},{value:"text-red-500",label:"Rojo",hex:"#EF4444"},{value:"text-green-500",label:"Verde",hex:"#10B981"},{value:"text-yellow-500",label:"Amarillo",hex:"#F59E0B"}],d=e.map(r=>`<option value="${r.value}" ${o===r.value?"selected":""}>${r.label}</option>`).join(""),n=l.map(r=>`
+            <div class="tw-color-option ${a===r.value?"active":""}" 
+                 data-value="${r.value}" 
+                 title="${r.label}">
+                <span class="color-swatch" style="background-color: ${r.hex}"></span>
+                <span class="color-label">${r.label}</span>
+            </div>
+        `).join(""),c=Object.keys(t).length>0?`<div class="tw-responsive-notice">
+            <div class="tw-notice-title">
+                <i class="fa fa-exclamation-triangle"></i>
+                <span>Tamaños responsivos detectados</span>
+            </div>
+            <div class="tw-responsive-sizes">
+                ${Object.entries(t).map(([r,p])=>`<span class="tw-responsive-tag">${r}:${p.split(":")[1]}</span>`).join("")}
+            </div>
+            <div class="tw-notice-text">
+                Se eliminarán estos tamaños responsivos al aplicar un tamaño único
+            </div>
+           </div>`:"";return`
+    <div class="tw-text-style-editor">
+      <!-- Text Alignment Section -->
+      <div class="tw-spacing-section">
+        <h3><i class="fa fa-align-left"></i> Alineación de Texto</h3>
+        
+        <div class="tw-text-align-controls">
+          <div class="tw-text-align-options">
+            <div class="tw-text-align-option ${i==="text-left"?"active":""}" data-value="text-left">
+              <i class="fa fa-align-left"></i>
+              <span>Izquierda</span>
+            </div>
+            <div class="tw-text-align-option ${i==="text-center"?"active":""}" data-value="text-center">
+              <i class="fa fa-align-center"></i>
+              <span>Centro</span>
+            </div>
+            <div class="tw-text-align-option ${i==="text-right"?"active":""}" data-value="text-right">
+              <i class="fa fa-align-right"></i>
+              <span>Derecha</span>
+            </div>
+            <div class="tw-text-align-option ${i==="text-justify"?"active":""}" data-value="text-justify">
+              <i class="fa fa-align-justify"></i>
+              <span>Justificado</span>
+            </div>
+          </div>
+        </div>
+        
+        <input type="hidden" id="tw-text-align" value="${i}">
+      </div>
+      
+      <!-- Text Size Section -->
+      <div class="tw-spacing-section">
+        <h3><i class="fa fa-text-height"></i> Tamaño de Texto</h3>
+        
+        ${c}
+        
+        <div class="tw-spacing-field">
+          <select id="tw-text-size">
+            ${d}
+          </select>
+        </div>
+      </div>
+      
+      <!-- Text Color Section -->
+      <div class="tw-spacing-section">
+        <h3><i class="fa fa-palette"></i> Color de Texto</h3>
+        
+        <div class="tw-color-options">
+            ${n}
+        </div>
+        
+        <input type="hidden" id="tw-text-color" value="${a}">
+      </div>
+      
+      <div class="tw-spacing-actions">
+        <button id="tw-text-cancel" class="tw-spacing-btn tw-spacing-btn-cancel">Cancelar</button>
+        <button id="tw-text-apply" class="tw-spacing-btn tw-spacing-btn-apply">Aplicar</button>
+      </div>
+    </div>
+  `}function ft(i,o,a){a.join(" "),document.querySelectorAll("select[data-spacing]").forEach(d=>{d.addEventListener("change",()=>{R(i,o,"spacing")})});const e=document.getElementById("tw-spacing-cancel");e&&e.addEventListener("click",()=>{o.setClass(a),i.select(o),i.Modal.close()});const l=document.getElementById("tw-spacing-apply");l&&l.addEventListener("click",()=>{xt(i,o),i.select(o),i.Modal.close()})}function ht(i,o,a){a.join(" ");const t=document.querySelectorAll(".tw-text-align-option"),e=document.getElementById("tw-text-align");t.forEach(p=>{p.addEventListener("click",()=>{t.forEach(s=>s.classList.remove("active")),p.classList.add("active"),e.value=p.getAttribute("data-value"),R(i,o,"text")})});const l=document.getElementById("tw-text-size");l&&l.addEventListener("change",()=>{R(i,o,"text")});const d=document.querySelectorAll(".tw-color-option"),n=document.getElementById("tw-text-color");d.forEach(p=>{p.addEventListener("click",()=>{d.forEach(s=>s.classList.remove("active")),p.classList.add("active"),n.value=p.getAttribute("data-value"),R(i,o,"text")})});const c=document.getElementById("tw-text-cancel");c&&c.addEventListener("click",()=>{o.setClass(a),i.select(o),i.Modal.close()});const r=document.getElementById("tw-text-apply");r&&r.addEventListener("click",()=>{bt(i,o),i.select(o),i.Modal.close()})}function R(i,o,a="spacing"){let t=[...o.getClasses()];a==="spacing"?t=Q(t):a==="text"&&(t=W(t)),o.setClass(t),i.select(o)}function Q(i){return document.querySelectorAll("select[data-spacing]").forEach(a=>{const t=a.getAttribute("data-spacing"),e=a.value;i=i.filter(l=>!l.match(new RegExp(`^${t}-([0-9]+|auto)$`))),e&&i.push(`${t}-${e}`)}),i}function W(i){const o=document.getElementById("tw-text-align");if(o){const e=o.value,l=["text-left","text-center","text-right","text-justify"];i=i.filter(d=>!l.includes(d)),e&&i.push(e)}const a=document.getElementById("tw-text-size");if(a){const e=a.value,l=["sm","md","lg","xl","2xl"],d=["text-xs","text-sm","text-base","text-lg","text-xl","text-2xl","text-3xl","text-4xl","text-5xl","text-6xl"];i=i.filter(n=>!d.includes(n)),i=i.filter(n=>{for(const c of l)if(n.startsWith(`${c}:text-`))return!1;return!0}),e&&i.push(e)}const t=document.getElementById("tw-text-color");if(t){const e=t.value;i=i.filter(l=>!l.match(/^text-(primary|gray|black|white|blue|green|red|yellow|orange|purple|indigo|pink|teal|cyan|gray|slate|zinc|neutral|stone|red|rose|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink)(?:-\d+)?$/)),e&&i.push(e)}return i}function xt(i,o){let a=[...o.getClasses()];a=Q(a),o.setClass(a)}function bt(i,o){let a=[...o.getClasses()];a=W(a),o.setClass(a)}function yt(i){const o=["p","h1","h2","h3","h4","h5","h6","span","div","a","button","label","li","td","th"],a=i.get("tagName");return a&&o.includes(a.toLowerCase())}function vt(){if(document.getElementById("tw-spacing-styles"))return;const i=document.createElement("style");i.id="tw-spacing-styles",i.textContent=`
     /* Override GrapesJS modal styles for a clean white design */
     .gjs-mdl-dialog {
       box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1) !important;
@@ -113,8 +162,33 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
       border-radius: 0 0 8px 8px !important;
     }
     
+    /* Modal fixed layout styles */
+    .tw-modal-fixed-layout {
+      display: flex !important;
+      flex-direction: column !important;
+      max-height: 85vh !important;
+      height: auto !important;
+    }
+    
+    .tw-modal-scrollable {
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      padding: 0 !important;
+    }
+    
+    .tw-modal-footer {
+      padding: 15px 20px !important;
+      border-top: 1px solid #f0f0f0 !important;
+      background-color: #ffffff !important;
+      border-radius: 0 0 8px 8px !important;
+      position: sticky !important;
+      bottom: 0 !important;
+      z-index: 1 !important;
+      margin-top: auto !important;
+    }
+    
     /* Tailwind spacing editor styles */
-    .tw-spacing-editor {
+    .tw-spacing-editor, .tw-text-style-editor {
       padding: 20px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
@@ -260,6 +334,104 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
       font-weight: 500;
     }
     
+    /* Color options */
+    .tw-color-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .tw-color-option {
+      width: calc(16.666% - 10px);
+      aspect-ratio: 1;
+      position: relative;
+      cursor: pointer;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .tw-color-option:hover {
+      transform: scale(1.05);
+    }
+    
+    .tw-color-option.active {
+      border-color: #23366A;
+      box-shadow: 0 0 0 2px rgba(35, 54, 106, 0.3);
+    }
+    
+    .tw-color-option .color-swatch {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    
+    .tw-color-option .color-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 10px;
+      padding: 3px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    /* Responsive sizes notice */
+    .tw-responsive-notice {
+      margin-bottom: 15px;
+      padding: 12px;
+      background-color: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    
+    .tw-notice-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #92400e;
+    }
+    
+    .tw-notice-title i {
+      color: #d97706;
+    }
+    
+    .tw-responsive-sizes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+    
+    .tw-responsive-tag {
+      display: inline-block;
+      padding: 3px 8px;
+      background-color: #f59e0b20;
+      border: 1px solid #f59e0b40;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: monospace;
+      color: #92400e;
+    }
+    
+    .tw-notice-text {
+      color: #78350f;
+      font-size: 12px;
+    }
+    
     /* Action buttons */
     .tw-spacing-actions {
       display: flex;
@@ -326,66 +498,70 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
       .tw-text-align-option span {
         font-size: 11px;
       }
+      
+      .tw-color-option {
+        width: calc(33.333% - 10px);
+      }
     }
-  `,document.head.appendChild(i)}function gt(i){i.DomComponents.addType("pdf-viewer",{model:{defaults:{tagName:"div",attributes:{"data-gjs-type":"pdf-viewer"},traits:[{type:"button",label:"Seleccionar PDF",name:"selectPDF",text:"Seleccionar PDF",command:"open-pdf-selector"}]},init(){this.set("type","pdf-viewer");const s=this.getAttributes();if(s["data-pdf-src"]){const t=this.getView();t&&t.el&&l(t.el,s["data-pdf-src"],s["data-pdf-name"]||"Documento PDF")}this.on("change:attributes",this.handleAttrChange)},handleAttrChange(){const s=this.getAttributes(),t=this.getView();t&&t.el&&s["data-pdf-src"]&&l(t.el,s["data-pdf-src"],s["data-pdf-name"]||"Documento PDF")}},view:{events:{click:"onClick"},init(){const t=this.model.getAttributes();this.el.setAttribute("data-gjs-type","pdf-viewer"),t["data-pdf-src"]&&l(this.el,t["data-pdf-src"],t["data-pdf-name"]||"Documento PDF")},onClick(s){if(s.target.tagName==="OBJECT"||s.target.closest("object")){s.stopPropagation();return}i.select(this.model),i.runCommand("open-pdf-selector",{component:this.model})},onRender(){const s=this.model.getAttributes();s["data-pdf-src"]&&l(this.el,s["data-pdf-src"],s["data-pdf-name"]||"Documento PDF")}}});function l(s,t,e){try{const a=s.querySelector(".pdf-placeholder"),d=s.querySelector(".pdf-title");if(a){const c=document.createElement("object");c.setAttribute("data",t),c.setAttribute("type","application/pdf"),c.setAttribute("width","100%"),c.setAttribute("height","500"),c.classList.add("pdf-object"),c.style.minHeight="500px",c.innerHTML=`
+  `,document.head.appendChild(i)}function wt(i){i.DomComponents.addType("pdf-viewer",{model:{defaults:{tagName:"div",attributes:{"data-gjs-type":"pdf-viewer"},traits:[{type:"button",label:"Seleccionar PDF",name:"selectPDF",text:"Seleccionar PDF",command:"open-pdf-selector"}]},init(){this.set("type","pdf-viewer");const a=this.getAttributes();if(a["data-pdf-src"]){const t=this.getView();t&&t.el&&o(t.el,a["data-pdf-src"],a["data-pdf-name"]||"Documento PDF")}this.on("change:attributes",this.handleAttrChange)},handleAttrChange(){const a=this.getAttributes(),t=this.getView();t&&t.el&&a["data-pdf-src"]&&o(t.el,a["data-pdf-src"],a["data-pdf-name"]||"Documento PDF")}},view:{events:{click:"onClick"},init(){const t=this.model.getAttributes();this.el.setAttribute("data-gjs-type","pdf-viewer"),t["data-pdf-src"]&&o(this.el,t["data-pdf-src"],t["data-pdf-name"]||"Documento PDF")},onClick(a){if(a.target.tagName==="OBJECT"||a.target.closest("object")){a.stopPropagation();return}i.select(this.model),i.runCommand("open-pdf-selector",{component:this.model})},onRender(){const a=this.model.getAttributes();a["data-pdf-src"]&&o(this.el,a["data-pdf-src"],a["data-pdf-name"]||"Documento PDF")}}});function o(a,t,e){try{const l=a.querySelector(".pdf-placeholder"),d=a.querySelector(".pdf-title");if(l){const n=document.createElement("object");n.setAttribute("data",t),n.setAttribute("type","application/pdf"),n.setAttribute("width","100%"),n.setAttribute("height","500"),n.classList.add("pdf-object"),n.style.minHeight="500px",n.innerHTML=`
                 <div class="p-6 bg-gray-100 text-center">
                     <p class="mb-3">No se puede mostrar el PDF. Su navegador no soporta PDFs incrustados.</p>
                     <a href="${t}" target="_blank" class="inline-block bg-primary text-white font-semibold py-2 px-6 rounded-full">Abrir PDF</a>
                 </div>
-            `,a.classList.add("hidden");let r=s.querySelector(".pdf-object");r?r.setAttribute("data",t):a.parentNode.insertBefore(c,a.nextSibling),d&&(d.textContent=e)}}catch(a){console.error("Error displaying PDF:",a),q(`Error al mostrar el PDF: ${a.message}`,"error")}}i.Commands.add("open-pdf-selector",{run(s,t,e={}){const a=e.component||s.getSelected();if(a)try{V("pdf",d=>{const c=d.alt||d.name||"Documento PDF";a.set("attributes",{...a.getAttributes(),"data-pdf-src":d.src,"data-pdf-name":c})})}catch(d){console.error("Error selecting PDF:",d),q(`Error al seleccionar PDF: ${d.message}`,"error")}}}),i.on("load",function(){setTimeout(()=>{try{const s=i.Canvas.getFrameEl();s&&s.contentDocument&&s.contentDocument.querySelectorAll('[data-gjs-type="pdf-viewer"]').forEach(e=>{const a=e.getAttribute("data-pdf-src"),d=e.getAttribute("data-pdf-name")||"Documento PDF";a&&l(e,a,d)})}catch(s){console.error("Error initializing PDF viewers:",s),q(`Error al inicializar visores PDF: ${s.message}`,"error")}},1e3)}),i.on("component:add",function(s){if(s.get("type")==="pdf-viewer"||s.getAttributes()["data-gjs-type"]==="pdf-viewer"){const t=s.getAttributes();if(t["data-pdf-src"]){const e=s.getView();e&&e.el&&l(e.el,t["data-pdf-src"],t["data-pdf-name"]||"Documento PDF")}}}),i.on("component:selected",function(s){if(s.get("type")==="pdf-viewer"||s.getAttributes()["data-gjs-type"]==="pdf-viewer"){const t=s.getAttributes();if(t["data-pdf-src"]){const e=s.getView();e&&e.el&&l(e.el,t["data-pdf-src"],t["data-pdf-name"]||"Documento PDF")}}}),i.on("storage:start",function(s){i.DomComponents.getComponents().filter(e=>e.get("type")==="pdf-viewer"||e.getAttributes()&&e.getAttributes()["data-gjs-type"]==="pdf-viewer").forEach(e=>{const a=e.getAttributes();a["data-pdf-src"]&&e.set("html-output",`
-                    <div class="pdf-viewer-container bg-white shadow-lg rounded-lg overflow-hidden" data-gjs-type="pdf-viewer" data-pdf-src="${a["data-pdf-src"]}" data-pdf-name="${a["data-pdf-name"]||"Documento PDF"}" style="min-height: 500px; width: 100%;">
+            `,l.classList.add("hidden");let c=a.querySelector(".pdf-object");c?c.setAttribute("data",t):l.parentNode.insertBefore(n,l.nextSibling),d&&(d.textContent=e)}}catch(l){console.error("Error displaying PDF:",l),q(`Error al mostrar el PDF: ${l.message}`,"error")}}i.Commands.add("open-pdf-selector",{run(a,t,e={}){const l=e.component||a.getSelected();if(l)try{J("pdf",d=>{const n=d.alt||d.name||"Documento PDF";l.set("attributes",{...l.getAttributes(),"data-pdf-src":d.src,"data-pdf-name":n})})}catch(d){console.error("Error selecting PDF:",d),q(`Error al seleccionar PDF: ${d.message}`,"error")}}}),i.on("load",function(){setTimeout(()=>{try{const a=i.Canvas.getFrameEl();a&&a.contentDocument&&a.contentDocument.querySelectorAll('[data-gjs-type="pdf-viewer"]').forEach(e=>{const l=e.getAttribute("data-pdf-src"),d=e.getAttribute("data-pdf-name")||"Documento PDF";l&&o(e,l,d)})}catch(a){console.error("Error initializing PDF viewers:",a),q(`Error al inicializar visores PDF: ${a.message}`,"error")}},1e3)}),i.on("component:add",function(a){if(a.get("type")==="pdf-viewer"||a.getAttributes()["data-gjs-type"]==="pdf-viewer"){const t=a.getAttributes();if(t["data-pdf-src"]){const e=a.getView();e&&e.el&&o(e.el,t["data-pdf-src"],t["data-pdf-name"]||"Documento PDF")}}}),i.on("component:selected",function(a){if(a.get("type")==="pdf-viewer"||a.getAttributes()["data-gjs-type"]==="pdf-viewer"){const t=a.getAttributes();if(t["data-pdf-src"]){const e=a.getView();e&&e.el&&o(e.el,t["data-pdf-src"],t["data-pdf-name"]||"Documento PDF")}}}),i.on("storage:start",function(a){i.DomComponents.getComponents().filter(e=>e.get("type")==="pdf-viewer"||e.getAttributes()&&e.getAttributes()["data-gjs-type"]==="pdf-viewer").forEach(e=>{const l=e.getAttributes();l["data-pdf-src"]&&e.set("html-output",`
+                    <div class="pdf-viewer-container bg-white shadow-lg rounded-lg overflow-hidden" data-gjs-type="pdf-viewer" data-pdf-src="${l["data-pdf-src"]}" data-pdf-name="${l["data-pdf-name"]||"Documento PDF"}" style="min-height: 500px; width: 100%;">
                         <div class="p-4 bg-primary text-white font-semibold flex justify-between items-center">
-                            <span class="pdf-title">${a["data-pdf-name"]||"Documento PDF"}</span>
+                            <span class="pdf-title">${l["data-pdf-name"]||"Documento PDF"}</span>
                         </div>
-                        <object data="${a["data-pdf-src"]}" type="application/pdf" width="100%" height="500" class="pdf-object" style="min-height: 500px;">
+                        <object data="${l["data-pdf-src"]}" type="application/pdf" width="100%" height="500" class="pdf-object" style="min-height: 500px;">
                             <div class="p-6 bg-gray-100 text-center">
                                 <p class="mb-3">No se puede mostrar el PDF. Su navegador no soporta PDFs incrustados.</p>
-                                <a href="${a["data-pdf-src"]}" target="_blank" class="inline-block bg-primary text-white font-semibold py-2 px-6 rounded-full">Abrir PDF</a>
+                                <a href="${l["data-pdf-src"]}" target="_blank" class="inline-block bg-primary text-white font-semibold py-2 px-6 rounded-full">Abrir PDF</a>
                             </div>
                         </object>
                     </div>
-                `)})})}function ft(i){const l=i.BlockManager;i.on("load",()=>{const s=i.Canvas.getFrameEl();if(s&&s.contentDocument){const t=s.contentDocument.createElement("style");t.textContent=`
+                `)})})}function Ct(i){const o=i.BlockManager;i.on("load",()=>{const a=i.Canvas.getFrameEl();if(a&&a.contentDocument){const t=a.contentDocument.createElement("style");t.textContent=`
               .text-primary { color: #23366A !important; }
               .text-secondary { color: #333333 !important; }
               .bg-primary { background-color: #23366A !important; }
               .rounded-2xl { border-radius: 1rem !important; }
-            `,s.contentDocument.head.appendChild(t)}}),l.add("basic-heading",{label:"Título",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-header" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
+            `,a.contentDocument.head.appendChild(t)}}),o.add("basic-heading",{label:"Título",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-header" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
         <div class="py-4">
             <div class="max-w-7xl mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">Título Principal</h2>
             </div>
         </div>
-        `}),l.add("basic-subtitle",{label:"Subtítulo",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-font" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
+        `}),o.add("basic-subtitle",{label:"Subtítulo",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-font" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
         <div class="py-4">
             <div class="max-w-7xl mx-auto px-4">
                 <h3 class="text-secondary text-xl md:text-2xl font-semibold">Subtítulo</h3>
             </div>
         </div>
-        `}),l.add("basic-paragraph",{label:"Párrafo",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-paragraph" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
+        `}),o.add("basic-paragraph",{label:"Párrafo",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-paragraph" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
         <div class="py-4">
             <div class="max-w-7xl mx-auto px-4">
                 <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
             </div>
         </div>
-        `}),l.add("basic-divider-gray",{label:"Separador Horizontal Gris",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-minus" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
+        `}),o.add("basic-divider-gray",{label:"Separador Horizontal Gris",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-minus" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
         <div class="py-8">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="bg-gray-400 w-full" style="height: 2px;"></div>
             </div>
         </div>
-        `}),l.add("basic-divider-blue",{label:"Separador Horizontal Azul",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-minus" style="font-size: 30px; display: block; margin: 0 auto; color: #23366A;"></i>',content:`
+        `}),o.add("basic-divider-blue",{label:"Separador Horizontal Azul",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-minus" style="font-size: 30px; display: block; margin: 0 auto; color: #23366A;"></i>',content:`
         <div class="py-8">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="bg-primary w-full" style="height: 2px;"></div>
             </div>
         </div>
-        `}),l.add("basic-image",{label:"Imagen Básica",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-image" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
+        `}),o.add("basic-image",{label:"Imagen Básica",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-image" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
         <div class="py-4">
             <div class="max-w-7xl mx-auto px-4">
                 <img src="https://via.placeholder.com/800x500/cccccc/666666?text=Imagen" alt="Imagen" class="w-full h-64 md:h-80 object-cover rounded-2xl">
             </div>
         </div>
-        `}),i.DomComponents.getType("map-component")||i.DomComponents.addType("map-component",{model:{defaults:{name:"Mapa",draggable:!0,droppable:!1,stylable:!0,script:function(){const s=this.id,t=document.getElementById(s),e=t.getAttribute("data-lat")||13.6929,a=t.getAttribute("data-lng")||-89.2182,d=t.getAttribute("data-zoom")||14,c=t.getAttribute("data-marker-title")||"Ubicación";if(!document.getElementById("leaflet-css")){const n=document.createElement("link");n.id="leaflet-css",n.rel="stylesheet",n.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",n.integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=",n.crossOrigin="",document.head.appendChild(n)}if(typeof L>"u"){const n=document.createElement("script");n.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",n.integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=",n.crossOrigin="",n.onload=function(){r()},document.head.appendChild(n)}else r();function r(){const n=L.map(s).setView([e,a],d);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(n),L.marker([e,a]).addTo(n).bindPopup(c).openPopup(),setTimeout(function(){n.invalidateSize()},100)}},attributes:{"data-lat":13.6929,"data-lng":-89.2182,"data-zoom":14,"data-marker-title":"Nuestra ubicación"},traits:[{type:"number",name:"data-lat",label:"Latitud",placeholder:"13.6929"},{type:"number",name:"data-lng",label:"Longitud",placeholder:"-89.2182"},{type:"number",name:"data-zoom",label:"Nivel de Zoom",min:1,max:18,placeholder:"14"},{type:"text",name:"data-marker-title",label:"Título Marcador",placeholder:"Nuestra ubicación"}]}}}),l.add("basic-map",{label:"Mapa Básico",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-map-o" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:{type:"map-component",style:{width:"100%",height:"400px",margin:"0 auto",position:"relative",borderRadius:"1rem"}}}),i.on("load",()=>{const s=i.Canvas.getFrameEl();if(s){const t=s.contentDocument.head;if(!t.querySelector("#leaflet-css")){const e=document.createElement("link");e.id="leaflet-css",e.rel="stylesheet",e.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",e.integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=",e.crossOrigin="",t.appendChild(e)}if(!t.querySelector("#map-custom-css")){const e=document.createElement("style");e.id="map-custom-css",e.innerHTML=`
+        `}),i.DomComponents.getType("map-component")||i.DomComponents.addType("map-component",{model:{defaults:{name:"Mapa",draggable:!0,droppable:!1,stylable:!0,script:function(){const a=this.id,t=document.getElementById(a),e=t.getAttribute("data-lat")||13.6929,l=t.getAttribute("data-lng")||-89.2182,d=t.getAttribute("data-zoom")||14,n=t.getAttribute("data-marker-title")||"Ubicación";if(!document.getElementById("leaflet-css")){const r=document.createElement("link");r.id="leaflet-css",r.rel="stylesheet",r.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",r.integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=",r.crossOrigin="",document.head.appendChild(r)}if(typeof L>"u"){const r=document.createElement("script");r.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",r.integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=",r.crossOrigin="",r.onload=function(){c()},document.head.appendChild(r)}else c();function c(){const r=L.map(a).setView([e,l],d);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(r),L.marker([e,l]).addTo(r).bindPopup(n).openPopup(),setTimeout(function(){r.invalidateSize()},100)}},attributes:{"data-lat":13.6929,"data-lng":-89.2182,"data-zoom":14,"data-marker-title":"Nuestra ubicación"},traits:[{type:"number",name:"data-lat",label:"Latitud",placeholder:"13.6929"},{type:"number",name:"data-lng",label:"Longitud",placeholder:"-89.2182"},{type:"number",name:"data-zoom",label:"Nivel de Zoom",min:1,max:18,placeholder:"14"},{type:"text",name:"data-marker-title",label:"Título Marcador",placeholder:"Nuestra ubicación"}]}}}),o.add("basic-map",{label:"Mapa Básico",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-map-o" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:{type:"map-component",style:{width:"100%",height:"400px",margin:"0 auto",position:"relative",borderRadius:"1rem"}}}),i.on("load",()=>{const a=i.Canvas.getFrameEl();if(a){const t=a.contentDocument.head;if(!t.querySelector("#leaflet-css")){const e=document.createElement("link");e.id="leaflet-css",e.rel="stylesheet",e.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",e.integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=",e.crossOrigin="",t.appendChild(e)}if(!t.querySelector("#map-custom-css")){const e=document.createElement("style");e.id="map-custom-css",e.innerHTML=`
                     .leaflet-container {
                         height: 100%;
                         width: 100%;
@@ -395,7 +571,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                         border-radius: 1rem;
                         overflow: hidden;
                     }
-                `,t.appendChild(e)}}}),l.add("basic-ordered-list",{label:"Lista Numerada",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-list-ol" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
+                `,t.appendChild(e)}}}),o.add("basic-ordered-list",{label:"Lista Numerada",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-list-ol" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
             <div class="py-4">
                 <div class="max-w-7xl mx-auto px-4">
                     <ol class="list-decimal pl-6 space-y-2 text-gray-600 text-base md:text-lg leading-relaxed">
@@ -405,7 +581,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     </ol>
                 </div>
             </div>
-            `}),l.add("basic-unordered-list",{label:"Lista con Viñetas",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-list-ul" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
+            `}),o.add("basic-unordered-list",{label:"Lista con Viñetas",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-list-ul" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
             <div class="py-4">
                 <div class="max-w-7xl mx-auto px-4">
                     <ul class="list-disc pl-6 space-y-2 text-gray-600 text-base md:text-lg leading-relaxed">
@@ -415,14 +591,14 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     </ul>
                 </div>
             </div>
-            `})}function ht(i){const l=i.BlockManager;i.on("load",()=>{const e=i.Canvas.getFrameEl();if(e&&e.contentDocument){const a=e.contentDocument.createElement("style");a.textContent=`
+            `})}function kt(i){const o=i.BlockManager;i.on("load",()=>{const e=i.Canvas.getFrameEl();if(e&&e.contentDocument){const l=e.contentDocument.createElement("style");l.textContent=`
                 .text-primary { color: #23366A !important; }
                 .bg-primary { background-color: #23366A !important; }
                 .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important; }
                 .rounded-lg { border-radius: 0.5rem !important; }
                 .transition-all { transition: all 0.3s ease !important; }
                 .hover\\:shadow-lg:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important; }
-            `,e.contentDocument.head.appendChild(a)}}),l.add("contact-cards-grid",{label:"Tarjetas de Contacto",category:"Tarjetas",attributes:{class:"gjs-block-section"},media:`
+            `,e.contentDocument.head.appendChild(l)}}),o.add("contact-cards-grid",{label:"Tarjetas de Contacto",category:"Tarjetas",attributes:{class:"gjs-block-section"},media:`
     <svg viewBox="0 0 32 32" width="32" height="32">
         <rect width="32" height="32" fill="#ffffff"/>
         
@@ -504,7 +680,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </div>
             </div>
         </div>
-        `}),l.add("icon-cards-grid",{label:"Tarjetas con Icono",category:"Tarjetas",attributes:{class:"gjs-block-section"},media:`
+        `}),o.add("icon-cards-grid",{label:"Tarjetas con Icono",category:"Tarjetas",attributes:{class:"gjs-block-section"},media:`
     <svg viewBox="0 0 32 32" width="32" height="32">
         <rect width="32" height="32" fill="#ffffff"/>
         
@@ -598,7 +774,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     </div>
                 </div>
             </div>
-            `}),l.add("link-buttons-grid",{label:"Botones de Enlace",category:"Botones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+            `}),o.add("link-buttons-grid",{label:"Botones de Enlace",category:"Botones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="2" width="9" height="9" rx="1" fill="#23366A" />
       <rect x="13" y="2" width="9" height="9" rx="1" fill="#23366A" />
       <rect x="2" y="13" width="9" height="9" rx="1" fill="#23366A" />
@@ -633,7 +809,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         </div>
       </div>
     </section>
-    `}),i.DomComponents.addType("link-button",{isComponent:function(e){return e.classList&&e.classList.contains("link-button")},model:{defaults:{tagName:"a",droppable:!1,attributes:{class:"link-button"},traits:[{type:"text",name:"title",label:"Título",changeProp:!0},{type:"text",name:"href",label:"URL Enlace"},{type:"select",name:"target",label:"Comportamiento",options:[{id:"",name:"Misma ventana"},{id:"_blank",name:"Nueva ventana"}]},{type:"button",text:"Seleccionar PDF",full:!0,command:function(e){const a=e.getSelected();try{V("pdf",d=>{const c=d.alt||d.name||"Documento PDF";a.set("attributes",{...a.get("attributes"),href:d.src,target:"_blank","data-pdf-name":c}),a.get("title")||a.set("title",c),a.get("title")||a.set("title",c)})}catch(d){console.error("Error al seleccionar PDF:",d),q(`Error al seleccionar PDF: ${d.message}`,"error")}}}],script:function(){const e=this,a=e.querySelector("i");e.addEventListener("mouseenter",()=>{a&&(a.classList.remove("text-primary"),a.classList.add("text-white"))}),e.addEventListener("mouseleave",()=>{e.classList.contains("hover:bg-primary")&&a&&(a.classList.add("text-primary"),a.classList.remove("text-white"))})}},init(){this.on("change:title",this.updateTitle)},updateTitle(){const e=this.get("title"),a=this.view.el.querySelector("span");a&&e&&(a.textContent=e)}},view:{init(){const e=this.model.get("script"),a=this.el;e&&a&&e.call(a)}}}),i.DomComponents.addType("link",{model:{init(){this.getClasses().includes("link-button")&&this.set("type","link-button")}}})}function xt(i){const l=i.BlockManager;l.add("white-column-block",{label:"Columna Blanca",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `}),i.DomComponents.addType("link-button",{isComponent:function(e){return e.classList&&e.classList.contains("link-button")},model:{defaults:{tagName:"a",droppable:!1,attributes:{class:"link-button"},traits:[{type:"text",name:"title",label:"Título",changeProp:!0},{type:"text",name:"href",label:"URL Enlace"},{type:"select",name:"target",label:"Comportamiento",options:[{id:"",name:"Misma ventana"},{id:"_blank",name:"Nueva ventana"}]},{type:"button",text:"Seleccionar PDF",full:!0,command:function(e){const l=e.getSelected();try{J("pdf",d=>{const n=d.alt||d.name||"Documento PDF";l.set("attributes",{...l.get("attributes"),href:d.src,target:"_blank","data-pdf-name":n}),l.get("title")||l.set("title",n),l.get("title")||l.set("title",n)})}catch(d){console.error("Error al seleccionar PDF:",d),q(`Error al seleccionar PDF: ${d.message}`,"error")}}}],script:function(){const e=this,l=e.querySelector("i");e.addEventListener("mouseenter",()=>{l&&(l.classList.remove("text-primary"),l.classList.add("text-white"))}),e.addEventListener("mouseleave",()=>{e.classList.contains("hover:bg-primary")&&l&&(l.classList.add("text-primary"),l.classList.remove("text-white"))})}},init(){this.on("change:title",this.updateTitle)},updateTitle(){const e=this.get("title"),l=this.view.el.querySelector("span");l&&e&&(l.textContent=e)}},view:{init(){const e=this.model.get("script"),l=this.el;e&&l&&e.call(l)}}}),i.DomComponents.addType("link",{model:{init(){this.getClasses().includes("link-button")&&this.set("type","link-button")}}})}function At(i){const o=i.BlockManager;o.add("white-column-block",{label:"Columna Blanca",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="4" width="20" height="16" rx="1" fill="#ffffff" stroke="#dddddd"/>
         </svg>`,content:`
         <section class="py-8 md:py-14 bg-white">
@@ -644,7 +820,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </div>
             </div>
         </section>
-        `}),l.add("primary-column-block",{label:"Columna Azul",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("primary-column-block",{label:"Columna Azul",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="4" width="20" height="16" rx="1" fill="#23366A"/>
         </svg>`,content:`
         <section class="py-8 md:py-14 bg-primary">
@@ -655,7 +831,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </div>
             </div>
         </section>
-        `}),l.add("two-columns-list-block",{label:"Dos Columnas con Listas",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("two-columns-list-block",{label:"Dos Columnas con Listas",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="4" width="9" height="16" rx="1" fill="#ffffff" stroke="#dddddd"/>
             <rect x="13" y="4" width="9" height="16" rx="1" fill="#ffffff" stroke="#dddddd"/>
             <circle cx="3.5" cy="7" r="0.5" fill="#23366A"/>
@@ -689,7 +865,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </div>
             </div>
         </section>
-        `}),l.add("two-columns-text-block",{label:"Dos Columnas con Párrafos",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("two-columns-text-block",{label:"Dos Columnas con Párrafos",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="4" width="9" height="16" rx="1" fill="#ffffff" stroke="#dddddd"/>
             <rect x="13" y="4" width="9" height="16" rx="1" fill="#ffffff" stroke="#dddddd"/>
             <rect x="3" y="6" width="7" height="1" fill="#23366A"/>
@@ -717,7 +893,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </div>
             </div>
         </section>
-        `}),l.add("one-column-list-block",{label:"Una Columna con Lista",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("one-column-list-block",{label:"Una Columna con Lista",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="4" width="20" height="16" rx="1" fill="#ffffff" stroke="#dddddd"/>
             <rect x="3" y="6" width="10" height="1.5" fill="#23366A"/>
             <rect x="3" y="8.5" width="8" height="1" fill="#666666"/>
@@ -741,7 +917,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 <p class="mt-6 text-gray-600 text-sm">* Para más información, términos y condiciones visita <a href="http://www.mastercad.com" class="text-primary hover:underline">www.mastercad.com</a></p>
             </div>
         </section>
-        `}),l.add("one-column-links-block",{label:"Una Columna con Enlaces",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("one-column-links-block",{label:"Una Columna con Enlaces",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="4" width="20" height="16" rx="1" fill="#ffffff" stroke="#dddddd"/>
             <rect x="3" y="6" width="10" height="1.5" fill="#23366A"/>
             <rect x="3" y="8.5" width="8" height="1" fill="#666666"/>
@@ -783,7 +959,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </style>
             </div>
         </section>
-        `})}function bt(i){const l=i.BlockManager;l.add("pdf-viewer-block",{label:"Visor PDF",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-file-pdf-o" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
+        `})}function St(i){const o=i.BlockManager;o.add("pdf-viewer-block",{label:"Visor PDF",category:"Basic",attributes:{class:"gjs-block-section"},media:'<i class="fa fa-file-pdf-o" style="font-size: 30px; display: block; margin: 0 auto;"></i>',content:`
         <div class="pdf-viewer-container bg-white shadow-lg rounded-lg overflow-hidden" data-gjs-type="pdf-viewer" style="min-height: 500px; width: 100%;">
             <div class="p-4 bg-primary text-white font-semibold flex justify-between items-center">
                 <span class="pdf-title">Documento PDF</span>
@@ -793,7 +969,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 <p class="text-gray-500 text-center">Haga clic para seleccionar un archivo PDF</p>
             </div>
         </div>
-        `}),l.add("pdf-with-text-block",{label:"PDF con Texto",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("pdf-with-text-block",{label:"PDF con Texto",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="4" width="9" height="16" fill="#e74c3c"/>
             <rect x="13" y="5" width="8" height="2" fill="#333"/>
             <rect x="13" y="9" width="7" height="1" fill="#777"/>
@@ -821,54 +997,54 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </div>
             </div>
         </section>
-        `})}function yt(i){const l=i.BlockManager,s=13.6929,t=-89.2182,e={mapTitle:"Contáctanos",contactCards:[{id:1,title:"Whatsapp Institucional",iconClass:"ri-whatsapp-fill",items:[{text:"7988-8080",link:"tel:79888080",type:"phone"}]},{id:2,title:"Tarjeta de Crédito",iconClass:"ri-bank-card-fill",items:[{text:"2209-6857",link:"tel:22096857",type:"phone"},{text:"2209-6828",link:"tel:22096828",type:"phone"},{text:"2209-6837 (Horarios no hábiles)",link:"tel:22096837",type:"phone"}]}],locations:[{id:1,name:"Oficina Central",address:"San Salvador, El Salvador",lat:13.6929,lng:-89.2182}]},a=r=>{const n=r.contactCards.map(o=>{const u=o.items.map(h=>{let f="";return h.type==="phone"?f=`<a href="${h.link}" class="text-gray-600 hover:text-primary block mt-1">${h.text}</a>`:h.type==="email"?f=`<a href="${h.link}" class="text-gray-600 hover:text-primary block mt-1">${h.text}</a>`:h.type==="address"?f=`<p class="text-gray-600 mt-1">${h.text}</p>`:h.type==="hours"?f=`<p class="text-gray-600 mt-1">${h.text}</p>`:f=`<p class="text-gray-600 mt-1">${h.text}</p>`,f}).join("");return`
+        `})}function Et(i){const o=i.BlockManager,a=13.6929,t=-89.2182,e={mapTitle:"Contáctanos",contactCards:[{id:1,title:"Whatsapp Institucional",iconClass:"ri-whatsapp-fill",items:[{text:"7988-8080",link:"tel:79888080",type:"phone"}]},{id:2,title:"Tarjeta de Crédito",iconClass:"ri-bank-card-fill",items:[{text:"2209-6857",link:"tel:22096857",type:"phone"},{text:"2209-6828",link:"tel:22096828",type:"phone"},{text:"2209-6837 (Horarios no hábiles)",link:"tel:22096837",type:"phone"}]}],locations:[{id:1,name:"Oficina Central",address:"San Salvador, El Salvador",lat:13.6929,lng:-89.2182}]},l=c=>{const r=c.contactCards.map(s=>{const u=s.items.map(h=>{let f="";return h.type==="phone"?f=`<a href="${h.link}" class="text-gray-600 hover:text-primary block mt-1">${h.text}</a>`:h.type==="email"?f=`<a href="${h.link}" class="text-gray-600 hover:text-primary block mt-1">${h.text}</a>`:h.type==="address"?f=`<p class="text-gray-600 mt-1">${h.text}</p>`:h.type==="hours"?f=`<p class="text-gray-600 mt-1">${h.text}</p>`:f=`<p class="text-gray-600 mt-1">${h.text}</p>`,f}).join("");return`
             <div class="contact-card mb-6 p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
                 <div class="flex items-center gap-4">
                     <div class="flex-shrink-0 h-14 w-14 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center">
-                        <i class="${o.iconClass} text-primary text-2xl"></i>
+                        <i class="${s.iconClass} text-primary text-2xl"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-medium text-primary">${o.title}</h3>
+                        <h3 class="text-lg font-medium text-primary">${s.title}</h3>
                         <div class="mt-1">
                             ${u}
                         </div>
                     </div>
                 </div>
             </div>
-            `}).join(""),m=r.locations.map(o=>({lat:o.lat,lng:o.lng,title:o.name,info:`
-                    <h4 style="font-weight: bold; margin-bottom: 5px;">${o.name}</h4>
-                    ${o.address?`<p style="margin: 0;">${o.address}</p>`:""}
+            `}).join(""),p=c.locations.map(s=>({lat:s.lat,lng:s.lng,title:s.name,info:`
+                    <h4 style="font-weight: bold; margin-bottom: 5px;">${s.name}</h4>
+                    ${s.address?`<p style="margin: 0;">${s.address}</p>`:""}
                 `}));return`
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-left mb-8">
-                <h2 class="text-4xl font-bold text-primary">${r.mapTitle||"Contáctanos"}</h2>
+                <h2 class="text-4xl font-bold text-primary">${c.mapTitle||"Contáctanos"}</h2>
             </div>
             <div class="flex flex-col lg:flex-row gap-6">
                 <div class="lg:w-1/3 order-2 lg:order-1">
                     <div class="contact-cards" style="max-height: 500px; overflow-y: auto; padding-right: 8px; scrollbar-width: thin;">
-                        ${n}
+                        ${r}
                     </div>
                 </div>
                 <div class="lg:w-2/3 order-1 lg:order-2">
                     <div class="contact-map-container" style="height: 500px; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
-                        <div class="contact-map" data-markers='${JSON.stringify(m)}' style="width:100%; height:100%; border-radius: 0.75rem;"></div>
+                        <div class="contact-map" data-markers='${JSON.stringify(p)}' style="width:100%; height:100%; border-radius: 0.75rem;"></div>
                     </div>
                 </div>
             </div>
         </div>
-        `};i.DomComponents.addType("contact-map-component",{isComponent:function(r){return r.getAttribute&&r.getAttribute("data-gjs-type")==="contact-map-component"?{type:"contact-map-component"}:!1},model:{defaults:{name:"Mapa de Contacto",tagName:"section",draggable:!0,droppable:!1,editable:!1,stylable:!0,resizable:!1,attributes:{class:"py-10 bg-white","data-gjs-type":"contact-map-component","data-map-config":JSON.stringify(e)},traits:[{type:"button",label:!1,text:"Configurar Mapa",full:!0,command:r=>{const n=r.getSelected();n&&d(r,n)}}],components:r=>{const n=r.getAttributes()["data-map-config"];let m={...e};if(n)try{m={...e,...JSON.parse(n)}}catch(o){console.error("Error parsing map config:",o)}return a(m)},script:function(){const r=()=>{const n=this,m=n.getAttribute("data-map-config"),o=n.querySelector(".contact-map");if(!o)return;let u={mapTitle:"Contáctanos",contactCards:[{id:1,title:"Whatsapp Institucional",iconClass:"ri-whatsapp-fill",items:[{text:"7988-8080",link:"tel:79888080",type:"phone"}]}],locations:[{id:1,name:"Oficina Central",address:"San Salvador, El Salvador",lat:13.6929,lng:-89.2182}]};if(m)try{u=JSON.parse(m)}catch(f){console.error("Error parsing map config:",f)}if(!document.getElementById("leaflet-css")){const f=document.createElement("link");f.id="leaflet-css",f.rel="stylesheet",f.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",document.head.appendChild(f)}if(typeof window.L>"u"){const f=document.createElement("script");f.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",f.onload=function(){h()},document.head.appendChild(f)}else h();function h(){try{o._leaflet_id&&o._map.remove();let f=[];try{o.getAttribute("data-markers")?f=JSON.parse(o.getAttribute("data-markers")):u.locations&&u.locations.length>0&&(f=u.locations.map(p=>({lat:p.lat,lng:p.lng,title:p.name,info:`
-                                                <h4 style="font-weight: bold; margin-bottom: 5px;">${p.name}</h4>
-                                                ${p.address?`<p style="margin: 0;">${p.address}</p>`:""}
-                                            `})))}catch(p){console.error("Error parsing markers:",p)}let S=f.length>0?f[0].lat:13.6929,T=f.length>0?f[0].lng:-89.2182;const x=window.L.map(o).setView([S,T],12);if(window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(x),f.length>0){const p=[];f.forEach(g=>{if(g.lat&&g.lng){p.push([g.lat,g.lng]);const b=window.L.marker([g.lat,g.lng]).addTo(x);g.info?b.bindPopup(g.info):g.title&&b.bindPopup(g.title)}}),p.length>1&&x.fitBounds(p,{padding:[30,30]})}setTimeout(()=>{document.querySelectorAll(".leaflet-control-container, .leaflet-top, .leaflet-bottom, .leaflet-control").forEach(g=>{g.style.zIndex="999"})},100),setTimeout(()=>{x.invalidateSize()},300),o._map=x}catch(f){console.error("Error rendering map:",f)}}};document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r()}},init(){this.set("type","contact-map-component"),this.addAttributes({"data-gjs-type":"contact-map-component"})},getConfig(){const r=this.getAttributes()["data-map-config"];if(r)try{return{...e,...JSON.parse(r)}}catch(n){console.error("Error parsing map config:",n)}return{...e}},setConfig(r){const n={...this.getConfig(),...r},m={...this.getAttributes(),"data-gjs-type":"contact-map-component","data-map-config":JSON.stringify(n)};this.setAttributes(m),this.components(a(n)),this.view.render()},exportConfig(){return JSON.stringify(this.getConfig(),null,2)},importConfig(r){try{const n=JSON.parse(r);return this.setConfig(n),!0}catch(n){return console.error("Error importing configuration:",n),!1}}}});function d(r,n){const m=n.getConfig(),o=[...m.contactCards],u=[...m.locations];let h="contactCards";const f=()=>o.length===0?'<div style="text-align: center; padding: 20px; color: #6b7280;">No hay tarjetas de contacto. Haz clic en "Agregar Tarjeta" para crear una.</div>':o.map((C,w)=>{const v=C.items.map((y,k)=>`
+        `};i.DomComponents.addType("contact-map-component",{isComponent:function(c){return c.getAttribute&&c.getAttribute("data-gjs-type")==="contact-map-component"?{type:"contact-map-component"}:!1},model:{defaults:{name:"Mapa de Contacto",tagName:"section",draggable:!0,droppable:!1,editable:!1,stylable:!0,resizable:!1,attributes:{class:"py-10 bg-white","data-gjs-type":"contact-map-component","data-map-config":JSON.stringify(e)},traits:[{type:"button",label:!1,text:"Configurar Mapa",full:!0,command:c=>{const r=c.getSelected();r&&d(c,r)}}],components:c=>{const r=c.getAttributes()["data-map-config"];let p={...e};if(r)try{p={...e,...JSON.parse(r)}}catch(s){console.error("Error parsing map config:",s)}return l(p)},script:function(){const c=()=>{const r=this,p=r.getAttribute("data-map-config"),s=r.querySelector(".contact-map");if(!s)return;let u={mapTitle:"Contáctanos",contactCards:[{id:1,title:"Whatsapp Institucional",iconClass:"ri-whatsapp-fill",items:[{text:"7988-8080",link:"tel:79888080",type:"phone"}]}],locations:[{id:1,name:"Oficina Central",address:"San Salvador, El Salvador",lat:13.6929,lng:-89.2182}]};if(p)try{u=JSON.parse(p)}catch(f){console.error("Error parsing map config:",f)}if(!document.getElementById("leaflet-css")){const f=document.createElement("link");f.id="leaflet-css",f.rel="stylesheet",f.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",document.head.appendChild(f)}if(typeof window.L>"u"){const f=document.createElement("script");f.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",f.onload=function(){h()},document.head.appendChild(f)}else h();function h(){try{s._leaflet_id&&s._map.remove();let f=[];try{s.getAttribute("data-markers")?f=JSON.parse(s.getAttribute("data-markers")):u.locations&&u.locations.length>0&&(f=u.locations.map(m=>({lat:m.lat,lng:m.lng,title:m.name,info:`
+                                                <h4 style="font-weight: bold; margin-bottom: 5px;">${m.name}</h4>
+                                                ${m.address?`<p style="margin: 0;">${m.address}</p>`:""}
+                                            `})))}catch(m){console.error("Error parsing markers:",m)}let S=f.length>0?f[0].lat:13.6929,T=f.length>0?f[0].lng:-89.2182;const x=window.L.map(s).setView([S,T],12);if(window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(x),f.length>0){const m=[];f.forEach(g=>{if(g.lat&&g.lng){m.push([g.lat,g.lng]);const b=window.L.marker([g.lat,g.lng]).addTo(x);g.info?b.bindPopup(g.info):g.title&&b.bindPopup(g.title)}}),m.length>1&&x.fitBounds(m,{padding:[30,30]})}setTimeout(()=>{document.querySelectorAll(".leaflet-control-container, .leaflet-top, .leaflet-bottom, .leaflet-control").forEach(g=>{g.style.zIndex="999"})},100),setTimeout(()=>{x.invalidateSize()},300),s._map=x}catch(f){console.error("Error rendering map:",f)}}};document.readyState==="loading"?document.addEventListener("DOMContentLoaded",c):c()}},init(){this.set("type","contact-map-component"),this.addAttributes({"data-gjs-type":"contact-map-component"})},getConfig(){const c=this.getAttributes()["data-map-config"];if(c)try{return{...e,...JSON.parse(c)}}catch(r){console.error("Error parsing map config:",r)}return{...e}},setConfig(c){const r={...this.getConfig(),...c},p={...this.getAttributes(),"data-gjs-type":"contact-map-component","data-map-config":JSON.stringify(r)};this.setAttributes(p),this.components(l(r)),this.view.render()},exportConfig(){return JSON.stringify(this.getConfig(),null,2)},importConfig(c){try{const r=JSON.parse(c);return this.setConfig(r),!0}catch(r){return console.error("Error importing configuration:",r),!1}}}});function d(c,r){const p=r.getConfig(),s=[...p.contactCards],u=[...p.locations];let h="contactCards";const f=()=>s.length===0?'<div style="text-align: center; padding: 20px; color: #6b7280;">No hay tarjetas de contacto. Haz clic en "Agregar Tarjeta" para crear una.</div>':s.map((C,w)=>{const v=C.items.map((y,A)=>`
                                 <div class="contact-item-row" style="display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start;">
                                     <div style="flex: 1;">
-                                        <input type="text" class="card-item-text" data-card-id="${C.id}" data-item-index="${k}" value="${y.text}" placeholder="Texto" style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                                        <input type="text" class="card-item-text" data-card-id="${C.id}" data-item-index="${A}" value="${y.text}" placeholder="Texto" style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                                     </div>
                                     <div style="flex: 1;">
-                                        <input type="text" class="card-item-link" data-card-id="${C.id}" data-item-index="${k}" value="${y.link||""}" placeholder="Enlace (opcional)" style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                                        <input type="text" class="card-item-link" data-card-id="${C.id}" data-item-index="${A}" value="${y.link||""}" placeholder="Enlace (opcional)" style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                                     </div>
                                     <div>
-                                        <select class="card-item-type" data-card-id="${C.id}" data-item-index="${k}" style="padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                                        <select class="card-item-type" data-card-id="${C.id}" data-item-index="${A}" style="padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                                             <option value="phone" ${y.type==="phone"?"selected":""}>Teléfono</option>
                                             <option value="email" ${y.type==="email"?"selected":""}>Email</option>
                                             <option value="address" ${y.type==="address"?"selected":""}>Dirección</option>
@@ -876,7 +1052,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                             <option value="text" ${y.type==="text"||!y.type?"selected":""}>Texto</option>
                                         </select>
                                     </div>
-                                    <button class="delete-card-item-btn" data-card-id="${C.id}" data-item-index="${k}" style="background: #ef4444; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='#dc2626'" onmouseout="this.style.background='#ef4444'">
+                                    <button class="delete-card-item-btn" data-card-id="${C.id}" data-item-index="${A}" style="background: #ef4444; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='#dc2626'" onmouseout="this.style.background='#ef4444'">
                                         ✕
                                     </button>
                                 </div>
@@ -986,7 +1162,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 
                 <div style="margin-bottom: 24px;">
                     <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Título del Mapa</label>
-                    <input type="text" id="map-title-input" value="${m.mapTitle||"Contáctanos"}" placeholder="Título para la sección de mapa" style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                    <input type="text" id="map-title-input" value="${p.mapTitle||"Contáctanos"}" placeholder="Título para la sección de mapa" style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                 </div>
                 
                 <div class="tabs-container" style="margin-bottom: 20px;">
@@ -1015,7 +1191,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     </button>
                 </div>
             </div>
-        `,p=r.Modal;p.setTitle(""),p.setContent(x),p.open({attributes:{class:"contact-map-modal"}}),setTimeout(()=>{const C=document.querySelector(".gjs-mdl-dialog");C&&(C.style.backgroundColor="white");const w=document.querySelector(".gjs-mdl-header");w&&(w.style.padding="0",w.style.border="none",w.style.display="none");const v=document.querySelector(".gjs-mdl-close");v&&(v.style.display="none")},10);let g=1;o.length>0&&(g=Math.max(...o.map(C=>C.id))+1);let b=1;u.length>0&&(b=Math.max(...u.map(C=>C.id))+1);const E=()=>{document.getElementById("tab-content").innerHTML=T(),h==="contactCards"?A():j()},I=C=>{h=C,document.querySelectorAll(".tab-btn").forEach(w=>{w.id===`${C}-tab-btn`?(w.style.background="#f9fafb",w.style.borderBottom="2px solid #23366A",w.style.color="#23366A",w.style.fontWeight="600"):(w.style.background="transparent",w.style.borderBottom="2px solid transparent",w.style.color="#6b7280",w.style.fontWeight="500")}),E()},A=()=>{var C;document.querySelectorAll(".delete-card-btn").forEach(w=>{w.addEventListener("click",v=>{const y=parseInt(v.target.dataset.cardId);if(o.length>1){const k=o.findIndex(B=>B.id===y);k!==-1&&(o.splice(k,1),E())}else alert("Debe haber al menos una tarjeta de contacto")})}),document.querySelectorAll(".add-card-item-btn").forEach(w=>{w.addEventListener("click",v=>{const y=parseInt(v.target.dataset.cardId),k=o.find(B=>B.id===y);k&&(k.items.push({text:"Nuevo elemento",link:"",type:"text"}),E())})}),document.querySelectorAll(".delete-card-item-btn").forEach(w=>{w.addEventListener("click",v=>{const y=parseInt(v.target.dataset.cardId),k=parseInt(v.target.dataset.itemIndex),B=o.find($=>$.id===y);B&&B.items.length>1?(B.items.splice(k,1),E()):alert("Cada tarjeta debe tener al menos un elemento")})}),document.querySelectorAll(".card-title").forEach(w=>{w.addEventListener("input",v=>{const y=parseInt(v.target.dataset.cardId),k=o.find(B=>B.id===y);k&&(k.title=v.target.value)})}),document.querySelectorAll(".card-icon").forEach(w=>{w.addEventListener("change",v=>{const y=parseInt(v.target.dataset.cardId),k=o.find(B=>B.id===y);k&&(k.iconClass=v.target.value)})}),document.querySelectorAll(".card-item-text").forEach(w=>{w.addEventListener("input",v=>{const y=parseInt(v.target.dataset.cardId),k=parseInt(v.target.dataset.itemIndex),B=o.find($=>$.id===y);B&&B.items[k]&&(B.items[k].text=v.target.value)})}),document.querySelectorAll(".card-item-link").forEach(w=>{w.addEventListener("input",v=>{const y=parseInt(v.target.dataset.cardId),k=parseInt(v.target.dataset.itemIndex),B=o.find($=>$.id===y);B&&B.items[k]&&(B.items[k].link=v.target.value)})}),document.querySelectorAll(".card-item-type").forEach(w=>{w.addEventListener("change",v=>{const y=parseInt(v.target.dataset.cardId),k=parseInt(v.target.dataset.itemIndex),B=o.find($=>$.id===y);if(B&&B.items[k]){if(B.items[k].type=v.target.value,v.target.value==="phone"){const $=B.items[k].text||"";B.items[k].link=`tel:${$.replace(/\D/g,"")}`}else v.target.value==="email"&&(B.items[k].link=`mailto:${B.items[k].text||""}`);E()}})}),(C=document.getElementById("add-card-btn"))==null||C.addEventListener("click",()=>{o.push({id:g++,title:`Nueva Tarjeta ${o.length+1}`,iconClass:"ri-phone-fill",items:[{text:"Elemento 1",link:"",type:"text"}]}),E()})},j=()=>{var w;document.querySelectorAll(".delete-location-btn").forEach(v=>{v.addEventListener("click",y=>{const k=parseInt(y.target.dataset.locationId);if(u.length>1){const B=u.findIndex($=>$.id===k);B!==-1&&(u.splice(B,1),E())}else alert("Debe haber al menos una ubicación")})});const C=(v,y)=>{const k=parseInt(v.target.dataset.locationId),B=u.find($=>$.id===k);B&&(B[y]=v.target.value)};document.querySelectorAll(".location-name").forEach(v=>{v.addEventListener("input",y=>C(y,"name"))}),document.querySelectorAll(".location-address").forEach(v=>{v.addEventListener("input",y=>C(y,"address"))}),document.querySelectorAll(".location-lat").forEach(v=>{v.addEventListener("input",y=>C(y,"lat"))}),document.querySelectorAll(".location-lng").forEach(v=>{v.addEventListener("input",y=>C(y,"lng"))}),(w=document.getElementById("add-location-btn"))==null||w.addEventListener("click",()=>{u.push({id:b++,name:`Nueva Ubicación ${u.length+1}`,address:"",lat:s,lng:t}),E()})};setTimeout(()=>{var C,w,v,y,k,B;(C=document.getElementById("contact-cards-tab-btn"))==null||C.addEventListener("click",()=>{I("contactCards")}),(w=document.getElementById("locations-tab-btn"))==null||w.addEventListener("click",()=>{I("locations")}),h==="contactCards"?A():j(),(v=document.getElementById("export-btn"))==null||v.addEventListener("click",()=>{const $={mapTitle:document.getElementById("map-title-input").value.trim()||"Contáctanos",contactCards:o,locations:u},z=JSON.stringify($,null,2),H="data:application/json;charset=utf-8,"+encodeURIComponent(z),_="mapa-contacto-config.json",P=document.createElement("a");P.setAttribute("href",H),P.setAttribute("download",_),P.style.display="none",document.body.appendChild(P),P.click(),document.body.removeChild(P)}),(y=document.getElementById("import-btn"))==null||y.addEventListener("click",()=>{const $=document.createElement("input");$.type="file",$.accept="application/json",$.onchange=z=>{const H=z.target.files[0],_=new FileReader;_.onload=P=>{try{const M=JSON.parse(P.target.result);M?(M.mapTitle&&(document.getElementById("map-title-input").value=M.mapTitle),M.contactCards&&Array.isArray(M.contactCards)&&M.contactCards.length>0&&(o.length=0,M.contactCards.forEach(D=>{o.push({id:D.id||g++,title:D.title||"",iconClass:D.iconClass||"ri-phone-fill",items:Array.isArray(D.items)?D.items.map(O=>({text:O.text||"",link:O.link||"",type:O.type||"text"})):[{text:"Elemento",link:"",type:"text"}]})})),M.locations&&Array.isArray(M.locations)&&M.locations.length>0&&(u.length=0,M.locations.forEach(D=>{u.push({id:D.id||b++,name:D.name||"",address:D.address||"",lat:D.lat||s,lng:D.lng||t})})),E(),alert("Configuración importada con éxito")):alert("Formato de archivo no válido")}catch(M){alert("Error al procesar el archivo: "+M.message)}},_.readAsText(H)},$.click()}),(k=document.getElementById("save-btn"))==null||k.addEventListener("click",()=>{const $=o.some(D=>!D.title||D.title.trim()===""),z=o.some(D=>D.items.some(O=>!O.text||O.text.trim()==="")),H=u.some(D=>!D.name||D.name.trim()===""),_=u.some(D=>!D.lat||!D.lng||isNaN(D.lat)||isNaN(D.lng));if($){alert("Todas las tarjetas deben tener un título"),I("contactCards");return}if(z){alert("Todos los elementos de las tarjetas deben tener texto"),I("contactCards");return}if(H){alert("Todas las ubicaciones deben tener un nombre"),I("locations");return}if(_){alert("Todas las ubicaciones deben tener coordenadas válidas"),I("locations");return}const M={mapTitle:document.getElementById("map-title-input").value.trim()||"Contáctanos",contactCards:o,locations:u};n.setConfig(M),p.close()}),(B=document.getElementById("cancel-btn"))==null||B.addEventListener("click",()=>{p.close()})},100)}l.add("contact-map-block",{label:"Mapa de Contacto",category:"Mapas",content:{type:"contact-map-component",attributes:{class:"py-10 bg-white","data-gjs-type":"contact-map-component","data-map-config":JSON.stringify(e)}},media:`<svg viewBox="0 0 32 32" width="32" height="32">
+        `,m=c.Modal;m.setTitle(""),m.setContent(x),m.open({attributes:{class:"contact-map-modal"}}),setTimeout(()=>{const C=document.querySelector(".gjs-mdl-dialog");C&&(C.style.backgroundColor="white");const w=document.querySelector(".gjs-mdl-header");w&&(w.style.padding="0",w.style.border="none",w.style.display="none");const v=document.querySelector(".gjs-mdl-close");v&&(v.style.display="none")},10);let g=1;s.length>0&&(g=Math.max(...s.map(C=>C.id))+1);let b=1;u.length>0&&(b=Math.max(...u.map(C=>C.id))+1);const E=()=>{document.getElementById("tab-content").innerHTML=T(),h==="contactCards"?k():B()},I=C=>{h=C,document.querySelectorAll(".tab-btn").forEach(w=>{w.id===`${C}-tab-btn`?(w.style.background="#f9fafb",w.style.borderBottom="2px solid #23366A",w.style.color="#23366A",w.style.fontWeight="600"):(w.style.background="transparent",w.style.borderBottom="2px solid transparent",w.style.color="#6b7280",w.style.fontWeight="500")}),E()},k=()=>{var C;document.querySelectorAll(".delete-card-btn").forEach(w=>{w.addEventListener("click",v=>{const y=parseInt(v.target.dataset.cardId);if(s.length>1){const A=s.findIndex(j=>j.id===y);A!==-1&&(s.splice(A,1),E())}else alert("Debe haber al menos una tarjeta de contacto")})}),document.querySelectorAll(".add-card-item-btn").forEach(w=>{w.addEventListener("click",v=>{const y=parseInt(v.target.dataset.cardId),A=s.find(j=>j.id===y);A&&(A.items.push({text:"Nuevo elemento",link:"",type:"text"}),E())})}),document.querySelectorAll(".delete-card-item-btn").forEach(w=>{w.addEventListener("click",v=>{const y=parseInt(v.target.dataset.cardId),A=parseInt(v.target.dataset.itemIndex),j=s.find($=>$.id===y);j&&j.items.length>1?(j.items.splice(A,1),E()):alert("Cada tarjeta debe tener al menos un elemento")})}),document.querySelectorAll(".card-title").forEach(w=>{w.addEventListener("input",v=>{const y=parseInt(v.target.dataset.cardId),A=s.find(j=>j.id===y);A&&(A.title=v.target.value)})}),document.querySelectorAll(".card-icon").forEach(w=>{w.addEventListener("change",v=>{const y=parseInt(v.target.dataset.cardId),A=s.find(j=>j.id===y);A&&(A.iconClass=v.target.value)})}),document.querySelectorAll(".card-item-text").forEach(w=>{w.addEventListener("input",v=>{const y=parseInt(v.target.dataset.cardId),A=parseInt(v.target.dataset.itemIndex),j=s.find($=>$.id===y);j&&j.items[A]&&(j.items[A].text=v.target.value)})}),document.querySelectorAll(".card-item-link").forEach(w=>{w.addEventListener("input",v=>{const y=parseInt(v.target.dataset.cardId),A=parseInt(v.target.dataset.itemIndex),j=s.find($=>$.id===y);j&&j.items[A]&&(j.items[A].link=v.target.value)})}),document.querySelectorAll(".card-item-type").forEach(w=>{w.addEventListener("change",v=>{const y=parseInt(v.target.dataset.cardId),A=parseInt(v.target.dataset.itemIndex),j=s.find($=>$.id===y);if(j&&j.items[A]){if(j.items[A].type=v.target.value,v.target.value==="phone"){const $=j.items[A].text||"";j.items[A].link=`tel:${$.replace(/\D/g,"")}`}else v.target.value==="email"&&(j.items[A].link=`mailto:${j.items[A].text||""}`);E()}})}),(C=document.getElementById("add-card-btn"))==null||C.addEventListener("click",()=>{s.push({id:g++,title:`Nueva Tarjeta ${s.length+1}`,iconClass:"ri-phone-fill",items:[{text:"Elemento 1",link:"",type:"text"}]}),E()})},B=()=>{var w;document.querySelectorAll(".delete-location-btn").forEach(v=>{v.addEventListener("click",y=>{const A=parseInt(y.target.dataset.locationId);if(u.length>1){const j=u.findIndex($=>$.id===A);j!==-1&&(u.splice(j,1),E())}else alert("Debe haber al menos una ubicación")})});const C=(v,y)=>{const A=parseInt(v.target.dataset.locationId),j=u.find($=>$.id===A);j&&(j[y]=v.target.value)};document.querySelectorAll(".location-name").forEach(v=>{v.addEventListener("input",y=>C(y,"name"))}),document.querySelectorAll(".location-address").forEach(v=>{v.addEventListener("input",y=>C(y,"address"))}),document.querySelectorAll(".location-lat").forEach(v=>{v.addEventListener("input",y=>C(y,"lat"))}),document.querySelectorAll(".location-lng").forEach(v=>{v.addEventListener("input",y=>C(y,"lng"))}),(w=document.getElementById("add-location-btn"))==null||w.addEventListener("click",()=>{u.push({id:b++,name:`Nueva Ubicación ${u.length+1}`,address:"",lat:a,lng:t}),E()})};setTimeout(()=>{var C,w,v,y,A,j;(C=document.getElementById("contact-cards-tab-btn"))==null||C.addEventListener("click",()=>{I("contactCards")}),(w=document.getElementById("locations-tab-btn"))==null||w.addEventListener("click",()=>{I("locations")}),h==="contactCards"?k():B(),(v=document.getElementById("export-btn"))==null||v.addEventListener("click",()=>{const $={mapTitle:document.getElementById("map-title-input").value.trim()||"Contáctanos",contactCards:s,locations:u},N=JSON.stringify($,null,2),H="data:application/json;charset=utf-8,"+encodeURIComponent(N),_="mapa-contacto-config.json",P=document.createElement("a");P.setAttribute("href",H),P.setAttribute("download",_),P.style.display="none",document.body.appendChild(P),P.click(),document.body.removeChild(P)}),(y=document.getElementById("import-btn"))==null||y.addEventListener("click",()=>{const $=document.createElement("input");$.type="file",$.accept="application/json",$.onchange=N=>{const H=N.target.files[0],_=new FileReader;_.onload=P=>{try{const M=JSON.parse(P.target.result);M?(M.mapTitle&&(document.getElementById("map-title-input").value=M.mapTitle),M.contactCards&&Array.isArray(M.contactCards)&&M.contactCards.length>0&&(s.length=0,M.contactCards.forEach(D=>{s.push({id:D.id||g++,title:D.title||"",iconClass:D.iconClass||"ri-phone-fill",items:Array.isArray(D.items)?D.items.map(O=>({text:O.text||"",link:O.link||"",type:O.type||"text"})):[{text:"Elemento",link:"",type:"text"}]})})),M.locations&&Array.isArray(M.locations)&&M.locations.length>0&&(u.length=0,M.locations.forEach(D=>{u.push({id:D.id||b++,name:D.name||"",address:D.address||"",lat:D.lat||a,lng:D.lng||t})})),E(),alert("Configuración importada con éxito")):alert("Formato de archivo no válido")}catch(M){alert("Error al procesar el archivo: "+M.message)}},_.readAsText(H)},$.click()}),(A=document.getElementById("save-btn"))==null||A.addEventListener("click",()=>{const $=s.some(D=>!D.title||D.title.trim()===""),N=s.some(D=>D.items.some(O=>!O.text||O.text.trim()==="")),H=u.some(D=>!D.name||D.name.trim()===""),_=u.some(D=>!D.lat||!D.lng||isNaN(D.lat)||isNaN(D.lng));if($){alert("Todas las tarjetas deben tener un título"),I("contactCards");return}if(N){alert("Todos los elementos de las tarjetas deben tener texto"),I("contactCards");return}if(H){alert("Todas las ubicaciones deben tener un nombre"),I("locations");return}if(_){alert("Todas las ubicaciones deben tener coordenadas válidas"),I("locations");return}const M={mapTitle:document.getElementById("map-title-input").value.trim()||"Contáctanos",contactCards:s,locations:u};r.setConfig(M),m.close()}),(j=document.getElementById("cancel-btn"))==null||j.addEventListener("click",()=>{m.close()})},100)}o.add("contact-map-block",{label:"Mapa de Contacto",category:"Mapas",content:{type:"contact-map-component",attributes:{class:"py-10 bg-white","data-gjs-type":"contact-map-component","data-map-config":JSON.stringify(e)}},media:`<svg viewBox="0 0 32 32" width="32" height="32">
         <rect width="32" height="32" fill="#f8f9fa" rx="2"/>
         <rect x="2" y="2" width="9" height="28" fill="#e9ecef" rx="1"/>
         <rect x="13" y="2" width="17" height="28" fill="#a8dadc" rx="1"/>
@@ -1025,7 +1201,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         <line x1="3" y1="11" x2="10" y2="11" stroke="#23366A" stroke-width="0.8"/>
         <line x1="3" y1="15" x2="10" y2="15" stroke="#23366A" stroke-width="0.8"/>
         <line x1="3" y1="19" x2="10" y2="19" stroke="#23366A" stroke-width="0.8"/>
-    </svg>`}),i.on("load",()=>{const r=i.Canvas.getFrameEl();if(r){const n=r.contentDocument.head;if(!n.querySelector("#leaflet-css")){const m=document.createElement("link");m.id="leaflet-css",m.rel="stylesheet",m.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",n.appendChild(m)}if(!n.querySelector("#contact-map-css")){const m=document.createElement("style");m.id="contact-map-css",m.innerHTML=`
+    </svg>`}),i.on("load",()=>{const c=i.Canvas.getFrameEl();if(c){const r=c.contentDocument.head;if(!r.querySelector("#leaflet-css")){const p=document.createElement("link");p.id="leaflet-css",p.rel="stylesheet",p.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",r.appendChild(p)}if(!r.querySelector("#contact-map-css")){const p=document.createElement("style");p.id="contact-map-css",p.innerHTML=`
                 .leaflet-container {
                     height: 100%;
                     width: 100%;
@@ -1046,70 +1222,70 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 .leaflet-bottom {
                     z-index: 999 !important;
                 }
-            `,n.appendChild(m)}}}),i.on("component:selected",r=>{if(r.get("type")==="contact-map-component"){const n=r.getEl();if(n){const m=n.querySelector(".contact-map");m&&m._map&&setTimeout(()=>{m._map.invalidateSize()},100)}}}),i.on("storage:end:load",()=>{setTimeout(()=>{i.getWrapper().find('[data-gjs-type="contact-map-component"]').forEach(m=>{m.set("type","contact-map-component");const o=m.getEl();if(o){const u=m.get("script");u&&typeof u=="function"&&u.call(o)}})},1e3)}),i.on("component:mount",r=>{const n=r.getEl();n&&n.getAttribute&&n.getAttribute("data-gjs-type")==="contact-map-component"&&(r.set("type","contact-map-component"),setTimeout(()=>{const m=r.get("script");m&&typeof m=="function"&&m.call(n)},500))}),i.on("component:clone",r=>{if(r.get("type")==="contact-map-component"){const n=r.getEl();if(n){const m=n.querySelector(".contact-map");m&&m._map&&(m._map.remove(),delete m._map),setTimeout(()=>{const o=r.get("script");o&&typeof o=="function"&&o.call(n)},500)}}}),i.on("canvas:render",()=>{setTimeout(()=>{i.getWrapper().find('[data-gjs-type="contact-map-component"]').forEach(m=>{m.set("type","contact-map-component");const o=m.getEl();if(o&&o.isConnected){const u=m.get("script");u&&typeof u=="function"&&u.call(o)}})},800)}),i.on("storage:start:store",()=>{i.getWrapper().find('[data-gjs-type="contact-map-component"]').forEach(m=>{m.set("type","contact-map-component"),m.addAttributes({"data-gjs-type":"contact-map-component"});const o=m.getConfig();m.addAttributes({"data-map-config":JSON.stringify(o)})})})}function vt(i){const l=i.BlockManager,s=13.6929,t=-89.2182,e={mapTitle:"Nuestras Agencias",agencies:[{id:1,name:"Agencia Central",address:"San Salvador, El Salvador",phone:"+503 2209-6800",lat:13.6929,lng:-89.2182}]},a=r=>{const n=r.agencies.map(o=>`
+            `,r.appendChild(p)}}}),i.on("component:selected",c=>{if(c.get("type")==="contact-map-component"){const r=c.getEl();if(r){const p=r.querySelector(".contact-map");p&&p._map&&setTimeout(()=>{p._map.invalidateSize()},100)}}}),i.on("storage:end:load",()=>{setTimeout(()=>{i.getWrapper().find('[data-gjs-type="contact-map-component"]').forEach(p=>{p.set("type","contact-map-component");const s=p.getEl();if(s){const u=p.get("script");u&&typeof u=="function"&&u.call(s)}})},1e3)}),i.on("component:mount",c=>{const r=c.getEl();r&&r.getAttribute&&r.getAttribute("data-gjs-type")==="contact-map-component"&&(c.set("type","contact-map-component"),setTimeout(()=>{const p=c.get("script");p&&typeof p=="function"&&p.call(r)},500))}),i.on("component:clone",c=>{if(c.get("type")==="contact-map-component"){const r=c.getEl();if(r){const p=r.querySelector(".contact-map");p&&p._map&&(p._map.remove(),delete p._map),setTimeout(()=>{const s=c.get("script");s&&typeof s=="function"&&s.call(r)},500)}}}),i.on("canvas:render",()=>{setTimeout(()=>{i.getWrapper().find('[data-gjs-type="contact-map-component"]').forEach(p=>{p.set("type","contact-map-component");const s=p.getEl();if(s&&s.isConnected){const u=p.get("script");u&&typeof u=="function"&&u.call(s)}})},800)}),i.on("storage:start:store",()=>{i.getWrapper().find('[data-gjs-type="contact-map-component"]').forEach(p=>{p.set("type","contact-map-component"),p.addAttributes({"data-gjs-type":"contact-map-component"});const s=p.getConfig();p.addAttributes({"data-map-config":JSON.stringify(s)})})})}function Tt(i){const o=i.BlockManager,a=13.6929,t=-89.2182,e={mapTitle:"Nuestras Agencias",agencies:[{id:1,name:"Agencia Central",address:"San Salvador, El Salvador",phone:"+503 2209-6800",lat:13.6929,lng:-89.2182}]},l=c=>{const r=c.agencies.map(s=>`
             <div class="agency-item mb-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
-                <h3 class="text-lg font-medium text-primary">${o.name}</h3>
-                ${o.address?`<p class="text-gray-600 flex items-center gap-2 mt-1"><i class="ri-map-pin-line text-primary"></i> ${o.address}</p>`:""}
-                ${o.phone?`<p class="text-gray-600 flex items-center gap-2 mt-1"><i class="ri-phone-line text-primary"></i> <a href="tel:${o.phone.replace(/\s+/g,"")}" class="hover:text-primary transition-colors">${o.phone}</a></p>`:""}
+                <h3 class="text-lg font-medium text-primary">${s.name}</h3>
+                ${s.address?`<p class="text-gray-600 flex items-center gap-2 mt-1"><i class="ri-map-pin-line text-primary"></i> ${s.address}</p>`:""}
+                ${s.phone?`<p class="text-gray-600 flex items-center gap-2 mt-1"><i class="ri-phone-line text-primary"></i> <a href="tel:${s.phone.replace(/\s+/g,"")}" class="hover:text-primary transition-colors">${s.phone}</a></p>`:""}
             </div>
-        `).join(""),m=r.agencies.map(o=>({lat:o.lat,lng:o.lng,title:o.name,info:`
-                    <h4 style="font-weight: bold; margin-bottom: 5px;">${o.name}</h4>
-                    ${o.address?`<p style="margin: 0 0 3px 0;"><i class="ri-map-pin-line"></i> ${o.address}</p>`:""}
-                    ${o.phone?`<p style="margin: 0;"><i class="ri-phone-line"></i> <a href="tel:${o.phone.replace(/\s+/g,"")}" style="color: #23366A; text-decoration: none;">${o.phone}</a></p>`:""}
+        `).join(""),p=c.agencies.map(s=>({lat:s.lat,lng:s.lng,title:s.name,info:`
+                    <h4 style="font-weight: bold; margin-bottom: 5px;">${s.name}</h4>
+                    ${s.address?`<p style="margin: 0 0 3px 0;"><i class="ri-map-pin-line"></i> ${s.address}</p>`:""}
+                    ${s.phone?`<p style="margin: 0;"><i class="ri-phone-line"></i> <a href="tel:${s.phone.replace(/\s+/g,"")}" style="color: #23366A; text-decoration: none;">${s.phone}</a></p>`:""}
                 `}));return`
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-left mb-8">
-                <h2 class="text-4xl font-bold text-primary">${r.mapTitle||"Nuestras Agencias"}</h2>
+                <h2 class="text-4xl font-bold text-primary">${c.mapTitle||"Nuestras Agencias"}</h2>
             </div>
             <div class="flex flex-col lg:flex-row gap-6">
                 <div class="lg:w-1/3 order-2 lg:order-1">
                     <div class="agencies-list" style="max-height: 500px; overflow-y: auto; padding-right: 8px; scrollbar-width: thin;">
-                        ${n}
+                        ${r}
                     </div>
                 </div>
                 <div class="lg:w-2/3 order-1 lg:order-2">
                     <div class="agencies-map-container" style="height: 500px; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
-                        <div class="agencies-map" data-markers='${JSON.stringify(m)}' style="width:100%; height:100%; border-radius: 0.75rem;"></div>
+                        <div class="agencies-map" data-markers='${JSON.stringify(p)}' style="width:100%; height:100%; border-radius: 0.75rem;"></div>
                     </div>
                 </div>
             </div>
         </div>
-        `};i.DomComponents.addType("agencies-map-component",{isComponent:function(r){return r.getAttribute&&r.getAttribute("data-gjs-type")==="agencies-map-component"?{type:"agencies-map-component"}:!1},model:{defaults:{name:"Mapa de Agencias",tagName:"section",draggable:!0,droppable:!1,editable:!1,stylable:!0,resizable:!1,attributes:{class:"py-10 bg-white","data-gjs-type":"agencies-map-component","data-map-config":JSON.stringify(e)},traits:[{type:"button",label:!1,text:"Configurar Mapa",full:!0,command:r=>{const n=r.getSelected();n&&d(r,n)}}],components:r=>{const n=r.getAttributes()["data-map-config"];let m={...e};if(n)try{m={...e,...JSON.parse(n)}}catch(o){console.error("Error parsing map config:",o)}return a(m)},script:function(){const r=()=>{const n=this,m=n.getAttribute("data-map-config"),o=n.querySelector(".agencies-map");if(!o)return;let u={mapTitle:"Nuestras Agencias",agencies:[{id:1,name:"Agencia Central",address:"San Salvador, El Salvador",phone:"+503 2209-6800",lat:13.6929,lng:-89.2182}]};if(m)try{u=JSON.parse(m)}catch(f){console.error("Error parsing map config:",f)}if(!document.getElementById("leaflet-css")){const f=document.createElement("link");f.id="leaflet-css",f.rel="stylesheet",f.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",document.head.appendChild(f)}if(typeof window.L>"u"){const f=document.createElement("script");f.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",f.onload=function(){h()},document.head.appendChild(f)}else h();function h(){try{o._leaflet_id&&o._map.remove();let f=[];try{o.getAttribute("data-markers")?f=JSON.parse(o.getAttribute("data-markers")):u.agencies&&u.agencies.length>0&&(f=u.agencies.map(g=>({lat:g.lat,lng:g.lng,title:g.name,info:`
+        `};i.DomComponents.addType("agencies-map-component",{isComponent:function(c){return c.getAttribute&&c.getAttribute("data-gjs-type")==="agencies-map-component"?{type:"agencies-map-component"}:!1},model:{defaults:{name:"Mapa de Agencias",tagName:"section",draggable:!0,droppable:!1,editable:!1,stylable:!0,resizable:!1,attributes:{class:"py-10 bg-white","data-gjs-type":"agencies-map-component","data-map-config":JSON.stringify(e)},traits:[{type:"button",label:!1,text:"Configurar Mapa",full:!0,command:c=>{const r=c.getSelected();r&&d(c,r)}}],components:c=>{const r=c.getAttributes()["data-map-config"];let p={...e};if(r)try{p={...e,...JSON.parse(r)}}catch(s){console.error("Error parsing map config:",s)}return l(p)},script:function(){const c=()=>{const r=this,p=r.getAttribute("data-map-config"),s=r.querySelector(".agencies-map");if(!s)return;let u={mapTitle:"Nuestras Agencias",agencies:[{id:1,name:"Agencia Central",address:"San Salvador, El Salvador",phone:"+503 2209-6800",lat:13.6929,lng:-89.2182}]};if(p)try{u=JSON.parse(p)}catch(f){console.error("Error parsing map config:",f)}if(!document.getElementById("leaflet-css")){const f=document.createElement("link");f.id="leaflet-css",f.rel="stylesheet",f.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",document.head.appendChild(f)}if(typeof window.L>"u"){const f=document.createElement("script");f.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",f.onload=function(){h()},document.head.appendChild(f)}else h();function h(){try{s._leaflet_id&&s._map.remove();let f=[];try{s.getAttribute("data-markers")?f=JSON.parse(s.getAttribute("data-markers")):u.agencies&&u.agencies.length>0&&(f=u.agencies.map(g=>({lat:g.lat,lng:g.lng,title:g.name,info:`
                                                 <h4 style="font-weight: bold; margin-bottom: 5px;">${g.name}</h4>
                                                 ${g.address?`<p style="margin: 0 0 3px 0;"><i class="ri-map-pin-line"></i> ${g.address}</p>`:""}
                                                 ${g.phone?`<p style="margin: 0;"><i class="ri-phone-line"></i> <a href="tel:${g.phone.replace(/\s+/g,"")}" style="color: #23366A; text-decoration: none;">${g.phone}</a></p>`:""}
-                                            `})))}catch(g){console.error("Error parsing markers:",g)}let S=f.length>0?f[0].lat:13.6929,T=f.length>0?f[0].lng:-89.2182;const x=window.L.map(o).setView([S,T],12);if(window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(x),f.length>0){const g=[];f.forEach(b=>{if(b.lat&&b.lng){g.push([b.lat,b.lng]);const E=window.L.marker([b.lat,b.lng]).addTo(x);b.info?E.bindPopup(b.info):b.title&&E.bindPopup(b.title)}}),g.length>1&&x.fitBounds(g,{padding:[30,30]})}const p=n.querySelectorAll(".agency-item");p&&p.length>0&&p.forEach((g,b)=>{b<f.length&&(g.addEventListener("click",()=>{const E=f[b];x.setView([E.lat,E.lng],15),x.eachLayer(I=>{I._latlng&&I._latlng.lat===E.lat&&I._latlng.lng===E.lng&&I.openPopup()})}),g.style.cursor="pointer")}),setTimeout(()=>{x.invalidateSize()},300),o._map=x}catch(f){console.error("Error rendering map:",f)}}};document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r()}},init(){this.set("type","agencies-map-component"),this.addAttributes({"data-gjs-type":"agencies-map-component"})},getConfig(){const r=this.getAttributes()["data-map-config"];if(r)try{return{...e,...JSON.parse(r)}}catch(n){console.error("Error parsing map config:",n)}return{...e}},setConfig(r){const n={...this.getConfig(),...r},m={...this.getAttributes(),"data-gjs-type":"agencies-map-component","data-map-config":JSON.stringify(n)};this.setAttributes(m),this.components(a(n)),this.view.render()},exportConfig(){return JSON.stringify(this.getConfig(),null,2)},importConfig(r){try{const n=JSON.parse(r);return this.setConfig(n),!0}catch(n){return console.error("Error importing configuration:",n),!1}}}});function d(r,n){const m=n.getConfig(),o=[...m.agencies],u=()=>o.map((p,g)=>`
-                <div class="agency-item" data-agency-id="${p.id}" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin-bottom: 16px; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#e5e7eb'">
+                                            `})))}catch(g){console.error("Error parsing markers:",g)}let S=f.length>0?f[0].lat:13.6929,T=f.length>0?f[0].lng:-89.2182;const x=window.L.map(s).setView([S,T],12);if(window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(x),f.length>0){const g=[];f.forEach(b=>{if(b.lat&&b.lng){g.push([b.lat,b.lng]);const E=window.L.marker([b.lat,b.lng]).addTo(x);b.info?E.bindPopup(b.info):b.title&&E.bindPopup(b.title)}}),g.length>1&&x.fitBounds(g,{padding:[30,30]})}const m=r.querySelectorAll(".agency-item");m&&m.length>0&&m.forEach((g,b)=>{b<f.length&&(g.addEventListener("click",()=>{const E=f[b];x.setView([E.lat,E.lng],15),x.eachLayer(I=>{I._latlng&&I._latlng.lat===E.lat&&I._latlng.lng===E.lng&&I.openPopup()})}),g.style.cursor="pointer")}),setTimeout(()=>{x.invalidateSize()},300),s._map=x}catch(f){console.error("Error rendering map:",f)}}};document.readyState==="loading"?document.addEventListener("DOMContentLoaded",c):c()}},init(){this.set("type","agencies-map-component"),this.addAttributes({"data-gjs-type":"agencies-map-component"})},getConfig(){const c=this.getAttributes()["data-map-config"];if(c)try{return{...e,...JSON.parse(c)}}catch(r){console.error("Error parsing map config:",r)}return{...e}},setConfig(c){const r={...this.getConfig(),...c},p={...this.getAttributes(),"data-gjs-type":"agencies-map-component","data-map-config":JSON.stringify(r)};this.setAttributes(p),this.components(l(r)),this.view.render()},exportConfig(){return JSON.stringify(this.getConfig(),null,2)},importConfig(c){try{const r=JSON.parse(c);return this.setConfig(r),!0}catch(r){return console.error("Error importing configuration:",r),!1}}}});function d(c,r){const p=r.getConfig(),s=[...p.agencies],u=()=>s.map((m,g)=>`
+                <div class="agency-item" data-agency-id="${m.id}" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin-bottom: 16px; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#e5e7eb'">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                         <h4 style="margin: 0; font-size: 15px; font-weight: 600; color: #111827;">Agencia ${g+1}</h4>
-                        <button class="delete-agency-btn" data-agency-id="${p.id}" style="background: #ef4444; color: white; border: none; padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='#dc2626'" onmouseout="this.style.background='#ef4444'">
+                        <button class="delete-agency-btn" data-agency-id="${m.id}" style="background: #ef4444; color: white; border: none; padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='#dc2626'" onmouseout="this.style.background='#ef4444'">
                             Eliminar
                         </button>
                     </div>
 
                     <div style="margin-bottom: 14px;">
                         <label style="display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;">Nombre de la Agencia *</label>
-                        <input type="text" class="agency-name" data-agency-id="${p.id}" value="${p.name||""}" placeholder="Nombre de la agencia" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                        <input type="text" class="agency-name" data-agency-id="${m.id}" value="${m.name||""}" placeholder="Nombre de la agencia" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                     </div>
 
                     <div style="margin-bottom: 14px;">
                         <label style="display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;">Dirección (opcional)</label>
-                        <input type="text" class="agency-address" data-agency-id="${p.id}" value="${p.address||""}" placeholder="Dirección de la agencia" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                        <input type="text" class="agency-address" data-agency-id="${m.id}" value="${m.address||""}" placeholder="Dirección de la agencia" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                     </div>
 
                     <div style="margin-bottom: 14px;">
                         <label style="display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;">Teléfono (opcional)</label>
-                        <input type="text" class="agency-phone" data-agency-id="${p.id}" value="${p.phone||""}" placeholder="Número de teléfono" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                        <input type="text" class="agency-phone" data-agency-id="${m.id}" value="${m.phone||""}" placeholder="Número de teléfono" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                     </div>
 
                     <div style="display: flex; gap: 10px; margin-bottom: 14px;">
                         <div style="flex: 1;">
                             <label style="display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;">Latitud *</label>
-                            <input type="number" step="0.0001" class="agency-lat" data-agency-id="${p.id}" value="${p.lat||""}" placeholder="Ej: 13.6929" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                            <input type="number" step="0.0001" class="agency-lat" data-agency-id="${m.id}" value="${m.lat||""}" placeholder="Ej: 13.6929" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                         </div>
                         <div style="flex: 1;">
                             <label style="display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;">Longitud *</label>
-                            <input type="number" step="0.0001" class="agency-lng" data-agency-id="${p.id}" value="${p.lng||""}" placeholder="Ej: -89.2182" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                            <input type="number" step="0.0001" class="agency-lng" data-agency-id="${m.id}" value="${m.lng||""}" placeholder="Ej: -89.2182" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                         </div>
                     </div>
 
@@ -1133,7 +1309,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 
                 <div style="margin-bottom: 24px;">
                     <label style="display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 8px;">Título del Mapa</label>
-                    <input type="text" id="map-title-input" value="${m.mapTitle||"Nuestras Agencias"}" placeholder="Título para la sección de mapa" style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                    <input type="text" id="map-title-input" value="${p.mapTitle||"Nuestras Agencias"}" placeholder="Título para la sección de mapa" style="width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                 </div>
                 
                 <div class="modal-body" style="max-height: 60vh; overflow-y: auto; padding-right: 8px;">
@@ -1157,7 +1333,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     </button>
                 </div>
             </div>
-        `,f=r.Modal;f.setTitle(""),f.setContent(h),f.open({attributes:{class:"agencies-map-modal"}}),setTimeout(()=>{const p=document.querySelector(".gjs-mdl-dialog");p&&(p.style.backgroundColor="white");const g=document.querySelector(".gjs-mdl-header");g&&(g.style.padding="0",g.style.border="none",g.style.display="none");const b=document.querySelector(".gjs-mdl-close");b&&(b.style.display="none")},10);let S=1;o.length>0&&(S=Math.max(...o.map(p=>p.id))+1);const T=()=>{document.getElementById("agencies-list").innerHTML=u(),x()},x=()=>{document.querySelectorAll(".delete-agency-btn").forEach(g=>{g.addEventListener("click",b=>{const E=parseInt(b.target.dataset.agencyId);if(o.length>1){const I=o.findIndex(A=>A.id===E);I!==-1&&(o.splice(I,1),T())}else alert("Debe haber al menos una agencia")})});const p=(g,b)=>{const E=parseInt(g.target.dataset.agencyId),I=o.find(A=>A.id===E);I&&(I[b]=g.target.value)};document.querySelectorAll(".agency-name").forEach(g=>{g.addEventListener("input",b=>p(b,"name"))}),document.querySelectorAll(".agency-address").forEach(g=>{g.addEventListener("input",b=>p(b,"address"))}),document.querySelectorAll(".agency-phone").forEach(g=>{g.addEventListener("input",b=>p(b,"phone"))}),document.querySelectorAll(".agency-lat").forEach(g=>{g.addEventListener("input",b=>p(b,"lat"))}),document.querySelectorAll(".agency-lng").forEach(g=>{g.addEventListener("input",b=>p(b,"lng"))})};setTimeout(()=>{var p,g,b,E,I;x(),(p=document.getElementById("add-agency-btn"))==null||p.addEventListener("click",()=>{o.push({id:S++,name:`Nueva Agencia ${o.length+1}`,address:"",phone:"",lat:s,lng:t}),T()}),(g=document.getElementById("export-btn"))==null||g.addEventListener("click",()=>{const A={mapTitle:document.getElementById("map-title-input").value.trim()||"Nuestras Agencias",agencies:o},j=JSON.stringify(A,null,2),C="data:application/json;charset=utf-8,"+encodeURIComponent(j),w="mapa-agencias-config.json",v=document.createElement("a");v.setAttribute("href",C),v.setAttribute("download",w),v.style.display="none",document.body.appendChild(v),v.click(),document.body.removeChild(v)}),(b=document.getElementById("import-btn"))==null||b.addEventListener("click",()=>{const A=document.createElement("input");A.type="file",A.accept="application/json",A.onchange=j=>{const C=j.target.files[0],w=new FileReader;w.onload=v=>{try{const y=JSON.parse(v.target.result);y&&y.agencies&&Array.isArray(y.agencies)?(y.mapTitle&&(document.getElementById("map-title-input").value=y.mapTitle),y.agencies.length>0?(o.length=0,y.agencies.forEach(k=>{o.push({id:k.id||S++,name:k.name||"",address:k.address||"",phone:k.phone||"",lat:k.lat||s,lng:k.lng||t})}),T(),alert("Configuración importada con éxito")):alert("El archivo no contiene ninguna agencia")):alert("Formato de archivo no válido")}catch(y){alert("Error al procesar el archivo: "+y.message)}},w.readAsText(C)},A.click()}),(E=document.getElementById("save-btn"))==null||E.addEventListener("click",()=>{const A=o.some(v=>!v.name||v.name.trim()===""),j=o.some(v=>!v.lat||!v.lng||isNaN(v.lat)||isNaN(v.lng));if(A){alert("Todas las agencias deben tener un nombre");return}if(j){alert("Todas las agencias deben tener coordenadas válidas");return}const w={mapTitle:document.getElementById("map-title-input").value.trim()||"Nuestras Agencias",agencies:o};n.setConfig(w),f.close()}),(I=document.getElementById("cancel-btn"))==null||I.addEventListener("click",()=>{f.close()})},100)}l.add("agencies-map-block",{label:"Mapa de Agencias",category:"Mapas",content:{type:"agencies-map-component",attributes:{class:"py-10 bg-white","data-gjs-type":"agencies-map-component","data-map-config":JSON.stringify(e)}},media:`<svg viewBox="0 0 32 32" width="32" height="32">
+        `,f=c.Modal;f.setTitle(""),f.setContent(h),f.open({attributes:{class:"agencies-map-modal"}}),setTimeout(()=>{const m=document.querySelector(".gjs-mdl-dialog");m&&(m.style.backgroundColor="white");const g=document.querySelector(".gjs-mdl-header");g&&(g.style.padding="0",g.style.border="none",g.style.display="none");const b=document.querySelector(".gjs-mdl-close");b&&(b.style.display="none")},10);let S=1;s.length>0&&(S=Math.max(...s.map(m=>m.id))+1);const T=()=>{document.getElementById("agencies-list").innerHTML=u(),x()},x=()=>{document.querySelectorAll(".delete-agency-btn").forEach(g=>{g.addEventListener("click",b=>{const E=parseInt(b.target.dataset.agencyId);if(s.length>1){const I=s.findIndex(k=>k.id===E);I!==-1&&(s.splice(I,1),T())}else alert("Debe haber al menos una agencia")})});const m=(g,b)=>{const E=parseInt(g.target.dataset.agencyId),I=s.find(k=>k.id===E);I&&(I[b]=g.target.value)};document.querySelectorAll(".agency-name").forEach(g=>{g.addEventListener("input",b=>m(b,"name"))}),document.querySelectorAll(".agency-address").forEach(g=>{g.addEventListener("input",b=>m(b,"address"))}),document.querySelectorAll(".agency-phone").forEach(g=>{g.addEventListener("input",b=>m(b,"phone"))}),document.querySelectorAll(".agency-lat").forEach(g=>{g.addEventListener("input",b=>m(b,"lat"))}),document.querySelectorAll(".agency-lng").forEach(g=>{g.addEventListener("input",b=>m(b,"lng"))})};setTimeout(()=>{var m,g,b,E,I;x(),(m=document.getElementById("add-agency-btn"))==null||m.addEventListener("click",()=>{s.push({id:S++,name:`Nueva Agencia ${s.length+1}`,address:"",phone:"",lat:a,lng:t}),T()}),(g=document.getElementById("export-btn"))==null||g.addEventListener("click",()=>{const k={mapTitle:document.getElementById("map-title-input").value.trim()||"Nuestras Agencias",agencies:s},B=JSON.stringify(k,null,2),C="data:application/json;charset=utf-8,"+encodeURIComponent(B),w="mapa-agencias-config.json",v=document.createElement("a");v.setAttribute("href",C),v.setAttribute("download",w),v.style.display="none",document.body.appendChild(v),v.click(),document.body.removeChild(v)}),(b=document.getElementById("import-btn"))==null||b.addEventListener("click",()=>{const k=document.createElement("input");k.type="file",k.accept="application/json",k.onchange=B=>{const C=B.target.files[0],w=new FileReader;w.onload=v=>{try{const y=JSON.parse(v.target.result);y&&y.agencies&&Array.isArray(y.agencies)?(y.mapTitle&&(document.getElementById("map-title-input").value=y.mapTitle),y.agencies.length>0?(s.length=0,y.agencies.forEach(A=>{s.push({id:A.id||S++,name:A.name||"",address:A.address||"",phone:A.phone||"",lat:A.lat||a,lng:A.lng||t})}),T(),alert("Configuración importada con éxito")):alert("El archivo no contiene ninguna agencia")):alert("Formato de archivo no válido")}catch(y){alert("Error al procesar el archivo: "+y.message)}},w.readAsText(C)},k.click()}),(E=document.getElementById("save-btn"))==null||E.addEventListener("click",()=>{const k=s.some(v=>!v.name||v.name.trim()===""),B=s.some(v=>!v.lat||!v.lng||isNaN(v.lat)||isNaN(v.lng));if(k){alert("Todas las agencias deben tener un nombre");return}if(B){alert("Todas las agencias deben tener coordenadas válidas");return}const w={mapTitle:document.getElementById("map-title-input").value.trim()||"Nuestras Agencias",agencies:s};r.setConfig(w),f.close()}),(I=document.getElementById("cancel-btn"))==null||I.addEventListener("click",()=>{f.close()})},100)}o.add("agencies-map-block",{label:"Mapa de Agencias",category:"Mapas",content:{type:"agencies-map-component",attributes:{class:"py-10 bg-white","data-gjs-type":"agencies-map-component","data-map-config":JSON.stringify(e)}},media:`<svg viewBox="0 0 32 32" width="32" height="32">
         <rect width="32" height="32" fill="#f8f9fa" rx="2"/>
         <rect x="2" y="2" width="9" height="28" fill="#e9ecef" rx="1"/>
         <rect x="13" y="2" width="17" height="28" fill="#a8dadc" rx="1"/>
@@ -1167,7 +1343,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         <line x1="3" y1="7" x2="10" y2="7" stroke="#23366A" stroke-width="0.8"/>
         <line x1="3" y1="11" x2="10" y2="11" stroke="#23366A" stroke-width="0.8"/>
         <line x1="3" y1="15" x2="10" y2="15" stroke="#23366A" stroke-width="0.8"/>
-    </svg>`}),i.on("load",()=>{const r=i.Canvas.getFrameEl();if(r){const n=r.contentDocument.head;if(!n.querySelector("#leaflet-css")){const m=document.createElement("link");m.id="leaflet-css",m.rel="stylesheet",m.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",n.appendChild(m)}if(!n.querySelector("#agencies-map-css")){const m=document.createElement("style");m.id="agencies-map-css",m.innerHTML=`
+    </svg>`}),i.on("load",()=>{const c=i.Canvas.getFrameEl();if(c){const r=c.contentDocument.head;if(!r.querySelector("#leaflet-css")){const p=document.createElement("link");p.id="leaflet-css",p.rel="stylesheet",p.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",r.appendChild(p)}if(!r.querySelector("#agencies-map-css")){const p=document.createElement("style");p.id="agencies-map-css",p.innerHTML=`
                     .leaflet-container {
                         height: 100%;
                         width: 100%;
@@ -1180,10 +1356,10 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     .agency-item:hover {
                         background-color: #f9fafb;
                     }
-                `,n.appendChild(m)}}}),i.on("component:selected",r=>{if(r.get("type")==="agencies-map-component"){const n=r.getEl();if(n){const m=n.querySelector(".agencies-map");m&&m._map&&setTimeout(()=>{m._map.invalidateSize()},100)}}}),i.on("storage:end:load",()=>{setTimeout(()=>{i.getWrapper().find('[data-gjs-type="agencies-map-component"]').forEach(m=>{m.set("type","agencies-map-component");const o=m.getEl();if(o){const u=m.get("script");u&&typeof u=="function"&&u.call(o)}})},1e3)}),i.on("component:mount",r=>{const n=r.getEl();n&&n.getAttribute&&n.getAttribute("data-gjs-type")==="agencies-map-component"&&(r.set("type","agencies-map-component"),setTimeout(()=>{const m=r.get("script");m&&typeof m=="function"&&m.call(n)},500))}),i.on("component:clone",r=>{if(r.get("type")==="agencies-map-component"){const n=r.getEl();if(n){const m=n.querySelector(".agencies-map");m&&m._map&&(m._map.remove(),delete m._map),setTimeout(()=>{const o=r.get("script");o&&typeof o=="function"&&o.call(n)},500)}}}),i.on("canvas:render",()=>{setTimeout(()=>{i.getWrapper().find('[data-gjs-type="agencies-map-component"]').forEach(m=>{m.set("type","agencies-map-component");const o=m.getEl();if(o&&o.isConnected){const u=m.get("script");u&&typeof u=="function"&&u.call(o)}})},800)}),i.on("storage:start:store",()=>{i.getWrapper().find('[data-gjs-type="agencies-map-component"]').forEach(m=>{m.set("type","agencies-map-component"),m.addAttributes({"data-gjs-type":"agencies-map-component"});const o=m.getConfig();m.addAttributes({"data-map-config":JSON.stringify(o)})})})}function wt(i){const l=i.BlockManager;i.on("load",()=>{const r=i.Canvas.getFrameEl();if(r&&r.contentDocument){const n=r.contentDocument.createElement("style");n.textContent=`
+                `,r.appendChild(p)}}}),i.on("component:selected",c=>{if(c.get("type")==="agencies-map-component"){const r=c.getEl();if(r){const p=r.querySelector(".agencies-map");p&&p._map&&setTimeout(()=>{p._map.invalidateSize()},100)}}}),i.on("storage:end:load",()=>{setTimeout(()=>{i.getWrapper().find('[data-gjs-type="agencies-map-component"]').forEach(p=>{p.set("type","agencies-map-component");const s=p.getEl();if(s){const u=p.get("script");u&&typeof u=="function"&&u.call(s)}})},1e3)}),i.on("component:mount",c=>{const r=c.getEl();r&&r.getAttribute&&r.getAttribute("data-gjs-type")==="agencies-map-component"&&(c.set("type","agencies-map-component"),setTimeout(()=>{const p=c.get("script");p&&typeof p=="function"&&p.call(r)},500))}),i.on("component:clone",c=>{if(c.get("type")==="agencies-map-component"){const r=c.getEl();if(r){const p=r.querySelector(".agencies-map");p&&p._map&&(p._map.remove(),delete p._map),setTimeout(()=>{const s=c.get("script");s&&typeof s=="function"&&s.call(r)},500)}}}),i.on("canvas:render",()=>{setTimeout(()=>{i.getWrapper().find('[data-gjs-type="agencies-map-component"]').forEach(p=>{p.set("type","agencies-map-component");const s=p.getEl();if(s&&s.isConnected){const u=p.get("script");u&&typeof u=="function"&&u.call(s)}})},800)}),i.on("storage:start:store",()=>{i.getWrapper().find('[data-gjs-type="agencies-map-component"]').forEach(p=>{p.set("type","agencies-map-component"),p.addAttributes({"data-gjs-type":"agencies-map-component"});const s=p.getConfig();p.addAttributes({"data-map-config":JSON.stringify(s)})})})}function Lt(i){const o=i.BlockManager;i.on("load",()=>{const c=i.Canvas.getFrameEl();if(c&&c.contentDocument){const r=c.contentDocument.createElement("style");r.textContent=`
               .text-primary { color: #23366A !important; }
               .text-secondary { color: #333333 !important; }
-          `,r.contentDocument.head.appendChild(n)}}),l.add("text-centered-full",{label:"Texto Centrado Completo",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+          `,c.contentDocument.head.appendChild(r)}}),o.add("text-centered-full",{label:"Texto Centrado Completo",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="6" y="4" width="12" height="2" fill="#23366A"/>
       <rect x="8" y="7" width="8" height="1" fill="#555"/>
       <rect x="4" y="10" width="16" height="1" fill="#888"/>
@@ -1196,7 +1372,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
               <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
             </div>
           </div>
-          `}),l.add("text-centered-no-subtitle",{label:"Texto Centrado Sin Subtítulo",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+          `}),o.add("text-centered-no-subtitle",{label:"Texto Centrado Sin Subtítulo",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="6" y="5" width="12" height="2" fill="#23366A"/>
       <rect x="4" y="10" width="16" height="1" fill="#888"/>
       <rect x="4" y="12" width="16" height="1" fill="#888"/>
@@ -1207,7 +1383,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
               <p class="text-gray-600 text-base md:text-lg leading-relaxed">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.</p>
             </div>
           </div>
-          `}),l.add("text-two-cols-left",{label:"Texto 2 Columnas Izq",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+          `}),o.add("text-two-cols-left",{label:"Texto 2 Columnas Izq",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="4" width="8" height="2" fill="#23366A"/>
       <rect x="2" y="7" width="6" height="1" fill="#555"/>
       <rect x="12" y="4" width="10" height="1" fill="#888"/>
@@ -1227,7 +1403,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
               </div>
             </div>
           </div>
-          `}),l.add("text-two-cols-left-no-subtitle",{label:"Texto 2 Columnas Izq Sin Sub",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+          `}),o.add("text-two-cols-left-no-subtitle",{label:"Texto 2 Columnas Izq Sin Sub",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="5" width="8" height="2" fill="#23366A"/>
       <rect x="12" y="4" width="10" height="1" fill="#888"/>
       <rect x="12" y="6" width="10" height="1" fill="#888"/>
@@ -1245,7 +1421,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
               </div>
             </div>
           </div>
-          `}),l.add("text-two-cols-right",{label:"Texto 2 Columnas Der",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+          `}),o.add("text-two-cols-right",{label:"Texto 2 Columnas Der",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="4" width="10" height="1" fill="#888"/>
       <rect x="2" y="6" width="10" height="1" fill="#888"/>
       <rect x="2" y="8" width="10" height="1" fill="#888"/>
@@ -1265,7 +1441,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
               </div>
             </div>
           </div>
-          `}),l.add("text-two-cols-right-no-subtitle",{label:"Texto 2 Columnas Der Sin Sub",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+          `}),o.add("text-two-cols-right-no-subtitle",{label:"Texto 2 Columnas Der Sin Sub",category:"Texto",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="4" width="10" height="1" fill="#888"/>
       <rect x="2" y="6" width="10" height="1" fill="#888"/>
       <rect x="2" y="8" width="10" height="1" fill="#888"/>
@@ -1283,10 +1459,10 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
               </div>
             </div>
           </div>
-          `})}function Ct(i){const l=i.BlockManager;i.on("load",()=>{const s=i.Canvas.getFrameEl();if(s&&s.contentDocument){const t=s.contentDocument.createElement("style");t.textContent=`
+          `})}function It(i){const o=i.BlockManager;i.on("load",()=>{const a=i.Canvas.getFrameEl();if(a&&a.contentDocument){const t=a.contentDocument.createElement("style");t.textContent=`
               .text-primary { color: #23366A !important; }
               .bg-primary { background-color: #23366A !important; }
-            `,s.contentDocument.head.appendChild(t)}}),l.add("basic-image",{label:"Imagen Básica",category:"Basic",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+            `,a.contentDocument.head.appendChild(t)}}),o.add("basic-image",{label:"Imagen Básica",category:"Basic",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="20" height="18" rx="2" fill="#23366A"/>
             <rect x="6" y="7" width="12" height="10" rx="1" fill="white"/>
         </svg>`,content:`
@@ -1295,7 +1471,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             <img src="https://via.placeholder.com/800x500/cccccc/666666?text=Imagen" alt="Imagen" class="w-full h-64 md:h-80 object-cover rounded-2xl">
           </div>
         </div>
-        `}),l.add("image-cols-equal",{label:"2 Imágenes Iguales",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("image-cols-equal",{label:"2 Imágenes Iguales",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="9" height="18" rx="1" fill="#23366A"/>
             <rect x="13" y="3" width="9" height="18" rx="1" fill="#23366A"/>
         </svg>`,content:`
@@ -1311,7 +1487,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </div>
-        `}),l.add("image-cols-equal-button",{label:"2 Imágenes Iguales con Botón",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("image-cols-equal-button",{label:"2 Imágenes Iguales con Botón",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="9" height="14" rx="1" fill="#23366A"/>
             <rect x="13" y="3" width="9" height="14" rx="1" fill="#23366A"/>
             <circle cx="6.5" cy="15" r="1.5" fill="white"/>
@@ -1341,7 +1517,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </div>
-        `}),l.add("image-cols-left-wide",{label:"Imagen Izq Grande",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("image-cols-left-wide",{label:"Imagen Izq Grande",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="12" height="18" rx="1" fill="#23366A"/>
             <rect x="16" y="3" width="6" height="18" rx="1" fill="#23366A"/>
         </svg>`,content:`
@@ -1357,7 +1533,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </div>
-        `}),l.add("image-cols-left-wide-button",{label:"Imagen Izq Grande con Botón",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("image-cols-left-wide-button",{label:"Imagen Izq Grande con Botón",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="12" height="14" rx="1" fill="#23366A"/>
             <rect x="16" y="3" width="6" height="14" rx="1" fill="#23366A"/>
             <circle cx="8" cy="15" r="1.5" fill="white"/>
@@ -1387,7 +1563,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </div>
-        `}),l.add("image-cols-right-wide",{label:"Imagen Der Grande",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("image-cols-right-wide",{label:"Imagen Der Grande",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="6" height="18" rx="1" fill="#23366A"/>
             <rect x="10" y="3" width="12" height="18" rx="1" fill="#23366A"/>
         </svg>`,content:`
@@ -1403,7 +1579,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </div>
-        `}),l.add("image-cols-right-wide-button",{label:"Imagen Der Grande con Botón",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("image-cols-right-wide-button",{label:"Imagen Der Grande con Botón",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="6" height="14" rx="1" fill="#23366A"/>
             <rect x="10" y="3" width="12" height="14" rx="1" fill="#23366A"/>
             <circle cx="5" cy="15" r="1.5" fill="white"/>
@@ -1433,7 +1609,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </div>
-        `}),l.add("image-mixed-columns",{label:"Imágenes Mixtas",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("image-mixed-columns",{label:"Imágenes Mixtas",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="10" height="18" rx="1" fill="#23366A"/>
             <rect x="14" y="3" width="8" height="8" rx="1" fill="#23366A"/>
             <rect x="14" y="13" width="8" height="8" rx="1" fill="#23366A"/>
@@ -1455,7 +1631,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </div>
-        `}),l.add("image-left-small-play",{label:"Izq Pequeña con Botón Play",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("image-left-small-play",{label:"Izq Pequeña con Botón Play",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="6" height="18" rx="1" fill="#23366A"/>
             <rect x="10" y="3" width="12" height="18" rx="1" fill="#23366A"/>
             <circle cx="5" cy="17" r="2" fill="white"/>
@@ -1480,7 +1656,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </div>
-        `}),l.add("image-right-small-play",{label:"Der Pequeña con Botón Play",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("image-right-small-play",{label:"Der Pequeña con Botón Play",category:"Imagenes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="3" width="12" height="18" rx="1" fill="#23366A"/>
             <rect x="16" y="3" width="6" height="18" rx="1" fill="#23366A"/>
             <circle cx="19" cy="17" r="2" fill="white"/>
@@ -1505,14 +1681,14 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </div>
-        `})}function At(i){const l=i.BlockManager;i.on("load",()=>{const T=i.Canvas.getFrameEl();if(T&&T.contentDocument){const x=T.contentDocument.createElement("style");x.textContent=`
+        `})}function Bt(i){const o=i.BlockManager;i.on("load",()=>{const T=i.Canvas.getFrameEl();if(T&&T.contentDocument){const x=T.contentDocument.createElement("style");x.textContent=`
               .bg-primary { background-color: #23366A !important; }
               .text-primary { color: #23366A !important; }
               .text-secondary { color: #333333 !important; }
               .border-primary { border-color: #23366A !important; }
               .hover\\:bg-primary:hover { background-color: #23366A !important; }
               .hover\\:text-white:hover { color: #ffffff !important; }
-          `,T.contentDocument.head.appendChild(x)}}),l.add("section-asymmetric-images",{label:"Sección con Imágenes Mixtas",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+          `,T.contentDocument.head.appendChild(x)}}),o.add("section-asymmetric-images",{label:"Sección con Imágenes Mixtas",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="4" width="9" height="2" fill="#333"/>
       <rect x="2" y="7" width="9" height="1" fill="#666"/>
       <rect x="2" y="9" width="9" height="1" fill="#666"/>
@@ -1547,7 +1723,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
           </div>
         </section>
-        `}),l.add("hero-left-full",{label:"Seccion Completa Izq",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-left-full",{label:"Seccion Completa Izq",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="4" width="9" height="16" rx="1" fill="#23366A"/>
       <rect x="13" y="6" width="8" height="2" fill="#333"/>
       <rect x="13" y="10" width="7" height="1" fill="#666"/>
@@ -1572,7 +1748,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-left-no-button",{label:"Seccion Izq Sin Botón",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-left-no-button",{label:"Seccion Izq Sin Botón",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="4" width="9" height="16" rx="1" fill="#23366A"/>
       <rect x="13" y="6" width="8" height="2" fill="#333"/>
       <rect x="13" y="10" width="7" height="1" fill="#666"/>
@@ -1592,7 +1768,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-left-no-subtitle",{label:"Seccion Izq Sin Subtítulo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-left-no-subtitle",{label:"Seccion Izq Sin Subtítulo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="4" width="9" height="16" rx="1" fill="#23366A"/>
       <rect x="13" y="8" width="8" height="2" fill="#333"/>
       <rect x="13" y="12" width="8" height="1" fill="#999"/>
@@ -1615,7 +1791,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-left-minimal",{label:"Seccion Izq Mínimo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-left-minimal",{label:"Seccion Izq Mínimo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="4" width="9" height="16" rx="1" fill="#23366A"/>
       <rect x="13" y="8" width="8" height="2" fill="#333"/>
       <rect x="13" y="12" width="8" height="1" fill="#999"/>
@@ -1633,7 +1809,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-right-full",{label:"Seccion Completa Der",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-right-full",{label:"Seccion Completa Der",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="6" width="8" height="2" fill="#333"/>
       <rect x="2" y="10" width="7" height="1" fill="#666"/>
       <rect x="2" y="13" width="8" height="1" fill="#999"/>
@@ -1658,7 +1834,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-right-no-button",{label:"Seccion Der Sin Botón",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-right-no-button",{label:"Seccion Der Sin Botón",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="6" width="8" height="2" fill="#333"/>
       <rect x="2" y="10" width="7" height="1" fill="#666"/>
       <rect x="2" y="13" width="8" height="1" fill="#999"/>
@@ -1678,7 +1854,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-right-no-subtitle",{label:"Seccion Der Sin Subtítulo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-right-no-subtitle",{label:"Seccion Der Sin Subtítulo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="8" width="8" height="2" fill="#333"/>
       <rect x="2" y="12" width="8" height="1" fill="#999"/>
       <rect x="2" y="15" width="5" height="2" rx="1" fill="#23366A"/>
@@ -1701,7 +1877,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-right-minimal",{label:"Seccion Der Mínimo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-right-minimal",{label:"Seccion Der Mínimo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="8" width="8" height="2" fill="#333"/>
       <rect x="2" y="12" width="8" height="1" fill="#999"/>
       <rect x="13" y="4" width="9" height="16" rx="1" fill="#23366A"/>
@@ -1719,7 +1895,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-vertical-full",{label:"Seccion Vertical Completa",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-vertical-full",{label:"Seccion Vertical Completa",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
     <rect x="4" y="2" width="16" height="2" fill="#333"/>
     <rect x="6" y="5" width="12" height="1" fill="#666"/>
     <rect x="4" y="7" width="16" height="1" fill="#999"/>
@@ -1744,7 +1920,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-vertical-no-button",{label:"Seccion Vertical Sin Botón",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-vertical-no-button",{label:"Seccion Vertical Sin Botón",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
     <rect x="4" y="2" width="16" height="2" fill="#333"/>
     <rect x="6" y="5" width="12" height="1" fill="#666"/>
     <rect x="4" y="7" width="16" height="1" fill="#999"/>
@@ -1762,7 +1938,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-vertical-no-subtitle",{label:"Seccion Vertical Sin Subtítulo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-vertical-no-subtitle",{label:"Seccion Vertical Sin Subtítulo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
     <rect x="4" y="2" width="16" height="2" fill="#333"/>
     <rect x="4" y="5" width="16" height="1" fill="#999"/>
     <rect x="2" y="7" width="20" height="12" rx="1" fill="#23366A"/>
@@ -1785,7 +1961,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-vertical-minimal",{label:"Seccion Vertical Mínimo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-vertical-minimal",{label:"Seccion Vertical Mínimo",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
     <rect x="4" y="2" width="16" height="2" fill="#333"/>
     <rect x="4" y="5" width="16" height="1" fill="#999"/>
     <rect x="2" y="7" width="20" height="15" rx="1" fill="#23366A"/>
@@ -1801,7 +1977,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-two-columns-full",{label:"Dos Columnas Completas",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-two-columns-full",{label:"Dos Columnas Completas",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
         <rect x="1" y="5" width="9" height="0.8" fill="#999"/>
         <rect x="1" y="7" width="10" height="8" rx="1" fill="#23366A"/>
@@ -1844,7 +2020,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         </div>
         </div>
         </section>
-    `}),l.add("hero-two-columns-no-button",{label:"Dos Columnas Sin Botón",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `}),o.add("hero-two-columns-no-button",{label:"Dos Columnas Sin Botón",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
         <rect x="1" y="5" width="9" height="0.8" fill="#999"/>
         <rect x="1" y="7" width="10" height="10" rx="1" fill="#23366A"/>
@@ -1875,7 +2051,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         </div>
         </div>
         </section>
-    `}),l.add("hero-two-columns-no-paragraph",{label:"Dos Columnas Sin Párrafo",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `}),o.add("hero-two-columns-no-paragraph",{label:"Dos Columnas Sin Párrafo",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
         <rect x="1" y="5.5" width="10" height="10" rx="1" fill="#23366A"/>
         <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
@@ -1914,7 +2090,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         </div>
         </div>
         </section>
-    `}),l.add("hero-two-columns-minimal",{label:"Dos Columnas Mínimo",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `}),o.add("hero-two-columns-minimal",{label:"Dos Columnas Mínimo",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
         <rect x="1" y="5.5" width="10" height="12" rx="1" fill="#23366A"/>
         <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
@@ -1941,7 +2117,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         </div>
         </div>
         </section>
-    `}),l.add("hero-two-columns-with-list",{label:"Dos Columnas con Lista",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `}),o.add("hero-two-columns-with-list",{label:"Dos Columnas con Lista",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
         <rect x="1" y="5.5" width="10" height="8" rx="1" fill="#23366A"/>
         <rect x="1" y="14.5" width="1" height="1" rx="0.5" fill="#666"/>
@@ -1988,7 +2164,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         </div>
         </div>
         </section>
-    `}),l.add("hero-two-columns-overlay-buttons",{label:"Dos Columnas con Botón sobre Imagen",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `}),o.add("hero-two-columns-overlay-buttons",{label:"Dos Columnas con Botón sobre Imagen",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
         <rect x="1" y="5.5" width="10" height="8" rx="1" fill="#23366A"/>
         <circle cx="6" cy="11" r="1.5" fill="white"/>
@@ -2045,7 +2221,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         </div>
         </div>
         </section>
-    `}),l.add("hero-two-columns-minimal",{label:"Dos Columnas Mínimo",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `}),o.add("hero-two-columns-minimal",{label:"Dos Columnas Mínimo",category:"Columnas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
     <rect x="1" y="3" width="10" height="1.5" fill="#333"/>
     <rect x="1" y="5.5" width="10" height="12" rx="1" fill="#23366A"/>
     <rect x="13" y="3" width="10" height="1.5" fill="#333"/>
@@ -2072,7 +2248,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         </div>
         </div>
         </section>
-        `}),l.add("hero-left-credit-card",{label:"Tarjeta con boton Izquierda",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-left-credit-card",{label:"Tarjeta con boton Izquierda",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
           <rect x="2" y="8" width="9" height="8" rx="1" fill="#23366A"/>
           <rect x="13" y="8" width="8" height="2" fill="#333"/>
           <rect x="13" y="16" width="5" height="2" rx="1" fill="#23366A"/>
@@ -2095,7 +2271,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `}),l.add("hero-right-credit-card",{label:"Tarjeta con boton Derecha",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),o.add("hero-right-credit-card",{label:"Tarjeta con boton Derecha",category:"Secciones",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
           <rect x="2" y="8" width="8" height="2" fill="#333"/>
           <rect x="2" y="16" width="5" height="2" rx="1" fill="#23366A"/>
           <rect x="13" y="8" width="9" height="8" rx="1" fill="#23366A"/>
@@ -2118,7 +2294,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
           </div>
         </div>
         </section>
-        `})}function kt(i){const l=`<svg viewBox="0 0 32 32" width="32" height="32">
+        `})}function jt(i){const o=`<svg viewBox="0 0 32 32" width="32" height="32">
     <defs>
         <linearGradient id="mainBannerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
@@ -2146,7 +2322,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
     
     <path d="M 1 4 L 4 8 L 1 12" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
     <path d="M 31 4 L 28 8 L 31 12" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-    </svg>`,s=`.main-banner-carousel-wrapper {
+    </svg>`,a=`.main-banner-carousel-wrapper {
             perspective: 1000px;
             background-color: #fff !important;
             position: relative;
@@ -2270,15 +2446,15 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             .main-banner-carousel-slide {
                 height: 400px;
             }
-        }`,t=function(){var e=this;if(!e||e.hasAttribute("data-banner-initialized"))return;var a=e.querySelector(".main-banner-carousel-track"),d=e.querySelector(".main-banner-dots");if(!a||!d)return;e.setAttribute("data-banner-initialized","true");var c=0,r,n=0,m=0,o=!1,u=e.getAttribute("data-api-endpoint")||"/api/banners/active",h=e.getAttribute("data-filter-category")||"all";fetch(u).then(function(A){return A.json()}).then(function(A){var j=A;if(h.trim()!==""&&h!=="all"&&(j=A.filter(function(w){var v=w.category&&w.category.toLowerCase().trim()===h.toLowerCase().trim();return v})),j&&j.length>0)f(j);else{var C=h!=="all"?'No hay banners disponibles para la categoría "'+h+'"':"No hay banners disponibles";a.innerHTML='<div class="flex items-center justify-center w-full h-full"><div class="text-center text-gray-600"><p class="text-xl">'+C+"</p></div></div>"}}).catch(function(A){console.error("Error fetching banners:",A),a.innerHTML='<div class="flex items-center justify-center w-full h-full"><div class="text-center text-gray-600"><p class="text-xl">Error al cargar los banners</p></div></div>'});function f(A){a.innerHTML="",d.innerHTML="",A.forEach(function(j,C){var w=document.createElement("div");w.className="main-banner-carousel-slide",w.style.backgroundImage="linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("+j.image_url+")";var v=j.show_category&&j.category?'<div class="mb-3"><span class="inline-block bg-white/20 backdrop-blur-sm text-white text-xs md:text-sm px-3 md:px-4 py-1 md:py-1.5 rounded-full border-2 border-white/30">'+j.category+"</span></div>":"",y=j.show_description&&j.description?'<p class="text-sm md:text-base lg:text-xl mb-4 drop-shadow-lg">'+j.description+"</p>":"",k=j.show_primary_button&&j.primary_button_text?'<a href="'+(j.primary_button_url||"#")+'" class="main-banner-primary-btn text-sm md:text-base font-semibold py-2 md:py-3 px-6 md:px-8 rounded-full transition-all duration-300 inline-flex items-center shadow-xl">'+j.primary_button_text+'<i class="ri-arrow-right-line ml-2"></i></a>':"",B=j.show_secondary_button&&j.secondary_button_text?'<a href="'+(j.secondary_button_url||"#")+'" class="main-banner-secondary-btn text-white text-sm md:text-base font-semibold py-2 md:py-3 px-6 md:px-8 rounded-full transition-all duration-300 inline-flex items-center">'+j.secondary_button_text+"</a>":"";w.innerHTML='<div class="absolute inset-0 flex items-center justify-center p-6 md:p-8 lg:p-12"><div class="text-left text-white max-w-3xl w-full"><div class="max-w-full space-y-3 md:space-y-4">'+v+'<h2 class="text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-bold leading-tight drop-shadow-2xl">'+j.title+"</h2>"+y+'<div class="flex flex-wrap gap-3 md:gap-4 mt-4 md:mt-6">'+k+B+"</div></div></div></div>",a.appendChild(w);var $=document.createElement("button");$.className="main-banner-dot",$.setAttribute("type","button"),$.setAttribute("aria-label","Ir al banner "+(C+1)),function(z){$.addEventListener("click",function(){p(z)})}(C),d.appendChild($)}),x(),E(),S()}function S(){e.addEventListener("touchstart",function(A){n=A.touches[0].clientX,m=n,o=!0,clearInterval(r)},{passive:!0}),e.addEventListener("touchmove",function(A){o&&(m=A.touches[0].clientX)},{passive:!0}),e.addEventListener("touchend",T),e.addEventListener("mousedown",function(A){n=A.clientX,m=n,o=!0,clearInterval(r),A.preventDefault()}),e.addEventListener("mousemove",function(A){o&&(m=A.clientX)}),e.addEventListener("mouseup",T),e.addEventListener("mouseleave",T)}function T(){if(o){o=!1;var A=n-m;Math.abs(A)>50&&(A>0?g():b()),I()}}function x(){var A=a.querySelectorAll(".main-banner-carousel-slide"),j=d.querySelectorAll(".main-banner-dot"),C=A.length;if(C!==0){for(var w=0;w<A.length;w++)A[w].classList.remove("active","prev","next"),w===c?A[w].classList.add("active"):w===(c-1+C)%C?A[w].classList.add("prev"):w===(c+1)%C&&A[w].classList.add("next");for(var v=0;v<j.length;v++)j[v].classList[v===c?"add":"remove"]("active")}}function p(A){var j=a.querySelectorAll(".main-banner-carousel-slide");j.length&&(c=(A+j.length)%j.length,x(),I())}function g(){var A=a.querySelectorAll(".main-banner-carousel-slide");A.length!==0&&(c=(c+1)%A.length,x())}function b(){var A=a.querySelectorAll(".main-banner-carousel-slide");A.length!==0&&(c=(c-1+A.length)%A.length,x())}function E(){clearInterval(r),r=setInterval(g,5e3)}function I(){clearInterval(r),E()}};i.DomComponents.addType("main-banner-style",{isComponent:e=>{if(e.tagName==="STYLE"){const a=e.parentElement;if(a&&a.getAttribute("data-gjs-type")==="main-banner-carousel")return{type:"main-banner-style"}}return!1},model:{defaults:{tagName:"style",removable:!1,draggable:!1,copyable:!1,highlightable:!1,selectable:!1,hoverable:!1,editable:!1,layerable:!1,void:!1,attributes:{"data-gjs-type":"main-banner-style"},content:s},toHTML(){return`<style>${s}</style>`}}}),i.DomComponents.addType("main-banner-carousel",{isComponent:function(e){return e.getAttribute&&e.getAttribute("data-gjs-type")==="main-banner-carousel"},model:{defaults:{tagName:"section",name:"Banner Principal",droppable:!1,attributes:{"data-gjs-type":"main-banner-carousel",class:"main-banner-carousel-wrapper relative w-full h-96 pt-4 mt-4 md:h-[500px] overflow-hidden bg-white","data-api-endpoint":"/api/banners/active","data-filter-category":"all"},traits:[{type:"text",name:"data-api-endpoint",label:"API Endpoint",placeholder:"/api/banners/active"},{type:"select",name:"data-filter-category",label:"Filtrar por Categoría",options:[{value:"all",name:"Todas las categorías"}]}],components:[{type:"main-banner-style"},{tagName:"div",attributes:{class:"main-banner-carousel-track flex items-center h-full"},components:[{tagName:"div",attributes:{class:"flex items-center justify-center w-full h-full"},components:[{tagName:"div",attributes:{class:"w-full max-w-4xl px-4"},components:[{tagName:"div",attributes:{class:"rounded-xl bg-gray-200 animate-pulse h-96 md:h-[450px] w-full"}},{tagName:"div",attributes:{class:"flex justify-center mt-4 space-x-3"},components:[{tagName:"div",attributes:{class:"w-3 h-3 rounded-full bg-gray-300 animate-pulse"}},{tagName:"div",attributes:{class:"w-3 h-3 rounded-full bg-gray-300 animate-pulse"}},{tagName:"div",attributes:{class:"w-3 h-3 rounded-full bg-gray-300 animate-pulse"}}]}]}]}]},{tagName:"div",attributes:{class:"main-banner-dots absolute bottom-5 left-1/2 transform -translate-x-1/2 flex items-center justify-center gap-3 z-50"}}],script:t,"script-props":["data-api-endpoint","data-filter-category"]},init(){this.on("change:attributes:data-filter-category",this.handleCategoryChange),this.on("change:attributes",this.onAttributeChange),this.loadCategories(),this.ensureStyleComponent()},onAttributeChange(){this.getAttributes()["data-filter-category"]!==void 0&&this.handleCategoryChange()},ensureStyleComponent(){const e=this.components();e.find(d=>d.get("type")==="main-banner-style")||e.add({type:"main-banner-style"},{at:0})},loadCategories(){const e=this;fetch("/api/banners/categories").then(a=>a.json()).then(a=>{const d=e.getTrait("data-filter-category");if(d){const c=[{value:"all",name:"Todas las categorías"},...a.map(r=>({value:r,name:r}))];d.set("options",c)}}).catch(a=>{console.error("Error loading categories:",a)})},handleCategoryChange(){console.log("Category changed!");const e=this.view;if(!e||!e.el){console.log("No view or element found");return}const a=e.el,d=this.getAttributes()["data-filter-category"];console.log("New category:",d);const c=a.querySelector(".main-banner-dots");c&&(c.innerHTML=""),a.removeAttribute("data-banner-initialized");const r=a.querySelector(".main-banner-carousel-track");r&&(r.innerHTML='<div class="flex items-center justify-center w-full h-full"><div class="w-full max-w-4xl px-4"><div class="rounded-xl bg-gray-200 animate-pulse h-96 md:h-[450px] w-full"></div><div class="flex justify-center mt-4 space-x-3"><div class="w-3 h-3 rounded-full bg-gray-300 animate-pulse"></div><div class="w-3 h-3 rounded-full bg-gray-300 animate-pulse"></div><div class="w-3 h-3 rounded-full bg-gray-300 animate-pulse"></div></div></div></div>'),setTimeout(()=>{console.log("Reinitializing banner with category:",d),typeof t=="function"&&t.call(a)},500)}},view:{onRender(){const e=this.el,a=this.model;e&&(a.ensureStyleComponent(),setTimeout(()=>{typeof t=="function"&&t.call(e)},500))}}}),i.on("load",()=>{const e=i.Canvas.getFrameEl();if(e&&e.contentDocument){let a=e.contentDocument.getElementById("main-banner-styles");a||(a=e.contentDocument.createElement("style"),a.id="main-banner-styles",a.innerHTML=s,e.contentDocument.head.appendChild(a))}}),i.on("canvas:render",()=>{const e=i.Canvas.getFrameEl();if(e&&e.contentDocument){let a=e.contentDocument.getElementById("main-banner-styles");a||(a=e.contentDocument.createElement("style"),a.id="main-banner-styles",a.innerHTML=s,e.contentDocument.head.appendChild(a))}}),i.BlockManager.add("main-banner-carousel",{label:"Banner Principal",category:"Banners",attributes:{class:"gjs-block-section"},media:l,content:{type:"main-banner-carousel"}}),i.on("component:add",function(e){e.get("type")==="main-banner-carousel"&&(e.ensureStyleComponent(),setTimeout(()=>{var d;const a=(d=e.view)==null?void 0:d.el;a&&!a.hasAttribute("data-banner-initialized")&&t.call(a)},800))}),i.on("canvas:load",function(){setTimeout(()=>{const e=i.Canvas.getFrameEl();if(e&&e.contentDocument){let a=e.contentDocument.getElementById("main-banner-styles");a||(a=e.contentDocument.createElement("style"),a.id="main-banner-styles",a.innerHTML=s,e.contentDocument.head.appendChild(a)),e.contentDocument.querySelectorAll('[data-gjs-type="main-banner-carousel"]').forEach(c=>{c.hasAttribute("data-banner-initialized")||t.call(c)})}},1200)}),i.on("component:update",function(e){e.get("type")==="main-banner-carousel"&&e.ensureStyleComponent()})}function St(i){const l="banner-slider",s="banner-slider-component",t={slides:[{id:1,image:"",title:"Primer Slide",subtitle:"Descripción opcional del primer slide"}],autoplay:!0,interval:5e3},e=c=>{const r=c.slides.map((m,o)=>`
-                <div class="banner-slide" data-slide-index="${o}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('${m.image||""}'); background-size: cover; background-position: center; display: ${o===0?"flex":"none"}; align-items: flex-end; padding: 2rem; border-radius: 1rem; ${m.image?"":"background-color: #f3f4f6;"}">
+        }`,t=function(){var e=this;if(!e||e.hasAttribute("data-banner-initialized"))return;var l=e.querySelector(".main-banner-carousel-track"),d=e.querySelector(".main-banner-dots");if(!l||!d)return;e.setAttribute("data-banner-initialized","true");var n=0,c,r=0,p=0,s=!1,u=e.getAttribute("data-api-endpoint")||"/api/banners/active",h=e.getAttribute("data-filter-category")||"all";fetch(u).then(function(k){return k.json()}).then(function(k){var B=k;if(h.trim()!==""&&h!=="all"&&(B=k.filter(function(w){var v=w.category&&w.category.toLowerCase().trim()===h.toLowerCase().trim();return v})),B&&B.length>0)f(B);else{var C=h!=="all"?'No hay banners disponibles para la categoría "'+h+'"':"No hay banners disponibles";l.innerHTML='<div class="flex items-center justify-center w-full h-full"><div class="text-center text-gray-600"><p class="text-xl">'+C+"</p></div></div>"}}).catch(function(k){console.error("Error fetching banners:",k),l.innerHTML='<div class="flex items-center justify-center w-full h-full"><div class="text-center text-gray-600"><p class="text-xl">Error al cargar los banners</p></div></div>'});function f(k){l.innerHTML="",d.innerHTML="",k.forEach(function(B,C){var w=document.createElement("div");w.className="main-banner-carousel-slide",w.style.backgroundImage="linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("+B.image_url+")";var v=B.show_category&&B.category?'<div class="mb-3"><span class="inline-block bg-white/20 backdrop-blur-sm text-white text-xs md:text-sm px-3 md:px-4 py-1 md:py-1.5 rounded-full border-2 border-white/30">'+B.category+"</span></div>":"",y=B.show_description&&B.description?'<p class="text-sm md:text-base lg:text-xl mb-4 drop-shadow-lg">'+B.description+"</p>":"",A=B.show_primary_button&&B.primary_button_text?'<a href="'+(B.primary_button_url||"#")+'" class="main-banner-primary-btn text-sm md:text-base font-semibold py-2 md:py-3 px-6 md:px-8 rounded-full transition-all duration-300 inline-flex items-center shadow-xl">'+B.primary_button_text+'<i class="ri-arrow-right-line ml-2"></i></a>':"",j=B.show_secondary_button&&B.secondary_button_text?'<a href="'+(B.secondary_button_url||"#")+'" class="main-banner-secondary-btn text-white text-sm md:text-base font-semibold py-2 md:py-3 px-6 md:px-8 rounded-full transition-all duration-300 inline-flex items-center">'+B.secondary_button_text+"</a>":"";w.innerHTML='<div class="absolute inset-0 flex items-center justify-center p-6 md:p-8 lg:p-12"><div class="text-left text-white max-w-3xl w-full"><div class="max-w-full space-y-3 md:space-y-4">'+v+'<h2 class="text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-bold leading-tight drop-shadow-2xl">'+B.title+"</h2>"+y+'<div class="flex flex-wrap gap-3 md:gap-4 mt-4 md:mt-6">'+A+j+"</div></div></div></div>",l.appendChild(w);var $=document.createElement("button");$.className="main-banner-dot",$.setAttribute("type","button"),$.setAttribute("aria-label","Ir al banner "+(C+1)),function(N){$.addEventListener("click",function(){m(N)})}(C),d.appendChild($)}),x(),E(),S()}function S(){e.addEventListener("touchstart",function(k){r=k.touches[0].clientX,p=r,s=!0,clearInterval(c)},{passive:!0}),e.addEventListener("touchmove",function(k){s&&(p=k.touches[0].clientX)},{passive:!0}),e.addEventListener("touchend",T),e.addEventListener("mousedown",function(k){r=k.clientX,p=r,s=!0,clearInterval(c),k.preventDefault()}),e.addEventListener("mousemove",function(k){s&&(p=k.clientX)}),e.addEventListener("mouseup",T),e.addEventListener("mouseleave",T)}function T(){if(s){s=!1;var k=r-p;Math.abs(k)>50&&(k>0?g():b()),I()}}function x(){var k=l.querySelectorAll(".main-banner-carousel-slide"),B=d.querySelectorAll(".main-banner-dot"),C=k.length;if(C!==0){for(var w=0;w<k.length;w++)k[w].classList.remove("active","prev","next"),w===n?k[w].classList.add("active"):w===(n-1+C)%C?k[w].classList.add("prev"):w===(n+1)%C&&k[w].classList.add("next");for(var v=0;v<B.length;v++)B[v].classList[v===n?"add":"remove"]("active")}}function m(k){var B=l.querySelectorAll(".main-banner-carousel-slide");B.length&&(n=(k+B.length)%B.length,x(),I())}function g(){var k=l.querySelectorAll(".main-banner-carousel-slide");k.length!==0&&(n=(n+1)%k.length,x())}function b(){var k=l.querySelectorAll(".main-banner-carousel-slide");k.length!==0&&(n=(n-1+k.length)%k.length,x())}function E(){clearInterval(c),c=setInterval(g,5e3)}function I(){clearInterval(c),E()}};i.DomComponents.addType("main-banner-style",{isComponent:e=>{if(e.tagName==="STYLE"){const l=e.parentElement;if(l&&l.getAttribute("data-gjs-type")==="main-banner-carousel")return{type:"main-banner-style"}}return!1},model:{defaults:{tagName:"style",removable:!1,draggable:!1,copyable:!1,highlightable:!1,selectable:!1,hoverable:!1,editable:!1,layerable:!1,void:!1,attributes:{"data-gjs-type":"main-banner-style"},content:a},toHTML(){return`<style>${a}</style>`}}}),i.DomComponents.addType("main-banner-carousel",{isComponent:function(e){return e.getAttribute&&e.getAttribute("data-gjs-type")==="main-banner-carousel"},model:{defaults:{tagName:"section",name:"Banner Principal",droppable:!1,attributes:{"data-gjs-type":"main-banner-carousel",class:"main-banner-carousel-wrapper relative w-full h-96 pt-4 mt-4 md:h-[500px] overflow-hidden bg-white","data-api-endpoint":"/api/banners/active","data-filter-category":"all"},traits:[{type:"text",name:"data-api-endpoint",label:"API Endpoint",placeholder:"/api/banners/active"},{type:"select",name:"data-filter-category",label:"Filtrar por Categoría",options:[{value:"all",name:"Todas las categorías"}]}],components:[{type:"main-banner-style"},{tagName:"div",attributes:{class:"main-banner-carousel-track flex items-center h-full"},components:[{tagName:"div",attributes:{class:"flex items-center justify-center w-full h-full"},components:[{tagName:"div",attributes:{class:"w-full max-w-4xl px-4"},components:[{tagName:"div",attributes:{class:"rounded-xl bg-gray-200 animate-pulse h-96 md:h-[450px] w-full"}},{tagName:"div",attributes:{class:"flex justify-center mt-4 space-x-3"},components:[{tagName:"div",attributes:{class:"w-3 h-3 rounded-full bg-gray-300 animate-pulse"}},{tagName:"div",attributes:{class:"w-3 h-3 rounded-full bg-gray-300 animate-pulse"}},{tagName:"div",attributes:{class:"w-3 h-3 rounded-full bg-gray-300 animate-pulse"}}]}]}]}]},{tagName:"div",attributes:{class:"main-banner-dots absolute bottom-5 left-1/2 transform -translate-x-1/2 flex items-center justify-center gap-3 z-50"}}],script:t,"script-props":["data-api-endpoint","data-filter-category"]},init(){this.on("change:attributes:data-filter-category",this.handleCategoryChange),this.on("change:attributes",this.onAttributeChange),this.loadCategories(),this.ensureStyleComponent()},onAttributeChange(){this.getAttributes()["data-filter-category"]!==void 0&&this.handleCategoryChange()},ensureStyleComponent(){const e=this.components();e.find(d=>d.get("type")==="main-banner-style")||e.add({type:"main-banner-style"},{at:0})},loadCategories(){const e=this;fetch("/api/banners/categories").then(l=>l.json()).then(l=>{const d=e.getTrait("data-filter-category");if(d){const n=[{value:"all",name:"Todas las categorías"},...l.map(c=>({value:c,name:c}))];d.set("options",n)}}).catch(l=>{console.error("Error loading categories:",l)})},handleCategoryChange(){console.log("Category changed!");const e=this.view;if(!e||!e.el){console.log("No view or element found");return}const l=e.el,d=this.getAttributes()["data-filter-category"];console.log("New category:",d);const n=l.querySelector(".main-banner-dots");n&&(n.innerHTML=""),l.removeAttribute("data-banner-initialized");const c=l.querySelector(".main-banner-carousel-track");c&&(c.innerHTML='<div class="flex items-center justify-center w-full h-full"><div class="w-full max-w-4xl px-4"><div class="rounded-xl bg-gray-200 animate-pulse h-96 md:h-[450px] w-full"></div><div class="flex justify-center mt-4 space-x-3"><div class="w-3 h-3 rounded-full bg-gray-300 animate-pulse"></div><div class="w-3 h-3 rounded-full bg-gray-300 animate-pulse"></div><div class="w-3 h-3 rounded-full bg-gray-300 animate-pulse"></div></div></div></div>'),setTimeout(()=>{console.log("Reinitializing banner with category:",d),typeof t=="function"&&t.call(l)},500)}},view:{onRender(){const e=this.el,l=this.model;e&&(l.ensureStyleComponent(),setTimeout(()=>{typeof t=="function"&&t.call(e)},500))}}}),i.on("load",()=>{const e=i.Canvas.getFrameEl();if(e&&e.contentDocument){let l=e.contentDocument.getElementById("main-banner-styles");l||(l=e.contentDocument.createElement("style"),l.id="main-banner-styles",l.innerHTML=a,e.contentDocument.head.appendChild(l))}}),i.on("canvas:render",()=>{const e=i.Canvas.getFrameEl();if(e&&e.contentDocument){let l=e.contentDocument.getElementById("main-banner-styles");l||(l=e.contentDocument.createElement("style"),l.id="main-banner-styles",l.innerHTML=a,e.contentDocument.head.appendChild(l))}}),i.BlockManager.add("main-banner-carousel",{label:"Banner Principal",category:"Banners",attributes:{class:"gjs-block-section"},media:o,content:{type:"main-banner-carousel"}}),i.on("component:add",function(e){e.get("type")==="main-banner-carousel"&&(e.ensureStyleComponent(),setTimeout(()=>{var d;const l=(d=e.view)==null?void 0:d.el;l&&!l.hasAttribute("data-banner-initialized")&&t.call(l)},800))}),i.on("canvas:load",function(){setTimeout(()=>{const e=i.Canvas.getFrameEl();if(e&&e.contentDocument){let l=e.contentDocument.getElementById("main-banner-styles");l||(l=e.contentDocument.createElement("style"),l.id="main-banner-styles",l.innerHTML=a,e.contentDocument.head.appendChild(l)),e.contentDocument.querySelectorAll('[data-gjs-type="main-banner-carousel"]').forEach(n=>{n.hasAttribute("data-banner-initialized")||t.call(n)})}},1200)}),i.on("component:update",function(e){e.get("type")==="main-banner-carousel"&&e.ensureStyleComponent()})}function $t(i){const o="banner-slider",a="banner-slider-component",t={slides:[{id:1,image:"",title:"Primer Slide",subtitle:"Descripción opcional del primer slide"}],autoplay:!0,interval:5e3},e=n=>{const c=n.slides.map((p,s)=>`
+                <div class="banner-slide" data-slide-index="${s}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('${p.image||""}'); background-size: cover; background-position: center; display: ${s===0?"flex":"none"}; align-items: flex-end; padding: 2rem; border-radius: 1rem; ${p.image?"":"background-color: #f3f4f6;"}">
                     <div style="background-color: rgba(255, 255, 255, 0.85); padding: 0.25rem 1rem; border-radius: 0.5rem; backdrop-filter: blur(4px); max-width: 80%;">
-                    <h2 style="color: #23366A; font-size: 2.5rem; font-weight: bold; margin: 0;">${m.title}</h2>
-                    ${m.subtitle?`<p style="color: #374151; font-size: 1.125rem; margin-top: -8px; margin-bottom: 0.5rem;">${m.subtitle}</p>`:""}
+                    <h2 style="color: #23366A; font-size: 2.5rem; font-weight: bold; margin: 0;">${p.title}</h2>
+                    ${p.subtitle?`<p style="color: #374151; font-size: 1.125rem; margin-top: -8px; margin-bottom: 0.5rem;">${p.subtitle}</p>`:""}
                     </div>
                 </div>
-                `).join(""),n=c.slides.length>1?c.slides.map((m,o)=>`
-                            <button class="banner-dot ${o===0?"active":""}" data-index="${o}" aria-label="Ir a slide ${o+1}"></button>
+                `).join(""),r=n.slides.length>1?n.slides.map((p,s)=>`
+                            <button class="banner-dot ${s===0?"active":""}" data-index="${s}" aria-label="Ir a slide ${s+1}"></button>
                             `).join(""):"";return`
             <div class="max-w-7xl mx-auto px-4">
                 <style>
@@ -2311,16 +2487,16 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </style>
                 <div class="relative" style="height: 400px; margin-bottom: 2rem;">
                 <div class="banner-slides-container" style="width: 100%; height: 100%; position: relative; overflow: hidden; border-radius: 1rem;">
-                    ${r}
+                    ${c}
                 </div>
                 </div>
-                ${c.slides.length>1?`
+                ${n.slides.length>1?`
                 <div class="banner-dots-container" style="display: flex; justify-content: center; margin-top: -1rem; margin-bottom: 1rem;">
-                    ${n}
+                    ${r}
                 </div>
                 `:""}
             </div>
-            `};i.DomComponents.addType(s,{isComponent:c=>{if(c.getAttribute&&c.getAttribute("data-gjs-type")===s)return{type:s}},model:{defaults:{tagName:"section",draggable:!0,droppable:!1,editable:!1,stylable:!0,resizable:!1,attributes:{class:"py-8 md:py-14 bg-white","data-gjs-type":s,"data-slider-config":JSON.stringify(t)},traits:[{type:"button",label:!1,text:"Configurar Slider",full:!0,command:c=>{const r=c.getSelected();r&&d(c,r)}}],components:c=>{const r=c.getAttributes()["data-slider-config"];let n={...t};if(r)try{n={...t,...JSON.parse(r)}}catch(m){console.error("Error parsing slider config:",m)}return e(n)},script:function(){const c=()=>{const r=this,n=r.getAttribute("data-slider-config");let m={slides:[{id:1,image:"",title:"Primer Slide",subtitle:"Descripción opcional del primer slide"}],autoplay:!0,interval:5e3};if(n)try{m=JSON.parse(n)}catch(y){console.error("Error parsing config:",y)}const o=r.querySelector(".banner-slides-container");if(!o)return;const u=o.querySelectorAll(".banner-slide"),h=r.querySelectorAll(".banner-dot"),f=u.length;let S=0,T=null,x=0,p=0;function g(y){T&&clearInterval(T),u.forEach(k=>{k.classList.remove("active","fadeIn"),k.classList.add("fadeOut"),setTimeout(()=>{k.style.display="none"},500)}),h.forEach(k=>{k.classList.remove("active")}),setTimeout(()=>{u[y].style.display="flex",u[y].classList.remove("fadeOut"),u[y].classList.add("active","fadeIn"),h[y]&&h[y].classList.add("active"),S=y,f>1&&m.autoplay&&I()},500)}function b(){const y=(S+1)%f;g(y)}function E(){const y=(S-1+f)%f;g(y)}function I(){T=setInterval(()=>{b()},m.interval)}h.forEach((y,k)=>{y.addEventListener("click",()=>{g(k)})});const A=y=>{x=y.touches[0].clientX},j=y=>{p=y.touches[0].clientX},C=()=>{if(!x||!p)return;const y=x-p;Math.abs(y)>50&&(y>0?b():E()),x=0,p=0};o.addEventListener("touchstart",A,{passive:!0}),o.addEventListener("touchmove",j,{passive:!0}),o.addEventListener("touchend",C);let w=!1,v=0;o.addEventListener("mousedown",y=>{w=!0,v=y.pageX}),o.addEventListener("mousemove",y=>{w&&y.preventDefault()}),o.addEventListener("mouseup",y=>{if(!w)return;w=!1;const k=v-y.pageX;Math.abs(k)>50&&(k>0?b():E())}),o.addEventListener("mouseleave",()=>{w=!1}),f>1&&m.autoplay&&I()};document.readyState==="loading"?document.addEventListener("DOMContentLoaded",c):c()}},init(){this.set("type",s),this.addAttributes({"data-gjs-type":s})},getConfig(){const c=this.getAttributes()["data-slider-config"];if(c)try{return{...t,...JSON.parse(c)}}catch(r){console.error("Error parsing slider config:",r)}return{...t}},setConfig(c){const r={...this.getConfig(),...c},n={...this.getAttributes(),"data-gjs-type":s,"data-slider-config":JSON.stringify(r)};this.setAttributes(n),this.components(e(r)),this.view.render()}}}),i.BlockManager.add(l,{label:"Banner Slider",category:"Banners",media:`<svg viewBox="0 0 32 32" width="32" height="32">
+            `};i.DomComponents.addType(a,{isComponent:n=>{if(n.getAttribute&&n.getAttribute("data-gjs-type")===a)return{type:a}},model:{defaults:{tagName:"section",draggable:!0,droppable:!1,editable:!1,stylable:!0,resizable:!1,attributes:{class:"py-8 md:py-14 bg-white","data-gjs-type":a,"data-slider-config":JSON.stringify(t)},traits:[{type:"button",label:!1,text:"Configurar Slider",full:!0,command:n=>{const c=n.getSelected();c&&d(n,c)}}],components:n=>{const c=n.getAttributes()["data-slider-config"];let r={...t};if(c)try{r={...t,...JSON.parse(c)}}catch(p){console.error("Error parsing slider config:",p)}return e(r)},script:function(){const n=()=>{const c=this,r=c.getAttribute("data-slider-config");let p={slides:[{id:1,image:"",title:"Primer Slide",subtitle:"Descripción opcional del primer slide"}],autoplay:!0,interval:5e3};if(r)try{p=JSON.parse(r)}catch(y){console.error("Error parsing config:",y)}const s=c.querySelector(".banner-slides-container");if(!s)return;const u=s.querySelectorAll(".banner-slide"),h=c.querySelectorAll(".banner-dot"),f=u.length;let S=0,T=null,x=0,m=0;function g(y){T&&clearInterval(T),u.forEach(A=>{A.classList.remove("active","fadeIn"),A.classList.add("fadeOut"),setTimeout(()=>{A.style.display="none"},500)}),h.forEach(A=>{A.classList.remove("active")}),setTimeout(()=>{u[y].style.display="flex",u[y].classList.remove("fadeOut"),u[y].classList.add("active","fadeIn"),h[y]&&h[y].classList.add("active"),S=y,f>1&&p.autoplay&&I()},500)}function b(){const y=(S+1)%f;g(y)}function E(){const y=(S-1+f)%f;g(y)}function I(){T=setInterval(()=>{b()},p.interval)}h.forEach((y,A)=>{y.addEventListener("click",()=>{g(A)})});const k=y=>{x=y.touches[0].clientX},B=y=>{m=y.touches[0].clientX},C=()=>{if(!x||!m)return;const y=x-m;Math.abs(y)>50&&(y>0?b():E()),x=0,m=0};s.addEventListener("touchstart",k,{passive:!0}),s.addEventListener("touchmove",B,{passive:!0}),s.addEventListener("touchend",C);let w=!1,v=0;s.addEventListener("mousedown",y=>{w=!0,v=y.pageX}),s.addEventListener("mousemove",y=>{w&&y.preventDefault()}),s.addEventListener("mouseup",y=>{if(!w)return;w=!1;const A=v-y.pageX;Math.abs(A)>50&&(A>0?b():E())}),s.addEventListener("mouseleave",()=>{w=!1}),f>1&&p.autoplay&&I()};document.readyState==="loading"?document.addEventListener("DOMContentLoaded",n):n()}},init(){this.set("type",a),this.addAttributes({"data-gjs-type":a})},getConfig(){const n=this.getAttributes()["data-slider-config"];if(n)try{return{...t,...JSON.parse(n)}}catch(c){console.error("Error parsing slider config:",c)}return{...t}},setConfig(n){const c={...this.getConfig(),...n},r={...this.getAttributes(),"data-gjs-type":a,"data-slider-config":JSON.stringify(c)};this.setAttributes(r),this.components(e(c)),this.view.render()}}}),i.BlockManager.add(o,{label:"Banner Slider",category:"Banners",media:`<svg viewBox="0 0 32 32" width="32" height="32">
     <defs>
       <linearGradient id="sliderBannerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" style="stop-color:#6b7280;stop-opacity:1" />
@@ -2335,38 +2511,38 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
     <circle cx="13" cy="27" r="1" fill="white" stroke="#4b5563" stroke-width="0.4"/>
     <circle cx="16" cy="27" r="1" fill="#4b5563"/>
     <circle cx="19" cy="27" r="1" fill="white" stroke="#4b5563" stroke-width="0.4"/>
-  </svg>`,content:{type:s,attributes:{class:"py-8 md:py-14 bg-white","data-gjs-type":s,"data-slider-config":JSON.stringify(t)}}});function d(c,r){const n=r.getConfig(),m=x=>x.map((p,g)=>`
-                        <div class="slide-item" data-slide-id="${p.id}" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin-bottom: 16px; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#e5e7eb'">
+  </svg>`,content:{type:a,attributes:{class:"py-8 md:py-14 bg-white","data-gjs-type":a,"data-slider-config":JSON.stringify(t)}}});function d(n,c){const r=c.getConfig(),p=x=>x.map((m,g)=>`
+                        <div class="slide-item" data-slide-id="${m.id}" style="background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin-bottom: 16px; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#3b82f6'" onmouseout="this.style.borderColor='#e5e7eb'">
                         <div style="display: flex; gap: 20px; align-items: start;">
                             <div style="flex-shrink: 0;">
-                            ${p.image?`<img src="${p.image}" alt="${p.title}" style="width: 140px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #e5e7eb;">`:'<div style="width: 140px; height: 100px; background: #f3f4f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px;">Sin imagen</div>'}
+                            ${m.image?`<img src="${m.image}" alt="${m.title}" style="width: 140px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #e5e7eb;">`:'<div style="width: 140px; height: 100px; background: #f3f4f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 12px;">Sin imagen</div>'}
                             </div>
                             
                             <div style="flex: 1; min-width: 0;">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                                 <h4 style="margin: 0; font-size: 15px; font-weight: 600; color: #111827;">Slide ${g+1}</h4>
-                                <button class="delete-slide-btn" data-slide-id="${p.id}" style="background: #ef4444; color: white; border: none; padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='#dc2626'" onmouseout="this.style.background='#ef4444'">
+                                <button class="delete-slide-btn" data-slide-id="${m.id}" style="background: #ef4444; color: white; border: none; padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='#dc2626'" onmouseout="this.style.background='#ef4444'">
                                 Eliminar
                                 </button>
                             </div>
 
                             <div style="margin-bottom: 14px;">
                                 <label style="display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;">Título *</label>
-                                <input type="text" class="slide-title" data-slide-id="${p.id}" value="${p.title}" placeholder="Ingrese el título del slide" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                                <input type="text" class="slide-title" data-slide-id="${m.id}" value="${m.title}" placeholder="Ingrese el título del slide" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                             </div>
 
                             <div style="margin-bottom: 14px;">
                                 <label style="display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;">Subtítulo (opcional)</label>
-                                <input type="text" class="slide-subtitle" data-slide-id="${p.id}" value="${p.subtitle||""}" placeholder="Ingrese el subtítulo del slide" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
+                                <input type="text" class="slide-subtitle" data-slide-id="${m.id}" value="${m.subtitle||""}" placeholder="Ingrese el subtítulo del slide" style="width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#d1d5db'">
                             </div>
 
-                            <button class="change-image-btn" data-slide-id="${p.id}" style="width: 100%; background: #23366A; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='#1a2752'" onmouseout="this.style.background='#23366A'">
+                            <button class="change-image-btn" data-slide-id="${m.id}" style="width: 100%; background: #23366A; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='#1a2752'" onmouseout="this.style.background='#23366A'">
                                 Seleccionar Imagen
                             </button>
                             </div>
                         </div>
                         </div>
-                    `).join(""),o=`
+                    `).join(""),s=`
             <div class="slider-config-modal" style="font-family: system-ui, -apple-system, sans-serif; background: white; padding: 10px; border-radius: 8px;">
                 <div style="border-bottom: 1px solid #e5e7eb; padding-bottom: 16px; margin-bottom: 24px;">
                 <h2 style="margin: 0; font-size: 22px; font-weight: 600; color: #111827;">Configurar Banner Slider</h2>
@@ -2374,7 +2550,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 
                 <div class="modal-body" style="max-height: 60vh; overflow-y: auto; padding-right: 8px;">
                 <div id="slides-list">
-                    ${m(n.slides)}
+                    ${p(r.slides)}
                 </div>
 
                 <button id="add-slide-btn" style="width: 100%; background: #10b981; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; margin-top: 8px; transition: background 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">
@@ -2383,7 +2559,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
 
                 <div style="margin-top: 24px; padding: 16px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
                     <label style="display: flex; align-items: center; cursor: pointer; user-select: none;">
-                    <input type="checkbox" id="autoplay-checkbox" ${n.autoplay?"checked":""} style="width: 18px; height: 18px; margin-right: 10px; cursor: pointer; accent-color: #3b82f6;">
+                    <input type="checkbox" id="autoplay-checkbox" ${r.autoplay?"checked":""} style="width: 18px; height: 18px; margin-right: 10px; cursor: pointer; accent-color: #3b82f6;">
                     <span style="font-size: 14px; font-weight: 500; color: #374151;">Reproducción automática</span>
                     </label>
                 </div>
@@ -2398,7 +2574,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </button>
                 </div>
             </div>
-            `,u=c.Modal;u.setTitle(""),u.setContent(o),u.open({attributes:{class:"banner-slider-modal"}}),setTimeout(()=>{const x=document.querySelector(".gjs-mdl-dialog");x&&(x.style.backgroundColor="white");const p=document.querySelector(".gjs-mdl-header");p&&(p.style.padding="0",p.style.border="none",p.style.display="none");const g=document.querySelector(".gjs-mdl-close");g&&(g.style.display="none")},10);let h=JSON.parse(JSON.stringify(n.slides)),f=Math.max(...h.map(x=>x.id))+1;const S=()=>{document.getElementById("slides-list").innerHTML=m(h),T()},T=()=>{document.querySelectorAll(".delete-slide-btn").forEach(x=>{x.addEventListener("click",p=>{const g=parseInt(p.target.dataset.slideId);h.length>1?(h=h.filter(b=>b.id!==g),S()):alert("Debe haber al menos un slide")})}),document.querySelectorAll(".change-image-btn").forEach(x=>{x.addEventListener("click",p=>{const g=parseInt(p.target.dataset.slideId);V("image",b=>{const E=h.find(I=>I.id===g);E&&(E.image=b.src,S())})})}),document.querySelectorAll(".slide-title").forEach(x=>{x.addEventListener("input",p=>{const g=parseInt(p.target.dataset.slideId),b=h.find(E=>E.id===g);b&&(b.title=p.target.value)})}),document.querySelectorAll(".slide-subtitle").forEach(x=>{x.addEventListener("input",p=>{const g=parseInt(p.target.dataset.slideId),b=h.find(E=>E.id===g);b&&(b.subtitle=p.target.value)})})};setTimeout(()=>{var x,p,g;T(),(x=document.getElementById("add-slide-btn"))==null||x.addEventListener("click",()=>{h.push({id:f++,image:"",title:`Slide ${h.length+1}`,subtitle:""}),S()}),(p=document.getElementById("save-btn"))==null||p.addEventListener("click",()=>{if(h.some(I=>!I.title.trim())){alert("Todos los slides deben tener un título");return}const E={slides:h,autoplay:document.getElementById("autoplay-checkbox").checked,interval:5e3};r.setConfig(E),u.close()}),(g=document.getElementById("cancel-btn"))==null||g.addEventListener("click",()=>{u.close()})},100)}}function Et(i){const l=`<svg viewBox="0 0 24 24" width="32" height="32">
+            `,u=n.Modal;u.setTitle(""),u.setContent(s),u.open({attributes:{class:"banner-slider-modal"}}),setTimeout(()=>{const x=document.querySelector(".gjs-mdl-dialog");x&&(x.style.backgroundColor="white");const m=document.querySelector(".gjs-mdl-header");m&&(m.style.padding="0",m.style.border="none",m.style.display="none");const g=document.querySelector(".gjs-mdl-close");g&&(g.style.display="none")},10);let h=JSON.parse(JSON.stringify(r.slides)),f=Math.max(...h.map(x=>x.id))+1;const S=()=>{document.getElementById("slides-list").innerHTML=p(h),T()},T=()=>{document.querySelectorAll(".delete-slide-btn").forEach(x=>{x.addEventListener("click",m=>{const g=parseInt(m.target.dataset.slideId);h.length>1?(h=h.filter(b=>b.id!==g),S()):alert("Debe haber al menos un slide")})}),document.querySelectorAll(".change-image-btn").forEach(x=>{x.addEventListener("click",m=>{const g=parseInt(m.target.dataset.slideId);J("image",b=>{const E=h.find(I=>I.id===g);E&&(E.image=b.src,S())})})}),document.querySelectorAll(".slide-title").forEach(x=>{x.addEventListener("input",m=>{const g=parseInt(m.target.dataset.slideId),b=h.find(E=>E.id===g);b&&(b.title=m.target.value)})}),document.querySelectorAll(".slide-subtitle").forEach(x=>{x.addEventListener("input",m=>{const g=parseInt(m.target.dataset.slideId),b=h.find(E=>E.id===g);b&&(b.subtitle=m.target.value)})})};setTimeout(()=>{var x,m,g;T(),(x=document.getElementById("add-slide-btn"))==null||x.addEventListener("click",()=>{h.push({id:f++,image:"",title:`Slide ${h.length+1}`,subtitle:""}),S()}),(m=document.getElementById("save-btn"))==null||m.addEventListener("click",()=>{if(h.some(I=>!I.title.trim())){alert("Todos los slides deben tener un título");return}const E={slides:h,autoplay:document.getElementById("autoplay-checkbox").checked,interval:5e3};c.setConfig(E),u.close()}),(g=document.getElementById("cancel-btn"))==null||g.addEventListener("click",()=>{u.close()})},100)}}function Dt(i){const o=`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="2" width="20" height="20" rx="2" fill="#23366A" />
       <rect x="4" y="4" width="12" height="2" fill="white" />
       <rect x="4" y="7" width="16" height="1" fill="#cccccc" />
@@ -2407,19 +2583,19 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
       <rect x="4" y="14" width="10" height="1" fill="white" />
       <rect x="4" y="16" width="8" height="1" fill="white" />
       <rect x="4" y="18" width="12" height="1" fill="white" />
-    </svg>`,s=(t=5)=>{const e=["auto","vida","inmueble","equipo","atencion","tab6","tab7","tab8","tab9","tab10"],a=["Seguro de auto","Segura vida+","Seguro de inmueble","Seguro de equipo","Atención segura+","Tab adicional 1","Tab adicional 2","Tab adicional 3","Tab adicional 4","Tab adicional 5"];let d="",c="";for(let r=0;r<t&&r<10;r++){const n=r===0,m=e[r],o=a[r];d+=`
-                <button class="insurance-tab-btn ${n?"bg-primary text-white":"bg-white text-primary"} py-2 px-6 md:px-8 font-medium rounded-full border-2 border-primary transition-all duration-300" data-type="${m}">
-                    <span data-gjs-type="text" class="tab-button-text">${o}</span>
+    </svg>`,a=(t=5)=>{const e=["auto","vida","inmueble","equipo","atencion","tab6","tab7","tab8","tab9","tab10"],l=["Seguro de auto","Segura vida+","Seguro de inmueble","Seguro de equipo","Atención segura+","Tab adicional 1","Tab adicional 2","Tab adicional 3","Tab adicional 4","Tab adicional 5"];let d="",n="";for(let c=0;c<t&&c<10;c++){const r=c===0,p=e[c],s=l[c];d+=`
+                <button class="insurance-tab-btn ${r?"bg-primary text-white":"bg-white text-primary"} py-2 px-6 md:px-8 font-medium rounded-full border-2 border-primary transition-all duration-300" data-type="${p}">
+                    <span data-gjs-type="text" class="tab-button-text">${s}</span>
                 </button>
-            `,c+=`
-                <div class="insurance-panel-group ${n?"":"hidden"}" data-type="${m}">
+            `,n+=`
+                <div class="insurance-panel-group ${r?"":"hidden"}" data-type="${p}">
                     <div class="flex flex-col md:flex-row gap-8 items-center py-8">
                         <div class="w-full md:w-1/3">
-                            <img src="https://via.placeholder.com/500x700/f8f9fa/666666?text=${o.replace(/ /g,"+")}" class="max-h-[500px] w-auto mx-auto object-cover rounded-lg" alt="${o}">
+                            <img src="https://via.placeholder.com/500x700/f8f9fa/666666?text=${s.replace(/ /g,"+")}" class="max-h-[500px] w-auto mx-auto object-cover rounded-lg" alt="${s}">
                         </div>
                         <div class="w-full md:w-2/3">
-                            <h2 class="text-4xl font-bold text-primary mb-2">${o}</h2>
-                            <h3 class="text-2xl font-semibold text-primary italic mb-4">Subtítulo de ${o}</h3>
+                            <h2 class="text-4xl font-bold text-primary mb-2">${s}</h2>
+                            <h3 class="text-2xl font-semibold text-primary italic mb-4">Subtítulo de ${s}</h3>
                             <p class="text-lg text-gray-600 mb-6">Descripción detallada del seguro. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
                         </div>
                     </div>
@@ -2445,13 +2621,13 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                         </div>
                     </div>
                 </div>
-            `}return{tabButtons:d,tabPanels:c}};i.BlockManager.add("insurance-tabs-block",{label:"Tipos de Seguro",category:"Seguros",attributes:{class:"gjs-block-section"},media:l,content:{type:"insurance-tabs",activeTab:"auto",tabCount:5}}),i.DomComponents.addType("insurance-tabs",{isComponent:function(t){return t.getAttribute&&t.getAttribute("data-gjs-type")==="insurance-tabs"},model:{defaults:{tagName:"section",draggable:!0,droppable:!0,attributes:{"data-gjs-type":"insurance-tabs",class:"insurance-tabs-container py-8 md:py-12 bg-white"},name:"Tipos de Seguro",traits:[{type:"select",name:"data-active",label:"Tab activo inicial",options:[{id:"auto",name:"Tab 1"},{id:"vida",name:"Tab 2"},{id:"inmueble",name:"Tab 3"},{id:"equipo",name:"Tab 4"},{id:"atencion",name:"Tab 5"},{id:"tab6",name:"Tab 6"},{id:"tab7",name:"Tab 7"},{id:"tab8",name:"Tab 8"},{id:"tab9",name:"Tab 9"},{id:"tab10",name:"Tab 10"}],default:"auto"},{type:"number",name:"tab-count",label:"Número de tabs",min:1,max:10,default:5,changeProp:!0}],"tab-count":5,script:function(){const t=this;if(!t.hasAttribute("data-initialized")){const e=t.querySelectorAll(".insurance-tab-btn"),a=t.querySelectorAll(".insurance-panel-group"),d=t.getAttribute("data-active")||"auto",c=typeof window.grapesjs<"u"||document.body.classList.contains("gjs-dmode")||window.location.href.includes("/editor/");e.forEach(n=>{n.addEventListener("click",function(m){if(c&&m.target.classList.contains("tab-button-text"))return;const o=this.getAttribute("data-type");e.forEach(u=>{u===this?(u.classList.remove("bg-white","text-primary"),u.classList.add("bg-primary","text-white")):(u.classList.remove("bg-primary","text-white"),u.classList.add("bg-white","text-primary"))}),a.forEach(u=>{u.getAttribute("data-type")===o?u.classList.remove("hidden"):u.classList.add("hidden")})})});const r=Array.from(e).find(n=>n.getAttribute("data-type")===d);r?r.click():e.length>0&&e[0].click(),t.setAttribute("data-initialized","true")}}},init(){this.on("change:tab-count",this.updateTabCount),this.on("change:attributes:data-active",this.updateActiveTab)},updateTabCount(){const t=this.get("tab-count");if(!t||t<1||t>10)return;const{tabButtons:e,tabPanels:a}=s(t),d=this.components();d.reset(),d.add(`
+            `}return{tabButtons:d,tabPanels:n}};i.BlockManager.add("insurance-tabs-block",{label:"Tipos de Seguro",category:"Seguros",attributes:{class:"gjs-block-section"},media:o,content:{type:"insurance-tabs",activeTab:"auto",tabCount:5}}),i.DomComponents.addType("insurance-tabs",{isComponent:function(t){return t.getAttribute&&t.getAttribute("data-gjs-type")==="insurance-tabs"},model:{defaults:{tagName:"section",draggable:!0,droppable:!0,attributes:{"data-gjs-type":"insurance-tabs",class:"insurance-tabs-container py-8 md:py-12 bg-white"},name:"Tipos de Seguro",traits:[{type:"select",name:"data-active",label:"Tab activo inicial",options:[{id:"auto",name:"Tab 1"},{id:"vida",name:"Tab 2"},{id:"inmueble",name:"Tab 3"},{id:"equipo",name:"Tab 4"},{id:"atencion",name:"Tab 5"},{id:"tab6",name:"Tab 6"},{id:"tab7",name:"Tab 7"},{id:"tab8",name:"Tab 8"},{id:"tab9",name:"Tab 9"},{id:"tab10",name:"Tab 10"}],default:"auto"},{type:"number",name:"tab-count",label:"Número de tabs",min:1,max:10,default:5,changeProp:!0}],"tab-count":5,script:function(){const t=this;if(!t.hasAttribute("data-initialized")){const e=t.querySelectorAll(".insurance-tab-btn"),l=t.querySelectorAll(".insurance-panel-group"),d=t.getAttribute("data-active")||"auto",n=typeof window.grapesjs<"u"||document.body.classList.contains("gjs-dmode")||window.location.href.includes("/editor/");e.forEach(r=>{r.addEventListener("click",function(p){if(n&&p.target.classList.contains("tab-button-text"))return;const s=this.getAttribute("data-type");e.forEach(u=>{u===this?(u.classList.remove("bg-white","text-primary"),u.classList.add("bg-primary","text-white")):(u.classList.remove("bg-primary","text-white"),u.classList.add("bg-white","text-primary"))}),l.forEach(u=>{u.getAttribute("data-type")===s?u.classList.remove("hidden"):u.classList.add("hidden")})})});const c=Array.from(e).find(r=>r.getAttribute("data-type")===d);c?c.click():e.length>0&&e[0].click(),t.setAttribute("data-initialized","true")}}},init(){this.on("change:tab-count",this.updateTabCount),this.on("change:attributes:data-active",this.updateActiveTab)},updateTabCount(){const t=this.get("tab-count");if(!t||t<1||t>10)return;const{tabButtons:e,tabPanels:l}=a(t),d=this.components();d.reset(),d.add(`
                     <div class="max-w-7xl mx-auto px-4">
                         <div class="insurance-tabs mb-6 flex flex-wrap gap-3">
                             ${e}
                         </div>
                         <div class="insurance-panels">
-                            ${a}
+                            ${l}
                         </div>
                     </div>
                 `),this.trigger("change:script")},updateActiveTab(){this.trigger("change:script")}},view:{init(){this.model.components().length===0&&this.model.updateTabCount()},onRender(){const t=this.model.get("script");t&&setTimeout(()=>{t.call(this.el)},100)}}}),i.BlockManager.add("insurance-image-text-section",{label:"Imagen con Texto Seguro",category:"Seguros",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
@@ -2655,7 +2831,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 <p class="text-white/80 text-lg mb-6 max-w-2xl mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 <a href="#" class="inline-block bg-white text-primary font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:bg-white/90 text-lg">Solicitar información</a>
             </div>
-        `})}function Tt(i){const l=`<svg viewBox="0 0 24 24" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+        `})}function qt(i){const o=`<svg viewBox="0 0 24 24" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
         <rect x="2" y="10" width="4" height="4" rx="0.5" fill="#23366A" />
         
         <path d="M7,11 L8,12 L7,13" stroke="#666" stroke-width="1" fill="none" />
@@ -2665,15 +2841,15 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         <path d="M14,11 L15,12 L14,13" stroke="#666" stroke-width="1" fill="none" />
         
         <rect x="16" y="10" width="6" height="4" rx="0.5" fill="#23366A" />
-        </svg>`;i.DomComponents.addType("breadcrumb",{isComponent:function(s){return s.getAttribute&&s.getAttribute("data-gjs-type")==="breadcrumb"},extend:"div",priority:10,model:{defaults:{tagName:"nav",droppable:!1,attributes:{"data-gjs-type":"breadcrumb",class:"py-4 bg-white","data-item-count":"3","data-item-1-text":"Inicio","data-item-1-link":"/","data-item-1-active":"","data-item-2-text":"Pagina 1","data-item-2-link":"#","data-item-2-active":"","data-item-3-text":"Pagina 2","data-item-3-link":"#","data-item-3-active":"true"},name:"Breadcrumb",traits:[],script:function(){if(window.grapesjs||document.querySelector(".gjs-frame"))return;this.querySelectorAll(".breadcrumb-item").forEach(e=>{if(e.classList.contains("active")){const a=e.querySelector("a");a&&a.addEventListener("click",d=>{d.preventDefault()})}})}},init(){this._updating=!1,this.normalizeAttributes(),this.buildTraits(),this.updateItems(),this.on("change:attributes",this.onAttributesChange)},normalizeAttributes(){const s=this.getAttributes(),t=parseInt(s["data-item-count"])||3,e={};s["data-item-count"]||(e["data-item-count"]="3");for(let a=1;a<=t;a++)s[`data-item-${a}-text`]||(e[`data-item-${a}-text`]=a===1?"Inicio":a===t?"Pagina actual":`Pagina ${a}`),s[`data-item-${a}-link`]||(e[`data-item-${a}-link`]=a===1?"/":a===t?"#":`/page-${a}`),s[`data-item-${a}-active`]===void 0&&(e[`data-item-${a}-active`]=a===t?"true":"");Object.keys(e).length>0&&this.addAttributes(e)},onAttributesChange(){var d;if(this._updating)return;const s=this.getAttributes(),t=((d=this.changed)==null?void 0:d.attributes)||{};if(Object.keys(t).filter(c=>c.startsWith("data-item-")).length===0)return;if(t.hasOwnProperty("data-item-count")){const c=parseInt(s["data-item-count"])||3,r=this._lastCount||3;if(c!==r){if(this._lastCount=c,c>r){const n={};for(let m=r+1;m<=c;m++){const o=m===c;n[`data-item-${m}-text`]=o?"Pagina actual":`Pagina ${m}`,n[`data-item-${m}-link`]=o?"#":`/page-${m}`,n[`data-item-${m}-active`]=o?"true":""}this._updating=!0,this.addAttributes(n),this._updating=!1}this.buildTraits()}}this.updateItems()},buildTraits(){const s=this.getAttributes(),t=parseInt(s["data-item-count"])||3;this._lastCount=t;const e=[{type:"number",name:"data-item-count",label:"Number of items",min:1,max:10}];for(let a=1;a<=t;a++)e.push({type:"text",name:`data-item-${a}-text`,label:`Item ${a} Text`},{type:"text",name:`data-item-${a}-link`,label:`Item ${a} Link`},{type:"checkbox",name:`data-item-${a}-active`,label:`Item ${a} Is Current`,valueTrue:"true",valueFalse:""});this.set("traits",e)},updateItems(){var a;const s=this.getAttributes(),t=parseInt(s["data-item-count"])||3;let e=`<div class="max-w-7xl mx-auto px-4">
+        </svg>`;i.DomComponents.addType("breadcrumb",{isComponent:function(a){return a.getAttribute&&a.getAttribute("data-gjs-type")==="breadcrumb"},extend:"div",priority:10,model:{defaults:{tagName:"nav",droppable:!1,attributes:{"data-gjs-type":"breadcrumb",class:"py-4 bg-white","data-item-count":"3","data-item-1-text":"Inicio","data-item-1-link":"/","data-item-1-active":"","data-item-2-text":"Pagina 1","data-item-2-link":"#","data-item-2-active":"","data-item-3-text":"Pagina 2","data-item-3-link":"#","data-item-3-active":"true"},name:"Breadcrumb",traits:[],script:function(){if(window.grapesjs||document.querySelector(".gjs-frame"))return;this.querySelectorAll(".breadcrumb-item").forEach(e=>{if(e.classList.contains("active")){const l=e.querySelector("a");l&&l.addEventListener("click",d=>{d.preventDefault()})}})}},init(){this._updating=!1,this.normalizeAttributes(),this.buildTraits(),this.updateItems(),this.on("change:attributes",this.onAttributesChange)},normalizeAttributes(){const a=this.getAttributes(),t=parseInt(a["data-item-count"])||3,e={};a["data-item-count"]||(e["data-item-count"]="3");for(let l=1;l<=t;l++)a[`data-item-${l}-text`]||(e[`data-item-${l}-text`]=l===1?"Inicio":l===t?"Pagina actual":`Pagina ${l}`),a[`data-item-${l}-link`]||(e[`data-item-${l}-link`]=l===1?"/":l===t?"#":`/page-${l}`),a[`data-item-${l}-active`]===void 0&&(e[`data-item-${l}-active`]=l===t?"true":"");Object.keys(e).length>0&&this.addAttributes(e)},onAttributesChange(){var d;if(this._updating)return;const a=this.getAttributes(),t=((d=this.changed)==null?void 0:d.attributes)||{};if(Object.keys(t).filter(n=>n.startsWith("data-item-")).length===0)return;if(t.hasOwnProperty("data-item-count")){const n=parseInt(a["data-item-count"])||3,c=this._lastCount||3;if(n!==c){if(this._lastCount=n,n>c){const r={};for(let p=c+1;p<=n;p++){const s=p===n;r[`data-item-${p}-text`]=s?"Pagina actual":`Pagina ${p}`,r[`data-item-${p}-link`]=s?"#":`/page-${p}`,r[`data-item-${p}-active`]=s?"true":""}this._updating=!0,this.addAttributes(r),this._updating=!1}this.buildTraits()}}this.updateItems()},buildTraits(){const a=this.getAttributes(),t=parseInt(a["data-item-count"])||3;this._lastCount=t;const e=[{type:"number",name:"data-item-count",label:"Number of items",min:1,max:10}];for(let l=1;l<=t;l++)e.push({type:"text",name:`data-item-${l}-text`,label:`Item ${l} Text`},{type:"text",name:`data-item-${l}-link`,label:`Item ${l} Link`},{type:"checkbox",name:`data-item-${l}-active`,label:`Item ${l} Is Current`,valueTrue:"true",valueFalse:""});this.set("traits",e)},updateItems(){var l;const a=this.getAttributes(),t=parseInt(a["data-item-count"])||3;let e=`<div class="max-w-7xl mx-auto px-4">
                     <nav aria-label="breadcrumb" class="breadcrumb-container">
-                        <ol class="breadcrumb flex items-center flex-wrap text-sm">`;for(let d=1;d<=t;d++){const c=s[`data-item-${d}-text`]||`Item ${d}`,r=s[`data-item-${d}-link`]||"#",n=s[`data-item-${d}-active`],m=n==="true"||n===!0;e+=`<li class="breadcrumb-item${m?" active":""}"${m?' aria-current="page"':""}>
-                                <a href="${r}" class="${m?"text-primary font-semibold":"text-gray-500 hover:text-primary hover:underline"}">${c}</a>
+                        <ol class="breadcrumb flex items-center flex-wrap text-sm">`;for(let d=1;d<=t;d++){const n=a[`data-item-${d}-text`]||`Item ${d}`,c=a[`data-item-${d}-link`]||"#",r=a[`data-item-${d}-active`],p=r==="true"||r===!0;e+=`<li class="breadcrumb-item${p?" active":""}"${p?' aria-current="page"':""}>
+                                <a href="${c}" class="${p?"text-primary font-semibold":"text-gray-500 hover:text-primary hover:underline"}">${n}</a>
                             </li>`,d<t&&(e+=`<li class="breadcrumb-separator">
                                 <i class="ri-arrow-right-s-line text-gray-500"></i>
                             </li>`)}e+=`</ol>
                         </nav>
-                    </div>`,this.components(e),(a=this.view)==null||a.render()}},view:{init(){this.listenTo(this.model,"change:components",this.render)}}}),i.BlockManager.add("breadcrumb-block",{label:"Ruta de Navegación",category:"Botones",attributes:{class:"gjs-block-section"},media:l,content:{type:"breadcrumb"}}),i.on("load",()=>{const s=i.Canvas.getFrameEl();if(s&&s.contentDocument){const t=s.contentDocument.createElement("style");t.textContent=`
+                    </div>`,this.components(e),(l=this.view)==null||l.render()}},view:{init(){this.listenTo(this.model,"change:components",this.render)}}}),i.BlockManager.add("breadcrumb-block",{label:"Ruta de Navegación",category:"Botones",attributes:{class:"gjs-block-section"},media:o,content:{type:"breadcrumb"}}),i.on("load",()=>{const a=i.Canvas.getFrameEl();if(a&&a.contentDocument){const t=a.contentDocument.createElement("style");t.textContent=`
                 .breadcrumb-container {
                     width: 100%;
                 }
@@ -2710,7 +2886,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     margin: 0 0.5rem;
                     color: #9CA3AF;
                 }
-            `,s.contentDocument.head.appendChild(t)}})}function Lt(i){const l=i.BlockManager;fetch("/api/custom-blocks/active").then(t=>t.json()).then(t=>{t.forEach(e=>{s(i,e)})}).catch(t=>{console.error("Error loading custom blocks:",t)});function s(t,e){l.add(`custom-block-${e.id}`,{label:e.name,category:e.category,content:{type:`custom-block-type-${e.id}`,content:e.html_content,attributes:{"data-custom-block-id":e.id,"data-custom-block":"true"}},media:e.icon_type==="remix"?`<i class="ri-${e.icon} text-2xl text-primary"></i>`:`<img src="${e.icon}" alt="${e.name}" class="w-6 h-6">`});const a=(d,c)=>{if(e.admin_js&&e.admin_js.trim()!=="")try{new Function("editor","model","Swal",e.admin_js)(d,c,window.Swal)}catch(r){console.error(`Error executing admin JavaScript for block ${e.id}:`,r)}};t.DomComponents.addType(`custom-block-type-${e.id}`,{isComponent:d=>{if(!d)return!1;if(d.getAttribute&&(d.getAttribute("data-custom-block-id")===String(e.id)||d.getAttribute("data-custom-block")==="true"))return!0;if(typeof d.outerHTML=="string")try{const c=e.html_content.trim().replace(/\s+/g," ");return d.outerHTML.trim().replace(/\s+/g," ").includes(c)}catch{return!1}return!1},model:{defaults:{name:e.name,tagName:"div",attributes:{"data-custom-block-id":e.id,"data-custom-block":"true"},traits:[]},init(){const d=this;if(this.on("change:attributes",this.handleAttrChange),e.settings)try{const c=typeof e.settings=="string"?JSON.parse(e.settings):e.settings;if(c.traits&&Array.isArray(c.traits)){const r=c.traits.map(n=>n.type==="cards-configurator"||n.name==="configure"?{type:"button",name:n.name||"configure",label:n.label||"Configurar",text:n.text||n.label||"Configurar Bloque",full:!0,command:()=>{const m=t.getSelected();m&&a(t,m)}}:n);this.set("traits",r)}if(c.attributes&&typeof c.attributes=="object"){const r=this.get("attributes")||{};this.set("attributes",{...r,...c.attributes})}}catch(c){console.error("Error processing block settings:",c)}a(t,d)},handleAttrChange(){}},view:{init(){this.listenTo(this.model,"change:attributes",this.handleAttrUpdate)},handleAttrUpdate(){this.render()},events:{dblclick:"handleDblClick"},handleDblClick(d){const c=this.model;a(t,c)}}})}}function It(i){i.BlockManager.add("quick-access-carousel",{label:"Accesos Rápidos",category:"Componentes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+            `,a.contentDocument.head.appendChild(t)}})}function Mt(i){const o=i.BlockManager;fetch("/api/custom-blocks/active").then(t=>t.json()).then(t=>{t.forEach(e=>{a(i,e)})}).catch(t=>{console.error("Error loading custom blocks:",t)});function a(t,e){o.add(`custom-block-${e.id}`,{label:e.name,category:e.category,content:{type:`custom-block-type-${e.id}`,content:e.html_content,attributes:{"data-custom-block-id":e.id,"data-custom-block":"true"}},media:e.icon_type==="remix"?`<i class="ri-${e.icon} text-2xl text-primary"></i>`:`<img src="${e.icon}" alt="${e.name}" class="w-6 h-6">`});const l=(d,n)=>{if(e.admin_js&&e.admin_js.trim()!=="")try{new Function("editor","model","Swal",e.admin_js)(d,n,window.Swal)}catch(c){console.error(`Error executing admin JavaScript for block ${e.id}:`,c)}};t.DomComponents.addType(`custom-block-type-${e.id}`,{isComponent:d=>{if(!d)return!1;if(d.getAttribute&&(d.getAttribute("data-custom-block-id")===String(e.id)||d.getAttribute("data-custom-block")==="true"))return!0;if(typeof d.outerHTML=="string")try{const n=e.html_content.trim().replace(/\s+/g," ");return d.outerHTML.trim().replace(/\s+/g," ").includes(n)}catch{return!1}return!1},model:{defaults:{name:e.name,tagName:"div",attributes:{"data-custom-block-id":e.id,"data-custom-block":"true"},traits:[]},init(){const d=this;if(this.on("change:attributes",this.handleAttrChange),e.settings)try{const n=typeof e.settings=="string"?JSON.parse(e.settings):e.settings;if(n.traits&&Array.isArray(n.traits)){const c=n.traits.map(r=>r.type==="cards-configurator"||r.name==="configure"?{type:"button",name:r.name||"configure",label:r.label||"Configurar",text:r.text||r.label||"Configurar Bloque",full:!0,command:()=>{const p=t.getSelected();p&&l(t,p)}}:r);this.set("traits",c)}if(n.attributes&&typeof n.attributes=="object"){const c=this.get("attributes")||{};this.set("attributes",{...c,...n.attributes})}}catch(n){console.error("Error processing block settings:",n)}l(t,d)},handleAttrChange(){}},view:{init(){this.listenTo(this.model,"change:attributes",this.handleAttrUpdate)},handleAttrUpdate(){this.render()},events:{dblclick:"handleDblClick"},handleDblClick(d){const n=this.model;l(t,n)}}})}}function Pt(i){i.BlockManager.add("quick-access-carousel",{label:"Accesos Rápidos",category:"Componentes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="2" y="4" width="20" height="16" rx="3" fill="#ffffff" stroke="#dddddd"/>
             <rect x="4" y="7" width="16" height="2" rx="1" fill="#23366A"/>
             <rect x="6" y="10" width="12" height="1" fill="#999999"/>
@@ -2763,7 +2939,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 </div>
             </div>
         </section>
-        `})}function jt(i){const l=i.BlockManager;Bt(i),l.add("account-selector-block",{label:"Selector de Cuentas",category:"Cuentas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `})}function zt(i){const o=i.BlockManager;Nt(i),o.add("account-selector-block",{label:"Selector de Cuentas",category:"Cuentas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="2" y="4" width="20" height="16" rx="3" fill="#ffffff" stroke="#dddddd"/>
         <rect x="4" y="6" width="10" height="2" rx="1" fill="#23366A"/>
         <rect x="4" y="9" width="16" height="1" fill="#999999"/>
@@ -2922,7 +3098,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
         </div>
     </section>
-    `}),i.DomComponents.addType("account-selector",{model:{defaults:{name:"Selector de Cuentas",droppable:!0,attributes:{"data-gjs-type":"account-selector"},traits:[{type:"select",name:"data-active",label:"Cuenta activa inicial",options:[{id:"-1",name:"Ninguna"},{id:"0",name:"Personal"},{id:"1",name:"Infanto Juvenil"},{id:"2",name:"Premium"},{id:"3",name:"Diamante"},{id:"4",name:"Depósito a Plazo"}]}],script:function(){(function(){const s=this;s.classList.add("account-selector-initialized"),s.setAttribute("data-account-selector-init","true")}).bind(this)()}}},view:{init(){this.listenTo(this.model,"change:data-active",this.updateScript)},onRender(){setTimeout(()=>{R()},500)}}}),i.on("component:selected",s=>{if(s.get("type")==="account-selector"){const t=document.createElement("style");t.innerHTML=`
+    `}),i.DomComponents.addType("account-selector",{model:{defaults:{name:"Selector de Cuentas",droppable:!0,attributes:{"data-gjs-type":"account-selector"},traits:[{type:"select",name:"data-active",label:"Cuenta activa inicial",options:[{id:"-1",name:"Ninguna"},{id:"0",name:"Personal"},{id:"1",name:"Infanto Juvenil"},{id:"2",name:"Premium"},{id:"3",name:"Diamante"},{id:"4",name:"Depósito a Plazo"}]}],script:function(){(function(){const a=this;a.classList.add("account-selector-initialized"),a.setAttribute("data-account-selector-init","true")}).bind(this)()}}},view:{init(){this.listenTo(this.model,"change:data-active",this.updateScript)},onRender(){setTimeout(()=>{V()},500)}}}),i.on("component:selected",a=>{if(a.get("type")==="account-selector"){const t=document.createElement("style");t.innerHTML=`
                 .account-header.active h2 {
                     font-size: 1.75rem;
                     margin-bottom: 0.5rem;
@@ -2942,7 +3118,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                         transform: translateY(0);
                     }
                 }
-            `,document.head.appendChild(t),i.once("component:deselected",()=>{document.head.removeChild(t)})}}),i.on("canvas:load",()=>{setTimeout(()=>{const s=i.Canvas.getFrameEl();if(s&&s.contentDocument){const t=s.contentDocument.createElement("script");t.textContent=`(${R.toString()})()`,s.contentDocument.body.appendChild(t)}},1e3)}),i.on("component:add",s=>{s.get("type")==="account-selector"&&setTimeout(()=>{const t=i.Canvas.getFrameEl();if(t&&t.contentDocument){const e=t.contentDocument.createElement("script");e.textContent=`(${R.toString()})()`,t.contentDocument.body.appendChild(e)}},500)}),l.add("account-single-block",{label:"Cuenta - Una Columna",category:"Cuentas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+            `,document.head.appendChild(t),i.once("component:deselected",()=>{document.head.removeChild(t)})}}),i.on("canvas:load",()=>{setTimeout(()=>{const a=i.Canvas.getFrameEl();if(a&&a.contentDocument){const t=a.contentDocument.createElement("script");t.textContent=`(${V.toString()})()`,a.contentDocument.body.appendChild(t)}},1e3)}),i.on("component:add",a=>{a.get("type")==="account-selector"&&setTimeout(()=>{const t=i.Canvas.getFrameEl();if(t&&t.contentDocument){const e=t.contentDocument.createElement("script");e.textContent=`(${V.toString()})()`,t.contentDocument.body.appendChild(e)}},500)}),o.add("account-single-block",{label:"Cuenta - Una Columna",category:"Cuentas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="2" y="4" width="20" height="16" rx="3" fill="#ffffff" stroke="#dddddd"/>
         <rect x="4" y="6" width="16" height="2" rx="1" fill="#23366A"/>
         <rect x="4" y="9" width="10" height="1" rx="1" fill="#23366A"/>
@@ -2963,7 +3139,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </ul>
         </div>
     </div>
-    `}),l.add("account-double-block",{label:"Cuenta - Dos Columnas",category:"Cuentas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `}),o.add("account-double-block",{label:"Cuenta - Dos Columnas",category:"Cuentas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="2" y="4" width="20" height="16" rx="3" fill="#ffffff" stroke="#dddddd"/>
         <rect x="4" y="6" width="16" height="2" rx="1" fill="#23366A"/>
         <rect x="4" y="9" width="10" height="1" rx="1" fill="#23366A"/>
@@ -3000,7 +3176,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
         </div>
     </div>
-    `}),l.add("account-featured-block",{label:"Cuenta - Características",category:"Cuentas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `}),o.add("account-featured-block",{label:"Cuenta - Características",category:"Cuentas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
         <rect x="2" y="4" width="20" height="16" rx="3" fill="#ffffff" stroke="#dddddd"/>
         <rect x="4" y="6" width="16" height="2" rx="1" fill="#23366A"/>
         <rect x="4" y="9" width="10" height="1" rx="1" fill="#23366A"/>
@@ -3043,7 +3219,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             </div>
         </div>
     </div>
-    `})}function Bt(i){const l=`
+    `})}function Nt(i){const o=`
     function initializeAccountSelectors() {
         const containers = document.querySelectorAll('.account-selector-container');
         
@@ -3140,7 +3316,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
         setTimeout(initializeAccountSelectors, 100);
     }
-    `;i.on("canvas:load",()=>{setTimeout(()=>{const s=i.Canvas.getFrameEl();if(s&&s.contentDocument){const t=s.contentDocument.createElement("script");t.textContent=l,s.contentDocument.body.appendChild(t)}},500)})}function R(){document.querySelectorAll(".account-selector-container").forEach(l=>{if(l.hasAttribute("data-initialized"))return;const s=l.querySelectorAll(".account-type-btn"),t=l.querySelectorAll(".account-panel"),e=l.querySelector(".account-header"),a=e?e.querySelector(".account-title"):null,d=e?e.querySelector(".account-description"):null,c=e?e.querySelector(".close-btn"):null,r=l.querySelector(".buttons-container"),n=parseInt(l.getAttribute("data-active")||"-1");s.forEach((o,u)=>{o.addEventListener("click",function(){m(u)})}),c&&c.addEventListener("click",function(){m(-1)});function m(o){t.forEach(u=>{u.classList.add("hidden")}),s.forEach(u=>{u.classList.remove("bg-primary","text-white"),u.classList.add("bg-white","text-primary")}),o>=0&&o<t.length?(t[o].classList.remove("hidden"),s[o].classList.remove("bg-white","text-primary"),s[o].classList.add("bg-primary","text-white"),e&&e.classList.add("active"),a&&(a.classList.remove("text-center"),a.classList.add("text-left")),d&&d.classList.add("hidden"),c&&(c.classList.remove("opacity-0","invisible"),c.classList.add("opacity-100","visible")),r&&(r.classList.remove("justify-center"),r.classList.add("justify-start"))):(e&&e.classList.remove("active"),a&&(a.classList.remove("text-left"),a.classList.add("text-center")),d&&d.classList.remove("hidden"),c&&(c.classList.add("opacity-0","invisible"),c.classList.remove("opacity-100","visible")),r&&(r.classList.add("justify-center"),r.classList.remove("justify-start")))}n>=0&&n<s.length&&m(n),l.setAttribute("data-initialized","true")})}function $t(i){i.BlockManager.add("account-types-block",{label:"Tipos de Cuenta",category:"Componentes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+    `;i.on("canvas:load",()=>{setTimeout(()=>{const a=i.Canvas.getFrameEl();if(a&&a.contentDocument){const t=a.contentDocument.createElement("script");t.textContent=o,a.contentDocument.body.appendChild(t)}},500)})}function V(){document.querySelectorAll(".account-selector-container").forEach(o=>{if(o.hasAttribute("data-initialized"))return;const a=o.querySelectorAll(".account-type-btn"),t=o.querySelectorAll(".account-panel"),e=o.querySelector(".account-header"),l=e?e.querySelector(".account-title"):null,d=e?e.querySelector(".account-description"):null,n=e?e.querySelector(".close-btn"):null,c=o.querySelector(".buttons-container"),r=parseInt(o.getAttribute("data-active")||"-1");a.forEach((s,u)=>{s.addEventListener("click",function(){p(u)})}),n&&n.addEventListener("click",function(){p(-1)});function p(s){t.forEach(u=>{u.classList.add("hidden")}),a.forEach(u=>{u.classList.remove("bg-primary","text-white"),u.classList.add("bg-white","text-primary")}),s>=0&&s<t.length?(t[s].classList.remove("hidden"),a[s].classList.remove("bg-white","text-primary"),a[s].classList.add("bg-primary","text-white"),e&&e.classList.add("active"),l&&(l.classList.remove("text-center"),l.classList.add("text-left")),d&&d.classList.add("hidden"),n&&(n.classList.remove("opacity-0","invisible"),n.classList.add("opacity-100","visible")),c&&(c.classList.remove("justify-center"),c.classList.add("justify-start"))):(e&&e.classList.remove("active"),l&&(l.classList.remove("text-left"),l.classList.add("text-center")),d&&d.classList.remove("hidden"),n&&(n.classList.add("opacity-0","invisible"),n.classList.remove("opacity-100","visible")),c&&(c.classList.add("justify-center"),c.classList.remove("justify-start")))}r>=0&&r<a.length&&p(r),o.setAttribute("data-initialized","true")})}function Ft(i){i.BlockManager.add("account-types-block",{label:"Tipos de Cuenta",category:"Componentes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="2" width="20" height="20" rx="2" fill="#23366A" />
       <rect x="4" y="4" width="16" height="3" fill="white" />
       <rect x="4" y="8" width="7" height="1" fill="#ffffff" />
@@ -3325,9 +3501,9 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     </div>
                 </div>
             </section>
-        `}),i.DomComponents.addType("account-types",{isComponent:function(s){return s.getAttribute&&s.getAttribute("data-gjs-type")==="account-types"},model:{defaults:{tagName:"section",draggable:!0,droppable:!1,attributes:{"data-gjs-type":"account-types",class:"account-types-container py-8 md:py-12 bg-white"},name:"Tipos de Cuenta",traits:[{type:"select",name:"data-active",label:"Tab activo inicial",options:[{id:"personal",name:"Personal"},{id:"infanto-juvenil",name:"Infanto Juvenil"},{id:"premium",name:"Premium"},{id:"diamante",name:"Diamante"},{id:"deposito",name:"Depósito a Plazo"}],default:"personal"},{type:"number",name:"tab-count",label:"Número de tabs",min:1,max:8,default:5},{type:"text",name:"tab-1-name",label:"Nombre Tab 1",default:"Personal"},{type:"text",name:"tab-2-name",label:"Nombre Tab 2",default:"Infanto Juvenil"},{type:"text",name:"tab-3-name",label:"Nombre Tab 3",default:"Premium"},{type:"text",name:"tab-4-name",label:"Nombre Tab 4",default:"Diamante"},{type:"text",name:"tab-5-name",label:"Nombre Tab 5",default:"Depósito a Plazo"},{type:"text",name:"tab-6-name",label:"Nombre Tab 6 (opcional)",default:"Tab 6"},{type:"text",name:"tab-7-name",label:"Nombre Tab 7 (opcional)",default:"Tab 7"},{type:"text",name:"tab-8-name",label:"Nombre Tab 8 (opcional)",default:"Tab 8"}],script:function(){const s=this,t=s.querySelectorAll(".account-tab-btn"),e=s.querySelectorAll(".account-panel-group"),a=s.getAttribute("data-active")||"personal";t.forEach(c=>{c.addEventListener("click",function(){const r=this.getAttribute("data-type");t.forEach(n=>{n===this?(n.classList.remove("bg-white","text-primary"),n.classList.add("bg-primary","text-white")):(n.classList.remove("bg-primary","text-white"),n.classList.add("bg-white","text-primary"))}),e.forEach(n=>{n.getAttribute("data-type")===r?n.classList.remove("hidden"):n.classList.add("hidden")})})});const d=Array.from(t).find(c=>c.getAttribute("data-type")===a);d?d.click():t.length>0&&t[0].click()}},init(){this.on("change:attributes:tab-count",this.updateTabs);for(let s=1;s<=8;s++)this.on(`change:attributes:tab-${s}-name`,this.updateTabNames);this.on("change:attributes:data-active",this.updateActiveTab),setTimeout(()=>this.initializeScript(),300)},initializeScript(){var e;const s=this.get("script"),t=(e=this.view)==null?void 0:e.el;s&&t&&s.call(t)},updateTabs(){const s=parseInt(this.get("attributes")["tab-count"]||5),t=this.view.el.querySelector(".account-tabs"),e=this.view.el.querySelector(".account-panels");if(!t||!e)return;const a=t.querySelectorAll(".account-tab-btn"),d=e.querySelectorAll(".account-panel-group"),c=["Personal","Infanto Juvenil","Premium","Diamante","Depósito a Plazo","Tab 6","Tab 7","Tab 8"],r=["personal","infanto-juvenil","premium","diamante","deposito","tab-6","tab-7","tab-8"],n=Array.from(a).map(m=>m.getAttribute("data-type"));t.innerHTML="";for(let m=0;m<s;m++){const o=this.get("attributes")[`tab-${m+1}-name`]||c[m],u=n[m]||r[m],h=document.createElement("button");h.className="account-tab-btn bg-white text-primary py-2 px-6 md:px-8 font-medium rounded-full border-2 border-primary transition-all duration-300",h.setAttribute("data-type",u),h.textContent=o,t.appendChild(h);let f=Array.from(d).find(S=>S.getAttribute("data-type")===u);if(!f){f=document.createElement("div"),f.className="account-panel-group hidden",f.setAttribute("data-type",u);let S;m<2?S=`
+        `}),i.DomComponents.addType("account-types",{isComponent:function(a){return a.getAttribute&&a.getAttribute("data-gjs-type")==="account-types"},model:{defaults:{tagName:"section",draggable:!0,droppable:!1,attributes:{"data-gjs-type":"account-types",class:"account-types-container py-8 md:py-12 bg-white"},name:"Tipos de Cuenta",traits:[{type:"select",name:"data-active",label:"Tab activo inicial",options:[{id:"personal",name:"Personal"},{id:"infanto-juvenil",name:"Infanto Juvenil"},{id:"premium",name:"Premium"},{id:"diamante",name:"Diamante"},{id:"deposito",name:"Depósito a Plazo"}],default:"personal"},{type:"number",name:"tab-count",label:"Número de tabs",min:1,max:8,default:5},{type:"text",name:"tab-1-name",label:"Nombre Tab 1",default:"Personal"},{type:"text",name:"tab-2-name",label:"Nombre Tab 2",default:"Infanto Juvenil"},{type:"text",name:"tab-3-name",label:"Nombre Tab 3",default:"Premium"},{type:"text",name:"tab-4-name",label:"Nombre Tab 4",default:"Diamante"},{type:"text",name:"tab-5-name",label:"Nombre Tab 5",default:"Depósito a Plazo"},{type:"text",name:"tab-6-name",label:"Nombre Tab 6 (opcional)",default:"Tab 6"},{type:"text",name:"tab-7-name",label:"Nombre Tab 7 (opcional)",default:"Tab 7"},{type:"text",name:"tab-8-name",label:"Nombre Tab 8 (opcional)",default:"Tab 8"}],script:function(){const a=this,t=a.querySelectorAll(".account-tab-btn"),e=a.querySelectorAll(".account-panel-group"),l=a.getAttribute("data-active")||"personal";t.forEach(n=>{n.addEventListener("click",function(){const c=this.getAttribute("data-type");t.forEach(r=>{r===this?(r.classList.remove("bg-white","text-primary"),r.classList.add("bg-primary","text-white")):(r.classList.remove("bg-primary","text-white"),r.classList.add("bg-white","text-primary"))}),e.forEach(r=>{r.getAttribute("data-type")===c?r.classList.remove("hidden"):r.classList.add("hidden")})})});const d=Array.from(t).find(n=>n.getAttribute("data-type")===l);d?d.click():t.length>0&&t[0].click()}},init(){this.on("change:attributes:tab-count",this.updateTabs);for(let a=1;a<=8;a++)this.on(`change:attributes:tab-${a}-name`,this.updateTabNames);this.on("change:attributes:data-active",this.updateActiveTab),setTimeout(()=>this.initializeScript(),300)},initializeScript(){var e;const a=this.get("script"),t=(e=this.view)==null?void 0:e.el;a&&t&&a.call(t)},updateTabs(){const a=parseInt(this.get("attributes")["tab-count"]||5),t=this.view.el.querySelector(".account-tabs"),e=this.view.el.querySelector(".account-panels");if(!t||!e)return;const l=t.querySelectorAll(".account-tab-btn"),d=e.querySelectorAll(".account-panel-group"),n=["Personal","Infanto Juvenil","Premium","Diamante","Depósito a Plazo","Tab 6","Tab 7","Tab 8"],c=["personal","infanto-juvenil","premium","diamante","deposito","tab-6","tab-7","tab-8"],r=Array.from(l).map(p=>p.getAttribute("data-type"));t.innerHTML="";for(let p=0;p<a;p++){const s=this.get("attributes")[`tab-${p+1}-name`]||n[p],u=r[p]||c[p],h=document.createElement("button");h.className="account-tab-btn bg-white text-primary py-2 px-6 md:px-8 font-medium rounded-full border-2 border-primary transition-all duration-300",h.setAttribute("data-type",u),h.textContent=s,t.appendChild(h);let f=Array.from(d).find(S=>S.getAttribute("data-type")===u);if(!f){f=document.createElement("div"),f.className="account-panel-group hidden",f.setAttribute("data-type",u);let S;p<2?S=`
                                 <div class="mb-8">
-                                    <h3 class="text-2xl font-bold text-primary mb-4">Cuenta de ${o.toLowerCase()}</h3>
+                                    <h3 class="text-2xl font-bold text-primary mb-4">Cuenta de ${s.toLowerCase()}</h3>
                                     <p class="text-lg text-primary font-medium mb-3">DESCRIPCIÓN DESTACADA</p>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                                         <div class="benefits-column">
@@ -3349,7 +3525,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                 </div>
                             `:S=`
                                 <div class="mb-8">
-                                    <h3 class="text-2xl font-bold text-primary mb-4">Cuenta de ${o.toLowerCase()}</h3>
+                                    <h3 class="text-2xl font-bold text-primary mb-4">Cuenta de ${s.toLowerCase()}</h3>
                                     <p class="text-lg text-primary font-medium mb-3">DESCRIPCIÓN DESTACADA</p>
                                     <div>
                                         <h4 class="text-lg font-bold text-primary mb-3">Beneficios:</h4>
@@ -3360,7 +3536,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                         </ul>
                                     </div>
                                 </div>
-                            `,f.innerHTML=S,e.appendChild(f)}}Array.from(d).forEach(m=>{const o=m.getAttribute("data-type");Array.from(t.querySelectorAll(".account-tab-btn")).some(h=>h.getAttribute("data-type")===o)||m.remove()}),this.get("attributes")["data-active"],setTimeout(()=>{const m=this.get("script"),o=this.view.el;m&&o&&m.call(o)},100)},updateTabNames(){const s=this.view.el.querySelector(".account-tabs");if(!s)return;const t=s.querySelectorAll(".account-tab-btn");for(let e=0;e<t.length;e++){const a=`tab-${e+1}-name`,d=this.get("attributes")[a];d&&t[e]&&(t[e].textContent=d)}},updateActiveTab(){if(!this.get("attributes")["data-active"])return;const t=this.view.el;if(t){const e=this.get("script");e&&e.call(t)}}},view:{onRender(){setTimeout(()=>{const s=this.el,t=this.model.get("script");t&&s&&t.call(s)},100)}}})}function Dt(i){i.BlockManager.add("credit-types-block",{label:"Tipos de Crédito",category:"Componentes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+                            `,f.innerHTML=S,e.appendChild(f)}}Array.from(d).forEach(p=>{const s=p.getAttribute("data-type");Array.from(t.querySelectorAll(".account-tab-btn")).some(h=>h.getAttribute("data-type")===s)||p.remove()}),this.get("attributes")["data-active"],setTimeout(()=>{const p=this.get("script"),s=this.view.el;p&&s&&p.call(s)},100)},updateTabNames(){const a=this.view.el.querySelector(".account-tabs");if(!a)return;const t=a.querySelectorAll(".account-tab-btn");for(let e=0;e<t.length;e++){const l=`tab-${e+1}-name`,d=this.get("attributes")[l];d&&t[e]&&(t[e].textContent=d)}},updateActiveTab(){if(!this.get("attributes")["data-active"])return;const t=this.view.el;if(t){const e=this.get("script");e&&e.call(t)}}},view:{onRender(){setTimeout(()=>{const a=this.el,t=this.model.get("script");t&&a&&t.call(a)},100)}}})}function _t(i){i.BlockManager.add("credit-types-block",{label:"Tipos de Crédito",category:"Componentes",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="2" width="20" height="20" rx="2" fill="#23366A" />
       <rect x="4" y="4" width="12" height="2" fill="white" />
       <rect x="4" y="7" width="16" height="1" fill="#cccccc" />
@@ -3595,44 +3771,44 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     </div>
                 </div>
             </section>
-        `}),i.DomComponents.addType("credit-types",{isComponent:function(s){return s.tagName==="SECTION"&&s.classList.contains("credit-types-container")},model:{defaults:{tagName:"section",draggable:!0,droppable:!0,attributes:{"data-gjs-type":"credit-types",class:"credit-types-container py-8 md:py-12 bg-white"},name:"Tipos de Crédito",traits:[{type:"number",name:"tab-count",label:"Número de tabs",min:1,max:10,default:3},{type:"select",name:"data-active",label:"Tab activo inicial",options:[{id:"tab-1",name:"Tab 1"},{id:"tab-2",name:"Tab 2"},{id:"tab-3",name:"Tab 3"},{id:"tab-4",name:"Tab 4"},{id:"tab-5",name:"Tab 5"},{id:"tab-6",name:"Tab 6"},{id:"tab-7",name:"Tab 7"},{id:"tab-8",name:"Tab 8"},{id:"tab-9",name:"Tab 9"},{id:"tab-10",name:"Tab 10"}],default:"tab-1"},{type:"text",name:"tab-1-name",label:"Nombre Tab 1",default:"Tab 1"},{type:"text",name:"tab-2-name",label:"Nombre Tab 2",default:"Tab 2"},{type:"text",name:"tab-3-name",label:"Nombre Tab 3",default:"Tab 3"},{type:"text",name:"tab-4-name",label:"Nombre Tab 4",default:"Tab 4"},{type:"text",name:"tab-5-name",label:"Nombre Tab 5",default:"Tab 5"},{type:"text",name:"tab-6-name",label:"Nombre Tab 6",default:"Tab 6"},{type:"text",name:"tab-7-name",label:"Nombre Tab 7",default:"Tab 7"},{type:"text",name:"tab-8-name",label:"Nombre Tab 8",default:"Tab 8"},{type:"text",name:"tab-9-name",label:"Nombre Tab 9",default:"Tab 9"},{type:"text",name:"tab-10-name",label:"Nombre Tab 10",default:"Tab 10"}],script:function(){const s=this,t=s.querySelectorAll(".credit-tab-btn"),e=s.querySelectorAll(".credit-panel-group"),a=s.getAttribute("data-active")||"tab-1",d=parseInt(s.getAttribute("tab-count")||3);t.forEach((n,m)=>{if(m<d){n.classList.remove("hidden");const o=m+1,u=s.getAttribute(`tab-${o}-name`);u&&(n.textContent=u)}else n.classList.add("hidden");n.addEventListener("click",function(){const o=this.getAttribute("data-type");t.forEach(u=>{u===this?(u.classList.remove("bg-white","text-primary"),u.classList.add("bg-primary","text-white")):(u.classList.remove("bg-primary","text-white"),u.classList.add("bg-white","text-primary"))}),e.forEach(u=>{u.getAttribute("data-type")===o?u.classList.remove("hidden"):u.classList.add("hidden")})})});const c=Array.from(t).find(n=>n.getAttribute("data-type")===a&&!n.classList.contains("hidden"));c?c.click():t.length>0&&!t[0].classList.contains("hidden")&&t[0].click(),s.querySelectorAll('i[class*="ri-"]').forEach(n=>{const m=Array.from(n.classList).find(o=>o.startsWith("ri-"));m&&n.setAttribute("data-original-icon",m)})}},init(){this.on("change:attributes:tab-count",this.updateTabs),this.on("change:attributes:data-active",this.updateActiveTab);for(let s=1;s<=10;s++)this.on(`change:attributes:tab-${s}-name`,this.updateTabNames);this.listenTo(this.collection,"add",this.onAdd),this.updateActiveTabOptions()},onAdd(){setTimeout(()=>this.initializeScript(),300)},initializeScript(){var e;const s=this.get("script"),t=(e=this.view)==null?void 0:e.el;s&&t&&s.call(t)},updateActiveTabOptions(){const s=parseInt(this.get("attributes")["tab-count"]||3),t=[];for(let a=1;a<=s;a++)t.push({id:`tab-${a}`,name:`Tab ${a}`});const e=this.get("traits").where({name:"data-active"})[0];if(e){e.set("options",t);const a=this.get("attributes")["data-active"];t.map(c=>c.id).includes(a)||this.set("attributes",{...this.get("attributes"),"data-active":"tab-1"})}},updateTabs(){const s=parseInt(this.get("attributes")["tab-count"]||3);this.set("attributes",{...this.get("attributes"),"tab-count":s}),this.updateActiveTabOptions(),this.initializeScript()},updateTabNames(){const s={};for(let t=1;t<=10;t++){const e=`tab-${t}-name`,a=this.get("attributes")[e];a&&(s[`tab-${t}-name`]=a)}this.set("attributes",{...this.get("attributes"),...s}),this.initializeScript()},updateActiveTab(){this.initializeScript()}},view:{init(){this.listenTo(this.model,"change:attributes",this.updateScript)},updateScript(){this.onRender()},onRender(){setTimeout(()=>{const s=this.el,t=this.model.get("script");t&&s&&t.call(s)},100)}}})}function qt(i){const l=i.BlockManager;let s=null;l.add("basic-table",{label:"Tabla Básica",category:"Tablas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
+        `}),i.DomComponents.addType("credit-types",{isComponent:function(a){return a.tagName==="SECTION"&&a.classList.contains("credit-types-container")},model:{defaults:{tagName:"section",draggable:!0,droppable:!0,attributes:{"data-gjs-type":"credit-types",class:"credit-types-container py-8 md:py-12 bg-white"},name:"Tipos de Crédito",traits:[{type:"number",name:"tab-count",label:"Número de tabs",min:1,max:10,default:3},{type:"select",name:"data-active",label:"Tab activo inicial",options:[{id:"tab-1",name:"Tab 1"},{id:"tab-2",name:"Tab 2"},{id:"tab-3",name:"Tab 3"},{id:"tab-4",name:"Tab 4"},{id:"tab-5",name:"Tab 5"},{id:"tab-6",name:"Tab 6"},{id:"tab-7",name:"Tab 7"},{id:"tab-8",name:"Tab 8"},{id:"tab-9",name:"Tab 9"},{id:"tab-10",name:"Tab 10"}],default:"tab-1"},{type:"text",name:"tab-1-name",label:"Nombre Tab 1",default:"Tab 1"},{type:"text",name:"tab-2-name",label:"Nombre Tab 2",default:"Tab 2"},{type:"text",name:"tab-3-name",label:"Nombre Tab 3",default:"Tab 3"},{type:"text",name:"tab-4-name",label:"Nombre Tab 4",default:"Tab 4"},{type:"text",name:"tab-5-name",label:"Nombre Tab 5",default:"Tab 5"},{type:"text",name:"tab-6-name",label:"Nombre Tab 6",default:"Tab 6"},{type:"text",name:"tab-7-name",label:"Nombre Tab 7",default:"Tab 7"},{type:"text",name:"tab-8-name",label:"Nombre Tab 8",default:"Tab 8"},{type:"text",name:"tab-9-name",label:"Nombre Tab 9",default:"Tab 9"},{type:"text",name:"tab-10-name",label:"Nombre Tab 10",default:"Tab 10"}],script:function(){const a=this,t=a.querySelectorAll(".credit-tab-btn"),e=a.querySelectorAll(".credit-panel-group"),l=a.getAttribute("data-active")||"tab-1",d=parseInt(a.getAttribute("tab-count")||3);t.forEach((r,p)=>{if(p<d){r.classList.remove("hidden");const s=p+1,u=a.getAttribute(`tab-${s}-name`);u&&(r.textContent=u)}else r.classList.add("hidden");r.addEventListener("click",function(){const s=this.getAttribute("data-type");t.forEach(u=>{u===this?(u.classList.remove("bg-white","text-primary"),u.classList.add("bg-primary","text-white")):(u.classList.remove("bg-primary","text-white"),u.classList.add("bg-white","text-primary"))}),e.forEach(u=>{u.getAttribute("data-type")===s?u.classList.remove("hidden"):u.classList.add("hidden")})})});const n=Array.from(t).find(r=>r.getAttribute("data-type")===l&&!r.classList.contains("hidden"));n?n.click():t.length>0&&!t[0].classList.contains("hidden")&&t[0].click(),a.querySelectorAll('i[class*="ri-"]').forEach(r=>{const p=Array.from(r.classList).find(s=>s.startsWith("ri-"));p&&r.setAttribute("data-original-icon",p)})}},init(){this.on("change:attributes:tab-count",this.updateTabs),this.on("change:attributes:data-active",this.updateActiveTab);for(let a=1;a<=10;a++)this.on(`change:attributes:tab-${a}-name`,this.updateTabNames);this.listenTo(this.collection,"add",this.onAdd),this.updateActiveTabOptions()},onAdd(){setTimeout(()=>this.initializeScript(),300)},initializeScript(){var e;const a=this.get("script"),t=(e=this.view)==null?void 0:e.el;a&&t&&a.call(t)},updateActiveTabOptions(){const a=parseInt(this.get("attributes")["tab-count"]||3),t=[];for(let l=1;l<=a;l++)t.push({id:`tab-${l}`,name:`Tab ${l}`});const e=this.get("traits").where({name:"data-active"})[0];if(e){e.set("options",t);const l=this.get("attributes")["data-active"];t.map(n=>n.id).includes(l)||this.set("attributes",{...this.get("attributes"),"data-active":"tab-1"})}},updateTabs(){const a=parseInt(this.get("attributes")["tab-count"]||3);this.set("attributes",{...this.get("attributes"),"tab-count":a}),this.updateActiveTabOptions(),this.initializeScript()},updateTabNames(){const a={};for(let t=1;t<=10;t++){const e=`tab-${t}-name`,l=this.get("attributes")[e];l&&(a[`tab-${t}-name`]=l)}this.set("attributes",{...this.get("attributes"),...a}),this.initializeScript()},updateActiveTab(){this.initializeScript()}},view:{init(){this.listenTo(this.model,"change:attributes",this.updateScript)},updateScript(){this.onRender()},onRender(){setTimeout(()=>{const a=this.el,t=this.model.get("script");t&&a&&t.call(a)},100)}}})}function Ot(i){const o=i.BlockManager;let a=null;o.add("basic-table",{label:"Tabla Básica",category:"Tablas",attributes:{class:"gjs-block-section"},media:`<svg viewBox="0 0 24 24" width="32" height="32">
             <rect x="0" y="0" width="24" height="24" fill="white" rx="2"/>
             <rect x="2" y="4" width="20" height="16" rx="1" stroke="#23366A" stroke-width="1" fill="none"/>
             <line x1="2" y1="8" x2="22" y2="8" stroke="#23366A" stroke-width="1"/>
             <line x1="12" y1="4" x2="12" y2="20" stroke="#23366A" stroke-width="1"/>
             <rect x="2" y="4" width="20" height="4" fill="#23366A"/>
-        </svg>`,content:{type:"custom-table",rows:5,columns:2,padding:"md",layout:"auto",header:["Descripción","Valor por IVA"],headerAlign:["left","right"],data:[["Cargo mensual por servicio*","$1.00"],["Reposición por extravío, pérdida o robo","$3.25"],["Reposición por deterioro","$3.25"],["Por cada transacción en exceso","$1.25"],["Por cada retiro a nivel internacional en ATM","$3.00"]],dataAlign:[["left","right"],["left","right"],["left","right"],["left","right"],["left","right"]]}}),i.on("component:add",t=>{t.get("type")==="custom-table"&&(t.get("_tableInitialized")||(t.set("_tableInitialized",!0),setTimeout(()=>{q("Tabla agregada. Usa el botón 'Configurar Tabla' en el panel de ajustes para personalizar la estructura y contenido.","info",5e3)},500)))}),i.DomComponents.addType("custom-table",{isComponent:t=>t.tagName==="DIV"&&t.classList.contains("table-wrapper"),model:{defaults:{tagName:"div",droppable:!1,rows:3,columns:2,padding:"md",layout:"auto",header:["Header 1","Header 2"],headerAlign:["left","left"],data:[["Cell 1,1","Cell 1,2"],["Cell 2,1","Cell 2,2"],["Cell 3,1","Cell 3,2"]],dataAlign:[["left","left"],["left","left"],["left","left"]],traits:[{type:"button",label:"Tabla",text:"Configurar",full:!0,command:"open-table-config"}],classes:["table-wrapper","overflow-x-auto","my-8","rounded-2xl","shadow-md"]},toHTML(){const t=this.getTableData(),e=this.get("components").map(a=>a.toHTML()).join("");return`<div class="table-wrapper overflow-x-auto my-8 rounded-2xl shadow-md" 
+        </svg>`,content:{type:"custom-table",rows:5,columns:2,padding:"md",layout:"auto",header:["Descripción","Valor por IVA"],headerAlign:["left","right"],data:[["Cargo mensual por servicio*","$1.00"],["Reposición por extravío, pérdida o robo","$3.25"],["Reposición por deterioro","$3.25"],["Por cada transacción en exceso","$1.25"],["Por cada retiro a nivel internacional en ATM","$3.00"]],dataAlign:[["left","right"],["left","right"],["left","right"],["left","right"],["left","right"]]}}),i.on("component:add",t=>{t.get("type")==="custom-table"&&(t.get("_tableInitialized")||(t.set("_tableInitialized",!0),setTimeout(()=>{q("Tabla agregada. Usa el botón 'Configurar Tabla' en el panel de ajustes para personalizar la estructura y contenido.","info",5e3)},500)))}),i.DomComponents.addType("custom-table",{isComponent:t=>t.tagName==="DIV"&&t.classList.contains("table-wrapper"),model:{defaults:{tagName:"div",droppable:!1,rows:3,columns:2,padding:"md",layout:"auto",header:["Header 1","Header 2"],headerAlign:["left","left"],data:[["Cell 1,1","Cell 1,2"],["Cell 2,1","Cell 2,2"],["Cell 3,1","Cell 3,2"]],dataAlign:[["left","left"],["left","left"],["left","left"]],traits:[{type:"button",label:"Tabla",text:"Configurar",full:!0,command:"open-table-config"}],classes:["table-wrapper","overflow-x-auto","my-8","rounded-2xl","shadow-md"]},toHTML(){const t=this.getTableData(),e=this.get("components").map(l=>l.toHTML()).join("");return`<div class="table-wrapper overflow-x-auto my-8 rounded-2xl shadow-md" 
                                 data-gjs-type="custom-table"
                                 data-table-json='${JSON.stringify(t).replace(/'/g,"&apos;")}'>
                             ${e}
-                        </div>`},init(){this.listenTo(i,"component:selected",this.checkSelected),this.on("change:rows change:columns change:padding change:layout change:header change:data change:headerAlign change:dataAlign",this.updateHTML),this.on("change",this.handleChange),this.updateHTML()},updateHTML(){const t=this.get("rows"),e=this.get("columns"),a=this.get("padding"),d=this.get("layout"),c=this.get("header")||[],r=this.get("headerAlign")||[],n=this.get("data")||[],m=this.get("dataAlign")||[],o=[...c];for(;o.length<e;)o.push(`Header ${o.length+1}`);o.length>e&&(o.length=e);const u=[...r];for(;u.length<e;)u.push("left");u.length>e&&(u.length=e);const h=[],f=[];for(let p=0;p<t;p++){const g=n[p]?[...n[p]]:[],b=m[p]?[...m[p]]:[];for(;g.length<e;)g.push(`Cell ${p+1},${g.length+1}`);for(g.length>e&&(g.length=e);b.length<e;)b.push("left");b.length>e&&(b.length=e),h.push(g),f.push(b)}this.set("header",o,{silent:!0}),this.set("headerAlign",u,{silent:!0}),this.set("data",h,{silent:!0}),this.set("dataAlign",f,{silent:!0});const S={xs:"p-1",sm:"p-2",md:"p-3",lg:"p-4"}[a]||"p-3";let x=`<table class="w-full border-collapse border border-gray-200 ${d==="fixed"?"table-fixed":""}">
+                        </div>`},init(){this.listenTo(i,"component:selected",this.checkSelected),this.on("change:rows change:columns change:padding change:layout change:header change:data change:headerAlign change:dataAlign",this.updateHTML),this.on("change",this.handleChange),this.updateHTML()},updateHTML(){const t=this.get("rows"),e=this.get("columns"),l=this.get("padding"),d=this.get("layout"),n=this.get("header")||[],c=this.get("headerAlign")||[],r=this.get("data")||[],p=this.get("dataAlign")||[],s=[...n];for(;s.length<e;)s.push(`Header ${s.length+1}`);s.length>e&&(s.length=e);const u=[...c];for(;u.length<e;)u.push("left");u.length>e&&(u.length=e);const h=[],f=[];for(let m=0;m<t;m++){const g=r[m]?[...r[m]]:[],b=p[m]?[...p[m]]:[];for(;g.length<e;)g.push(`Cell ${m+1},${g.length+1}`);for(g.length>e&&(g.length=e);b.length<e;)b.push("left");b.length>e&&(b.length=e),h.push(g),f.push(b)}this.set("header",s,{silent:!0}),this.set("headerAlign",u,{silent:!0}),this.set("data",h,{silent:!0}),this.set("dataAlign",f,{silent:!0});const S={xs:"p-1",sm:"p-2",md:"p-3",lg:"p-4"}[l]||"p-3";let x=`<table class="w-full border-collapse border border-gray-200 ${d==="fixed"?"table-fixed":""}">
                                 <thead>
-                                    <tr>`;for(let p=0;p<e;p++){const g=o[p],b=u[p];x+=`<th class="bg-primary text-white font-semibold ${b==="center"?"text-center":b==="right"?"text-right":"text-left"} ${S} border-b border-r border-gray-200 border-opacity-20 last:border-r-0">${g}</th>`}x+=`</tr>
+                                    <tr>`;for(let m=0;m<e;m++){const g=s[m],b=u[m];x+=`<th class="bg-primary text-white font-semibold ${b==="center"?"text-center":b==="right"?"text-right":"text-left"} ${S} border-b border-r border-gray-200 border-opacity-20 last:border-r-0">${g}</th>`}x+=`</tr>
                     </thead>
-                    <tbody>`;for(let p=0;p<t;p++){const g=p%2===1?"bg-gray-50":"";x+=`<tr class="${g}">`;for(let b=0;b<e;b++){const E=h[p][b],I=f[p][b];x+=`<td class="text-gray-600 ${I==="center"?"text-center":I==="right"?"text-right":"text-left"} ${S} border-b border-r border-gray-200 last:border-r-0">${E}</td>`}x+="</tr>"}x+=`</tbody>
-                    </table>`,this.components(x)},handleChange(){},checkSelected(t){},getTableData(){return{rows:this.get("rows"),columns:this.get("columns"),padding:this.get("padding"),layout:this.get("layout"),header:this.get("header"),headerAlign:this.get("headerAlign"),data:this.get("data"),dataAlign:this.get("dataAlign")}},setTableData(t){this.set(t)}},view:{init(){this.listenTo(this.model,"change:rows change:columns change:padding change:layout change:header change:data change:headerAlign change:dataAlign",this.render),this.listenTo(this.model,"active",this.onActive)},events:{"dblclick td":"editCell","dblclick th":"editCell"},onRender(){this.el.classList.add("group","relative")},onActive(){},openConfigModal(t){t&&t.stopPropagation(),s=this.model,i.runCommand("open-table-config")},editCell(t){const e=t.target;e.contentEditable=!0,e.focus();const a=()=>{e.contentEditable=!1,e.removeEventListener("blur",a),this.updateCellContent(e)};e.addEventListener("blur",a),e.addEventListener("keydown",function(d){d.key==="Enter"&&!d.shiftKey&&(d.preventDefault(),e.blur())})},updateCellContent(t){const e=t.tagName.toLowerCase()==="th",a=this.model.getTableData();if(e){const d=this.el.querySelectorAll("th"),c=Array.from(d).indexOf(t);c!==-1&&a.header&&(a.header[c]=t.textContent,this.model.set("header",a.header))}else{const d=Array.from(this.el.querySelectorAll("tbody tr")).indexOf(t.parentNode),c=Array.from(t.parentNode.children).indexOf(t);d!==-1&&c!==-1&&a.data&&a.data[d]&&(a.data[d][c]=t.textContent,this.model.set("data",a.data))}}}}),i.on("component:selected",t=>{t.get("type")==="custom-table"&&(t.components().length||t.trigger("change:rows"))}),i.Commands.add("open-table-config",{run(t){if(!window.Swal){console.error("SweetAlert2 is required for table configuration modal");return}const e=t.getSelected();if(!e||e.get("type")!=="custom-table"){console.error("No table selected for editing");return}s=e;const a=s.getTableData();let d=`
+                    <tbody>`;for(let m=0;m<t;m++){const g=m%2===1?"bg-gray-50":"";x+=`<tr class="${g}">`;for(let b=0;b<e;b++){const E=h[m][b],I=f[m][b];x+=`<td class="text-gray-600 ${I==="center"?"text-center":I==="right"?"text-right":"text-left"} ${S} border-b border-r border-gray-200 last:border-r-0">${E}</td>`}x+="</tr>"}x+=`</tbody>
+                    </table>`,this.components(x)},handleChange(){},checkSelected(t){},getTableData(){return{rows:this.get("rows"),columns:this.get("columns"),padding:this.get("padding"),layout:this.get("layout"),header:this.get("header"),headerAlign:this.get("headerAlign"),data:this.get("data"),dataAlign:this.get("dataAlign")}},setTableData(t){this.set(t)}},view:{init(){this.listenTo(this.model,"change:rows change:columns change:padding change:layout change:header change:data change:headerAlign change:dataAlign",this.render),this.listenTo(this.model,"active",this.onActive)},events:{"dblclick td":"editCell","dblclick th":"editCell"},onRender(){this.el.classList.add("group","relative")},onActive(){},openConfigModal(t){t&&t.stopPropagation(),a=this.model,i.runCommand("open-table-config")},editCell(t){const e=t.target;e.contentEditable=!0,e.focus();const l=()=>{e.contentEditable=!1,e.removeEventListener("blur",l),this.updateCellContent(e)};e.addEventListener("blur",l),e.addEventListener("keydown",function(d){d.key==="Enter"&&!d.shiftKey&&(d.preventDefault(),e.blur())})},updateCellContent(t){const e=t.tagName.toLowerCase()==="th",l=this.model.getTableData();if(e){const d=this.el.querySelectorAll("th"),n=Array.from(d).indexOf(t);n!==-1&&l.header&&(l.header[n]=t.textContent,this.model.set("header",l.header))}else{const d=Array.from(this.el.querySelectorAll("tbody tr")).indexOf(t.parentNode),n=Array.from(t.parentNode.children).indexOf(t);d!==-1&&n!==-1&&l.data&&l.data[d]&&(l.data[d][n]=t.textContent,this.model.set("data",l.data))}}}}),i.on("component:selected",t=>{t.get("type")==="custom-table"&&(t.components().length||t.trigger("change:rows"))}),i.Commands.add("open-table-config",{run(t){if(!window.Swal){console.error("SweetAlert2 is required for table configuration modal");return}const e=t.getSelected();if(!e||e.get("type")!=="custom-table"){console.error("No table selected for editing");return}a=e;const l=a.getTableData();let d=`
             <div class="table-config-modal">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Filas</label>
                         <div class="flex items-center">
-                            <input type="number" id="table-rows" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${a.rows}" min="1" max="50">
+                            <input type="number" id="table-rows" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${l.rows}" min="1" max="50">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Columnas</label>
                         <div class="flex items-center">
-                            <input type="number" id="table-columns" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${a.columns}" min="1" max="10">
+                            <input type="number" id="table-columns" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${l.columns}" min="1" max="10">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Espaciado</label>
                         <div class="flex items-center">
                             <select id="table-padding" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
-                                <option value="xs" ${a.padding==="xs"?"selected":""}>Muy pequeño</option>
-                                <option value="sm" ${a.padding==="sm"?"selected":""}>Pequeño</option>
-                                <option value="md" ${a.padding==="md"?"selected":""}>Medio</option>
-                                <option value="lg" ${a.padding==="lg"?"selected":""}>Grande</option>
+                                <option value="xs" ${l.padding==="xs"?"selected":""}>Muy pequeño</option>
+                                <option value="sm" ${l.padding==="sm"?"selected":""}>Pequeño</option>
+                                <option value="md" ${l.padding==="md"?"selected":""}>Medio</option>
+                                <option value="lg" ${l.padding==="lg"?"selected":""}>Grande</option>
                             </select>
                         </div>
                     </div>
@@ -3640,8 +3816,8 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                         <label class="block text-sm font-medium text-gray-700 mb-1">Diseño</label>
                         <div class="flex items-center">
                             <select id="table-layout" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
-                                <option value="auto" ${a.layout==="auto"?"selected":""}>Automático</option>
-                                <option value="fixed" ${a.layout==="fixed"?"selected":""}>Ancho fijo</option>
+                                <option value="auto" ${l.layout==="auto"?"selected":""}>Automático</option>
+                                <option value="fixed" ${l.layout==="fixed"?"selected":""}>Ancho fijo</option>
                             </select>
                         </div>
                     </div>
@@ -3651,13 +3827,13 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     <div class="flex items-center mb-2">
                         <label class="block text-sm font-medium text-gray-700">Encabezados</label>
                     </div>
-                    <div class="grid grid-cols-1 gap-2" id="header-inputs">`;for(let c=0;c<a.columns;c++){const r=a.header[c]||`Header ${c+1}`,n=a.headerAlign[c]||"left";d+=`
+                    <div class="grid grid-cols-1 gap-2" id="header-inputs">`;for(let n=0;n<l.columns;n++){const c=l.header[n]||`Header ${n+1}`,r=l.headerAlign[n]||"left";d+=`
                 <div class="flex gap-2">
-                    <input type="text" class="header-content flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${r}">
+                    <input type="text" class="header-content flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${c}">
                     <select class="header-align w-24 px-2 py-2 border border-gray-300 rounded-md shadow-sm">
-                        <option value="left" ${n==="left"?"selected":""}><i class="ri-align-left"></i> Izq</option>
-                        <option value="center" ${n==="center"?"selected":""}><i class="ri-align-center"></i> Centro</option>
-                        <option value="right" ${n==="right"?"selected":""}><i class="ri-align-right"></i> Der</option>
+                        <option value="left" ${r==="left"?"selected":""}><i class="ri-align-left"></i> Izq</option>
+                        <option value="center" ${r==="center"?"selected":""}><i class="ri-align-center"></i> Centro</option>
+                        <option value="right" ${r==="right"?"selected":""}><i class="ri-align-right"></i> Der</option>
                     </select>
                 </div>`}d+=`
                     </div>
@@ -3667,26 +3843,26 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     <div class="flex items-center mb-2">
                         <label class="block text-sm font-medium text-gray-700">Contenido</label>
                     </div>
-                    <div class="grid grid-cols-1 gap-4" id="rows-container">`;for(let c=0;c<a.rows;c++){d+=`
+                    <div class="grid grid-cols-1 gap-4" id="rows-container">`;for(let n=0;n<l.rows;n++){d+=`
                 <div class="border border-gray-200 p-3 rounded bg-gray-50">
                     <div class="flex items-center mb-2">
-                        <p class="text-sm font-medium">Fila ${c+1}</p>
-                        ${c%2===1?'<span class="ml-2 text-xs bg-gray-200 px-2 py-0.5 rounded">Fila con fondo</span>':""}
+                        <p class="text-sm font-medium">Fila ${n+1}</p>
+                        ${n%2===1?'<span class="ml-2 text-xs bg-gray-200 px-2 py-0.5 rounded">Fila con fondo</span>':""}
                     </div>
-                    <div class="grid grid-cols-1 gap-2 row-inputs">`;for(let r=0;r<a.columns;r++){const n=a.data[c]&&a.data[c][r]||`Cell ${c+1},${r+1}`,m=a.dataAlign[c]&&a.dataAlign[c][r]||"left";d+=`
+                    <div class="grid grid-cols-1 gap-2 row-inputs">`;for(let c=0;c<l.columns;c++){const r=l.data[n]&&l.data[n][c]||`Cell ${n+1},${c+1}`,p=l.dataAlign[n]&&l.dataAlign[n][c]||"left";d+=`
                     <div class="flex gap-2">
-                        <input type="text" class="cell-content flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${n}">
+                        <input type="text" class="cell-content flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${r}">
                         <select class="cell-align w-24 px-2 py-2 border border-gray-300 rounded-md shadow-sm">
-                            <option value="left" ${m==="left"?"selected":""}>Izq</option>
-                            <option value="center" ${m==="center"?"selected":""}>Centro</option>
-                            <option value="right" ${m==="right"?"selected":""}>Der</option>
+                            <option value="left" ${p==="left"?"selected":""}>Izq</option>
+                            <option value="center" ${p==="center"?"selected":""}>Centro</option>
+                            <option value="right" ${p==="right"?"selected":""}>Der</option>
                         </select>
                     </div>`}d+=`
                     </div>
                 </div>`}d+=`
                     </div>
                 </div>
-            </div>`,Swal.fire({title:"Configurar Tabla",html:d,width:"800px",showCloseButton:!1,showCancelButton:!0,confirmButtonText:"Guardar",cancelButtonText:"Cancelar",confirmButtonColor:"#23366A",customClass:{title:"text-lg font-bold mb-0 pb-0",htmlContainer:"max-h-[70vh] overflow-y-auto",popup:"swal2-custom-popup",actions:"sticky bottom-0 bg-white py-3 shadow-inner"},didOpen:()=>{const c=document.createElement("style");c.textContent=`
+            </div>`,Swal.fire({title:"Configurar Tabla",html:d,width:"800px",showCloseButton:!1,showCancelButton:!0,confirmButtonText:"Guardar",cancelButtonText:"Cancelar",confirmButtonColor:"#23366A",customClass:{title:"text-lg font-bold mb-0 pb-0",htmlContainer:"max-h-[70vh] overflow-y-auto",popup:"swal2-custom-popup",actions:"sticky bottom-0 bg-white py-3 shadow-inner"},didOpen:()=>{const n=document.createElement("style");n.textContent=`
                         .swal2-custom-popup {
                             padding-top: 0.5rem;
                             padding-bottom: 0px;
@@ -3710,21 +3886,21 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                             overflow-y: auto;
                             max-height: 70vh;
                         }
-                    `,document.head.appendChild(c);const r=document.getElementById("table-rows"),n=document.getElementById("table-columns");r.addEventListener("change",()=>m()),n.addEventListener("change",()=>m());function m(){const o=parseInt(r.value)||1,u=parseInt(n.value)||1,h=document.getElementById("header-inputs");let f="";for(let x=0;x<u;x++){const p=x<a.header.length?a.header[x]:`Header ${x+1}`,g=x<a.headerAlign.length?a.headerAlign[x]:"left";f+=`
+                    `,document.head.appendChild(n);const c=document.getElementById("table-rows"),r=document.getElementById("table-columns");c.addEventListener("change",()=>p()),r.addEventListener("change",()=>p());function p(){const s=parseInt(c.value)||1,u=parseInt(r.value)||1,h=document.getElementById("header-inputs");let f="";for(let x=0;x<u;x++){const m=x<l.header.length?l.header[x]:`Header ${x+1}`,g=x<l.headerAlign.length?l.headerAlign[x]:"left";f+=`
                             <div class="flex gap-2">
-                                <input type="text" class="header-content flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${p}">
+                                <input type="text" class="header-content flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${m}">
                                 <select class="header-align w-24 px-2 py-2 border border-gray-300 rounded-md shadow-sm">
                                     <option value="left" ${g==="left"?"selected":""}>Izq</option>
                                     <option value="center" ${g==="center"?"selected":""}>Centro</option>
                                     <option value="right" ${g==="right"?"selected":""}>Der</option>
                                 </select>
-                            </div>`}h.innerHTML=f;const S=document.getElementById("rows-container");let T="";for(let x=0;x<o;x++){T+=`
+                            </div>`}h.innerHTML=f;const S=document.getElementById("rows-container");let T="";for(let x=0;x<s;x++){T+=`
                             <div class="border border-gray-200 p-3 rounded bg-gray-50">
                                 <div class="flex items-center mb-2">
                                     <p class="text-sm font-medium">Fila ${x+1}</p>
                                     ${x%2===1?'<span class="ml-2 text-xs bg-gray-200 px-2 py-0.5 rounded">Fila con fondo</span>':""}
                                 </div>
-                                <div class="grid grid-cols-1 gap-2 row-inputs">`;for(let p=0;p<u;p++){const g=x<a.data.length&&p<a.data[x].length?a.data[x][p]:`Cell ${x+1},${p+1}`,b=x<a.dataAlign.length&&p<a.dataAlign[x].length?a.dataAlign[x][p]:"left";T+=`
+                                <div class="grid grid-cols-1 gap-2 row-inputs">`;for(let m=0;m<u;m++){const g=x<l.data.length&&m<l.data[x].length?l.data[x][m]:`Cell ${x+1},${m+1}`,b=x<l.dataAlign.length&&m<l.dataAlign[x].length?l.dataAlign[x][m]:"left";T+=`
                                 <div class="flex gap-2">
                                     <input type="text" class="cell-content flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="${g}">
                                     <select class="cell-align w-24 px-2 py-2 border border-gray-300 rounded-md shadow-sm">
@@ -3734,7 +3910,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                     </select>
                                 </div>`}T+=`
                                 </div>
-                            </div>`}S.innerHTML=T}},preConfirm:()=>{const c=parseInt(document.getElementById("table-rows").value)||3,r=parseInt(document.getElementById("table-columns").value)||2,n=document.getElementById("table-padding").value,m=document.getElementById("table-layout").value,o=document.querySelectorAll("#header-inputs .header-content"),u=document.querySelectorAll("#header-inputs .header-align"),h=[],f=[];o.forEach(p=>{h.push(p.value)}),u.forEach(p=>{f.push(p.value)});const S=[],T=[];return document.querySelectorAll("#rows-container > div").forEach(p=>{const g=p.querySelectorAll(".cell-content"),b=p.querySelectorAll(".cell-align"),E=[],I=[];g.forEach(A=>{E.push(A.value)}),b.forEach(A=>{I.push(A.value)}),S.push(E),T.push(I)}),{rows:c,columns:r,padding:n,layout:m,header:h,headerAlign:f,data:S,dataAlign:T}}}).then(c=>{c.isConfirmed&&c.value&&s.setTableData(c.value)})}}),i.on("load",function(){const t=i.Canvas.getFrameEl();if(t&&t.contentDocument){const e=t.contentDocument.createElement("style");e.innerHTML=`
+                            </div>`}S.innerHTML=T}},preConfirm:()=>{const n=parseInt(document.getElementById("table-rows").value)||3,c=parseInt(document.getElementById("table-columns").value)||2,r=document.getElementById("table-padding").value,p=document.getElementById("table-layout").value,s=document.querySelectorAll("#header-inputs .header-content"),u=document.querySelectorAll("#header-inputs .header-align"),h=[],f=[];s.forEach(m=>{h.push(m.value)}),u.forEach(m=>{f.push(m.value)});const S=[],T=[];return document.querySelectorAll("#rows-container > div").forEach(m=>{const g=m.querySelectorAll(".cell-content"),b=m.querySelectorAll(".cell-align"),E=[],I=[];g.forEach(k=>{E.push(k.value)}),b.forEach(k=>{I.push(k.value)}),S.push(E),T.push(I)}),{rows:n,columns:c,padding:r,layout:p,header:h,headerAlign:f,data:S,dataAlign:T}}}).then(n=>{n.isConfirmed&&n.value&&a.setTableData(n.value)})}}),i.on("load",function(){const t=i.Canvas.getFrameEl();if(t&&t.contentDocument){const e=t.contentDocument.createElement("style");e.innerHTML=`
                 .bg-primary { background-color: #23366A !important; }
                 .text-primary { color: #23366A !important; }
                 .border-primary { border-color: #23366A !important; }
@@ -3757,14 +3933,14 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     outline: 2px solid #4F87FF;
                     outline-offset: -2px;
                 }
-            `,t.contentDocument.head.appendChild(e)}}),i.DomComponents.addType("div",{model:{defaults:{tagName:"div"},init(){if(this.getClasses().includes("table-wrapper")){this.set("type","custom-table");const t=this.getEl();if(t&&t.getAttribute)try{const e=t.getAttribute("data-table-json");if(e){const a=JSON.parse(e);this.set({rows:parseInt(a.rows)||3,columns:parseInt(a.columns)||2,padding:a.padding||"md",layout:a.layout||"auto",header:Array.isArray(a.header)?a.header:[],headerAlign:Array.isArray(a.headerAlign)?a.headerAlign:[],data:Array.isArray(a.data)?a.data:[],dataAlign:Array.isArray(a.dataAlign)?a.dataAlign:[]}),setTimeout(()=>{this.trigger("change:rows")},300)}}catch(e){console.error("Error loading table data:",e)}}}}}),i.on("storage:before",t=>{const e=[];i.getComponents().forEach(a=>{if(a.get("type")==="custom-table"){const d=a.getTableData();e.push({id:a.getId(),data:{rows:parseInt(d.rows)||3,columns:parseInt(d.columns)||2,padding:d.padding||"md",layout:d.layout||"auto",header:Array.isArray(d.header)?d.header:[],headerAlign:Array.isArray(d.headerAlign)?d.headerAlign:[],data:Array.isArray(d.data)?d.data:[],dataAlign:Array.isArray(d.dataAlign)?d.dataAlign:[]}});const c=JSON.stringify(e[e.length-1].data);a.set("attributes",{...a.get("attributes"),"data-table-json":c})}}),window.grapesJsCustomTableData=e}),i.on("load",()=>{setTimeout(()=>{i.getComponents().forEach(t=>{if(t.get("type")==="custom-table"){const e=t.getEl();if(e&&e.getAttribute)try{const a=e.getAttribute("data-table-json");if(a){const d=JSON.parse(a);t.set({rows:parseInt(d.rows)||3,columns:parseInt(d.columns)||2,padding:d.padding||"md",layout:d.layout||"auto",header:Array.isArray(d.header)?d.header:[],headerAlign:Array.isArray(d.headerAlign)?d.headerAlign:[],data:Array.isArray(d.data)?d.data:[],dataAlign:Array.isArray(d.dataAlign)?d.dataAlign:[]}),t.trigger("change:rows")}}catch(a){console.error("Error loading table data from attribute:",a)}}})},1e3)})}function Mt(i){const l=`<svg viewBox="0 0 24 24" width="32" height="32">
+            `,t.contentDocument.head.appendChild(e)}}),i.DomComponents.addType("div",{model:{defaults:{tagName:"div"},init(){if(this.getClasses().includes("table-wrapper")){this.set("type","custom-table");const t=this.getEl();if(t&&t.getAttribute)try{const e=t.getAttribute("data-table-json");if(e){const l=JSON.parse(e);this.set({rows:parseInt(l.rows)||3,columns:parseInt(l.columns)||2,padding:l.padding||"md",layout:l.layout||"auto",header:Array.isArray(l.header)?l.header:[],headerAlign:Array.isArray(l.headerAlign)?l.headerAlign:[],data:Array.isArray(l.data)?l.data:[],dataAlign:Array.isArray(l.dataAlign)?l.dataAlign:[]}),setTimeout(()=>{this.trigger("change:rows")},300)}}catch(e){console.error("Error loading table data:",e)}}}}}),i.on("storage:before",t=>{const e=[];i.getComponents().forEach(l=>{if(l.get("type")==="custom-table"){const d=l.getTableData();e.push({id:l.getId(),data:{rows:parseInt(d.rows)||3,columns:parseInt(d.columns)||2,padding:d.padding||"md",layout:d.layout||"auto",header:Array.isArray(d.header)?d.header:[],headerAlign:Array.isArray(d.headerAlign)?d.headerAlign:[],data:Array.isArray(d.data)?d.data:[],dataAlign:Array.isArray(d.dataAlign)?d.dataAlign:[]}});const n=JSON.stringify(e[e.length-1].data);l.set("attributes",{...l.get("attributes"),"data-table-json":n})}}),window.grapesJsCustomTableData=e}),i.on("load",()=>{setTimeout(()=>{i.getComponents().forEach(t=>{if(t.get("type")==="custom-table"){const e=t.getEl();if(e&&e.getAttribute)try{const l=e.getAttribute("data-table-json");if(l){const d=JSON.parse(l);t.set({rows:parseInt(d.rows)||3,columns:parseInt(d.columns)||2,padding:d.padding||"md",layout:d.layout||"auto",header:Array.isArray(d.header)?d.header:[],headerAlign:Array.isArray(d.headerAlign)?d.headerAlign:[],data:Array.isArray(d.data)?d.data:[],dataAlign:Array.isArray(d.dataAlign)?d.dataAlign:[]}),t.trigger("change:rows")}}catch(l){console.error("Error loading table data from attribute:",l)}}})},1e3)})}function Ht(i){const o=`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="2" width="20" height="20" rx="2" fill="#23366A" />
       <rect x="4" y="4" width="16" height="2" fill="white" />
       <rect x="4" y="8" width="16" height="2" fill="white" />
       <rect x="4" y="12" width="16" height="2" fill="white" />
       <rect x="4" y="16" width="10" height="2" fill="white" />
       <rect x="16" y="16" width="4" height="2" fill="white" />
-    </svg>`,s=`<svg viewBox="0 0 24 24" width="32" height="32">
+    </svg>`,a=`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="2" width="20" height="2" fill="#333" />
       <rect x="2" y="5" width="20" height="17" rx="2" fill="#23366A" />
       <rect x="4" y="7" width="16" height="2" fill="white" />
@@ -3777,78 +3953,78 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                 <h3 class="text-lg font-medium text-gray-700 mb-1">Formulario no seleccionado</h3>
                                 <p class="text-sm text-gray-500">Haga doble clic para seleccionar un formulario.</p>
                             </div>
-                        `);return}fetch("/api/forms/active").then(e=>e.json()).then(e=>{const a=e.find(d=>d.id==t);if(!a)throw new Error("Formulario no encontrado");this.renderForm(a)}).catch(e=>{console.error("Error updating form HTML:",e),this.set("content",`
+                        `);return}fetch("/api/forms/active").then(e=>e.json()).then(e=>{const l=e.find(d=>d.id==t);if(!l)throw new Error("Formulario no encontrado");this.renderForm(l)}).catch(e=>{console.error("Error updating form HTML:",e),this.set("content",`
                                 <div class="text-center p-8 border-2 border-dashed border-red-300 rounded-lg bg-red-50">
                                     <i class="ri-error-warning-line text-4xl text-red-500 mb-2"></i>
                                     <h3 class="text-lg font-medium text-red-700 mb-1">Error al cargar el formulario</h3>
                                     <p class="text-sm text-red-500">No se pudo cargar el formulario seleccionado. Por favor, verifique que el formulario exista y esté activo.</p>
                                 </div>
-                            `)})}catch(t){console.error("Error in updateFormHTML:",t)}},renderForm(t){let e=[];if(t.fields&&!Array.isArray(t.fields))e=Object.keys(t.fields).map(c=>t.fields[c]);else if(Array.isArray(t.fields))e=t.fields;else{console.error("Invalid form fields format:",t.fields),this.set("content",`
+                            `)})}catch(t){console.error("Error in updateFormHTML:",t)}},renderForm(t){let e=[];if(t.fields&&!Array.isArray(t.fields))e=Object.keys(t.fields).map(n=>t.fields[n]);else if(Array.isArray(t.fields))e=t.fields;else{console.error("Invalid form fields format:",t.fields),this.set("content",`
                         <div class="text-center p-8 border-2 border-dashed border-red-300 rounded-lg bg-red-50">
                             <i class="ri-error-warning-line text-4xl text-red-500 mb-2"></i>
                             <h3 class="text-lg font-medium text-red-700 mb-1">Error de formato</h3>
                             <p class="text-sm text-red-500">El formato de los campos del formulario es inválido. Por favor, verifique la estructura de datos.</p>
                         </div>
-                    `);return}const a=e.map(c=>{const r=`form_${t.id}_${c.name}`,n=c.required?"required":"",m=c.required?'<span class="text-red-500">*</span>':"";let o="";switch(c.type){case"text":o=`
-                                    <input type="text" id="${r}" name="${c.name}" 
-                                        class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${n}>
-                                `;break;case"email":o=`
-                                    <input type="email" id="${r}" name="${c.name}" 
+                    `);return}const l=e.map(n=>{const c=`form_${t.id}_${n.name}`,r=n.required?"required":"",p=n.required?'<span class="text-red-500">*</span>':"";let s="";switch(n.type){case"text":s=`
+                                    <input type="text" id="${c}" name="${n.name}" 
+                                        class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${r}>
+                                `;break;case"email":s=`
+                                    <input type="email" id="${c}" name="${n.name}" 
                                         class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" 
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"
-                                        ${n}>
-                                `;break;case"tel":o=`
-                                    <input type="tel" id="${r}" name="${c.name}" 
+                                        ${r}>
+                                `;break;case"tel":s=`
+                                    <input type="tel" id="${c}" name="${n.name}" 
                                         class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" 
                                         pattern="[0-9]{4}-?[0-9]{4}"
                                         placeholder="0000-0000"
-                                        ${n}>
-                                `;break;case"number":o=`
-                                    <input type="number" id="${r}" name="${c.name}" 
+                                        ${r}>
+                                `;break;case"number":s=`
+                                    <input type="number" id="${c}" name="${n.name}" 
                                         class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" 
                                         min="0"
-                                        ${n}>
-                                `;break;case"textarea":o=`
-                                <textarea id="${r}" name="${c.name}" rows="4"
-                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-2xl" ${n}></textarea>
-                            `;break;case"select":const u=c.options.map(h=>`<option value="${h}">${h}</option>`).join("");o=`
-                                <select id="${r}" name="${c.name}" 
-                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${n}>
+                                        ${r}>
+                                `;break;case"textarea":s=`
+                                <textarea id="${c}" name="${n.name}" rows="4"
+                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-2xl" ${r}></textarea>
+                            `;break;case"select":const u=n.options.map(h=>`<option value="${h}">${h}</option>`).join("");s=`
+                                <select id="${c}" name="${n.name}" 
+                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${r}>
                                     <option value="">Seleccione una opción</option>
                                     ${u}
                                 </select>
-                            `;break;case"radio":o=`
+                            `;break;case"radio":s=`
                                 <div class="space-y-2">
-                                    ${c.options.map((h,f)=>`
+                                    ${n.options.map((h,f)=>`
                                         <div class="flex items-center">
-                                            <input type="radio" id="${r}_${f}" name="${c.name}" value="${h}" 
-                                                class="h-4 w-4 text-primary border-gray-300" ${f===0&&c.required?"required":""}>
-                                            <label for="${r}_${f}" class="ml-2 text-gray-700">${h}</label>
+                                            <input type="radio" id="${c}_${f}" name="${n.name}" value="${h}" 
+                                                class="h-4 w-4 text-primary border-gray-300" ${f===0&&n.required?"required":""}>
+                                            <label for="${c}_${f}" class="ml-2 text-gray-700">${h}</label>
                                         </div>
                                     `).join("")}
                                 </div>
-                            `;break;case"checkbox":return o=`
+                            `;break;case"checkbox":return s=`
                                 <div class="flex items-center">
-                                    <input type="checkbox" id="${r}" name="${c.name}" value="1" 
-                                        class="h-4 w-4 text-primary border-gray-300 rounded" ${n}>
-                                    <label for="${r}" class="ml-2 text-gray-700">${c.label}</label>
+                                    <input type="checkbox" id="${c}" name="${n.name}" value="1" 
+                                        class="h-4 w-4 text-primary border-gray-300 rounded" ${r}>
+                                    <label for="${c}" class="ml-2 text-gray-700">${n.label}</label>
                                 </div>
-                            `,o;default:o=`
-                                <input type="text" id="${r}" name="${c.name}" 
-                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${n}>
-                            `}return c.type==="checkbox"?o:`
+                            `,s;default:s=`
+                                <input type="text" id="${c}" name="${n.name}" 
+                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${r}>
+                            `}return n.type==="checkbox"?s:`
                         <div class="mb-4">
-                            <label for="${r}" class="block text-gray-700 text-sm font-bold mb-2">
-                                ${c.label} ${m}
+                            <label for="${c}" class="block text-gray-700 text-sm font-bold mb-2">
+                                ${n.label} ${p}
                             </label>
-                            ${o}
+                            ${s}
                         </div>
                     `}).join(""),d=`
                     <h2 class="text-2xl font-bold text-primary mb-2">${t.title}</h2>
                     ${t.description?`<p class="text-gray-600 mb-4">${t.description}</p>`:""}
                     
                     <form id="dynamic_form_${t.id}" class="dynamic-form" data-form-id="${t.id}">
-                        ${a}
+                        ${l}
                         
                         <div class="mt-6">
                             <button type="submit" class="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition-colors">
@@ -3943,13 +4119,13 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     <div class="form-selector p-4">
                         <h3 class="text-lg font-medium mb-3">Seleccionar Formulario</h3>
                         <div class="form-options max-h-60 overflow-y-auto">
-                            ${this.availableForms.map(a=>`<div class="form-option p-3 border rounded mb-2 cursor-pointer hover:bg-gray-50" data-form-id="${a.id}">
-                        <div class="font-medium">${a.title}</div>
-                        <div class="text-sm text-gray-500">${Object.keys(a.fields).length} campos</div>
+                            ${this.availableForms.map(l=>`<div class="form-option p-3 border rounded mb-2 cursor-pointer hover:bg-gray-50" data-form-id="${l.id}">
+                        <div class="font-medium">${l.title}</div>
+                        <div class="text-sm text-gray-500">${Object.keys(l.fields).length} campos</div>
                     </div>`).join("")}
                         </div>
                     </div>
-                `;if(typeof Swal<"u")Swal.fire({title:"Seleccionar Formulario",html:e,showCancelButton:!0,cancelButtonText:"Cancelar",showConfirmButton:!1,width:"500px",didOpen:()=>{Swal.getPopup().querySelectorAll(".form-option").forEach(d=>{d.addEventListener("click",()=>{const c=d.getAttribute("data-form-id");this.set("attributes",{...this.getAttributes(),"data-form-id":c}),Swal.close()})})}});else{const a=prompt("Ingrese el ID del formulario:");a&&this.set("attributes",{...this.getAttributes(),"data-form-id":a})}}},view:{events:{dblclick:"onDblClick"},onDblClick(){this.model.showFormSelector()}}}),i.DomComponents.addType("dynamic-form-section",{model:{defaults:{name:"Sección con Formulario",tagName:"section",droppable:!1,attributes:{class:"py-8 md:py-14 bg-white","data-form-id":""}},init(){this.listenTo(this,"change:attributes",this.handleAttrChange),this.loadFormOptions(),this.on("change:attributes:data-form-id",this.updateFormHTML),setTimeout(()=>this.updateFormHTML(),100)},handleAttrChange(){const t=this.getAttributes();t["data-form-id"]!==this.get("attributes")["data-form-id"]&&this.set("attributes",{...t,"data-form-id":t["data-form-id"]||""})},async loadFormOptions(){try{const t=await fetch("/api/forms/active");if(!t.ok)throw new Error("Error loading forms");this.availableForms=await t.json()}catch(t){console.error("Error loading form options:",t),this.availableForms=[]}},updateFormHTML(){try{const t=this.getAttributes()["data-form-id"];if(!t){this.set("content",`
+                `;if(typeof Swal<"u")Swal.fire({title:"Seleccionar Formulario",html:e,showCancelButton:!0,cancelButtonText:"Cancelar",showConfirmButton:!1,width:"500px",didOpen:()=>{Swal.getPopup().querySelectorAll(".form-option").forEach(d=>{d.addEventListener("click",()=>{const n=d.getAttribute("data-form-id");this.set("attributes",{...this.getAttributes(),"data-form-id":n}),Swal.close()})})}});else{const l=prompt("Ingrese el ID del formulario:");l&&this.set("attributes",{...this.getAttributes(),"data-form-id":l})}}},view:{events:{dblclick:"onDblClick"},onDblClick(){this.model.showFormSelector()}}}),i.DomComponents.addType("dynamic-form-section",{model:{defaults:{name:"Sección con Formulario",tagName:"section",droppable:!1,attributes:{class:"py-8 md:py-14 bg-white","data-form-id":""}},init(){this.listenTo(this,"change:attributes",this.handleAttrChange),this.loadFormOptions(),this.on("change:attributes:data-form-id",this.updateFormHTML),setTimeout(()=>this.updateFormHTML(),100)},handleAttrChange(){const t=this.getAttributes();t["data-form-id"]!==this.get("attributes")["data-form-id"]&&this.set("attributes",{...t,"data-form-id":t["data-form-id"]||""})},async loadFormOptions(){try{const t=await fetch("/api/forms/active");if(!t.ok)throw new Error("Error loading forms");this.availableForms=await t.json()}catch(t){console.error("Error loading form options:",t),this.availableForms=[]}},updateFormHTML(){try{const t=this.getAttributes()["data-form-id"];if(!t){this.set("content",`
                             <div class="max-w-7xl mx-auto px-4">
                                 <div class="text-center p-8 border-2 border-dashed border-gray-300 rounded-lg">
                                     <i class="ri-file-list-3-line text-4xl text-gray-400 mb-2"></i>
@@ -3957,7 +4133,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                     <p class="text-sm text-gray-500">Haga doble clic para seleccionar un formulario.</p>
                                 </div>
                             </div>
-                        `);return}fetch("/api/forms/active").then(e=>e.json()).then(e=>{const a=e.find(d=>d.id==t);if(!a)throw new Error("Formulario no encontrado");this.renderForm(a)}).catch(e=>{console.error("Error updating form HTML:",e),this.set("content",`
+                        `);return}fetch("/api/forms/active").then(e=>e.json()).then(e=>{const l=e.find(d=>d.id==t);if(!l)throw new Error("Formulario no encontrado");this.renderForm(l)}).catch(e=>{console.error("Error updating form HTML:",e),this.set("content",`
                                 <div class="max-w-7xl mx-auto px-4">
                                     <div class="text-center p-8 border-2 border-dashed border-red-300 rounded-lg bg-red-50">
                                         <i class="ri-error-warning-line text-4xl text-red-500 mb-2"></i>
@@ -3965,7 +4141,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                         <p class="text-sm text-red-500">No se pudo cargar el formulario seleccionado. Por favor, verifique que el formulario exista y esté activo.</p>
                                     </div>
                                 </div>
-                            `)})}catch(t){console.error("Error in updateFormHTML:",t)}},renderForm(t){let e=[];if(t.fields&&!Array.isArray(t.fields))e=Object.keys(t.fields).map(c=>t.fields[c]);else if(Array.isArray(t.fields))e=t.fields;else{console.error("Invalid form fields format:",t.fields),this.set("content",`
+                            `)})}catch(t){console.error("Error in updateFormHTML:",t)}},renderForm(t){let e=[];if(t.fields&&!Array.isArray(t.fields))e=Object.keys(t.fields).map(n=>t.fields[n]);else if(Array.isArray(t.fields))e=t.fields;else{console.error("Invalid form fields format:",t.fields),this.set("content",`
                         <div class="max-w-7xl mx-auto px-4">
                             <div class="text-center p-8 border-2 border-dashed border-red-300 rounded-lg bg-red-50">
                                 <i class="ri-error-warning-line text-4xl text-red-500 mb-2"></i>
@@ -3973,59 +4149,59 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                 <p class="text-sm text-red-500">El formato de los campos del formulario es inválido. Por favor, verifique la estructura de datos.</p>
                             </div>
                         </div>
-                    `);return}const a=e.map(c=>{const r=`form_${t.id}_${c.name}`,n=c.required?"required":"",m=c.required?'<span class="text-red-500">*</span>':"";let o="";switch(c.type){case"text":o=`
-                                    <input type="text" id="${r}" name="${c.name}" 
-                                        class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${n}>
-                                `;break;case"email":o=`
-                                    <input type="email" id="${r}" name="${c.name}" 
+                    `);return}const l=e.map(n=>{const c=`form_${t.id}_${n.name}`,r=n.required?"required":"",p=n.required?'<span class="text-red-500">*</span>':"";let s="";switch(n.type){case"text":s=`
+                                    <input type="text" id="${c}" name="${n.name}" 
+                                        class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${r}>
+                                `;break;case"email":s=`
+                                    <input type="email" id="${c}" name="${n.name}" 
                                         class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" 
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"
-                                        ${n}>
-                                `;break;case"tel":o=`
-                                    <input type="tel" id="${r}" name="${c.name}" 
+                                        ${r}>
+                                `;break;case"tel":s=`
+                                    <input type="tel" id="${c}" name="${n.name}" 
                                         class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" 
                                         pattern="[0-9]{4}-?[0-9]{4}"
                                         placeholder="0000-0000"
-                                        ${n}>
-                                `;break;case"number":o=`
-                                    <input type="number" id="${r}" name="${c.name}" 
+                                        ${r}>
+                                `;break;case"number":s=`
+                                    <input type="number" id="${c}" name="${n.name}" 
                                         class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" 
                                         min="0"
-                                        ${n}>
-                                `;break;case"textarea":o=`
-                                <textarea id="${r}" name="${c.name}" rows="4"
-                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-2xl" ${n}></textarea>
-                            `;break;case"select":const u=c.options.map(h=>`<option value="${h}">${h}</option>`).join("");o=`
-                                <select id="${r}" name="${c.name}" 
-                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${n}>
+                                        ${r}>
+                                `;break;case"textarea":s=`
+                                <textarea id="${c}" name="${n.name}" rows="4"
+                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-2xl" ${r}></textarea>
+                            `;break;case"select":const u=n.options.map(h=>`<option value="${h}">${h}</option>`).join("");s=`
+                                <select id="${c}" name="${n.name}" 
+                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${r}>
                                     <option value="">Seleccione una opción</option>
                                     ${u}
                                 </select>
-                            `;break;case"radio":o=`
+                            `;break;case"radio":s=`
                                 <div class="space-y-2">
-                                    ${c.options.map((h,f)=>`
+                                    ${n.options.map((h,f)=>`
                                         <div class="flex items-center">
-                                            <input type="radio" id="${r}_${f}" name="${c.name}" value="${h}" 
-                                                class="h-4 w-4 text-primary border-gray-300" ${f===0&&c.required?"required":""}>
-                                            <label for="${r}_${f}" class="ml-2 text-gray-700">${h}</label>
+                                            <input type="radio" id="${c}_${f}" name="${n.name}" value="${h}" 
+                                                class="h-4 w-4 text-primary border-gray-300" ${f===0&&n.required?"required":""}>
+                                            <label for="${c}_${f}" class="ml-2 text-gray-700">${h}</label>
                                         </div>
                                     `).join("")}
                                 </div>
-                            `;break;case"checkbox":return o=`
+                            `;break;case"checkbox":return s=`
                                 <div class="flex items-center">
-                                    <input type="checkbox" id="${r}" name="${c.name}" value="1" 
-                                        class="h-4 w-4 text-primary border-gray-300 rounded" ${n}>
-                                    <label for="${r}" class="ml-2 text-gray-700">${c.label}</label>
+                                    <input type="checkbox" id="${c}" name="${n.name}" value="1" 
+                                        class="h-4 w-4 text-primary border-gray-300 rounded" ${r}>
+                                    <label for="${c}" class="ml-2 text-gray-700">${n.label}</label>
                                 </div>
-                            `,o;default:o=`
-                                <input type="text" id="${r}" name="${c.name}" 
-                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${n}>
-                            `}return c.type==="checkbox"?o:`
+                            `,s;default:s=`
+                                <input type="text" id="${c}" name="${n.name}" 
+                                    class="border border-gray-400 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary rounded-full" ${r}>
+                            `}return n.type==="checkbox"?s:`
                         <div class="mb-4">
-                            <label for="${r}" class="block text-gray-700 text-sm font-bold mb-2">
-                                ${c.label} ${m}
+                            <label for="${c}" class="block text-gray-700 text-sm font-bold mb-2">
+                                ${n.label} ${p}
                             </label>
-                            ${o}
+                            ${s}
                         </div>
                     `}).join(""),d=`
                     <div class="max-w-7xl mx-auto px-4">
@@ -4037,7 +4213,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                         <div class="max-w-2xl mx-auto">
                             <div class="bg-white p-6 rounded-2xl border border-gray-200">
                                 <form id="dynamic_form_${t.id}" class="dynamic-form" data-form-id="${t.id}">
-                                    ${a}
+                                    ${l}
                                     
                                     <div class="mt-6">
                                         <button type="submit" class="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-full transition-colors">
@@ -4135,20 +4311,20 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     <div class="form-selector p-4">
                         <h3 class="text-lg font-medium mb-3">Seleccionar Formulario</h3>
                         <div class="form-options max-h-60 overflow-y-auto">
-                            ${this.availableForms.map(a=>`<div class="form-option p-3 border rounded mb-2 cursor-pointer hover:bg-gray-50" data-form-id="${a.id}">
-                        <div class="font-medium">${a.title}</div>
-                        <div class="text-sm text-gray-500">${Object.keys(a.fields).length} campos</div>
+                            ${this.availableForms.map(l=>`<div class="form-option p-3 border rounded mb-2 cursor-pointer hover:bg-gray-50" data-form-id="${l.id}">
+                        <div class="font-medium">${l.title}</div>
+                        <div class="text-sm text-gray-500">${Object.keys(l.fields).length} campos</div>
                     </div>`).join("")}
                         </div>
                     </div>
-                `;if(typeof Swal<"u")Swal.fire({title:"Seleccionar Formulario",html:e,showCancelButton:!0,cancelButtonText:"Cancelar",showConfirmButton:!1,width:"500px",didOpen:()=>{Swal.getPopup().querySelectorAll(".form-option").forEach(d=>{d.addEventListener("click",()=>{const c=d.getAttribute("data-form-id");this.set("attributes",{...this.getAttributes(),"data-form-id":c}),Swal.close()})})}});else{const a=prompt("Ingrese el ID del formulario:");a&&this.set("attributes",{...this.getAttributes(),"data-form-id":a})}}},view:{events:{dblclick:"onDblClick"},onDblClick(){this.model.showFormSelector()}}}),i.BlockManager.add("dynamic-form-basic",{label:"Formulario Simple",category:"Formularios",attributes:{class:"gjs-block-section"},media:l,content:{type:"dynamic-form-basic"}}),i.BlockManager.add("dynamic-form-section",{label:"Sección con Formulario",category:"Formularios",attributes:{class:"gjs-block-section"},media:s,content:{type:"dynamic-form-section"}})}function Pt(i){const l=`<svg viewBox="0 0 24 24" width="32" height="32">
+                `;if(typeof Swal<"u")Swal.fire({title:"Seleccionar Formulario",html:e,showCancelButton:!0,cancelButtonText:"Cancelar",showConfirmButton:!1,width:"500px",didOpen:()=>{Swal.getPopup().querySelectorAll(".form-option").forEach(d=>{d.addEventListener("click",()=>{const n=d.getAttribute("data-form-id");this.set("attributes",{...this.getAttributes(),"data-form-id":n}),Swal.close()})})}});else{const l=prompt("Ingrese el ID del formulario:");l&&this.set("attributes",{...this.getAttributes(),"data-form-id":l})}}},view:{events:{dblclick:"onDblClick"},onDblClick(){this.model.showFormSelector()}}}),i.BlockManager.add("dynamic-form-basic",{label:"Formulario Simple",category:"Formularios",attributes:{class:"gjs-block-section"},media:o,content:{type:"dynamic-form-basic"}}),i.BlockManager.add("dynamic-form-section",{label:"Sección con Formulario",category:"Formularios",attributes:{class:"gjs-block-section"},media:a,content:{type:"dynamic-form-section"}})}function Rt(i){const o=`<svg viewBox="0 0 24 24" width="32" height="32">
       <rect x="2" y="2" width="20" height="20" rx="2" fill="#23366A" />
       <circle cx="6" cy="8" r="2" fill="white" />
       <circle cx="12" cy="8" r="2" fill="white" />
       <circle cx="18" cy="8" r="2" fill="white" />
       <rect x="4" y="14" width="16" height="2" fill="white" />
       <rect x="4" y="18" width="10" height="2" fill="white" />
-    </svg>`;i.DomComponents.addType("precalificador-form",{isComponent:function(s){return s.tagName==="SECTION"&&(s.getAttribute("data-gjs-type")==="precalificador-form"||s.querySelector(".precalificador-form"))},model:{defaults:{name:"Formulario Precalificador",tagName:"section",droppable:!1,attributes:{class:"py-8 md:py-14 bg-white","data-gjs-type":"precalificador-form"},traits:[{type:"text",name:"form-title",label:"Título del formulario",default:"Precalificador de créditos"},{type:"text",name:"form-subtitle",label:"Subtítulo",default:"Por favor llene los campos del formulario"},{type:"button",text:"Generar tabla",full:!0,command:"create-form-in-db"}]},init(){this.on("change:attributes",this.updateContent),setTimeout(()=>this.updateContent(),100)},updateContent(){const s=this.getAttributes(),t=s["form-title"]||"Precalificador de créditos",e=s["form-subtitle"]||"Por favor llene los campos del formulario",a=`
+    </svg>`;i.DomComponents.addType("precalificador-form",{isComponent:function(a){return a.tagName==="SECTION"&&(a.getAttribute("data-gjs-type")==="precalificador-form"||a.querySelector(".precalificador-form"))},model:{defaults:{name:"Formulario Precalificador",tagName:"section",droppable:!1,attributes:{class:"py-8 md:py-14 bg-white","data-gjs-type":"precalificador-form"},traits:[{type:"text",name:"form-title",label:"Título del formulario",default:"Precalificador de créditos"},{type:"text",name:"form-subtitle",label:"Subtítulo",default:"Por favor llene los campos del formulario"},{type:"button",text:"Generar tabla",full:!0,command:"create-form-in-db"}]},init(){this.on("change:attributes",this.updateContent),setTimeout(()=>this.updateContent(),100)},updateContent(){const a=this.getAttributes(),t=a["form-title"]||"Precalificador de créditos",e=a["form-subtitle"]||"Por favor llene los campos del formulario",l=`
                     <div class="max-w-7xl mx-auto px-4" data-precalificador-container="${this.cid}">
                         <div class="text-center mb-8">
                             <h2 class="text-3xl font-bold text-primary mb-2">${t}</h2>
@@ -4780,7 +4956,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                             }
                         })();
                     <\/script>
-                    `;this.set("content",a)}}}),i.Commands.add("create-form-in-db",{run:function(s,t){Nt(s)}}),i.BlockManager.add("precalificador-form-block",{label:"Precalificador de Créditos",category:"Formularios",attributes:{class:"gjs-block-section"},media:l,content:{type:"precalificador-form"}}),i.on("component:add",s=>{s.get("type")==="precalificador-form"&&setTimeout(()=>{showAlert("Para que el formulario funcione correctamente, recuerda generar la tabla en base de datos usando el botón en el panel de propiedades.","info",8e3)},1e3)}),i.on("component:selected",function(s){s.get("type")==="precalificador-form"&&setTimeout(()=>{const t=s.get("script"),e=s.view.el;t&&e&&t.call(e)},300)}),i.on("component:mount",function(s){s.get("type")==="precalificador-form"&&setTimeout(()=>{const t=s.get("script"),e=s.view.el;t&&e&&t.call(e)},300)})}function Nt(i){const l=i.getSelected(),s={title:"Creando formulario",text:"Por favor espere mientras se crea el formulario en la base de datos...",allowOutsideClick:!1,showConfirmButton:!1,willOpen:()=>{Swal.showLoading()}};Swal.fire(s);const t={title:"Precalificador de Créditos",description:"Formulario para precalificación de créditos",fields:[{type:"text",label:"Nombres",name:"nombres",required:!0},{type:"text",label:"Apellidos",name:"apellidos",required:!0},{type:"text",label:"Número de DUI",name:"dui",required:!0},{type:"number",label:"Edad",name:"edad",required:!0},{type:"tel",label:"Teléfono",name:"telefono",required:!0},{type:"email",label:"Correo Electrónico",name:"correo",required:!0},{type:"number",label:"Ingreso Mensual",name:"ingreso_mensual",required:!0},{type:"select",label:"Tipo de Empleo",name:"tipo_empleo",required:!0,options:["Formal","Informal","Negocio propio","Jubilado"]},{type:"number",label:"Antigüedad Laboral",name:"antiguedad_laboral",required:!0},{type:"number",label:"Monto Solicitado",name:"monto_solicitado",required:!0},{type:"select",label:"Plazo en Meses",name:"plazo_meses",required:!0,options:["12","24","36","48","60"]},{type:"checkbox",label:"Acepto términos y condiciones",name:"acepto_terminos",required:!0}],submit_button_text:"Enviar solicitud",success_message:"Su solicitud ha sido enviada correctamente. Nos pondremos en contacto con usted pronto.",status:"active"};fetch("/api/forms/create-precalificador",{method:"POST",headers:{"Content-Type":"application/json","X-CSRF-TOKEN":document.querySelector('meta[name="csrf-token"]').getAttribute("content")},body:JSON.stringify(t)}).then(e=>{if(!e.ok)throw new Error("Error al crear formulario: "+e.statusText);return e.json()}).then(e=>{Swal.close(),e.success?(l.set("attributes",{...l.getAttributes(),"data-form-id":e.formId}),showAlert(`Formulario creado correctamente con ID: ${e.formId}`,"success",5e3)):showAlert(e.message||"Error desconocido al crear el formulario","error",5e3)}).catch(e=>{console.error("Error:",e),Swal.close(),showAlert("Error: "+e.message,"error",5e3)})}function zt(i){const l=i.BlockManager,s=`
+                    `;this.set("content",l)}}}),i.Commands.add("create-form-in-db",{run:function(a,t){Vt(a)}}),i.BlockManager.add("precalificador-form-block",{label:"Precalificador de Créditos",category:"Formularios",attributes:{class:"gjs-block-section"},media:o,content:{type:"precalificador-form"}}),i.on("component:add",a=>{a.get("type")==="precalificador-form"&&setTimeout(()=>{showAlert("Para que el formulario funcione correctamente, recuerda generar la tabla en base de datos usando el botón en el panel de propiedades.","info",8e3)},1e3)}),i.on("component:selected",function(a){a.get("type")==="precalificador-form"&&setTimeout(()=>{const t=a.get("script"),e=a.view.el;t&&e&&t.call(e)},300)}),i.on("component:mount",function(a){a.get("type")==="precalificador-form"&&setTimeout(()=>{const t=a.get("script"),e=a.view.el;t&&e&&t.call(e)},300)})}function Vt(i){const o=i.getSelected(),a={title:"Creando formulario",text:"Por favor espere mientras se crea el formulario en la base de datos...",allowOutsideClick:!1,showConfirmButton:!1,willOpen:()=>{Swal.showLoading()}};Swal.fire(a);const t={title:"Precalificador de Créditos",description:"Formulario para precalificación de créditos",fields:[{type:"text",label:"Nombres",name:"nombres",required:!0},{type:"text",label:"Apellidos",name:"apellidos",required:!0},{type:"text",label:"Número de DUI",name:"dui",required:!0},{type:"number",label:"Edad",name:"edad",required:!0},{type:"tel",label:"Teléfono",name:"telefono",required:!0},{type:"email",label:"Correo Electrónico",name:"correo",required:!0},{type:"number",label:"Ingreso Mensual",name:"ingreso_mensual",required:!0},{type:"select",label:"Tipo de Empleo",name:"tipo_empleo",required:!0,options:["Formal","Informal","Negocio propio","Jubilado"]},{type:"number",label:"Antigüedad Laboral",name:"antiguedad_laboral",required:!0},{type:"number",label:"Monto Solicitado",name:"monto_solicitado",required:!0},{type:"select",label:"Plazo en Meses",name:"plazo_meses",required:!0,options:["12","24","36","48","60"]},{type:"checkbox",label:"Acepto términos y condiciones",name:"acepto_terminos",required:!0}],submit_button_text:"Enviar solicitud",success_message:"Su solicitud ha sido enviada correctamente. Nos pondremos en contacto con usted pronto.",status:"active"};fetch("/api/forms/create-precalificador",{method:"POST",headers:{"Content-Type":"application/json","X-CSRF-TOKEN":document.querySelector('meta[name="csrf-token"]').getAttribute("content")},body:JSON.stringify(t)}).then(e=>{if(!e.ok)throw new Error("Error al crear formulario: "+e.statusText);return e.json()}).then(e=>{Swal.close(),e.success?(o.set("attributes",{...o.getAttributes(),"data-form-id":e.formId}),showAlert(`Formulario creado correctamente con ID: ${e.formId}`,"success",5e3)):showAlert(e.message||"Error desconocido al crear el formulario","error",5e3)}).catch(e=>{console.error("Error:",e),Swal.close(),showAlert("Error: "+e.message,"error",5e3)})}function Jt(i){const o=i.BlockManager,a=`
     <svg viewBox="0 0 32 32" width="32" height="32">
         <rect width="32" height="32" fill="#ffffff"/>
         
@@ -4821,27 +4997,27 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         <rect x="18" y="26" width="11" height="0.8" rx="0.3" fill="#23366A"/>
         <rect x="18" y="27.2" width="8" height="0.6" rx="0.2" fill="#9ca3af"/>
         <rect x="18" y="28.5" width="11" height="1.2" rx="0.6" fill="none" stroke="#23366A" stroke-width="0.4"/>
-        </svg>`;i.DomComponents.addType("promotion-viewer",{isComponent:t=>t.getAttribute&&t.getAttribute("data-promotion-component")==="true"?{type:"promotion-viewer"}:!1,model:{defaults:{name:"Visor de Promociones",tagName:"section",droppable:!1,editable:!1,selectable:!0,hoverable:!0,attributes:{class:"py-8 md:py-12 bg-white","data-promotion-component":"true"},script:function(){(function(){if(!window.Swal){var t=document.createElement("script");t.src="https://cdn.jsdelivr.net/npm/sweetalert2@11",document.head.appendChild(t)}var e=function(){var a=document.querySelector('[data-promotion-component="true"]');if(!a){setTimeout(e,500);return}var d=a.querySelectorAll(".promotion-view-more");d.forEach(function(n){n.addEventListener("click",function(m){m.preventDefault();var o=n.getAttribute("data-promotion-title")||"Promoción",u=n.getAttribute("data-promotion-image")||"",h=n.getAttribute("data-promotion-description")||"",f=n.getAttribute("data-promotion-category")||"",S=n.getAttribute("data-promotion-days")||"",T=n.getAttribute("data-promotion-active-days")||"",x=function(){if(window.Swal){var g="";S&&S!==""?g='<p class="text-red-600 font-semibold mb-4"><i class="ri-time-line mr-1"></i> Quedan '+S+" días para aprovechar esta promoción</p>":T&&T!==""&&(g='<p class="text-blue-600 font-semibold mb-4"><i class="ri-calendar-line mr-1"></i> Disponible: '+T+"</p>"),window.Swal.fire({html:'<div class="text-left"><div class="mb-4 mt-4"><img src="'+u+'" alt="'+o+'" class="w-full h-64 object-cover rounded-lg"></div><span class="inline-block bg-primary text-white text-sm font-semibold px-4 py-1 rounded-full mb-3">'+f+'</span><h2 class="text-2xl font-bold text-primary mb-4">'+o+"</h2>"+g+'<div class="text-gray-700 whitespace-pre-line">'+h+"</div></div>",width:"800px",showCloseButton:!0,showConfirmButton:!1,customClass:{popup:"promotion-modal",closeButton:"promotion-modal-close-button"}})}};if(window.Swal)x();else{var p=document.createElement("script");p.src="https://cdn.jsdelivr.net/npm/sweetalert2@11",p.onload=x,document.head.appendChild(p)}})});var c=a.querySelector("#promotion-category-filter"),r=a.querySelector("#promotion-day-filter");if(c&&r){let n=function(){var m=c.value,o=r.value,u=a.querySelectorAll(".promotion-card"),h=a.querySelector(".no-results-message"),f=0;u.forEach(function(S){var T=S.getAttribute("data-category"),x=S.getAttribute("data-days")||"",p=x.includes("días restantes"),g=m===""||T===m,b=!1;if(o==="")b=!0;else if(p)b=!0;else if(x.toLowerCase()==="todos los días")b=!0;else{var E={Lunes:"Lun",Martes:"Mar",Miércoles:"Mié",Jueves:"Jue",Viernes:"Vie",Sábado:"Sáb",Domingo:"Dom"},I=E[o];if(I){var A=new RegExp(I+"(?:,|$)","i");b=A.test(x)}}g&&b?(S.style.display="flex",f++):S.style.display="none"}),h&&(h.style.display=f===0?"block":"none")};c.addEventListener("change",n),r.addEventListener("change",n)}};setTimeout(e,500)})()}},init(){const t=this,e=()=>{const r=t.get("content")||"";return r.includes("promotion-card")||r.includes("Promociones vigentes")};if(e()){console.log("Promotions already loaded, skipping fetch");return}this.on("component:mount",this.loadPromotions);let a=0;const d=3,c=()=>{if(e()){console.log("Content detected, stopping load attempts");return}a++,console.log(`Attempt ${a} to load promotions`),t.loadPromotions(),setTimeout(()=>{var n;const r=(n=t.view)==null?void 0:n.el;r&&r.querySelector(".promotion-card")===null&&a<d&&!e()&&(console.log("Promotions not loaded, retrying..."),c())},1e3)};setTimeout(()=>c(),100)},loadPromotions(){fetch("/api/promotions/active").then(t=>{if(!t.ok)throw new Error(`Error ${t.status}: ${t.statusText}`);return t.json()}).then(t=>{this.updatePromotionsHTML(t)}).catch(t=>{this.set("content",'<div class="text-center p-8"><p class="text-gray-500">Error al cargar las promociones</p></div>')})},updatePromotionsHTML(t){if(!t||t.length===0){this.set("content",'<div class="text-center p-8"><p class="text-gray-500">No hay promociones disponibles en este momento</p></div>');return}const e=[...new Set(t.map(o=>o.category))],a={monday:{full:"Lunes",short:"Lun"},tuesday:{full:"Martes",short:"Mar"},wednesday:{full:"Miércoles",short:"Mié"},thursday:{full:"Jueves",short:"Jue"},friday:{full:"Viernes",short:"Vie"},saturday:{full:"Sábado",short:"Sáb"},sunday:{full:"Domingo",short:"Dom"}},d=Object.entries(a).map(([o,u])=>({key:o,full:u.full,short:u.short}));let c="";t.forEach(o=>{let u="",h="";if(o.remaining_days!==null&&o.remaining_days!==void 0)u=`${o.remaining_days} días restantes`,h=`<span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full inline-flex items-center"><i class="ri-time-line mr-1"></i>${o.remaining_days}d</span>`;else if(o.active_days&&o.active_days.length>0){const f=o.active_days.map(S=>a[S]?a[S].short:S).join(", ");u=f,h=`<span class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full inline-flex items-center"><i class="ri-calendar-line mr-1"></i>${f}</span>`}else u="Todos los días",h='<span class="absolute top-3 right-3 bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full inline-flex items-center"><i class="ri-calendar-line mr-1"></i>Todos</span>';c+=`
+        </svg>`;i.DomComponents.addType("promotion-viewer",{isComponent:t=>t.getAttribute&&t.getAttribute("data-promotion-component")==="true"?{type:"promotion-viewer"}:!1,model:{defaults:{name:"Visor de Promociones",tagName:"section",droppable:!1,editable:!1,selectable:!0,hoverable:!0,attributes:{class:"py-8 md:py-12 bg-white","data-promotion-component":"true"},script:function(){(function(){if(!window.Swal){var t=document.createElement("script");t.src="https://cdn.jsdelivr.net/npm/sweetalert2@11",document.head.appendChild(t)}var e=function(){var l=document.querySelector('[data-promotion-component="true"]');if(!l){setTimeout(e,500);return}var d=l.querySelectorAll(".promotion-view-more");d.forEach(function(r){r.addEventListener("click",function(p){p.preventDefault();var s=r.getAttribute("data-promotion-title")||"Promoción",u=r.getAttribute("data-promotion-image")||"",h=r.getAttribute("data-promotion-description")||"",f=r.getAttribute("data-promotion-category")||"",S=r.getAttribute("data-promotion-days")||"",T=r.getAttribute("data-promotion-active-days")||"",x=function(){if(window.Swal){var g="";S&&S!==""?g='<p class="text-red-600 font-semibold mb-4"><i class="ri-time-line mr-1"></i> Quedan '+S+" días para aprovechar esta promoción</p>":T&&T!==""&&(g='<p class="text-blue-600 font-semibold mb-4"><i class="ri-calendar-line mr-1"></i> Disponible: '+T+"</p>"),window.Swal.fire({html:'<div class="text-left"><div class="mb-4 mt-4"><img src="'+u+'" alt="'+s+'" class="w-full h-64 object-cover rounded-lg"></div><span class="inline-block bg-primary text-white text-sm font-semibold px-4 py-1 rounded-full mb-3">'+f+'</span><h2 class="text-2xl font-bold text-primary mb-4">'+s+"</h2>"+g+'<div class="text-gray-700 whitespace-pre-line">'+h+"</div></div>",width:"800px",showCloseButton:!0,showConfirmButton:!1,customClass:{popup:"promotion-modal",closeButton:"promotion-modal-close-button"}})}};if(window.Swal)x();else{var m=document.createElement("script");m.src="https://cdn.jsdelivr.net/npm/sweetalert2@11",m.onload=x,document.head.appendChild(m)}})});var n=l.querySelector("#promotion-category-filter"),c=l.querySelector("#promotion-day-filter");if(n&&c){let r=function(){var p=n.value,s=c.value,u=l.querySelectorAll(".promotion-card"),h=l.querySelector(".no-results-message"),f=0;u.forEach(function(S){var T=S.getAttribute("data-category"),x=S.getAttribute("data-days")||"",m=x.includes("días restantes"),g=p===""||T===p,b=!1;if(s==="")b=!0;else if(m)b=!0;else if(x.toLowerCase()==="todos los días")b=!0;else{var E={Lunes:"Lun",Martes:"Mar",Miércoles:"Mié",Jueves:"Jue",Viernes:"Vie",Sábado:"Sáb",Domingo:"Dom"},I=E[s];if(I){var k=new RegExp(I+"(?:,|$)","i");b=k.test(x)}}g&&b?(S.style.display="flex",f++):S.style.display="none"}),h&&(h.style.display=f===0?"block":"none")};n.addEventListener("change",r),c.addEventListener("change",r)}};setTimeout(e,500)})()}},init(){const t=this,e=()=>{const c=t.get("content")||"";return c.includes("promotion-card")||c.includes("Promociones vigentes")};if(e()){console.log("Promotions already loaded, skipping fetch");return}this.on("component:mount",this.loadPromotions);let l=0;const d=3,n=()=>{if(e()){console.log("Content detected, stopping load attempts");return}l++,console.log(`Attempt ${l} to load promotions`),t.loadPromotions(),setTimeout(()=>{var r;const c=(r=t.view)==null?void 0:r.el;c&&c.querySelector(".promotion-card")===null&&l<d&&!e()&&(console.log("Promotions not loaded, retrying..."),n())},1e3)};setTimeout(()=>n(),100)},loadPromotions(){fetch("/api/promotions/active").then(t=>{if(!t.ok)throw new Error(`Error ${t.status}: ${t.statusText}`);return t.json()}).then(t=>{this.updatePromotionsHTML(t)}).catch(t=>{this.set("content",'<div class="text-center p-8"><p class="text-gray-500">Error al cargar las promociones</p></div>')})},updatePromotionsHTML(t){if(!t||t.length===0){this.set("content",'<div class="text-center p-8"><p class="text-gray-500">No hay promociones disponibles en este momento</p></div>');return}const e=[...new Set(t.map(s=>s.category))],l={monday:{full:"Lunes",short:"Lun"},tuesday:{full:"Martes",short:"Mar"},wednesday:{full:"Miércoles",short:"Mié"},thursday:{full:"Jueves",short:"Jue"},friday:{full:"Viernes",short:"Vie"},saturday:{full:"Sábado",short:"Sáb"},sunday:{full:"Domingo",short:"Dom"}},d=Object.entries(l).map(([s,u])=>({key:s,full:u.full,short:u.short}));let n="";t.forEach(s=>{let u="",h="";if(s.remaining_days!==null&&s.remaining_days!==void 0)u=`${s.remaining_days} días restantes`,h=`<span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full inline-flex items-center"><i class="ri-time-line mr-1"></i>${s.remaining_days}d</span>`;else if(s.active_days&&s.active_days.length>0){const f=s.active_days.map(S=>l[S]?l[S].short:S).join(", ");u=f,h=`<span class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full inline-flex items-center"><i class="ri-calendar-line mr-1"></i>${f}</span>`}else u="Todos los días",h='<span class="absolute top-3 right-3 bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full inline-flex items-center"><i class="ri-calendar-line mr-1"></i>Todos</span>';n+=`
                     <div class="promotion-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
-                        data-category="${o.category}"
+                        data-category="${s.category}"
                         data-days="${u}">
                         <div class="relative h-48">
-                            <img src="${o.image_url}" alt="${o.title}" class="w-full h-full object-cover">
-                            <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">${o.category}</span>
+                            <img src="${s.image_url}" alt="${s.title}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">${s.category}</span>
                             ${h}
                         </div>
                         <div class="p-5 flex-grow flex flex-col h-full">
-                            <h3 class="text-lg font-bold text-primary mb-2">${o.title}</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">${o.short_description}</p>
+                            <h3 class="text-lg font-bold text-primary mb-2">${s.title}</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">${s.short_description}</p>
                             <div class="mt-auto">
                                 <button 
                                     class="promotion-view-more bg-white border-2 border-primary text-primary font-semibold py-2 px-5 rounded-full transition-all duration-300 hover:bg-primary hover:text-white text-sm w-full flex items-center justify-center"
-                                    data-promotion-id="${o.id}"
-                                    data-promotion-title="${o.title.replace(/"/g,"&quot;")}"
-                                    data-promotion-image="${o.image_url}"
-                                    data-promotion-description="${o.long_description.replace(/"/g,"&quot;")}"
-                                    data-promotion-category="${o.category}"
-                                    data-promotion-days="${o.remaining_days||""}"
+                                    data-promotion-id="${s.id}"
+                                    data-promotion-title="${s.title.replace(/"/g,"&quot;")}"
+                                    data-promotion-image="${s.image_url}"
+                                    data-promotion-description="${s.long_description.replace(/"/g,"&quot;")}"
+                                    data-promotion-category="${s.category}"
+                                    data-promotion-days="${s.remaining_days||""}"
                                     data-promotion-active-days="${u}"
                                 >
                                     Ver más
@@ -4850,27 +5026,27 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                             </div>
                         </div>
                     </div>
-                    `});let r=`
+                    `});let c=`
                 <div class="relative inline-block w-full">
                     <select id="promotion-category-filter" class="appearance-none w-full bg-white border-2 border-primary text-primary rounded-full px-4 py-2 pr-8 focus:outline-none cursor-pointer">
                         <option value="">Todas las categorías</option>
-                        ${e.map(o=>`<option value="${o}">${o}</option>`).join("")}
+                        ${e.map(s=>`<option value="${s}">${s}</option>`).join("")}
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-primary">
                         <i class="ri-arrow-down-s-line"></i>
                     </div>
                 </div>
-                `,n=`
+                `,r=`
                 <div class="relative inline-block w-full">
                     <select id="promotion-day-filter" class="appearance-none w-full bg-white border-2 border-primary text-primary rounded-full px-4 py-2 pr-8 focus:outline-none cursor-pointer">
                         <option value="">Todos los días</option>
-                        ${d.map(o=>`<option value="${o.full}">${o.full}</option>`).join("")}
+                        ${d.map(s=>`<option value="${s.full}">${s.full}</option>`).join("")}
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-primary">
                         <i class="ri-arrow-down-s-line"></i>
                     </div>
                 </div>
-                `;const m=`
+                `;const p=`
                     <div class="max-w-7xl mx-auto px-4">
                         <h2 class="text-3xl font-bold text-primary mb-8">Promociones vigentes</h2>
 
@@ -4879,13 +5055,13 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                             <div class="flex-1 min-w-[200px]">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Filtrar por categoría</label>
                                 <div class="relative">
-                                    ${r}
+                                    ${c}
                                 </div>
                             </div>
                             <div class="flex-1 min-w-[200px]">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Filtrar por día disponible</label>
                                 <div class="relative">
-                                    ${n}
+                                    ${r}
                                 </div>
                             </div>
                         </div>
@@ -4893,14 +5069,14 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                         <!-- Grid -->
                         <div class="mb-8">
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                ${c}
+                                ${n}
                             </div>
                             <div class="no-results-message hidden mt-8 text-center py-8">
                                 <p class="text-gray-500">No hay promociones que coincidan con los filtros seleccionados</p>
                             </div>
                         </div>
                     </div>
-                `;this.set("content",m),setTimeout(()=>{this.view&&this.view.render&&this.view.render()},100)}},view:{events:{dblclick:"reloadPromotions"},reloadPromotions(){this.model.loadPromotions()}}}),i.on("load",()=>{const t=i.Canvas.getFrameEl();if(t&&t.contentDocument){let e=t.contentDocument.getElementById("promotion-styles");e||(e=t.contentDocument.createElement("style"),e.id="promotion-styles",e.innerHTML=`
+                `;this.set("content",p),setTimeout(()=>{this.view&&this.view.render&&this.view.render()},100)}},view:{events:{dblclick:"reloadPromotions"},reloadPromotions(){this.model.loadPromotions()}}}),i.on("load",()=>{const t=i.Canvas.getFrameEl();if(t&&t.contentDocument){let e=t.contentDocument.getElementById("promotion-styles");e||(e=t.contentDocument.createElement("style"),e.id="promotion-styles",e.innerHTML=`
                 .line-clamp-2 {
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
@@ -4992,7 +5168,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     transform: translate(-50%, -50%) !important;
                     margin: 0 !important;
                 }
-            `,t.contentDocument.head.appendChild(e))}}),l.add("promotion-viewer",{label:"Visor de Promociones",category:"Promociones",attributes:{class:"gjs-block-section"},media:s,content:{type:"promotion-viewer"}})}function Ft(i){ft(i),wt(i),xt(i),At(i),kt(i),St(i),Et(i),ht(i),bt(i),yt(i),vt(i),Ct(i),It(i),jt(i),$t(i),Dt(i),qt(i),Mt(i),Pt(i),zt(i),W(i),K(i),Tt(i),Lt(i)}function F(i,l=""){const s=document.getElementById(i);return s?s.value:l}document.addEventListener("DOMContentLoaded",function(){const i=_t();ne(i),re(i),de(i),fe(i)});function _t(){const i=F("asset-upload-url","/upload-assets"),l=Ot(i);return Gt(l),Wt(l),Kt(l),Zt(l),le(l),Qt(l),at(l),l}function Ot(i){return Z.init({container:"#gjs",fromElement:!0,storageManager:Ht(),deviceManager:{devices:[{name:"Desktop",width:""},{name:"Tablet",width:"768px",widthMedia:"992px"},{name:"Mobile",width:"320px",widthMedia:"575px"}]},i18n:Rt(),assetManager:Vt(i),canvas:{styles:["https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css","https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"],scripts:[]},styleManager:Jt(),plugins:[Y,l=>Ft(l),l=>oe(l),l=>tt(l),l=>gt(l)],pluginsOpts:Ut()})}function Ht(){const i=F("page-id");return i?{type:"local",id:"gjs-",autosave:!0,autoload:!0,stepsBeforeSave:1,options:{local:{key:`gjs-page-${i}`}}}:!1}function Rt(){return{locale:"es",messages:{es:{styleManager:{properties:"Propiedades",empty:"Selecciona un elemento para usar el Administrador de Estilos",sectors:{position:"Posición",display:"Visualización",flex:"Flex",dimension:"Dimensiones",typography:"Tipografía",decorations:"Decoraciones",extra:"Extra","flex-properties":"Propiedades Flex",background:"Fondo"}},traitManager:{traits:"Atributos",empty:"Selecciona un elemento para editarlo"},blockManager:{labels:{Secciones:"Secciones",Elementos:"Elementos",Botones:"Botones","link-block":"Bloque Enlace",quote:"Cita","text-section":"Sección de Texto",column1:"Una columna",column2:"Dos columnas",column3:"Tres columnas","column3-7":"Dos columnas 3/7",text:"Texto",link:"Enlace",image:"Imagen",Basic:"Básico"},categories:{Basic:"Básico",Secciones:"Secciones",Elementos:"Elementos",Botones:"Botones",Typography:"Tipografía",Media:"Medios",Social:"Social",Layout:"Diseño"}},navigator:{navigate:"Navegar",component:"Componente",components:"Componentes",empty:"Sin componentes"},commands:{undo:"Deshacer",redo:"Rehacer",clear:"Limpiar",codeViewer:"Ver código",openAssets:"Abrir medios",openBlocks:"Abrir bloques",openStyle:"Abrir estilos",openTraits:"Abrir atributos"},assetManager:{addButton:"Añadir imagen",inputPlh:"http://ruta-a-tu-imagen.jpg",modalTitle:"Selecciona la imagen",uploadTitle:"Arrastra tus archivos aquí o haz clic para subir"},deviceManager:{device:"Dispositivo",devices:{desktop:"Escritorio",tablet:"Tablet",mobileLandscape:"Móvil Horizontal",mobilePortrait:"Móvil Vertical"}},panels:{buttons:{titles:{preview:"Vista previa",fullscreen:"Pantalla completa","sw-visibility":"Ver componentes","export-template":"Ver código","open-sm":"Abrir estilo","open-tm":"Configuraciones","open-layers":"Abrir capas","open-blocks":"Abrir bloques"}}},preset_webpage:{blocks:{"link-block":"Bloque Enlace",quote:"Cita","text-section":"Sección de Texto"},categoryLabel:{Basic:"Básico",Typography:"Tipografía",Media:"Medios"}}}}}}function Vt(i){return{upload:i,uploadName:"files",multiUpload:!0,assets:[],uploadFile:l=>{const s=l.dataTransfer?l.dataTransfer.files:l.target.files,t=new FormData;for(const e of s)t.append("files[]",e);fetch(i,{method:"POST",headers:{"X-CSRF-TOKEN":document.querySelector('meta[name="csrf-token"]').getAttribute("content")},body:t}).then(e=>e.json()).then(e=>{e.data&&(editor.AssetManager.add(e.data),q("Archivos subidos correctamente","success"))}).catch(e=>{console.error("Error:",e),q("Error al subir los archivos","error")})}}}function Jt(){return{sectors:[{name:"Dimensiones",open:!1,buildProps:["width","height","min-width","min-height","max-width","max-height","padding","margin"]},{name:"Tipografía",open:!1,buildProps:["font-family","font-size","font-weight","letter-spacing","color","line-height","text-align","text-shadow"]},{name:"Decoración",open:!1,buildProps:["background-color","border","border-radius","box-shadow"]},{name:"Extra",open:!1,buildProps:["opacity","transition","transform"]}]}}function Ut(){return{gjsPresetWebpage:{modalImportTitle:"Importar código",modalImportLabel:"Pega tu código HTML/CSS aquí:",modalImportContent:"",importViewerOptions:{},textCleanCanvas:"¿Estás seguro de limpiar el canvas?",showStylesOnChange:!0,textGeneral:"General",textLayout:"Diseño",textTypography:"Tipografía",textDecorations:"Decoraciones",textExtra:"Extra",buttonImport:"Importar",buttonCancel:"Cancelar",blocks:{link:{category:"Básico",label:"Enlace"},quote:{category:"Básico",label:"Cita"},"text-basic":{category:"Básico",label:"Texto"},"link-block":{category:"Básico",label:"Bloque Enlace"},"text-section":{category:"Básico",label:"Sección de Texto"}},categoryLabel:{Basic:"Básico",Typography:"Tipografía",Media:"Medios",Social:"Social",Layout:"Diseño",Sections:"Secciones",Elements:"Elementos"}},gjsBlocksBasic:{blocks:[],category:"Básicos",labels:{column1:"Una columna",column2:"Dos columnas",column3:"Tres columnas","column3-7":"Dos columnas 3/7",text:"Texto",link:"Enlace",image:"Imagen",video:"Video",section:"Sección",paragraph:"Párrafo",default:"Predeterminado"},flexGrid:!0,stylePrefix:"gjs-"}}}function Gt(i){i.on("load",function(){const l=document.createElement("style");l.innerHTML=`
+            `,t.contentDocument.head.appendChild(e))}}),o.add("promotion-viewer",{label:"Visor de Promociones",category:"Promociones",attributes:{class:"gjs-block-section"},media:a,content:{type:"promotion-viewer"}})}function Ut(i){Ct(i),Lt(i),At(i),Bt(i),jt(i),$t(i),Dt(i),kt(i),St(i),Et(i),Tt(i),It(i),Pt(i),zt(i),Ft(i),_t(i),Ot(i),Ht(i),Rt(i),Jt(i),Z(i),Y(i),qt(i),Mt(i)}function F(i,o=""){const a=document.getElementById(i);return a?a.value:o}document.addEventListener("DOMContentLoaded",function(){const i=Gt();fe(i),ge(i),xe(i),Ce(i)});function Gt(){const i=F("asset-upload-url","/upload-assets"),o=Xt(i);return te(o),ae(o),le(o),oe(o),me(o),ie(o),ot(o),o}function Xt(i){return tt.init({container:"#gjs",fromElement:!0,storageManager:Qt(),deviceManager:{devices:[{name:"Desktop",width:""},{name:"Tablet",width:"768px",widthMedia:"992px"},{name:"Mobile",width:"320px",widthMedia:"575px"}]},i18n:Wt(),assetManager:Kt(i),canvas:{styles:["https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css","https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"],scripts:[]},styleManager:Zt(),plugins:[et,o=>Ut(o),o=>ue(o),o=>it(o),o=>wt(o)],pluginsOpts:Yt()})}function Qt(){const i=F("page-id");return i?{type:"local",id:"gjs-",autosave:!0,autoload:!0,stepsBeforeSave:1,options:{local:{key:`gjs-page-${i}`}}}:!1}function Wt(){return{locale:"es",messages:{es:{styleManager:{properties:"Propiedades",empty:"Selecciona un elemento para usar el Administrador de Estilos",sectors:{position:"Posición",display:"Visualización",flex:"Flex",dimension:"Dimensiones",typography:"Tipografía",decorations:"Decoraciones",extra:"Extra","flex-properties":"Propiedades Flex",background:"Fondo"}},traitManager:{traits:"Atributos",empty:"Selecciona un elemento para editarlo"},blockManager:{labels:{Secciones:"Secciones",Elementos:"Elementos",Botones:"Botones","link-block":"Bloque Enlace",quote:"Cita","text-section":"Sección de Texto",column1:"Una columna",column2:"Dos columnas",column3:"Tres columnas","column3-7":"Dos columnas 3/7",text:"Texto",link:"Enlace",image:"Imagen",Basic:"Básico"},categories:{Basic:"Básico",Secciones:"Secciones",Elementos:"Elementos",Botones:"Botones",Typography:"Tipografía",Media:"Medios",Social:"Social",Layout:"Diseño"}},navigator:{navigate:"Navegar",component:"Componente",components:"Componentes",empty:"Sin componentes"},commands:{undo:"Deshacer",redo:"Rehacer",clear:"Limpiar",codeViewer:"Ver código",openAssets:"Abrir medios",openBlocks:"Abrir bloques",openStyle:"Abrir estilos",openTraits:"Abrir atributos"},assetManager:{addButton:"Añadir imagen",inputPlh:"http://ruta-a-tu-imagen.jpg",modalTitle:"Selecciona la imagen",uploadTitle:"Arrastra tus archivos aquí o haz clic para subir"},deviceManager:{device:"Dispositivo",devices:{desktop:"Escritorio",tablet:"Tablet",mobileLandscape:"Móvil Horizontal",mobilePortrait:"Móvil Vertical"}},panels:{buttons:{titles:{preview:"Vista previa",fullscreen:"Pantalla completa","sw-visibility":"Ver componentes","export-template":"Ver código","open-sm":"Abrir estilo","open-tm":"Configuraciones","open-layers":"Abrir capas","open-blocks":"Abrir bloques"}}},preset_webpage:{blocks:{"link-block":"Bloque Enlace",quote:"Cita","text-section":"Sección de Texto"},categoryLabel:{Basic:"Básico",Typography:"Tipografía",Media:"Medios"}}}}}}function Kt(i){return{upload:i,uploadName:"files",multiUpload:!0,assets:[],uploadFile:o=>{const a=o.dataTransfer?o.dataTransfer.files:o.target.files,t=new FormData;for(const e of a)t.append("files[]",e);fetch(i,{method:"POST",headers:{"X-CSRF-TOKEN":document.querySelector('meta[name="csrf-token"]').getAttribute("content")},body:t}).then(e=>e.json()).then(e=>{e.data&&(editor.AssetManager.add(e.data),q("Archivos subidos correctamente","success"))}).catch(e=>{console.error("Error:",e),q("Error al subir los archivos","error")})}}}function Zt(){return{sectors:[{name:"Dimensiones",open:!1,buildProps:["width","height","min-width","min-height","max-width","max-height","padding","margin"]},{name:"Tipografía",open:!1,buildProps:["font-family","font-size","font-weight","letter-spacing","color","line-height","text-align","text-shadow"]},{name:"Decoración",open:!1,buildProps:["background-color","border","border-radius","box-shadow"]},{name:"Extra",open:!1,buildProps:["opacity","transition","transform"]}]}}function Yt(){return{gjsPresetWebpage:{modalImportTitle:"Importar código",modalImportLabel:"Pega tu código HTML/CSS aquí:",modalImportContent:"",importViewerOptions:{},textCleanCanvas:"¿Estás seguro de limpiar el canvas?",showStylesOnChange:!0,textGeneral:"General",textLayout:"Diseño",textTypography:"Tipografía",textDecorations:"Decoraciones",textExtra:"Extra",buttonImport:"Importar",buttonCancel:"Cancelar",blocks:{link:{category:"Básico",label:"Enlace"},quote:{category:"Básico",label:"Cita"},"text-basic":{category:"Básico",label:"Texto"},"link-block":{category:"Básico",label:"Bloque Enlace"},"text-section":{category:"Básico",label:"Sección de Texto"}},categoryLabel:{Basic:"Básico",Typography:"Tipografía",Media:"Medios",Social:"Social",Layout:"Diseño",Sections:"Secciones",Elements:"Elementos"}},gjsBlocksBasic:{blocks:[],category:"Básicos",labels:{column1:"Una columna",column2:"Dos columnas",column3:"Tres columnas","column3-7":"Dos columnas 3/7",text:"Texto",link:"Enlace",image:"Imagen",video:"Video",section:"Sección",paragraph:"Párrafo",default:"Predeterminado"},flexGrid:!0,stylePrefix:"gjs-"}}}function te(i){i.on("load",function(){const o=document.createElement("style");o.innerHTML=`
             .gjs-btn, .gjs-btn-prim, .gjs-btn--full, .gjs-btn-alt, 
             .gjs-layer-title, .gjs-block-category .gjs-title, .gjs-title,
             .gjs-sm-title, .gjs-pn-buttons, .gjs-field-units, 
@@ -5012,12 +5188,12 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             .gjs-sm-sector-title, .gjs-sm-property {
                 font-weight: 500 !important;
             }
-        `,document.head.appendChild(l);const s=i.Canvas.getFrameEl();s&&s.contentDocument.head.appendChild(l.cloneNode(!0))}),i.on("component:loaded",function(l){Xt(l)}),i.on("component:selected",function(l){if(l){const s=l.getClasses();if(s.length){const t=s.join(" "),e=l.getName();l.set("custom-name",`${e} [${t}]`)}}})}function Xt(i){const l=i.getAttributes();if(l&&l["data-gjs-type"]==="pdf-viewer"&&(i.set("type","pdf-viewer"),l["data-pdf-src"])){const s=i.view.el;if(s){const t=l["data-pdf-src"],e=l["data-pdf-name"]||"Documento PDF",a=s.querySelector(".pdf-placeholder"),d=s.querySelector(".pdf-title"),c=s.querySelector(".pdf-download-link");if(a){const r=document.createElement("object");r.setAttribute("data",t),r.setAttribute("type","application/pdf"),r.setAttribute("width","100%"),r.setAttribute("height","500"),r.classList.add("pdf-object"),r.style.minHeight="500px",r.innerHTML=`
+        `,document.head.appendChild(o);const a=i.Canvas.getFrameEl();a&&a.contentDocument.head.appendChild(o.cloneNode(!0))}),i.on("component:loaded",function(o){ee(o)}),i.on("component:selected",function(o){if(o){const a=o.getClasses();if(a.length){const t=a.join(" "),e=o.getName();o.set("custom-name",`${e} [${t}]`)}}})}function ee(i){const o=i.getAttributes();if(o&&o["data-gjs-type"]==="pdf-viewer"&&(i.set("type","pdf-viewer"),o["data-pdf-src"])){const a=i.view.el;if(a){const t=o["data-pdf-src"],e=o["data-pdf-name"]||"Documento PDF",l=a.querySelector(".pdf-placeholder"),d=a.querySelector(".pdf-title"),n=a.querySelector(".pdf-download-link");if(l){const c=document.createElement("object");c.setAttribute("data",t),c.setAttribute("type","application/pdf"),c.setAttribute("width","100%"),c.setAttribute("height","500"),c.classList.add("pdf-object"),c.style.minHeight="500px",c.innerHTML=`
                         <div class="p-6 bg-gray-100 text-center">
                             <p class="mb-3">No se puede mostrar el PDF. Su navegador no soporta PDFs incrustados.</p>
                             <a href="${t}" target="_blank" class="inline-block bg-primary text-white font-semibold py-2 px-6 rounded-full">Abrir PDF</a>
                         </div>
-                    `,a.classList.add("hidden"),a.parentNode.insertBefore(r,a.nextSibling),d&&(d.textContent=e),c&&(c.href=t,c.classList.remove("hidden"))}}}}function Qt(i){i.on("canvas:load",function(){setTimeout(function(){const l=i.Canvas.getFrameEl();if(l&&l.contentDocument&&l.contentDocument.querySelectorAll(".account-selector-container").length>0){const t=l.contentDocument.createElement("script");t.textContent=`
+                    `,l.classList.add("hidden"),l.parentNode.insertBefore(c,l.nextSibling),d&&(d.textContent=e),n&&(n.href=t,n.classList.remove("hidden"))}}}}function ie(i){i.on("canvas:load",function(){setTimeout(function(){const o=i.Canvas.getFrameEl();if(o&&o.contentDocument&&o.contentDocument.querySelectorAll(".account-selector-container").length>0){const t=o.contentDocument.createElement("script");t.textContent=`
                         (function() {
                             const containers = document.querySelectorAll('.account-selector-container');
                             
@@ -5099,7 +5275,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                 container.setAttribute('data-initialized', 'true');
                             });
                         })();
-                    `,l.contentDocument.body.appendChild(t)}},1e3)}),i.on("component:add",function(l){l.get("type")==="account-selector"&&setTimeout(function(){const s=i.Canvas.getFrameEl();if(s&&s.contentDocument&&s.contentDocument.querySelectorAll(".account-selector-container:not([data-initialized])").length>0){const e=s.contentDocument.createElement("script");e.textContent=`
+                    `,o.contentDocument.body.appendChild(t)}},1e3)}),i.on("component:add",function(o){o.get("type")==="account-selector"&&setTimeout(function(){const a=i.Canvas.getFrameEl();if(a&&a.contentDocument&&a.contentDocument.querySelectorAll(".account-selector-container:not([data-initialized])").length>0){const e=a.contentDocument.createElement("script");e.textContent=`
                             (function() {
                                 const containers = document.querySelectorAll('.account-selector-container:not([data-initialized])');
                                 
@@ -5179,7 +5355,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                                     container.setAttribute('data-initialized', 'true');
                                 });
                             })();
-                        `,s.contentDocument.body.appendChild(e)}},500)})}function Wt(i){i.Panels.addPanel({id:"panel-preview",visible:!0,buttons:[{id:"preview",className:"ri-eye-line",command:{run:function(l){l.runCommand("core:preview"),q("Modo vista previa activado","info")},stop:function(l){l.stopCommand("core:preview"),q("Modo edición activado","info")}},attributes:{title:"Vista Previa"}}]}),i.Panels.addPanel({id:"panel-tailwind",visible:!0,buttons:[{id:"open-tailwind-classes",className:"ri-code-box-line",command:"open-tailwind",attributes:{title:"Clases Tailwind"}}]})}function Kt(i){i.Commands.add("canvas-clear",{run:function(l){N.fire({title:"¿Estás seguro?",text:"¿Realmente deseas limpiar el canvas? Esta acción no se puede deshacer.",icon:"warning",showCancelButton:!0,confirmButtonColor:"#23366A",cancelButtonColor:"#e74c3c",confirmButtonText:"Sí, limpiar",cancelButtonText:"Cancelar"}).then(s=>{s.isConfirmed&&(l.DomComponents.clear(),l.CssComposer.clear(),q("El canvas ha sido limpiado correctamente","success"))})}}),i.Commands.add("open-tailwind",{run:function(l){const s=l.getSelected();if(!s)return;const t=s.getClasses().join(" ");N.fire({title:"Clases Tailwind",input:"textarea",inputValue:t,inputPlaceholder:"Ingresa las clases separadas por espacios",showCancelButton:!0,confirmButtonText:"Aplicar",confirmButtonColor:"#23366A",cancelButtonText:"Cancelar",cancelButtonColor:"#e74c3c",preConfirm:e=>e.split(" ").filter(a=>a)}).then(e=>{e.isConfirmed&&(s.removeClass(s.getClasses()),s.addClass(e.value),q("Clases aplicadas correctamente","success"))})}})}function Zt(i){i.on("load",()=>{Yt(),te(i),ie(i),ae(i),se(i)}),i.on("canvas:render",()=>{ee(i)})}function Yt(){const i=document.createElement("style");i.innerHTML=`
+                        `,a.contentDocument.body.appendChild(e)}},500)})}function ae(i){i.Panels.addPanel({id:"panel-preview",visible:!0,buttons:[{id:"preview",className:"ri-eye-line",command:{run:function(o){o.runCommand("core:preview"),q("Modo vista previa activado","info")},stop:function(o){o.stopCommand("core:preview"),q("Modo edición activado","info")}},attributes:{title:"Vista Previa"}}]}),i.Panels.addPanel({id:"panel-tailwind",visible:!0,buttons:[{id:"open-tailwind-classes",className:"ri-code-box-line",command:"open-tailwind",attributes:{title:"Clases Tailwind"}}]})}function le(i){i.Commands.add("canvas-clear",{run:function(o){z.fire({title:"¿Estás seguro?",text:"¿Realmente deseas limpiar el canvas? Esta acción no se puede deshacer.",icon:"warning",showCancelButton:!0,confirmButtonColor:"#23366A",cancelButtonColor:"#e74c3c",confirmButtonText:"Sí, limpiar",cancelButtonText:"Cancelar"}).then(a=>{a.isConfirmed&&(o.DomComponents.clear(),o.CssComposer.clear(),q("El canvas ha sido limpiado correctamente","success"))})}}),i.Commands.add("open-tailwind",{run:function(o){const a=o.getSelected();if(!a)return;const t=a.getClasses().join(" ");z.fire({title:"Clases Tailwind",input:"textarea",inputValue:t,inputPlaceholder:"Ingresa las clases separadas por espacios",showCancelButton:!0,confirmButtonText:"Aplicar",confirmButtonColor:"#23366A",cancelButtonText:"Cancelar",cancelButtonColor:"#e74c3c",preConfirm:e=>e.split(" ").filter(l=>l)}).then(e=>{e.isConfirmed&&(a.removeClass(a.getClasses()),a.addClass(e.value),q("Clases aplicadas correctamente","success"))})}})}function oe(i){i.on("load",()=>{se(),re(i),ce(i),de(i),pe(i)}),i.on("canvas:render",()=>{ne(i)})}function se(){const i=document.createElement("style");i.innerHTML=`
         :root {
             --color-primary: #ffffff;
             --color-primary-dark: #0f2d54;
@@ -5230,7 +5406,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             text-align: center;
             width: 100%;
         }
-    `,document.head.appendChild(i)}function te(i){const l=i.Canvas.getFrameEl();if(l&&l.contentDocument){const s=l.contentDocument.createElement("style");s.innerHTML=`
+    `,document.head.appendChild(i)}function re(i){const o=i.Canvas.getFrameEl();if(o&&o.contentDocument){const a=o.contentDocument.createElement("style");a.innerHTML=`
             body {
                 margin-bottom: 1rem !important;
             }
@@ -5265,7 +5441,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             .to-secondary {
                 --tw-gradient-to: #0f2d54 !important;
             }
-        `,l.contentDocument.head.appendChild(s)}}function ee(i){const l=i.Canvas.getFrameEl();if(l&&l.contentDocument&&!l.contentDocument.getElementById("theme-custom-styles")){const s=l.contentDocument.createElement("style");s.id="theme-custom-styles",s.innerHTML=`
+        `,o.contentDocument.head.appendChild(a)}}function ne(i){const o=i.Canvas.getFrameEl();if(o&&o.contentDocument&&!o.contentDocument.getElementById("theme-custom-styles")){const a=o.contentDocument.createElement("style");a.id="theme-custom-styles",a.innerHTML=`
                 .bg-primary {
                     background-color: #23366A !important;
                 }
@@ -5297,18 +5473,18 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 .to-secondary {
                     --tw-gradient-to: #0f2d54 !important;
                 }
-            `,l.contentDocument.head.appendChild(s)}}function ie(i){["map","default","text-basic","quote","link-block","text-section"].forEach(s=>{i.BlockManager.get(s)&&i.BlockManager.remove(s)})}function ae(i){i.BlockManager.getCategories().each(l=>{const s=l.get("id");s!=="Basic"&&s!=="Básico"?l.set("open",!1):l.set("open",!0)})}function se(i){i.runCommand("sw-visibility");const l=i.Panels.getButton("options","sw-visibility");l&&l.set("active",!0)}function le(i){const l=i.BlockManager;Object.entries({"link-block":"Bloque Enlace",quote:"Cita","text-section":"Sección de Texto",column1:"Una columna",column2:"Dos columnas",column3:"Tres columnas","column3-7":"Dos columnas 3/7",text:"Texto",link:"Enlace",image:"Imagen"}).forEach(([e,a])=>{const d=l.get(e);d&&d.set("label",a)});const t={Basic:"Básico",Typography:"Tipografía",Media:"Medios",Social:"Social",Layout:"Diseño",Sections:"Secciones",Elements:"Elementos"};l.getCategories().each(e=>{const a=e.get("id");t[a]&&e.set("label",t[a])})}function oe(i){i.BlockManager.add("icon-block",{label:"Icono",category:"Elementos",content:'<i class="ri-home-line" style="font-size: 24px; color: #23366A;"></i>',media:'<svg viewBox="0 0 24 24" width="32" height="32"><path fill="#23366A" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'}),et(i),it(i)}function re(i){i.Panels.addPanel({id:"panel-devices",visible:!0,buttons:[{id:"device-desktop",command:"set-device-desktop",className:"ri-computer-line",active:!0,attributes:{title:"Vista Escritorio"}},{id:"device-tablet",command:"set-device-tablet",className:"ri-tablet-line",attributes:{title:"Vista Tablet"}},{id:"device-mobile",command:"set-device-mobile",className:"ri-smartphone-line",attributes:{title:"Vista Móvil"}}]}),i.Commands.add("set-device-desktop",{run:l=>l.setDevice("Desktop")}),i.Commands.add("set-device-tablet",{run:l=>l.setDevice("Tablet")}),i.Commands.add("set-device-mobile",{run:l=>l.setDevice("Mobile")})}function ne(i){const l=document.getElementById("save-button");if(!l)return;const s=ce();l.parentNode.insertBefore(s,l);let t=!0;const e=()=>{t||(s.style.display="inline")},a=()=>{s.style.display="none"};setTimeout(()=>{t=!1},1e3),i.on("component:update",e),i.on("component:add",e),i.on("component:remove",e),i.on("style:update",e),l.addEventListener("click",function(){G(i)}),document.addEventListener("keydown",function(d){(d.ctrlKey||d.metaKey)&&d.key==="s"&&(d.preventDefault(),G(i))}),document.addEventListener("editor:saved",a)}function ce(){const i=document.createElement("span");i.id="unsaved-changes-badge",i.textContent="●",i.style.cssText=`
+            `,o.contentDocument.head.appendChild(a)}}function ce(i){["map","default","text-basic","quote","link-block","text-section"].forEach(a=>{i.BlockManager.get(a)&&i.BlockManager.remove(a)})}function de(i){i.BlockManager.getCategories().each(o=>{const a=o.get("id");a!=="Basic"&&a!=="Básico"?o.set("open",!1):o.set("open",!0)})}function pe(i){i.runCommand("sw-visibility");const o=i.Panels.getButton("options","sw-visibility");o&&o.set("active",!0)}function me(i){const o=i.BlockManager;Object.entries({"link-block":"Bloque Enlace",quote:"Cita","text-section":"Sección de Texto",column1:"Una columna",column2:"Dos columnas",column3:"Tres columnas","column3-7":"Dos columnas 3/7",text:"Texto",link:"Enlace",image:"Imagen"}).forEach(([e,l])=>{const d=o.get(e);d&&d.set("label",l)});const t={Basic:"Básico",Typography:"Tipografía",Media:"Medios",Social:"Social",Layout:"Diseño",Sections:"Secciones",Elements:"Elementos"};o.getCategories().each(e=>{const l=e.get("id");t[l]&&e.set("label",t[l])})}function ue(i){i.BlockManager.add("icon-block",{label:"Icono",category:"Elementos",content:'<i class="ri-home-line" style="font-size: 24px; color: #23366A;"></i>',media:'<svg viewBox="0 0 24 24" width="32" height="32"><path fill="#23366A" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'}),at(i),lt(i)}function ge(i){i.Panels.addPanel({id:"panel-devices",visible:!0,buttons:[{id:"device-desktop",command:"set-device-desktop",className:"ri-computer-line",active:!0,attributes:{title:"Vista Escritorio"}},{id:"device-tablet",command:"set-device-tablet",className:"ri-tablet-line",attributes:{title:"Vista Tablet"}},{id:"device-mobile",command:"set-device-mobile",className:"ri-smartphone-line",attributes:{title:"Vista Móvil"}}]}),i.Commands.add("set-device-desktop",{run:o=>o.setDevice("Desktop")}),i.Commands.add("set-device-tablet",{run:o=>o.setDevice("Tablet")}),i.Commands.add("set-device-mobile",{run:o=>o.setDevice("Mobile")})}function fe(i){const o=document.getElementById("save-button");if(!o)return;const a=he();o.parentNode.insertBefore(a,o);let t=!0;const e=()=>{t||(a.style.display="inline")},l=()=>{a.style.display="none"};setTimeout(()=>{t=!1},1e3),i.on("component:update",e),i.on("component:add",e),i.on("component:remove",e),i.on("style:update",e),o.addEventListener("click",function(){G(i)}),document.addEventListener("keydown",function(d){(d.ctrlKey||d.metaKey)&&d.key==="s"&&(d.preventDefault(),G(i))}),document.addEventListener("editor:saved",l)}function he(){const i=document.createElement("span");i.id="unsaved-changes-badge",i.textContent="●",i.style.cssText=`
         display: none;
         color: #e74c3c;
         font-size: 20px;
         margin-right: 6px;
         animation: pulse 1.5s ease-in-out infinite;
-    `;const l=document.createElement("style");return l.textContent=`
+    `;const o=document.createElement("style");return o.textContent=`
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-    `,document.head.appendChild(l),i}function de(i){const l=F("page-id"),s=F("page-load-url");l&&s?fetch(s).then(t=>t.json()).then(t=>{i.setComponents(t.html||""),i.setStyle(t.css||""),q("Datos de la página cargados correctamente","success"),window.history.pushState({pageId:l},document.title,window.location.href)}).catch(t=>{console.error("Error loading page data:",t),q("Error al cargar los datos de la página","error")}):window.history.pushState({isNew:!0},document.title,window.location.href)}function G(i){const l=F("page-id"),s=F("page-store-url","/pages/store");me(i);const t=i.getHtml();let e=i.getCss()||"",a=i.getJs()||"";if(t.includes("account-selector-container")&&!a.includes("initializeAccountSelectors")&&(a+=`
+    `,document.head.appendChild(o),i}function xe(i){const o=F("page-id"),a=F("page-load-url");o&&a?fetch(a).then(t=>t.json()).then(t=>{i.setComponents(t.html||""),i.setStyle(t.css||""),q("Datos de la página cargados correctamente","success"),window.history.pushState({pageId:o},document.title,window.location.href)}).catch(t=>{console.error("Error loading page data:",t),q("Error al cargar los datos de la página","error")}):window.history.pushState({isNew:!0},document.title,window.location.href)}function G(i){const o=F("page-id"),a=F("page-store-url","/pages/store");be(i);const t=i.getHtml();let e=i.getCss()||"",l=i.getJs()||"";if(t.includes("account-selector-container")&&!l.includes("initializeAccountSelectors")&&(l+=`
 
 `+`
         // Account Selector Initialization Script
@@ -5408,7 +5584,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
         if (document.readyState === 'complete' || document.readyState === 'interactive') {
             setTimeout(initializeAccountSelectors, 100);
         }
-        `),t.includes("quick-access-carousel")&&(!a.includes("scrollBy")||!a.includes("quick-access-carousel"))&&(a+=`
+        `),t.includes("quick-access-carousel")&&(!l.includes("scrollBy")||!l.includes("quick-access-carousel"))&&(l+=`
 
 `+`
             // Quick Access Carousel scrolling functionality
@@ -5443,7 +5619,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                 });
                 }
             });
-            })();`),t.includes("banner-slides-container")&&(!a.includes("banner-dot")||!a.includes("banner-slide"))){const c=`
+            })();`),t.includes("banner-slides-container")&&(!l.includes("banner-dot")||!l.includes("banner-slide"))){const n=`
             // Banner Slider functionality
             (function() {
             document.addEventListener('DOMContentLoaded', function() {
@@ -5519,7 +5695,7 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
                     }
                 });
             });
-            })();`,r=`
+            })();`,c=`
             /* Banner Animations */
             .banner-slide {
                 opacity: 0;
@@ -5533,13 +5709,13 @@ import{s as V,l as W,a as K,_ as Z,g as Y,b as tt,c as et,d as it}from"./buttonB
             }
             .banner-slide.active {
                 display: flex !important;
-            }`;a+=`
+            }`;l+=`
 
-`+c,e+=`
+`+n,e+=`
 
-`+r}let d={html:t,css:e,js:a};l?(d.id=l,Q(s,d),document.dispatchEvent(new CustomEvent("editor:saved"))):pe(s,d)}function me(i){i.DomComponents.getComponents().filter(s=>s.get("type")==="pdf-viewer"||s.getAttributes&&s.getAttributes()["data-gjs-type"]==="pdf-viewer").forEach(s=>{const t=s.getAttributes();if(t&&t["data-pdf-src"]){const e=s.view.el,a=t["data-pdf-src"];t["data-pdf-name"];let d=e.querySelector(".pdf-object");if(!d){d=document.createElement("object"),d.setAttribute("data",a),d.setAttribute("type","application/pdf"),d.setAttribute("width","100%"),d.setAttribute("height","500"),d.classList.add("pdf-object"),d.style.minHeight="500px",d.innerHTML=`
+`+c}let d={html:t,css:e,js:l};o?(d.id=o,K(a,d),document.dispatchEvent(new CustomEvent("editor:saved"))):ye(a,d)}function be(i){i.DomComponents.getComponents().filter(a=>a.get("type")==="pdf-viewer"||a.getAttributes&&a.getAttributes()["data-gjs-type"]==="pdf-viewer").forEach(a=>{const t=a.getAttributes();if(t&&t["data-pdf-src"]){const e=a.view.el,l=t["data-pdf-src"];t["data-pdf-name"];let d=e.querySelector(".pdf-object");if(!d){d=document.createElement("object"),d.setAttribute("data",l),d.setAttribute("type","application/pdf"),d.setAttribute("width","100%"),d.setAttribute("height","500"),d.classList.add("pdf-object"),d.style.minHeight="500px",d.innerHTML=`
                     <div class="p-6 bg-gray-100 text-center">
                         <p class="mb-3">No se puede mostrar el PDF. Su navegador no soporta PDFs incrustados.</p>
-                        <a href="${a}" target="_blank" class="inline-block bg-primary text-white font-semibold py-2 px-6 rounded-full">Abrir PDF</a>
+                        <a href="${l}" target="_blank" class="inline-block bg-primary text-white font-semibold py-2 px-6 rounded-full">Abrir PDF</a>
                     </div>
-                `;const c=e.querySelector(".pdf-placeholder");c&&(c.classList.add("hidden"),c.parentNode.insertBefore(d,c.nextSibling))}}})}function pe(i,l){N.fire({title:"Título de la página",input:"text",inputLabel:"Ingresa un título para la página",inputPlaceholder:"Título de la página",confirmButtonText:"Agregar",cancelButtonText:"Cancelar",showCancelButton:!0,confirmButtonColor:"#23366A",cancelButtonColor:"#e74c3c",inputValidator:s=>{if(!s)return"Debes ingresar un título para la página"}}).then(s=>{s.isConfirmed&&(l.title=s.value,Q(i,l),document.dispatchEvent(new CustomEvent("editor:saved")))})}function Q(i,l){N.fire({title:"Guardando...",html:"Por favor espera mientras se guarda la página",allowOutsideClick:!1,didOpen:()=>{N.showLoading()}}),fetch(i,{method:"POST",headers:{"Content-Type":"application/json","X-CSRF-TOKEN":document.querySelector('meta[name="csrf-token"]').getAttribute("content")},body:JSON.stringify(l)}).then(s=>s.json()).then(s=>{N.close(),ue(s,l)}).catch(s=>{N.close(),console.error("Error:",s),q("Error al guardar la página","error")})}function ue(i,l){i.success?(q("Página guardada correctamente","success"),window.editorHasUnsavedChanges=!1,document.dispatchEvent(new CustomEvent("editor:saved")),!l.id&&i.id&&ge(i.id,l.title)):q("Error al guardar la página: "+(i.message||"Error desconocido"),"error")}function ge(i,l){const s=document.getElementById("page-id");s&&(s.value=i);const t=document.getElementById("page-load-url");t&&(t.value=t.value.replace("new",i));const e=document.querySelector(".editor-title");e&&l&&(e.textContent="Editando: "+l),window.history.pushState({},"Editando: "+l,"/editor/"+i)}function fe(i){let l=!1,s=!1;const t=!F("page-id");t&&J(),i.on("component:update",()=>{l=!0}),i.on("component:add",()=>{l=!0}),i.on("component:remove",()=>{l=!0}),i.on("style:update",()=>{l=!0}),document.addEventListener("editor:saved",()=>{l=!1});const e=document.getElementById("save-button");e&&e.addEventListener("click",function(){setTimeout(()=>{l=!1},1e3)}),document.addEventListener("click",function(a){he(a,l,t,d=>{s=d})}),window.addEventListener("popstate",function(a){be(a,l,s,t,d=>{s=d})}),ye()}function J(){for(let i=0;i<localStorage.length;i++){const l=localStorage.key(i);l&&l.startsWith("gjs-")&&!l.includes("page-")&&localStorage.removeItem(l)}}function he(i,l,s,t){const e=i.target.closest("a[href], button[data-nav]");if(e&&!e.closest("#gjs")&&!e.closest(".swal2-container")&&l){const a=e.getAttribute("href")||"",d=e.hasAttribute("data-nav");(a&&!a.startsWith("#")&&!a.startsWith("javascript:")||d)&&(i.preventDefault(),N.fire({title:"¿Estás seguro?",text:"Hay cambios sin guardar que se perderán si sales de esta página.",icon:"warning",showCancelButton:!0,confirmButtonColor:"#23366A",cancelButtonColor:"#e74c3c",confirmButtonText:"Sí, salir",cancelButtonText:"Cancelar"}).then(c=>{c.isConfirmed&&(t(!0),s&&J(),a?window.location.href=a:d&&xe(e))}))}}function xe(i){const l=i.getAttribute("data-nav");l==="back"?window.history.back():l==="home"?window.location.href="/":l&&(window.location.href=l)}function be(i,l,s,t,e){l&&!s&&(i.preventDefault(),history.pushState(null,document.title,window.location.href),N.fire({title:"¿Estás seguro?",text:"Hay cambios sin guardar que se perderán si sales de esta página.",icon:"warning",showCancelButton:!0,confirmButtonColor:"#23366A",cancelButtonColor:"#e74c3c",confirmButtonText:"Sí, salir",cancelButtonText:"Cancelar"}).then(a=>{a.isConfirmed&&(e(!0),t&&J(),window.history.back())}))}function ye(){document.querySelectorAll(".back-button, .nav-back, .btn-back").forEach(s=>{!s.hasAttribute("href")&&!s.hasAttribute("data-nav")&&s.setAttribute("data-nav","back")}),document.querySelectorAll(".home-button, .nav-home, .btn-home").forEach(s=>{!s.hasAttribute("href")&&!s.hasAttribute("data-nav")&&s.setAttribute("data-nav","home")})}
+                `;const n=e.querySelector(".pdf-placeholder");n&&(n.classList.add("hidden"),n.parentNode.insertBefore(d,n.nextSibling))}}})}function ye(i,o){z.fire({title:"Título de la página",input:"text",inputLabel:"Ingresa un título para la página",inputPlaceholder:"Título de la página",confirmButtonText:"Agregar",cancelButtonText:"Cancelar",showCancelButton:!0,confirmButtonColor:"#23366A",cancelButtonColor:"#e74c3c",inputValidator:a=>{if(!a)return"Debes ingresar un título para la página"}}).then(a=>{a.isConfirmed&&(o.title=a.value,K(i,o),document.dispatchEvent(new CustomEvent("editor:saved")))})}function K(i,o){z.fire({title:"Guardando...",html:"Por favor espera mientras se guarda la página",allowOutsideClick:!1,didOpen:()=>{z.showLoading()}}),fetch(i,{method:"POST",headers:{"Content-Type":"application/json","X-CSRF-TOKEN":document.querySelector('meta[name="csrf-token"]').getAttribute("content")},body:JSON.stringify(o)}).then(a=>a.json()).then(a=>{z.close(),ve(a,o)}).catch(a=>{z.close(),console.error("Error:",a),q("Error al guardar la página","error")})}function ve(i,o){i.success?(q("Página guardada correctamente","success"),window.editorHasUnsavedChanges=!1,document.dispatchEvent(new CustomEvent("editor:saved")),!o.id&&i.id&&we(i.id,o.title)):q("Error al guardar la página: "+(i.message||"Error desconocido"),"error")}function we(i,o){const a=document.getElementById("page-id");a&&(a.value=i);const t=document.getElementById("page-load-url");t&&(t.value=t.value.replace("new",i));const e=document.querySelector(".editor-title");e&&o&&(e.textContent="Editando: "+o),window.history.pushState({},"Editando: "+o,"/editor/"+i)}function Ce(i){let o=!1,a=!1;const t=!F("page-id");t&&U(),i.on("component:update",()=>{o=!0}),i.on("component:add",()=>{o=!0}),i.on("component:remove",()=>{o=!0}),i.on("style:update",()=>{o=!0}),document.addEventListener("editor:saved",()=>{o=!1});const e=document.getElementById("save-button");e&&e.addEventListener("click",function(){setTimeout(()=>{o=!1},1e3)}),document.addEventListener("click",function(l){ke(l,o,t,d=>{a=d})}),window.addEventListener("popstate",function(l){Se(l,o,a,t,d=>{a=d})}),Ee()}function U(){for(let i=0;i<localStorage.length;i++){const o=localStorage.key(i);o&&o.startsWith("gjs-")&&!o.includes("page-")&&localStorage.removeItem(o)}}function ke(i,o,a,t){const e=i.target.closest("a[href], button[data-nav]");if(e&&!e.closest("#gjs")&&!e.closest(".swal2-container")&&o){const l=e.getAttribute("href")||"",d=e.hasAttribute("data-nav");(l&&!l.startsWith("#")&&!l.startsWith("javascript:")||d)&&(i.preventDefault(),z.fire({title:"¿Estás seguro?",text:"Hay cambios sin guardar que se perderán si sales de esta página.",icon:"warning",showCancelButton:!0,confirmButtonColor:"#23366A",cancelButtonColor:"#e74c3c",confirmButtonText:"Sí, salir",cancelButtonText:"Cancelar"}).then(n=>{n.isConfirmed&&(t(!0),a&&U(),l?window.location.href=l:d&&Ae(e))}))}}function Ae(i){const o=i.getAttribute("data-nav");o==="back"?window.history.back():o==="home"?window.location.href="/":o&&(window.location.href=o)}function Se(i,o,a,t,e){o&&!a&&(i.preventDefault(),history.pushState(null,document.title,window.location.href),z.fire({title:"¿Estás seguro?",text:"Hay cambios sin guardar que se perderán si sales de esta página.",icon:"warning",showCancelButton:!0,confirmButtonColor:"#23366A",cancelButtonColor:"#e74c3c",confirmButtonText:"Sí, salir",cancelButtonText:"Cancelar"}).then(l=>{l.isConfirmed&&(e(!0),t&&U(),window.history.back())}))}function Ee(){document.querySelectorAll(".back-button, .nav-back, .btn-back").forEach(a=>{!a.hasAttribute("href")&&!a.hasAttribute("data-nav")&&a.setAttribute("data-nav","back")}),document.querySelectorAll(".home-button, .nav-home, .btn-home").forEach(a=>{!a.hasAttribute("href")&&!a.hasAttribute("data-nav")&&a.setAttribute("data-nav","home")})}
