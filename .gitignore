@@ -1,37 +1,25 @@
-/.phpunit.cache
-/tests
+# Laravel
 /node_modules
-# /public/build
-/public/hot
-/public/storage
-# /storage/app/public/*
+/vendor
+/storage/logs/*.log
 /storage/framework/cache/*
 /storage/framework/sessions/*
-/storage/framework/testing/*
 /storage/framework/views/*
-/storage/logs/*
+/bootstrap/cache/*
 .env
 .env.backup
-.env.production
-.phpactor.json
-.phpunit.result.cache
-# /vendor
 Homestead.json
 Homestead.yaml
-npm-debug.log
-yarn-error.log
-/auth.json
-/.fleet
-/.idea
-/.nova
-/.vscode
-/.zed
+*.key
+public/storage  # Symlink, ignóralo en Git
 
-# Node.js
-/node_modules
+# Node
 /public/hot
-npm-debug.log
-yarn-debug.log
-yarn-error.log
-package-lock.json
-.vercel
+/public/storage
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
